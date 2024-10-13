@@ -1,0 +1,43 @@
+const Contact_dic_es = {
+  Contact_Flag: "CONTACTO",
+  Contact_Title: "¿Tienes Alguna Idea? Por Favor, Deja Un Mensaje",
+  Contact_Paragraph: "Contáctate conmigo y déjame saber cómo puedo ayduarte. Llena el formulario y te contactaré lo antes posible.",
+  Contact_Address: "Dirección",
+  Contact_Phone: "Teléfono",
+  Contact_Email: "Correo",
+  Contact_Address_Value: "Quito, Ecuador",
+  Contact_Phone_Value: "(+593)993507153",
+  Contact_Email_Value: "josueth.cueva@gmail.com",
+  Contact_Form_Name: "Nombre",
+  Contact_Form_Email: "Correo",
+  Contact_Form_Phone: "Teléfono",
+  Contact_Form_Message: "Mensaje",
+  Contact_Form_Name_Value: "Juan Pérez",
+  Contact_Form_Email_Value: "juan.perez@correo.com",
+  Contact_Form_Phone_Value: "(01) 234-5678",
+  Contact_Form_Message_Value: "Esribe un mensaje...",
+  Contact_Form_Button_Send: "ENVIAR",
+};
+
+const Contact_dic_en = {
+  Contact_Flag: "CONTACT",
+  Contact_Title: "Have You Any Project? Please Drop a Message",
+  Contact_Paragraph: "Get in touch and let me know how i can help. Fill out the form and i’ll be in touch as soon as possible.",
+  Contact_Address: "Address",
+  Contact_Phone: "Phone",
+  Contact_Email: "Email",
+  Contact_Address_Value: "Quito, Ecuador",
+  Contact_Phone_Value: "(+593)993507153",
+  Contact_Email_Value: "josueth.cueva@gmail.com",
+  Contact_Form_Name: "Name",
+  Contact_Form_Email: "Email",
+  Contact_Form_Phone: "Phone",
+  Contact_Form_Message: "Message",
+  Contact_Form_Name_Value: "John Smith",
+  Contact_Form_Email_Value: "john.smith@email.com",
+  Contact_Form_Phone_Value: "(123) 456-7890",
+  Contact_Form_Message_Value: "Write a message...",
+  Contact_Form_Button_Send: "SEND",
+};
+
+export { Contact_dic_es, Contact_dic_en };
