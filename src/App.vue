@@ -82,7 +82,7 @@ export default {
     handleScroll() {
       const currentScrollPosition = window.scrollY;
 
-      console.log('currentScrollPosition:', currentScrollPosition); // Añadido para depuración
+      //console.log('currentScrollPosition:', currentScrollPosition); // Añadido para depuración
 
       if (currentScrollPosition === 0) {
         this.isAtTop = true;
@@ -92,8 +92,8 @@ export default {
         this.isScrollingDown = currentScrollPosition > this.lastScrollPosition;
       }
 
-      console.log('isScrollingDown:', this.isScrollingDown); // Añadido para depuración
-      console.log('isAtTop:', this.isAtTop); // Añadido para depuración
+      //console.log('isScrollingDown:', this.isScrollingDown); // Añadido para depuración
+      //console.log('isAtTop:', this.isAtTop); // Añadido para depuración
 
       this.lastScrollPosition = currentScrollPosition;
     },
