@@ -22,7 +22,7 @@ const Contact_dic_es = {
 const Contact_dic_en = {
   Contact_Flag: "CONTACT",
   Contact_Title: "Have You Any Project? Please Drop a Message",
-  Contact_Paragraph: "Get in touch and let me know how i can help. Fill out the form and i’ll be in touch as soon as possible.",
+  Contact_Paragraph: "Get in touch and let me know how i can help. Fill out the form and ill be in touch as soon as possible.",
   Contact_Address: "Address",
   Contact_Phone: "Phone",
   Contact_Email: "Email",
