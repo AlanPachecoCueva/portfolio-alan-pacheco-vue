@@ -55,34 +55,43 @@ export default {
   data() {
     return {
       projects: [
+      {
+          title: "Mikhuna Ecuador",
+          description: "Sitio web para compartir y descubrir recetas de cocina, donde los usuarios pueden calificar, comentar y seguir sus recetas favoritas, creando una comunidad culinaria interactiva.",
+          date: "Marzo 2022",
+          image: "projects/Mikhuna/Mikhuna Home.png",
+          url: "url 3",
+          columns: 1,
+          rows: 2,
+        },
         {
           title: "KVMI Rewards",
           description: "Plataforma de recompensas para una empresa chocolatera, integrada con inteligencia artificial para la creación de campañas publicitarias personalizadas, que permite generar afiches, banners y slogans, y ofrece un sistema para gestionar campañas y premios.",
           date: "Marzo 2024",
-          image: "https://media.licdn.com/dms/image/v2/C5612AQFz2jYSPYu8hw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1628894163030?e=1732752000&v=beta&t=RHOsnV2MQpOP2n9IQwg7Uv-n6Aj_sNy_8Y3vfEnww50",
-          url: "url 1"
+          image: "projects/Rewards/Rewards - Registro.jpeg",
+          url: "url 1",
+          columns: 2,
+          rows: 2,
         },
         {
           title: "Guru Project",
           description: "Plataforma de gestión de proyectos que facilita la planificación, asignación de tareas, y coordinación de equipos, permitiendo un control eficiente del progreso y rendimiento de los miembros.",
           date: "Julio 2023",
-          image: "https://media.licdn.com/dms/image/v2/C5612AQFz2jYSPYu8hw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1628894163030?e=1732752000&v=beta&t=RHOsnV2MQpOP2n9IQwg7Uv-n6Aj_sNy_8Y3vfEnww50",
-          url: "url 2"
+          image: "projects/Guru/Guru Home.png",
+          url: "url 2",
+          columns: 2,
+          rows: 2,
         },
         {
           title: "CowID",
           description: "Aplicación móvil para la gestión completa del ganado, proporcionando herramientas para el seguimiento de enfermedades, control de gastos en alimentación, y otros aspectos clave de la administración del ganado.",
           date: "Enero 2023",
-          image: "https://media.licdn.com/dms/image/v2/C5612AQFz2jYSPYu8hw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1628894163030?e=1732752000&v=beta&t=RHOsnV2MQpOP2n9IQwg7Uv-n6Aj_sNy_8Y3vfEnww50",
-          url: "url 4"
+          image: "projects/CowID/CowID - Pantalla Carga.jpeg",
+          url: "url 4",
+          columns: 1,
+          rows: 2,
         },
-        {
-          title: "Mikhuna Ecuador",
-          description: "Sitio web para compartir y descubrir recetas de cocina, donde los usuarios pueden calificar, comentar y seguir sus recetas favoritas, creando una comunidad culinaria interactiva.",
-          date: "Marzo 2022",
-          image: "https://media.licdn.com/dms/image/v2/C5612AQFz2jYSPYu8hw/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1628894163030?e=1732752000&v=beta&t=RHOsnV2MQpOP2n9IQwg7Uv-n6Aj_sNy_8Y3vfEnww50",
-          url: "url 3"
-        },
+        
       ],
     };
   },
