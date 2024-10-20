@@ -8,6 +8,9 @@ import themeMixin from './plugins/themeMixin.js';
 
 import router from "./router";
 
+//Store pinia
+import { createPinia } from 'pinia'
+
 const i18n = createI18n({
   messages: dictionary,
   locale: "EN",
@@ -15,4 +18,4 @@ const i18n = createI18n({
 
 import { Icon } from '@iconify/vue';
 
-createApp(App).use(vuetify).use(vuetify).use(i18n).use(router).component('Icon', Icon).mixin(themeMixin).mount("#app");
+createApp(App).use(vuetify).use(createPinia()).use(i18n).use(router).component('Icon', Icon).mixin(themeMixin).mount("#app");

@@ -42,6 +42,8 @@ import SkillsView from "../views/Skills_View.vue";
 import ProjectsComponent from "../components/utils/Projects_Component.vue";
 import ContactView from "../views/Contact_View.vue";
 
+import { useProjectStore } from "../plugins/stores/projectsStore.js";
+
 export default {
   name: "GeneralView", // Nombre del componente
   components: {
@@ -54,45 +56,15 @@ export default {
   },
   data() {
     return {
-      projects: [
-      {
-          title: "Mikhuna Ecuador",
-          description: "Sitio web para compartir y descubrir recetas de cocina, donde los usuarios pueden calificar, comentar y seguir sus recetas favoritas, creando una comunidad culinaria interactiva.",
-          date: "Marzo 2022",
-          image: "projects/Mikhuna/Mikhuna Home.png",
-          url: "url 3",
-          columns: 1,
-          rows: 2,
-        },
-        {
-          title: "KVMI Rewards",
-          description: "Plataforma de recompensas para una empresa chocolatera, integrada con inteligencia artificial para la creación de campañas publicitarias personalizadas, que permite generar afiches, banners y slogans, y ofrece un sistema para gestionar campañas y premios.",
-          date: "Marzo 2024",
-          image: "projects/Rewards/Rewards - Registro.jpeg",
-          url: "url 1",
-          columns: 2,
-          rows: 2,
-        },
-        {
-          title: "Guru Project",
-          description: "Plataforma de gestión de proyectos que facilita la planificación, asignación de tareas, y coordinación de equipos, permitiendo un control eficiente del progreso y rendimiento de los miembros.",
-          date: "Julio 2023",
-          image: "projects/Guru/Guru Home.png",
-          url: "url 2",
-          columns: 2,
-          rows: 2,
-        },
-        {
-          title: "CowID",
-          description: "Aplicación móvil para la gestión completa del ganado, proporcionando herramientas para el seguimiento de enfermedades, control de gastos en alimentación, y otros aspectos clave de la administración del ganado.",
-          date: "Enero 2023",
-          image: "projects/CowID/CowID - Pantalla Carga.jpeg",
-          url: "url 4",
-          columns: 1,
-          rows: 2,
-        },
-        
-      ],
+      
+    };
+  },
+  setup() {
+    const projectStore = useProjectStore();
+    const projects = projectStore.getAllProjects;
+
+    return {
+      projects,
     };
   },
 };

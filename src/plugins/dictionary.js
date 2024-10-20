@@ -29,6 +29,10 @@ import {
   Contact_dic_es, Contact_dic_en 
 } from "../plugins/dictionaries/contact-dicts.js";
 
+import {
+  all_projects_dicts_es, all_projects_dicts_en
+} from "../plugins/dictionaries/projects-elements-dicts.js";
+
 export default {
   ES: {
     ...nav_bar_dic_es,
@@ -38,6 +42,7 @@ export default {
     ...skills_dic_es,
     ...projects_dic_es,
     ...Contact_dic_es, 
+    ...all_projects_dicts_es
   },
 
   EN: {
@@ -48,5 +53,6 @@ export default {
     ...skills_dic_en,
     ...projects_dic_en,
     ...Contact_dic_en,
+    ...all_projects_dicts_en
   },
 };

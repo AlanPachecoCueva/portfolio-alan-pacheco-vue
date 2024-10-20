@@ -125,18 +125,6 @@ export default {
 
 <style>
 .button {
-/*
-  background-color: #3498db;
-  border: none;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  border-radius: 5px;
-  
-  background-size: -100% 100%;
-  transition: color 0.4s ease-out; */
-  /* background: linear-gradient(to right, #000 50%, #CACACA 50%); */
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;

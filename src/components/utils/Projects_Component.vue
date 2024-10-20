@@ -32,15 +32,20 @@
       :key="item.id"
       :style="{
         backgroundColor: getPrimaryColor(),
-        gridColumn: `span ${item.columns}`,  // Define cuántas columnas ocupa
-        gridRow: `span ${item.rows}`  // Define cuántas filas ocupa
+        gridColumn: `span ${item.columns}`, // Define cuántas columnas ocupa
+        gridRow: `span ${item.rows}`, // Define cuántas filas ocupa
       }"
+      @click="goToProject(item)"
     >
       <div class="overlay">
-        <img class="item-image" :src="require(`@/assets/${item.image}`)" alt="img home" />
+        <img
+          class="item-image"
+          :src="require(`@/assets/${item.image}`)"
+          alt="img home"
+        />
         <div class="item-info">
           <div class="item-title">{{ item.title }}</div>
-          <div class="item-date">{{ item.date }}</div>
+          <div class="item-date">{{ $t(item.date) }}</div>
         </div>
       </div>
     </div>
@@ -56,7 +61,12 @@ export default {
       required: true,
     },
   },
-  methods: {},
+  methods: {
+    goToProject(project) {
+      this.$router.push({ name: 'Project', params: { id: project.title}});
+
+    },
+  },
 };
 </script>
 
@@ -67,8 +77,6 @@ export default {
   height: 60px;
 }
 
-
-
 /* Primer ítem, el menú */
 /* .menu-item {
   grid-column: span 2; 
@@ -78,7 +86,6 @@ export default {
   color: white;
   padding: 20px;
 } */
-
 
 .menu-content {
   text-align: left;
@@ -158,7 +165,6 @@ export default {
 
   /* Esta línea permitió que se ajusten los widths automáticamente de las rows */
   grid-row-end: span 2;
-  
 }
 
 .item:hover {
