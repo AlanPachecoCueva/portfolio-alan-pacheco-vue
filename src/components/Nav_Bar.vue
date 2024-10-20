@@ -14,20 +14,34 @@
       <ul class="nav-links">
         <div class="nav-sides" id="center-side">
           <li>
-            <a href="#home-view" to="#home-view"  >{{ $t("Home_Text") }}
-            </a>
+            <router-link :to="{ name: 'Home', hash: '#home-view' }"
+              ><a>{{ $t("Home_Text") }} </a></router-link
+            >
           </li>
           <li>
-            <a href="#about-view" to="#about_view">{{ $t("About_Text") }}</a>
+            <router-link :to="{ name: 'Home', hash: '#about-view' }"
+              ><a>{{ $t("About_Text") }}</a></router-link
+            >
           </li>
           <li>
-            <a href="#skills-view" to="#skills-view"> {{ $t("Skills_Text") }}</a>
+            <router-link :to="{ name: 'Home', hash: '#skills-view' }"
+              ><a> {{ $t("Skills_Text") }}</a></router-link
+            >
           </li>
           <li>
-            <a href="#projects-view" to="#projects-view"> {{ $t("Portfolio_Text") }}</a>
+            <router-link :to="{ name: 'Home', hash: '#projects-view' }"
+              ><a>
+                {{ $t("Portfolio_Text") }}</a
+              ></router-link
+            >
           </li>
           <li>
-            <a href="#contact-view" to="#contact-view"> {{ $t("Contact_Text") }}</a>
+            <router-link :to="{ name: 'Home', hash: '#contact-view' }"
+              ><a>
+              {{ $t("Contact_Text") }}</a
+            ></router-link
+            >
+            
           </li>
         </div>
         <div class="nav-sides" id="right-side">

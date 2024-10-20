@@ -1,59 +1,60 @@
 <template>
-  <div class="card">
-    <div id="card_left_side">
-      <Icon class="hero-social-icon" :icon="getIconName()" />
+  <router-link :to="{ name: 'Home', hash: `${url}` }">
+    <div class="card">
+      <div id="card_left_side">
+        <Icon class="hero-social-icon" :icon="getIconName()" />
+      </div>
+      <div id="card_right_side">
+        <h2>{{ title }}</h2>
+        <p>{{ content }}</p>
+      </div>
+      <Icon id="arrow" class="hero-social-icon" icon="ep:arrow-right-bold" />
     </div>
-    <div id="card_right_side">
-      <h2>{{ title }}</h2>
-      <p>{{ content }}</p>
-    </div>
-    <Icon id="arrow" class="hero-social-icon" icon="ep:arrow-right-bold" />
-  </div>
+  </router-link>
 </template>
 
 <script>
-import { stringifyQuery } from 'vue-router';
-
+import { stringifyQuery } from "vue-router";
 
 export default {
-  name: 'CardComponent', // Nombre del componente
+  name: "CardComponent", // Nombre del componente
 
   props: {
     url: {
       type: String, // Tipo de la prop
-      required: true // Marca la prop como requerida
+      required: true, // Marca la prop como requerida
     },
     title: {
       type: String, // Tipo de la prop
-      required: true // Marca la prop como requerida
+      required: true, // Marca la prop como requerida
     },
     content: {
       type: String,
       required: false,
-      default: '' // Valor por defecto si no se pasa la prop
+      default: "", // Valor por defecto si no se pasa la prop
     },
     icon_name: {
       type: stringifyQuery,
       required: true,
-      default: "token-branded:moon"
-    }
+      default: "token-branded:moon",
+    },
   },
   methods: {
     getIconName() {
       let aux = this.icon_name;
       return aux;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
 /* Aquí van los estilos específicos del componente */
-#arrow{
+#arrow {
   width: 22px;
 }
 
-.card:hover #arrow{
+.card:hover #arrow {
   color: rgb(113, 111, 111);
 }
 
@@ -63,7 +64,7 @@ export default {
 
   display: flex;
 
-  justify-content:space-around;
+  justify-content: space-around;
   align-items: center;
 
   color: inherit;
@@ -79,9 +80,12 @@ export default {
 }
 
 .hero-social-icon {
-
   display: inline-block;
   width: 4em;
   height: 4em;
+}
+
+.goToA {
+  text-decoration: none;
 }
 </style>

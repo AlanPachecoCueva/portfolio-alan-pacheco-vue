@@ -12,7 +12,7 @@
     ></CardComponent>
     <CardComponent
       class="card"
-      url="http://www.google.com"
+      url="#projects-view"
       icon_name="icon-park:file-code"
       :title="$t('Card_Projects')"
       content=""
