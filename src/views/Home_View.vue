@@ -27,13 +27,13 @@
           </a>
         </li>
         <li class="hero-social-li">
-          <a href="#" target="_blank" class="hero-social-item" :style="{ color: getHeroColor() }">
+          <a  href="https://github.com/AlanPachecoCueva" target="_blank" class="hero-social-item" :style="{ color: getHeroColor() }">
             <Icon class="hero-social-icon" icon="mingcute:github-fill" />
             <!-- <div>Facebook</div> -->
           </a>
         </li>
         <li class="hero-social-li">
-          <a href="#" target="_blank" class="hero-social-item" :style="{ color: getHeroColor() }">
+          <a href="/twitter" target="_blank" class="hero-social-item" :style="{ color: getHeroColor() }">
             <Icon class="hero-social-icon" icon="mdi:twitter" />
             <!-- <div>Twitter</div> -->
           </a>
