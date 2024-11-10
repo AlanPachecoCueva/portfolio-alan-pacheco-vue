@@ -132,8 +132,8 @@
 </template>
 <!-- Se sube? :((())) -->
 <script>
-import emailjs from "emailjs-com"; // Importa EmailJS (asegúrate de instalarlo)
-
+//import emailjs from "emailjs-com"; // Importa EmailJS (asegúrate de instalarlo)
+import emailjs from "@emailjs/browser";
 export default {
   name: "ContactView",
   data() {
@@ -154,30 +154,51 @@ export default {
       event.target.style.borderColor = this.getPrimaryColor(); // Restaura el borde cuando el input pierde el focus
     },
     async sendEmail() {
-      console.log("Form submitted", this.form);
+      const templateParams = {
+        user_name: this.form.name,
+        user_email: this.form.email,
+        message: this.form.message,
+        user_phone: this.form.phone
+      };
+
       try {
-        const templateParams = {
-          name: this.form.name,
-          email: this.form.email,
-          message: this.form.message + " | "+this.form.phone
-        };
+        // Reemplaza con tus propios Service ID, Template ID, y Public Key
+        const SERVICE_ID = "service_nxvebz4";
+        const TEMPLATE_ID = "contact_form";
+        const PUBLIC_KEY = "d1_C1Va1lFFO3oWRV";
 
-        // Usa EmailJS para enviar el correo (asegúrate de configurarlo)
-        const result = await emailjs.send(
-          "service_nxvebz4",
-          "YOUR_TEMPLATE_ID",
-          templateParams,
-          "YOUR_USER_ID"
-        );
-
-        if (result.status === 200) {
-          this.emailSent = true; // Mostrar confirmación de envío
-          this.resetForm(); // Limpiar el formulario
-        }
+        await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+        console.log("SUCCESS!");
       } catch (error) {
-        console.error("Error al enviar el correo:", error);
+        console.error("FAILED...", error);
       }
     },
+
+    // async sendEmail() {
+    //   console.log("Form submitted", this.form);
+    //   try {
+    //     const templateParams = {
+    //       name: this.form.name,
+    //       email: this.form.email,
+    //       message: this.form.message + " | "+this.form.phone
+    //     };
+
+    //     // Usa EmailJS para enviar el correo (asegúrate de configurarlo)
+    //     const result = await emailjs.send(
+    //       "service_nxvebz4",
+    //       "YOUR_TEMPLATE_ID",
+    //       templateParams,
+    //       "YOUR_USER_ID"
+    //     );
+
+    //     if (result.status === 200) {
+    //       this.emailSent = true; // Mostrar confirmación de envío
+    //       this.resetForm(); // Limpiar el formulario
+    //     }
+    //   } catch (error) {
+    //     console.error("Error al enviar el correo:", error);
+    //   }
+    // },
   },
 };
 </script>
