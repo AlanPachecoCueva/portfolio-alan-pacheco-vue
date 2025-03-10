@@ -168,6 +168,23 @@ export default {
         const PUBLIC_KEY = "d1_C1Va1lFFO3oWRV";
 
         await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+        
+        this.$swal({
+          text: "Tu mensaje ha sido enviado\n¡Gracias por comunicarte conmigo!\n🙂",
+          icon: "success"
+        });
+
+        //Limpieza de datos
+        templateParams.user_name = "";
+        templateParams.user_email = "";
+        templateParams.message = "";
+        templateParams.user_phone = "";
+
+        this.form.name = "";
+        this.form.email = "";
+        this.form.message = "";
+        this.form.phone = "";
+
         console.log("SUCCESS!");
       } catch (error) {
         console.error("FAILED...", error);

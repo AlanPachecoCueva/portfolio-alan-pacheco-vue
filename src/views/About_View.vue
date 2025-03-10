@@ -17,7 +17,7 @@
         <div class="right-rightContainer-lower">
           <input class="button" id="leftButton" type="button" :value="$t('About_Me_Contact_Me')"
           :style="generateAlternativeGradientStyle()" />
-          <input class="button" type="button" :value="$t('About_Me_Download_CV')" :style="generateGradientStyle()"/>
+          <input class="button" type="button" @click="downloadCV" :value="$t('About_Me_Download_CV')" :style="generateGradientStyle()"/>
         </div>
       </div>
     </div>
@@ -29,6 +29,17 @@
 export default {
   name: 'About_View',
   methods: {
+    downloadCV() {
+      console.log("downloadCV 1");
+    // Crea un enlace temporal
+    const link = document.createElement('a');
+    // Apunta al archivo PDF
+    link.href = '/CV-Alan Pacheco.pdf';
+    // Nombre con el que se descargará
+    link.download = 'CV-Alan Pacheco.pdf';
+    // Simula el clic en el enlace
+    link.click();
+  },
     generateGradientStyle() {
       return {
         // background: `linear-gradient(to right, ${this.getBackgroundColor()} 50%, #CACACA 50%)`

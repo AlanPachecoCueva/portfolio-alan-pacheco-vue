@@ -11,6 +11,9 @@ import router from "./router";
 //Store pinia
 import { createPinia } from 'pinia'
 
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 const i18n = createI18n({
   messages: dictionary,
   locale: "EN",
@@ -18,4 +21,4 @@ const i18n = createI18n({
 
 import { Icon } from '@iconify/vue';
 
-createApp(App).use(vuetify).use(createPinia()).use(i18n).use(router).component('Icon', Icon).mixin(themeMixin).mount("#app");
+createApp(App).use(VueSweetalert2).use(vuetify).use(createPinia()).use(i18n).use(router).component('Icon', Icon).mixin(themeMixin).mount("#app");

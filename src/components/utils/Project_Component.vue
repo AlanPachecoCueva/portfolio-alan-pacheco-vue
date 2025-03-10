@@ -17,6 +17,7 @@
           class="relatedtechnology_item"
           v-for="relatedtechnology in project.relatedTechnologies"
           :key="relatedtechnology"
+          :style="generateAlternativeGradientStyle()" 
         >
           <p>{{ relatedtechnology }}</p>
         </div>
@@ -62,7 +63,15 @@ export default {
   // created() {
   //   this.project = JSON.parse(this.$route.query.project);
   // },
-  methods: {},
+  methods: {
+    generateAlternativeGradientStyle() {
+      return {
+        background: `linear-gradient(to right, ${this.getAlternativeButtonColor()} 50%,  #CACACA 50%)`,
+        backgroundSize: `200% 100%`
+      }
+
+    },
+  },
   setup() {
     const route = useRoute(); // Obtener el parámetro id de la ruta
     const projectStore = useProjectStore(); // Instancia del store de Pinia
@@ -123,13 +132,14 @@ export default {
 .relatedtechnology_item {
   width: fit-content;
   height: fit-content;
-  border-radius: 20px;
+  border-radius: 8px;
   margin: 2px;
-  padding: 2px 4px 2px 4px;
+  padding: 2px 5px 2px 5px;
 }
 
 .relatedtechnology_item p {
   font-size: smaller;
+  color: white;
 }
 
 /* Ítems regulares */

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "./views/General_View.vue";
 import About from "./views/About_View.vue";
+import Gallery from "./views/Gallery_View.vue";
 import ProjectComponent from "./components/utils/Project_Component.vue";
 
 const routes = [
@@ -18,6 +19,11 @@ const routes = [
     path: "/project/:id",
     name: "Project",
     component: ProjectComponent,
+  },
+  {
+    path: "/gallery",
+    name: "Gallery",
+    component: Gallery,
   },
 ];
 

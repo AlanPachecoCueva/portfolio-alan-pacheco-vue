@@ -20,7 +20,7 @@
     ></CardComponent>
     <CardComponent
       class="card"
-      url="http://www.google.com"
+      @click="goToGallery"
       icon_name="marketeq:gallery-collections"
       :title="$t('Card_Galery')"
       content=""
@@ -58,6 +58,12 @@ export default {
     return {
       
     };
+  },
+  methods:{
+    goToGallery() {
+      this.$router.push({ name: 'Gallery'});
+
+    },
   },
   setup() {
     const projectStore = useProjectStore();
