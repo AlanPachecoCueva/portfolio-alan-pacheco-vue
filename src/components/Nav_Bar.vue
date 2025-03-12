@@ -30,18 +30,13 @@
           </li>
           <li>
             <router-link :to="{ name: 'Home', hash: '#projects-view' }"
-              ><a>
-                {{ $t("Portfolio_Text") }}</a
-              ></router-link
+              ><a> {{ $t("Portfolio_Text") }}</a></router-link
             >
           </li>
           <li>
             <router-link :to="{ name: 'Home', hash: '#contact-view' }"
-              ><a>
-              {{ $t("Contact_Text") }}</a
-            ></router-link
+              ><a> {{ $t("Contact_Text") }}</a></router-link
             >
-            
           </li>
         </div>
         <div class="nav-sides" id="right-side">
@@ -56,9 +51,9 @@
           </li>
 
           <!-- <li><a href="#contact"> {{ $t('Theme_Text') }}</a></li> -->
-          <li>
+          <!-- <li>
             <a href="#contact"> {{ $t("More_Text") }}</a>
-          </li>
+          </li> -->
         </div>
       </ul>
     </nav>
@@ -106,6 +101,37 @@ header {
   font-weight: bold;
   font-family: "Poppins", sans-serif;
   padding: 0px !important;
+}
+
+@media (max-width: 400px) {
+  /* Estilos para dispositivos móviles */
+  nav {
+    width: 100vw !important;
+    justify-content: space-around;
+    
+  }
+
+  #logo-side {
+    display: none !important;
+  }
+  
+  .nav-links {
+    width: 100% !important;
+    font-size: 10px;
+
+   
+
+  }
+
+  #center-side {
+    justify-content: space-around;
+    width: 70% !important;
+  }
+
+  #right-side {
+    width: 30% !important;
+  }
+
 }
 a {
   color: inherit;
@@ -163,7 +189,7 @@ nav {
 }
 
 #right-side {
-  width: 30% !important;
+  width: 30%;
   justify-content: center;
   align-items: center;
 }
@@ -175,4 +201,11 @@ nav {
 #languageSelector {
   padding: 0;
 }
+
+/* @media (max-width: 400px) {
+  header{
+    width: 50%;
+    background-color: yellow;
+  }
+} */
 </style>

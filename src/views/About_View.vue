@@ -5,61 +5,93 @@
     </div>
     <div class="rightSideAbout">
       <div class="right-leftContainer">
-        <p>{{$t('About_Me_Flag')}}</p>
-        <div class="single-line" :style="{ backgroundColor: getHeroColor() }"></div>
+        <p>{{ $t("About_Me_Flag") }}</p>
+        <div
+          class="single-line"
+          :style="{ backgroundColor: getHeroColor() }"
+        ></div>
       </div>
       <div class="right-rightContainer">
         <div class="right-rightContainer-upper">
-          <h2>{{ $t('About_Me_Title')}}</h2>
-          <p>{{ $t('About_Me_Paragraph')}}
-          </p>
+          <h2>{{ $t("About_Me_Title") }}</h2>
+          <p>{{ $t("About_Me_Paragraph") }}</p>
         </div>
         <div class="right-rightContainer-lower">
-          <input class="button" id="leftButton" type="button" :value="$t('About_Me_Contact_Me')"
-          :style="generateAlternativeGradientStyle()" />
-          <input class="button" type="button" @click="downloadCV" :value="$t('About_Me_Download_CV')" :style="generateGradientStyle()"/>
+          <input
+            class="button"
+            id="leftButton"
+            type="button"
+            :value="$t('About_Me_Contact_Me')"
+            :style="generateAlternativeGradientStyle()"
+          />
+          <input
+            class="button"
+            type="button"
+            @click="downloadCV"
+            :value="$t('About_Me_Download_CV')"
+            :style="generateGradientStyle()"
+          />
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
 export default {
-  name: 'About_View',
+  name: "About_View",
   methods: {
     downloadCV() {
       console.log("downloadCV 1");
-    // Crea un enlace temporal
-    const link = document.createElement('a');
-    // Apunta al archivo PDF
-    link.href = '/CV-Alan Pacheco.pdf';
-    // Nombre con el que se descargará
-    link.download = 'CV-Alan Pacheco.pdf';
-    // Simula el clic en el enlace
-    link.click();
-  },
+      // Crea un enlace temporal
+      const link = document.createElement("a");
+      // Apunta al archivo PDF
+      link.href = "/CV-Alan Pacheco.pdf";
+      // Nombre con el que se descargará
+      link.download = "CV-Alan Pacheco.pdf";
+      // Simula el clic en el enlace
+      link.click();
+    },
     generateGradientStyle() {
       return {
         // background: `linear-gradient(to right, ${this.getBackgroundColor()} 50%, #CACACA 50%)`
         background: `linear-gradient(to right, ${this.getBackgroundColor()} 50%, #CACACA 50%)`,
-        backgroundSize: `200% 100%`
-      }
-
+        backgroundSize: `200% 100%`,
+      };
     },
     generateAlternativeGradientStyle() {
       return {
         background: `linear-gradient(to right, ${this.getAlternativeButtonColor()} 50%,  #CACACA 50%)`,
-        backgroundSize: `200% 100%`
-      }
-
-    }
-  }
+        backgroundSize: `200% 100%`,
+      };
+    },
+  },
 };
 </script>
 
 <style scoped>
+@media (max-width: 400px) {
+  .bigContainerAbout {
+    display: flex;
+    flex-direction:column;
+    width: 100%;
+
+    justify-content:start !important;
+    align-items: start !important ;
+
+    margin: 5% 0px 5% 0px;
+
+    background-color: rgb(74, 74, 27);
+  }
+  .leftSideAbout {
+    width: 100% !important;
+  }
+
+  .leftSideAbout img{
+    width: 100% !important;
+  }
+}
+
 .bigContainerAbout {
   display: flex;
 
@@ -80,7 +112,6 @@ export default {
 
   display: flex;
   flex-direction: row;
-
 }
 
 .right-leftContainer {
@@ -92,11 +123,9 @@ export default {
 }
 
 .single-line {
-
   margin-top: 20px;
   width: 3px;
   height: 20%;
-
 }
 
 .right-leftContainer p {
@@ -125,5 +154,4 @@ export default {
   margin-right: 30px;
   color: white;
 }
-
 </style>

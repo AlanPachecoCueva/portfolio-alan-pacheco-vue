@@ -1,35 +1,44 @@
 <template>
-  <v-app :style="{ backgroundColor: getBackgroundColor(), color: getTextColor() }">
+  <v-app
+    :style="{ backgroundColor: getBackgroundColor(), color: getTextColor() }"
+  >
     <!-- Cursor -->
     <div>
       <!-- Outer Circle -->
-      <div ref="outerCircle" class="circle-cursor circle-cursor-outer" :style="{ borderColor: getContrastColor() }">
-      </div>
+      <div
+        ref="outerCircle"
+        class="circle-cursor circle-cursor-outer"
+        :style="{ borderColor: getContrastColor() }"
+      ></div>
       <!-- Inner Circle -->
-      <div ref="innerCircle" class="circle-cursor circle-cursor-inner" :style="{ backgroundColor: getContrastColor() }">
-      </div>
-
-
+      <div
+        ref="innerCircle"
+        class="circle-cursor circle-cursor-inner"
+        :style="{ backgroundColor: getContrastColor() }"
+      ></div>
     </div>
     <!-- Cursor -->
     <!-- Aquí va el contenido del navbar -->
-    <Nav_Bar :style="{ backgroundColor: getHeaderColor() }" :class="navbarClass"></Nav_Bar>
+    <Nav_Bar
+      :style="{ backgroundColor: getHeaderColor() }"
+      :class="navbarClass"
+      class="navbarAll"
+    ></Nav_Bar>
 
     <RouterView class="routerContent"></RouterView>
-
   </v-app>
 </template>
 
 <script>
 import { RouterView } from "vue-router";
-import Nav_Bar from './components/Nav_Bar.vue';
+import Nav_Bar from "./components/Nav_Bar.vue";
 
 export default {
-  name: 'App',
+  name: "App",
 
   components: {
     Nav_Bar,
-    RouterView
+    RouterView,
   },
 
   data() {
@@ -45,7 +54,7 @@ export default {
     };
   },
   mounted() {
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener("scroll", this.handleScroll);
     const outerCircle = this.$refs.outerCircle;
     const innerCircle = this.$refs.innerCircle;
 
@@ -53,7 +62,9 @@ export default {
     document.addEventListener("mousemove", (e) => {
       this.innerX = e.clientX;
       this.innerY = e.clientY;
-      innerCircle.style.transform = `translate(${this.innerX - 2}px, ${this.innerY - 2}px)`;
+      innerCircle.style.transform = `translate(${this.innerX - 2}px, ${
+        this.innerY - 2
+      }px)`;
     });
 
     // Function for the outer circle to follow the inner circle
@@ -61,7 +72,9 @@ export default {
       this.outerX += (this.innerX - this.outerX) * 0.1;
       this.outerY += (this.innerY - this.outerY) * 0.1;
 
-      outerCircle.style.transform = `translate(${this.outerX - 9}px, ${this.outerY - 9}px)`;
+      outerCircle.style.transform = `translate(${this.outerX - 9}px, ${
+        this.outerY - 9
+      }px)`;
 
       // Call animate again on the next frame
       this.requestId = requestAnimationFrame(animate);
@@ -76,7 +89,7 @@ export default {
 
   beforeUnmount() {
     document.removeEventListener("mousedown", this.handleMouseDown);
-    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener("scroll", this.handleScroll);
   },
   methods: {
     handleScroll() {
@@ -104,22 +117,20 @@ export default {
       setTimeout(() => {
         innerCircle.classList.remove("grow");
       }, 300);
-    }
+    },
   },
   computed: {
     navbarClass() {
       return {
-        'navbar-hidden': this.isScrollingDown,
-        'navbar-visible': !this.isScrollingDown,
-        'navbar-transparent': this.isAtTop,
+        "navbar-hidden": this.isScrollingDown,
+        "navbar-visible": !this.isScrollingDown,
+        "navbar-transparent": this.isAtTop,
       };
     },
     navbarStyle() {
-      return {
-
-      };
-    }
-  }
+      return {};
+    },
+  },
 };
 </script>
 
@@ -155,7 +166,6 @@ export default {
   }
 }
 
-
 .routerContent {
   margin-top: 7%;
 }
@@ -168,6 +178,8 @@ nav {
   z-index: 10;
   /* transition: transform 0.3s ease, background-color 0.3s ease; */
 }
+
+
 
 .navbar-hidden {
   transform: translateY(-100%);
@@ -203,7 +215,6 @@ nav {
   top: 0;
   width: 100%;
   z-index: 10;
-
 }
 
 @keyframes fadeInUp {
@@ -226,10 +237,8 @@ nav {
     /* Llega a la posición final */
     opacity: 1;
     /* Se vuelve completamente visible */
-
   }
 }
-
 
 .navbar-transparent {
   background-color: red !important;

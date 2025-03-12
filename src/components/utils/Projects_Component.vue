@@ -63,8 +63,7 @@ export default {
   },
   methods: {
     goToProject(project) {
-      this.$router.push({ name: 'Project', params: { id: project.title}});
-
+      this.$router.push({ name: "Project", params: { id: project.title } });
     },
   },
 };
@@ -221,10 +220,15 @@ export default {
 }
 
 /* Estilos responsivos */
-@media (max-width: 600px) {
+@media (max-width: 400px) {
+  .container {
+    width: 95vw !important;
+    grid-template-columns: repeat(4, minmax(50px, 1fr));
+  }
+
   .menu-item {
     grid-column: span 1;
-    height: auto;
+    height: 5px;
   }
 
   .menu-title {
@@ -232,11 +236,8 @@ export default {
   }
 
   .menu-description {
-    font-size: 1em;
+    font-size: 10px;
   }
 
-  .container {
-    gap: 10px;
-  }
 }
 </style>

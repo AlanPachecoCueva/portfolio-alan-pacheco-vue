@@ -1,64 +1,90 @@
 <template>
   <div class="slogan-home-container">
     <div class="home-content">
-      <div class="home-image" @mousemove="parallaxEffect" @mouseleave="resetImage">
-        <img id="home-image-2" :src="require('../assets/color-background.png')" alt="img home" />
+      <div
+        class="home-image"
+        @mousemove="parallaxEffect"
+        @mouseleave="resetImage"
+      >
+        <img
+          id="home-image-2"
+          :src="require('../assets/color-background.png')"
+          alt="img home"
+        />
 
-        <img id="home-image" class="fade-out-image" :src="require('../assets/Home-Image.png')" alt="img home" />
+        <img
+          id="home-image"
+          class="fade-out-image"
+          :src="require('../assets/Home-Image.png')"
+          alt="img home"
+        />
       </div>
 
       <div id="slogan-home">
-        {{ $t('Home_Main_Slogan_P1') }}
-        <br>
-        {{ $t('Home_Main_Slogan_P2') }}
-
-
+        {{ $t("Home_Main_Slogan_P1") }}
+        <br />
+        {{ $t("Home_Main_Slogan_P2") }}
       </div>
-      <button id="contact-button" name="button">{{ $t('Home_Contact_Button') }} </button>
+      <button id="contact-button" name="button">
+        {{ $t("Home_Contact_Button") }}
+      </button>
     </div>
 
     <div class="hero-social-container">
       <ul class="hero-social-ul">
         <li class="hero-social-li">
-          <a href="https://ec.linkedin.com/in/alan-pacheco-cueva-b7b3a9223" target="_blank" class="hero-social-item"
-            :style="{ color: getHeroColor() }">
+          <a
+            href="https://ec.linkedin.com/in/alan-pacheco-cueva-b7b3a9223"
+            target="_blank"
+            class="hero-social-item"
+            :style="{ color: getHeroColor() }"
+          >
             <Icon class="hero-social-icon" icon="ri:linkedin-fill" />
             <!-- <div>LinkedIn</div> -->
           </a>
         </li>
         <li class="hero-social-li">
-          <a  href="https://github.com/AlanPachecoCueva" target="_blank" class="hero-social-item" :style="{ color: getHeroColor() }">
+          <a
+            href="https://github.com/AlanPachecoCueva"
+            target="_blank"
+            class="hero-social-item"
+            :style="{ color: getHeroColor() }"
+          >
             <Icon class="hero-social-icon" icon="mingcute:github-fill" />
             <!-- <div>Facebook</div> -->
           </a>
         </li>
         <li class="hero-social-li">
-          <a href="/twitter" target="_blank" class="hero-social-item" :style="{ color: getHeroColor() }">
+          <a
+            href="/twitter"
+            target="_blank"
+            class="hero-social-item"
+            :style="{ color: getHeroColor() }"
+          >
             <Icon class="hero-social-icon" icon="mdi:twitter" />
             <!-- <div>Twitter</div> -->
           </a>
         </li>
-
       </ul>
-      <div class="single-line" :style="{ backgroundColor: getHeroColor() }"></div>
+      <div
+        class="single-line"
+        :style="{ backgroundColor: getHeroColor() }"
+      ></div>
     </div>
-
   </div>
-
 </template>
 
 <script>
 export default {
   // Aquí van las opciones del componente
-  name: 'HomeView', // Nombre del componente
+  name: "HomeView", // Nombre del componente
   props: {
     // Definición de propiedades que el componente puede recibir
   },
   data() {
     // Datos reactivos del componente
     return {
-      message: 'Hello, Vue 3!',
-
+      message: "Hello, Vue 3!",
     };
   },
   methods: {
@@ -77,20 +103,39 @@ export default {
     resetImage(event) {
       // Resetea la posición cuando el mouse deja la imagen
       const image = event.target;
-      image.style.marginLeft = '0px';
-      image.style.marginTop = '0px';
-    }
+      image.style.marginLeft = "0px";
+      image.style.marginTop = "0px";
+    },
   },
   computed: {
     // Propiedades computadas
   },
-  mounted() {
-  },
-
+  mounted() {},
 };
 </script>
 
 <style scoped>
+@media (max-width: 400px) {
+  #home-image-2 {
+    width: 100% !important;
+  }
+
+  .home-image {
+    top: 30% !important;
+  }
+
+  #slogan-home {
+    font-size: 2em !important;
+    color: white;
+    /* Cambia el color del texto para que sea visible sobre la imagen */
+
+    margin-top: 100% !important;
+    background-color: rgba(0, 0, 0, 0.648);
+    width: 99% !important;
+    padding: 1%;
+  }
+}
+
 .hero-social-container {
   position: absolute;
   left: 2%;
@@ -103,7 +148,6 @@ export default {
 }
 
 .hero-social-icon {
-
   display: inline-block;
   width: 1.5em;
   height: 1.5em;
@@ -116,7 +160,6 @@ export default {
 .single-line {
   width: 3px;
   height: 20%;
-
 }
 
 .slogan-home-container {
@@ -126,17 +169,23 @@ export default {
   width: 100vw;
   height: 100vh;
   /* Hace que el contenedor ocupe toda la altura de la ventana */
-
 }
-
 
 .fade-out-image {
   width: 100%;
   height: auto;
   /* Aplica un gradiente de máscara en la parte inferior */
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0));
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 70%,
+    rgba(0, 0, 0, 0)
+  );
   /* Para navegadores que no soportan mask-image */
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 97%, rgba(0, 0, 0, 0));
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 97%,
+    rgba(0, 0, 0, 0)
+  );
 }
 
 .home-content {
@@ -154,7 +203,6 @@ export default {
   /* Centra la imagen */
 
   width: 100%;
-
 
   background-color: aqua !important;
 }

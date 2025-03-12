@@ -1,50 +1,53 @@
 <template>
-    <v-select v-model="currentLanguage" :items="languages" 
-        class="language-select"   hide-details></v-select>
-
+  <v-select
+    v-model="currentLanguage"
+    :items="languages"
+    class="language-select"
+    hide-details
+  ></v-select>
 </template>
 
 <script>
 export default {
-    name: "Language_Selector_Component",
-    data() {
-        return {
-            currentLanguage: 'EN',
-            languages: [
-                'EN',
-                'ES'
-            ]
-        }
+  name: "Language_Selector_Component",
+  data() {
+    return {
+      currentLanguage: "EN",
+      languages: ["EN", "ES"],
+    };
+  },
+  methods: {},
+  watch: {
+    currentLanguage(newValue) {
+      console.log("Language changed to: ", newValue);
+      this.$i18n.locale = newValue;
     },
-    methods: {
-    },
-    watch: {
-        currentLanguage(newValue) {
-            console.log("Language changed to: ", newValue);
-            this.$i18n.locale = newValue;
-        }
-    }
-}
+  },
+};
 </script>
 
 <style scoped>
 .language-select {
-    width: 85px; /* Ajusta el ancho según sea necesario */
-    font-size: 0.75rem; /* Reduce el tamaño del texto */
+  width: 85px; /* Ajusta el ancho según sea necesario */
+  font-size: 0.75rem; /* Reduce el tamaño del texto */
+}
+@media (max-width: 400px) {
+  .language-select {
+    width: 30px; /* Ajusta el ancho según sea necesario */
+
+  }
 }
 
 .language-select .v-select__selections {
-    font-weight: normal; /* Ajusta el peso de la fuente */
-    text-transform: none; /* Desactiva la transformación del texto */
+  font-weight: normal; /* Ajusta el peso de la fuente */
+  text-transform: none; /* Desactiva la transformación del texto */
 }
 
 .language-select .v-select__slot {
-    
-    border-radius: 4px; /* Reduce el radio del borde */
-    
+  border-radius: 4px; /* Reduce el radio del borde */
 }
 
 .language-select .v-select__menu {
-    font-size: 0.75rem; /* Reduce el tamaño del texto del menú desplegable */
+  font-size: 0.75rem; /* Reduce el tamaño del texto del menú desplegable */
 }
 </style>

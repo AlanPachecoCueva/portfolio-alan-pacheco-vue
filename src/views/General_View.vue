@@ -1,37 +1,39 @@
 <template>
-  <HomeView id="home-view"></HomeView>
-  <br />
-  <div class="cardsContainer">
-    <CardComponent
-      class="card"
-      url="http://www.google.com"
-      icon_name="marketeq:reward"
-      :title="$t('Card_Achievements')"
-      content=""
-      :style="{ backgroundColor: getAuxiliarColor() }"
-    ></CardComponent>
-    <CardComponent
-      class="card"
-      url="#projects-view"
-      icon_name="icon-park:file-code"
-      :title="$t('Card_Projects')"
-      content=""
-      :style="{ backgroundColor: getAuxiliarColor() }"
-    ></CardComponent>
-    <CardComponent
-      class="card"
-      @click="goToGallery"
-      icon_name="marketeq:gallery-collections"
-      :title="$t('Card_Galery')"
-      content=""
-      :style="{ backgroundColor: getAuxiliarColor() }"
-    ></CardComponent>
+  <div class="general-container">
+    <HomeView id="home-view"></HomeView>
+    <br />
+    <div class="cardsContainer">
+      <CardComponent
+        class="card"
+        url="http://www.google.com"
+        icon_name="marketeq:reward"
+        :title="$t('Card_Achievements')"
+        content=""
+        :style="{ backgroundColor: getAuxiliarColor() }"
+      ></CardComponent>
+      <CardComponent
+        class="card"
+        url="#projects-view"
+        icon_name="icon-park:file-code"
+        :title="$t('Card_Projects')"
+        content=""
+        :style="{ backgroundColor: getAuxiliarColor() }"
+      ></CardComponent>
+      <CardComponent
+        class="card"
+        @click="goToGallery"
+        icon_name="marketeq:gallery-collections"
+        :title="$t('Card_Galery')"
+        content=""
+        :style="{ backgroundColor: getAuxiliarColor() }"
+      ></CardComponent>
+    </div>
+    <br />
+    <AboutView id="about-view"></AboutView>
+    <SkillsView id="skills-view"></SkillsView>
+    <ProjectsComponent :items="projects" id="projects-view"></ProjectsComponent>
+    <ContactView id="contact-view"></ContactView>
   </div>
-  <br />
-  <AboutView id="about-view"></AboutView>
-  <SkillsView id="skills-view"></SkillsView>
-  <ProjectsComponent :items="projects" id="projects-view"></ProjectsComponent>
-  <ContactView id="contact-view"></ContactView>
 </template>
 
 <script>
@@ -52,17 +54,14 @@ export default {
     AboutView,
     SkillsView,
     ProjectsComponent,
-    ContactView
+    ContactView,
   },
   data() {
-    return {
-      
-    };
+    return {};
   },
-  methods:{
+  methods: {
     goToGallery() {
-      this.$router.push({ name: 'Gallery'});
-
+      this.$router.push({ name: "Gallery" });
     },
   },
   setup() {
@@ -88,5 +87,28 @@ export default {
 .card {
   width: 30%;
   height: 110px;
+}
+
+@media (max-width: 400px) {
+  .general-container {
+/*    
+
+    background-color: red; */
+  }
+
+  .cardsContainer {
+    flex-direction: column;
+    margin: 5% 0% 5% 0%;
+
+    justify-content: space-around;
+    align-items: center;
+    width: 100% !important;
+    height: 7% !important;
+  }
+
+  .card {
+    width: 80%;
+    height: 90px;
+  }
 }
 </style>

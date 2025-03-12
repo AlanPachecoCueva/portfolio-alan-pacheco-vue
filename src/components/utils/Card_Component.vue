@@ -49,6 +49,7 @@ export default {
 </script>
 
 <style scoped>
+
 /* Aquí van los estilos específicos del componente */
 #arrow {
   width: 22px;
