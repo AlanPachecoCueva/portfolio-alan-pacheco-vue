@@ -27,6 +27,7 @@
           <input
             class="button"
             type="button"
+            id="rightButton"
             @click="downloadCV"
             :value="$t('About_Me_Download_CV')"
             :style="generateGradientStyle()"
@@ -73,22 +74,49 @@ export default {
 @media (max-width: 400px) {
   .bigContainerAbout {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     width: 100%;
 
-    justify-content:start !important;
+    justify-content: start !important;
     align-items: start !important ;
 
     margin: 5% 0px 5% 0px;
-
-    background-color: rgb(74, 74, 27);
   }
   .leftSideAbout {
     width: 100% !important;
+
+    display: flex;
+    justify-content: center;
   }
 
-  .leftSideAbout img{
+  .leftSideAbout img {
+    width: 50% !important;
+  }
+
+  .rightSideAbout {
     width: 100% !important;
+
+    display: flex;
+    flex-direction: row;
+  }
+
+  .right-rightContainer-lower{
+    width: 80%;
+    
+  }
+
+  #leftButton{
+    width: 40% !important;
+    font-size: 10px !important;
+    padding: 11px 0px !important;
+    font-weight: bold;
+  }
+
+  #rightButton{
+    width: 40% !important;
+    font-size: 11px !important;
+    padding: 10px 0px !important;
+    font-weight: bold;
   }
 }
 
@@ -112,6 +140,7 @@ export default {
 
   display: flex;
   flex-direction: row;
+  margin: 0 0 200px 0;
 }
 
 .right-leftContainer {

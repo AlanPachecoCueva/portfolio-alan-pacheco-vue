@@ -126,13 +126,18 @@ export default {
 
   #slogan-home {
     font-size: 2em !important;
-    color: white;
-    /* Cambia el color del texto para que sea visible sobre la imagen */
-
+    color: rgb(0, 0, 0) !important;
+    font-weight: bold;
+    text-shadow: none !important;
+   
     margin-top: 100% !important;
-    background-color: rgba(0, 0, 0, 0.648);
-    width: 99% !important;
-    padding: 1%;
+    
+    background-color: rgba(235, 230, 230, 0.947);
+    padding: 0 10px;
+    margin: 0 0 10px 0;
+
+    border-radius: 10px;
+
   }
 }
 
