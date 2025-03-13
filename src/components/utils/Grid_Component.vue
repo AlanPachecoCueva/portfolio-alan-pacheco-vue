@@ -1,6 +1,11 @@
 <template>
   <div class="container">
-    <div class="item" v-for="item in items" :key="item.id" :style="{ backgroundColor: getPrimaryColor() }">
+    <div
+      class="item"
+      v-for="item in items"
+      :key="item.id"
+      :style="{ backgroundColor: getPrimaryColor() }"
+    >
       <Icon class="icon_grid" :icon="item.icon" />
     </div>
   </div>
@@ -36,14 +41,20 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 400px) {
+  .container {
+    grid-template-columns: repeat(auto-fill, minmax(75px, auto)) !important;
+  }
+}
+
 .container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
   gap: 15px;
+  justify-content: space-around;
 }
 
 .item {
-
   /* background-color: rgba(85, 84, 84, 0.5); */
   border-radius: 8px;
   /* padding: 20px; */

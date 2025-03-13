@@ -222,13 +222,25 @@ export default {
 /* Estilos responsivos */
 @media (max-width: 400px) {
   .container {
-    width: 95vw !important;
-    grid-template-columns: repeat(4, minmax(50px, 1fr));
+    display: flex;
+    flex-direction: column;
+
+    width: 100vw !important;
+    height: fit-content !important;
+    margin: 0% 0px !important;
+    padding: 20px;
+  }
+
+  .item {
+    height: auto; /* Permite que los ítems se ajusten automáticamente */
+    max-height: 300px;
+    /* Esta línea permitió que se ajusten los widths automáticamente de las rows */
+    margin: 20px 0px;
   }
 
   .menu-item {
     grid-column: span 1;
-    height: 5px;
+    height:fit-content;
   }
 
   .menu-title {
@@ -238,6 +250,5 @@ export default {
   .menu-description {
     font-size: 10px;
   }
-
 }
 </style>

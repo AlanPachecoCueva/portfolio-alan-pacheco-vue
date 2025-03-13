@@ -140,7 +140,7 @@ export default {
 
   display: flex;
   flex-direction: row;
-  margin: 0 0 200px 0;
+  margin: 0 0 100px 0;
 }
 
 .right-leftContainer {

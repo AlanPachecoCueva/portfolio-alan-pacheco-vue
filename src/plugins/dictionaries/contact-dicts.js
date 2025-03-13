@@ -1,7 +1,7 @@
 const Contact_dic_es = {
   Contact_Flag: "CONTACTO",
   Contact_Title: "¿Tienes Alguna Idea? Por Favor, Deja Un Mensaje",
-  Contact_Paragraph: "Contáctate conmigo y déjame saber cómo puedo ayudarte. Llena el formulario y te contactaré lo antes posible.",
+  Contact_Paragraph: "Contáctate conmigo y hazme saber cómo puedo ayudarte. Llena el formulario y te contactaré lo antes posible.",
   Contact_Address: "Dirección",
   Contact_Phone: "Teléfono",
   Contact_Email: "Correo",

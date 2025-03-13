@@ -3,7 +3,7 @@
   <div class="bigContainer_Skills">
     <div class="leftSide">
       <div class="leftSide_Left">
-        <p>{{$t('Skills_Flag')}}</p>
+        <p>{{ $t("Skills_Flag") }}</p>
         <div
           class="single-line"
           :style="{ backgroundColor: getHeroColor() }"
@@ -11,13 +11,13 @@
       </div>
       <div class="leftSide_Right">
         <div class="leftSide_Up">
-          <h2>{{$t('Skills_Title')}}</h2>
+          <h2>{{ $t("Skills_Title") }}</h2>
           <p>
-            {{$t('Skills_Paragraph')}}
+            {{ $t("Skills_Paragraph") }}
           </p>
         </div>
         <div class="leftSide_Down" :style="{ backgroundColor: getTextColor() }">
-          <div class="button-container" >
+          <div class="button-container">
             <input
               class="button"
               :class="{ active: isActive === 'skills' }"
@@ -43,7 +43,6 @@
     <div class="rightSide">
       <GridComponent
         :items="skills"
-        
         v-if="isActive == 'skills'"
       ></GridComponent>
       <GridComponent :items="tools" v-else></GridComponent>
@@ -114,7 +113,6 @@ export default {
           icon: "skill-icons:dotnet",
         },
 
-        
         {
           id: 5,
           name: "NodeJS",
@@ -142,8 +140,6 @@ export default {
           name: "Vue",
           icon: "skill-icons:vuejs-dark",
         },
-
-        
       ],
       tools: [
         {
@@ -221,6 +217,25 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 400px) {
+  .bigContainer_Skills {
+    width: 100% !important;
+    flex-direction: column !important;
+    justify-content: space-evenly !important;
+    align-items: center;
+  }
+  .leftSide {
+    /* background-color: green; */
+    width: 100% !important;
+  }
+
+  .rightSide {
+    /* background-color: aquamarine; */
+    width: 95% !important;
+    margin: 20px 0px 50px 0px !important;
+  }
+}
+
 .bigContainer_Skills {
   /* background-color: red; */
   width: 100%;
@@ -310,7 +325,7 @@ export default {
   position: relative;
   display: flex;
   justify-content: space-between;
-  width:fit-content;
+  width: fit-content;
   position: relative;
 }
 

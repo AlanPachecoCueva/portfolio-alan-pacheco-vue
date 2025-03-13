@@ -98,7 +98,7 @@ export default {
 
   .cardsContainer {
     flex-direction: column;
-    margin: 5% 0% 200px 0%;
+    margin: 5% 0% 100px 0%;
 
     justify-content: space-around;
     align-items: center;

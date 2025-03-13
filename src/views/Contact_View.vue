@@ -158,7 +158,7 @@ export default {
         user_name: this.form.name,
         user_email: this.form.email,
         message: this.form.message,
-        user_phone: this.form.phone
+        user_phone: this.form.phone,
       };
 
       try {
@@ -168,10 +168,10 @@ export default {
         const PUBLIC_KEY = "d1_C1Va1lFFO3oWRV";
 
         await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
-        
+
         this.$swal({
           text: "Tu mensaje ha sido enviado\n¡Gracias por comunicarte conmigo!\n🙂",
-          icon: "success"
+          icon: "success",
         });
 
         //Limpieza de datos
@@ -221,6 +221,32 @@ export default {
 </script>
 
 <style scoped>
+/* Estilos responsivos */
+@media (max-width: 400px) {
+  .contact-container {
+    display: flex;
+    flex-direction: column;
+    margin: 100px 0% 150px 0% !important;
+    padding: 10px !important;
+  }
+
+  .contact-info {
+    width: 100% !important;
+  }
+
+  .contact-info-down {
+    display: flex;
+    flex-direction: column;
+    padding: 20% 7% 0px 7%;
+  }
+
+  .contact-form {
+    width: 100% !important;
+    padding: 20px;
+    border-radius: 8px;
+
+  }
+}
 /* Contenedor principal para alinear ambas secciones (izquierda y derecha) */
 .contact-container {
   display: flex;
