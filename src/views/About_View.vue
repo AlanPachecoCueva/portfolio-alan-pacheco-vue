@@ -58,6 +58,7 @@ export default {
         // background: `linear-gradient(to right, ${this.getBackgroundColor()} 50%, #CACACA 50%)`
         background: `linear-gradient(to right, ${this.getBackgroundColor()} 50%, #CACACA 50%)`,
         backgroundSize: `200% 100%`,
+        border: `1px solid ${this.getContrastColor()} !important`
       };
     },
     generateAlternativeGradientStyle() {
@@ -100,24 +101,28 @@ export default {
     flex-direction: row;
   }
 
-  .right-rightContainer-lower{
+  .right-rightContainer-lower {
     width: 80%;
-    
   }
 
-  #leftButton{
+  #leftButton {
     width: 40% !important;
     font-size: 10px !important;
     padding: 11px 0px !important;
     font-weight: bold;
   }
 
-  #rightButton{
+  #rightButton {
     width: 40% !important;
     font-size: 11px !important;
     padding: 10px 0px !important;
     font-weight: bold;
   }
+}
+
+#rightButton {
+  font-weight: bold;
+  /* border: 1px solid white; */
 }
 
 .bigContainerAbout {

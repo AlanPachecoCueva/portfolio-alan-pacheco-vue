@@ -10,14 +10,14 @@
       </div>
 
       <h2>{{ project.title }}</h2>
-      <p>{{ $t(project.description) }}</p>
+      <p id="project_description">{{ $t(project.description) }}</p>
 
       <div class="relatedTecnologies_container">
         <div
           class="relatedtechnology_item"
           v-for="relatedtechnology in project.relatedTechnologies"
           :key="relatedtechnology"
-          :style="generateAlternativeGradientStyle()" 
+          :style="generateAlternativeGradientStyle()"
         >
           <p>{{ relatedtechnology }}</p>
         </div>
@@ -37,6 +37,7 @@
           backgroundColor: getPrimaryColor(),
           gridColumn: `span ${image.columns}`, // Define cuántas columnas ocupa
           gridRow: `span ${image.rows}`, // Define cuántas filas ocupa
+          width: `${image.layout}% !important`
         }"
       >
         <div class="overlay">
@@ -67,10 +68,18 @@ export default {
     generateAlternativeGradientStyle() {
       return {
         background: `linear-gradient(to right, ${this.getAlternativeButtonColor()} 50%,  #CACACA 50%)`,
-        backgroundSize: `200% 100%`
-      }
+        backgroundSize: `200% 100%`,
+      };
 
     },
+    getLayoutWidth(layout){
+      console.log("layout: ", layout);
+      if(layout == "vertical"){
+        return { width: `50%`}
+      }else{
+        return { width: `100%`}
+      }
+    }
   },
   setup() {
     const route = useRoute(); // Obtener el parámetro id de la ruta
@@ -87,6 +96,41 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 400px) {
+  .bigContainer_Project {
+    flex-direction: column;
+    padding: 30px 0px 0px 0px !important;
+  }
+  .infoContainer {
+    width: 100% !important;
+    height: fit-content !important;
+    justify-content: space-evenly !important;
+    padding: 0px 5% 0px 5% !important;
+  }
+
+  .infoContainer h2 {
+    margin: 15px 0px 5px 0px;
+  }
+
+  #project_description {
+    margin: 5px 0px 15px 0px;
+  }
+
+  .imagesContainer {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap !important;
+
+    justify-content: center;
+  }
+
+  .item {
+    /* width: 45% !important; */
+    max-height: 40vh !important;
+  }
+}
+
 .bigContainer_Project {
   display: flex;
   padding: 0px 5% 0px 5%;
@@ -97,7 +141,7 @@ export default {
   height: 60vh;
   display: flex;
   flex-direction: column;
-  justify-content:space-around;
+  justify-content: space-around;
 }
 
 .imagesContainer {
@@ -207,5 +251,4 @@ export default {
   font-size: 14px;
   color: #ddd;
 }
-
 </style>

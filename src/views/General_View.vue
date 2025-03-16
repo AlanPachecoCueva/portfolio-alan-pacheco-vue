@@ -5,7 +5,7 @@
     <div class="cardsContainer">
       <CardComponent
         class="card"
-        url="http://www.google.com"
+        url=""
         icon_name="marketeq:reward"
         :title="$t('Card_Achievements')"
         content=""

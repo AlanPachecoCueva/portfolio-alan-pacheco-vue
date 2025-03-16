@@ -20,13 +20,15 @@ export const projects = [
                 name: "name1",
                 image: "projects/Mikhuna/Mikhuna Agregar Receta.png",
                 columns:1,
-                rows:2
+                rows:2,
+                layout: "45"
             },
             {
                 name: "name2",
                 image: "projects/Mikhuna/Mikhuna Receta.png",
                 columns:1,
-                rows:2
+                rows:2,
+                layout: "45"
             },
         ]
       },
@@ -54,13 +56,15 @@ export const projects = [
                 name: "name1",
                 image: "projects/Kvmi/Rewards - Fondo Cacao.jpeg",
                 columns:2,
-                rows:1
+                rows:1,
+                layout: "100"
             },
             {
                 name: "name2",
                 image: "projects/Kvmi/Rewards - Fondo Selva.jpeg",
                 columns:2,
-                rows:1
+                rows:1,
+                layout: "100"
             },
         ]
       },
@@ -87,13 +91,15 @@ export const projects = [
                 name: "name1",
                 image: "projects/Guru/Guru Home.png",
                 columns:2,
-                rows:1
+                rows:1,
+                layout: "100"
             },
             {
                 name: "name2",
                 image: "projects/Guru/Guru Home.png",
                 columns:2,
-                rows:1
+                rows:1,
+                layout: "100"
             },
         ]
       },
@@ -117,19 +123,22 @@ export const projects = [
                 name: "name1",
                 image: "projects/CowID/CowID - Iniciar Sesion.jpeg",
                 columns:1,
-                rows:2
+                rows:2,
+                layout: "45"
             },
             {
                 name: "name2",
                 image: "projects/CowID/CowID - Menu.jpeg",
                 columns:1,
-                rows:2
+                rows:2,
+                layout: "45"
             },
             {
                 name: "name3",
                 image: "projects/CowID/CowID - Perfil.jpeg",
                 columns:1,
-                rows:2
+                rows:2,
+                layout: "45"
             }
         ]
       },

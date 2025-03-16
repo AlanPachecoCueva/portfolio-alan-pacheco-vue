@@ -79,7 +79,7 @@ export default {
           title: "Mi octava imagen",
           description: "Descripción de la octava imagen",
           date: "2025-04-20",
-          sizeFactor: 4 ,
+          sizeFactor: 4,
         },
         {
           image: "/images/KVMIR (9).jpg",
@@ -674,6 +674,19 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 400px) {
+  .masonry-container {
+    margin-top: 55px !important;
+  }
+
+  .masonry-container {
+    column-count: 2 !important;
+    column-gap: 0px;
+    margin: 5% 0;
+    font-size: 0;
+  }
+}
+
 /* Layout tipo "masonry" con columnas */
 .masonry-container {
   column-count: 4; /* Ajusta la cantidad de columnas (4, 3, 5, etc.) */
@@ -705,8 +718,8 @@ export default {
 /* Overlay con info (título, descripción, fecha) */
 .image-info {
   position: absolute;
-  bottom: 0; 
-  left: 0; 
+  bottom: 0;
+  left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.6);
   color: #fff;

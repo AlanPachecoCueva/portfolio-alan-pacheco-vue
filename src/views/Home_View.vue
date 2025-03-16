@@ -25,9 +25,11 @@
         <br />
         {{ $t("Home_Main_Slogan_P2") }}
       </div>
-      <button id="contact-button" name="button">
-        {{ $t("Home_Contact_Button") }}
-      </button>
+      <router-link :to="{ name: 'Home', hash: `#contact-view` }">
+        <button id="contact-button" name="button">
+          {{ $t("Home_Contact_Button") }}
+        </button>
+      </router-link>
     </div>
 
     <div class="hero-social-container">
@@ -126,18 +128,17 @@ export default {
 
   #slogan-home {
     font-size: 2em !important;
-    color: rgb(0, 0, 0) !important;
+    color: rgb(255, 255, 255) !important;
     font-weight: bold;
     text-shadow: none !important;
-   
+
     margin-top: 100% !important;
-    
-    background-color: rgba(235, 230, 230, 0.947);
+    text-shadow: -2px -1px 4px rgba(0, 0, 0) !important;
+    /* background-color: rgba(235, 230, 230, 0.947); */
     padding: 0 10px;
     margin: 0 0 10px 0;
 
     border-radius: 10px;
-
   }
 }
 
