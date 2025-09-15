@@ -1,15 +1,12 @@
 <template>
   <div class="bigContainerAbout">
     <div class="leftSideAbout">
-      <img :src="require('../assets/Home-Image.png')" alt="img home" />
+      <img :src="require('../assets/About-Image.png')" alt="img about" />
     </div>
     <div class="rightSideAbout">
       <div class="right-leftContainer">
         <p>{{ $t("About_Me_Flag") }}</p>
-        <div
-          class="single-line"
-          :style="{ backgroundColor: getHeroColor() }"
-        ></div>
+        <div class="single-line" :style="{ backgroundColor: getHeroColor() }"></div>
       </div>
       <div class="right-rightContainer">
         <div class="right-rightContainer-upper">
@@ -17,21 +14,14 @@
           <p>{{ $t("About_Me_Paragraph") }}</p>
         </div>
         <div class="right-rightContainer-lower">
-          <input
-            class="button"
-            id="leftButton"
-            type="button"
-            :value="$t('About_Me_Contact_Me')"
-            :style="generateAlternativeGradientStyle()"
-          />
-          <input
-            class="button"
-            type="button"
-            id="rightButton"
-            @click="downloadCV"
-            :value="$t('About_Me_Download_CV')"
-            :style="generateGradientStyle()"
-          />
+          <router-link :to="{ name: 'Home', hash: '#contact-view' }">
+            <input class="button" id="leftButton" type="button" :value="$t('About_Me_Contact_Me')"
+              :style="generateAlternativeGradientStyle()" />
+          </router-link>
+
+
+          <input class="button" type="button" id="rightButton" @click="downloadCV" :value="$t('About_Me_Download_CV')"
+            :style="generateGradientStyle()" />
         </div>
       </div>
     </div>
@@ -79,10 +69,11 @@ export default {
     width: 100%;
 
     justify-content: start !important;
-    align-items: start !important ;
+    align-items: start !important;
 
     margin: 5% 0px 5% 0px;
   }
+
   .leftSideAbout {
     width: 100% !important;
 
@@ -138,6 +129,10 @@ export default {
 
 .leftSideAbout {
   width: 40%;
+}
+
+.leftSideAbout img {
+  width: 100%;
 }
 
 .rightSideAbout {

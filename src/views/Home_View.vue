@@ -218,7 +218,7 @@ export default {
 }
 
 #home-image {
-  width: 85%;
+  width: 140%;
   z-index: 2 !important;
   position: absolute;
   top: 50%;
@@ -227,12 +227,12 @@ export default {
 }
 
 #home-image-2 {
-  width: 150%;
+  width: 170%;
   z-index: 1 !important;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -45%);
 }
 
 #slogan-home {

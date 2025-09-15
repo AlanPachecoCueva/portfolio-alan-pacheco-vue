@@ -1,29 +1,17 @@
 <template>
-  <v-app
-    :style="{ backgroundColor: getBackgroundColor(), color: getTextColor() }"
-  >
+  <v-app :style="{ backgroundColor: getBackgroundColor(), color: getTextColor() }">
     <!-- Cursor -->
     <div>
       <!-- Outer Circle -->
-      <div
-        ref="outerCircle"
-        class="circle-cursor circle-cursor-outer"
-        :style="{ borderColor: getContrastColor() }"
-      ></div>
+      <div ref="outerCircle" class="circle-cursor circle-cursor-outer" :style="{ borderColor: getContrastColor() }">
+      </div>
       <!-- Inner Circle -->
-      <div
-        ref="innerCircle"
-        class="circle-cursor circle-cursor-inner"
-        :style="{ backgroundColor: getContrastColor() }"
-      ></div>
+      <div ref="innerCircle" class="circle-cursor circle-cursor-inner" :style="{ backgroundColor: getContrastColor() }">
+      </div>
     </div>
     <!-- Cursor -->
     <!-- Aquí va el contenido del navbar -->
-    <Nav_Bar
-      :style="{ backgroundColor: getHeaderColor() }"
-      :class="navbarClass"
-      class="navbarAll"
-    ></Nav_Bar>
+    <Nav_Bar :style="{ backgroundColor: getHeaderColor() }" :class="navbarClass" class="navbarAll"></Nav_Bar>
 
     <RouterView class="routerContent"></RouterView>
   </v-app>
@@ -60,11 +48,10 @@ export default {
 
     // Mouse move event listener
     document.addEventListener("mousemove", (e) => {
-      this.innerX = e.clientX;
-      this.innerY = e.clientY;
-      innerCircle.style.transform = `translate(${this.innerX - 2}px, ${
-        this.innerY - 2
-      }px)`;
+      // Ajusta la posición sumando el scroll actual
+      this.innerX = e.clientX + window.scrollX;
+      this.innerY = e.clientY + window.scrollY;
+      innerCircle.style.transform = `translate(${this.innerX - 2}px, ${this.innerY - 2}px)`;
     });
 
     // Function for the outer circle to follow the inner circle
@@ -72,9 +59,8 @@ export default {
       this.outerX += (this.innerX - this.outerX) * 0.1;
       this.outerY += (this.innerY - this.outerY) * 0.1;
 
-      outerCircle.style.transform = `translate(${this.outerX - 9}px, ${
-        this.outerY - 9
-      }px)`;
+      outerCircle.style.transform = `translate(${this.outerX - 9}px, ${this.outerY - 9
+        }px)`;
 
       // Call animate again on the next frame
       this.requestId = requestAnimationFrame(animate);
@@ -95,8 +81,6 @@ export default {
     handleScroll() {
       const currentScrollPosition = window.scrollY;
 
-      //console.log('currentScrollPosition:', currentScrollPosition); // Añadido para depuración
-
       if (currentScrollPosition === 0) {
         this.isAtTop = true;
         this.isScrollingDown = false;
@@ -105,10 +89,18 @@ export default {
         this.isScrollingDown = currentScrollPosition > this.lastScrollPosition;
       }
 
-      //console.log('isScrollingDown:', this.isScrollingDown); // Añadido para depuración
-      //console.log('isAtTop:', this.isAtTop); // Añadido para depuración
+      // Actualiza la posición del cursor sumando el nuevo scroll
+      const deltaY = currentScrollPosition - this.lastScrollPosition;
+      this.innerY += deltaY;
+      this.outerY += deltaY;
 
       this.lastScrollPosition = currentScrollPosition;
+
+      // Actualiza el estilo del círculo interior y exterior
+      const innerCircle = this.$refs.innerCircle;
+      const outerCircle = this.$refs.outerCircle;
+      innerCircle.style.transform = `translate(${this.innerX - 2}px, ${this.innerY - 2}px)`;
+      outerCircle.style.transform = `translate(${this.outerX - 9}px, ${this.outerY - 9}px)`;
     },
     handleMouseDown() {
       const innerCircle = this.$refs.innerCircle;
@@ -158,6 +150,7 @@ export default {
     background-size: 200% 100%;
     background-position: left bottom;
   }
+
   100% {
     background-size: 200% 100%;
     background-position: right bottom;
