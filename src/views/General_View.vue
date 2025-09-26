@@ -89,7 +89,7 @@ export default {
   height: 110px;
 }
 
-@media (max-width: 400px) {
+@media (max-width: 575px) {
   .general-container {
 /*    
 

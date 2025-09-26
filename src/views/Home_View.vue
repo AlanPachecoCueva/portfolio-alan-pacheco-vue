@@ -8,14 +8,14 @@
       >
         <img
           id="home-image-2"
-          :src="require('../assets/color-background.png')"
+          :src="require('../assets/color-background.webp')"
           alt="img home"
         />
 
         <img
           id="home-image"
           class="fade-out-image"
-          :src="require('../assets/Home-Image.png')"
+          :src="require('../assets/Home-Image.webp')"
           alt="img home"
         />
       </div>
@@ -117,30 +117,7 @@ export default {
 </script>
 
 <style scoped>
-@media (max-width: 400px) {
-  #home-image-2 {
-    width: 100% !important;
-  }
 
-  .home-image {
-    top: 30% !important;
-  }
-
-  #slogan-home {
-    font-size: 2em !important;
-    color: rgb(255, 255, 255) !important;
-    font-weight: bold;
-    text-shadow: none !important;
-
-    margin-top: 100% !important;
-    text-shadow: -2px -1px 4px rgba(0, 0, 0) !important;
-    /* background-color: rgba(235, 230, 230, 0.947); */
-    padding: 0 10px;
-    margin: 0 0 10px 0;
-
-    border-radius: 10px;
-  }
-}
 
 .hero-social-container {
   position: absolute;
@@ -195,22 +172,53 @@ export default {
 }
 
 .home-content {
-  position: relative;
+  top: 0px;
+  /* left: 35vw; */
+  position: absolute;
   /* Posiciona el contenido de manera relativa */
   text-align: center;
   /* Centra el texto horizontalmente */
+  width: 100%;
+  height: 100vh;
+}
+
+@media (max-width: 575px) {
+  #home-image-2 {
+    width: 210% !important;
+  }
+
+  #home-image {
+    width: 200% !important;
+  }
+  .home-image {
+    top: 30% !important;
+  }
+
+  #slogan-home {
+    font-size: 1.5em !important;
+    color: rgb(255, 255, 255) !important;
+    font-weight: bold;
+    text-shadow: none !important;
+
+    margin-top: 100% !important;
+    text-shadow: -2px -1px 4px rgba(0, 0, 0) !important;
+    /* background-color: rgba(235, 230, 230, 0.947); */
+    padding: 0 10px;
+    margin: 0 0 10px 0;
+
+    border-radius: 10px;
+  }
 }
 
 .home-image {
   position: absolute;
-  top: 70%;
+  bottom: 0px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -12%);
   /* Centra la imagen */
 
-  width: 100%;
-
-  background-color: aqua !important;
+  width: 30vw;
+  height: 30vw;
 }
 
 .home-image img {
@@ -218,7 +226,7 @@ export default {
 }
 
 #home-image {
-  width: 140%;
+ width: 140%;
   z-index: 2 !important;
   position: absolute;
   top: 50%;
@@ -227,7 +235,7 @@ export default {
 }
 
 #home-image-2 {
-  width: 170%;
+  width: 150%;
   z-index: 1 !important;
   position: absolute;
   top: 50%;
