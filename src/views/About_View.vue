@@ -33,13 +33,23 @@ export default {
   name: "About_View",
   methods: {
     downloadCV() {
-      console.log("downloadCV 1");
       // Crea un enlace temporal
       const link = document.createElement("a");
-      // Apunta al archivo PDF
-      link.href = "/CV-Alan Pacheco.pdf";
-      // Nombre con el que se descargará
-      link.download = "CV-Alan Pacheco.pdf";
+      //Inglés
+      if (this.$i18n.locale == "EN") {
+
+        // Apunta al archivo PDF
+        link.href = "/CV-Alan Pacheco-ENG.pdf";
+        // Nombre con el que se descargará
+        link.download = "CV-Alan Pacheco-ENG.pdf";
+      } else {
+        // Apunta al archivo PDF
+        link.href = "/CV-Alan Pacheco-ESP.pdf";
+        // Nombre con el que se descargará
+        link.download = "CV-Alan Pacheco-ESP.pdf";
+      }
+
+
       // Simula el clic en el enlace
       link.click();
     },
