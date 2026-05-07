@@ -154,6 +154,7 @@ export default {
 
 .routerContent {
   margin-top: 7%;
+  overflow-x: hidden;
 }
 
 @media (max-width: 959px) {

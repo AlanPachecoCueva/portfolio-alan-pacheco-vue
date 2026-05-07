@@ -31,10 +31,9 @@ export default {
   width: 85px; /* Ajusta el ancho según sea necesario */
   font-size: 0.75rem; /* Reduce el tamaño del texto */
 }
-@media (max-width: 400px) {
+@media (max-width: 599px) {
   .language-select {
-    width: 30px; /* Ajusta el ancho según sea necesario */
-
+    width: 65px;
   }
 }
 

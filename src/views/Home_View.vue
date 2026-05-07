@@ -141,7 +141,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 }
 
@@ -170,10 +170,6 @@ export default {
 
 /* ── sm: 600–959px ── */
 @media (max-width: 959px) {
-  .home-image {
-    width: 55vw !important;
-  }
-
   .home-content {
     display: flex;
     flex-direction: column;
@@ -194,31 +190,36 @@ export default {
 
 /* ── xs: < 600px ── */
 @media (max-width: 599px) {
-  #home-image-2 {
-    width: 210% !important;
-  }
-
-  #home-image {
-    width: 200% !important;
+  .home-content {
+    justify-content: space-between;
+    padding: 8% 5%;
+    box-sizing: border-box;
   }
 
   .home-image {
-    width: 80vw !important;
+    position: relative !important;
+    width: 55vw !important;
+    height: 55vw !important;
+    overflow: hidden !important;
+    bottom: auto !important;
+    left: auto !important;
+    transform: none !important;
   }
 
-  .home-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    padding-bottom: 8%;
+  #home-image-2 {
+    width: 130% !important;
+  }
+
+  #home-image {
+    width: 120% !important;
   }
 
   #slogan-home {
-    font-size: 1.4em !important;
+    font-size: 1.3em !important;
     margin-top: 0 !important;
-    padding: 0 16px;
-    text-shadow: -2px -1px 4px rgba(0, 0, 0) !important;
+    padding: 0 12px;
+    color: inherit !important;
+    text-shadow: none !important;
   }
 
   .hero-social-container {

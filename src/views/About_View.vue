@@ -104,42 +104,82 @@ export default {
 @media (max-width: 599px) {
   .bigContainerAbout {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     margin: 5% 0;
   }
 
   .leftSideAbout {
-    width: 100%;
+    width: 80%;
     display: flex;
     justify-content: center;
   }
 
   .leftSideAbout img {
-    width: 50%;
+    width: 90%;
   }
 
+  /* Contenedor derecho apila label + contenido verticalmente */
   .rightSideAbout {
-    width: 100%;
+    width: 90%;
+    flex-direction: column;
+    margin: 10px 0 20px 0;
+  }
+
+  /* "ABOUT ME" + línea: pasan de columna vertical a fila horizontal */
+  .right-leftContainer {
     flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: auto;
+    padding: 10px 0 8px 0;
+    margin: 0 0 4px 0;
+  }
+
+  .right-leftContainer p {
+    writing-mode: horizontal-tb !important;
+    transform: none !important;
+    font-size: 0.75em;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
+  /* Línea pasa de vertical (3px × 20%) a horizontal (30px × 3px) */
+  .single-line {
+    width: 30px !important;
+    height: 3px !important;
+    margin-top: 0 !important;
+    margin-left: 8px !important;
+  }
+
+  /* Contenido ocupa todo el ancho disponible */
+  .right-rightContainer {
+    width: 100%;
     margin: 0;
   }
 
+  .right-rightContainer-upper p {
+    margin: 10px 0;
+  }
+
   .right-rightContainer-lower {
-    width: 80%;
+    width: 100%;
+    display: flex;
+    gap: 10px;
   }
 
   #leftButton {
-    width: 40% !important;
-    font-size: 10px !important;
-    padding: 11px 0 !important;
+    flex: 1 !important;
+    width: auto !important;
+    font-size: 11px !important;
+    padding: 10px 5px !important;
     font-weight: bold;
   }
 
   #rightButton {
-    width: 40% !important;
+    flex: 1 !important;
+    width: auto !important;
     font-size: 11px !important;
-    padding: 10px 0 !important;
-    font-weight: bold;
+    padding: 10px 5px !important;
   }
 }
 
