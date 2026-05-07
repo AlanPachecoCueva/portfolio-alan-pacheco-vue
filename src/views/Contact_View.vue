@@ -130,12 +130,16 @@
     </div>
   </div>
 </template>
-<!-- Se sube? :((())) -->
+
 <script>
-//import emailjs from "emailjs-com"; // Importa EmailJS (asegúrate de instalarlo)
 import emailjs from "@emailjs/browser";
+import { useTheme } from '@/composables/useTheme';
+
 export default {
   name: "ContactView",
+  setup() {
+    return useTheme()
+  },
   data() {
     return {
       form: {
@@ -148,10 +152,10 @@ export default {
   },
   methods: {
     onFocus(event) {
-      event.target.style.borderColor = "orange"; // Cambia el borde al color naranja cuando el input tiene focus
+      event.target.style.borderColor = "orange";
     },
     onBlur(event) {
-      event.target.style.borderColor = this.getPrimaryColor(); // Restaura el borde cuando el input pierde el focus
+      event.target.style.borderColor = this.getPrimaryColor();
     },
     async sendEmail() {
       const templateParams = {
@@ -162,10 +166,9 @@ export default {
       };
 
       try {
-        // Reemplaza con tus propios Service ID, Template ID, y Public Key
-        const SERVICE_ID = "service_nxvebz4";
-        const TEMPLATE_ID = "contact_form";
-        const PUBLIC_KEY = "d1_C1Va1lFFO3oWRV";
+        const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+        const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+        const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
         await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
 
@@ -174,77 +177,67 @@ export default {
           icon: "success",
         });
 
-        //Limpieza de datos
-        templateParams.user_name = "";
-        templateParams.user_email = "";
-        templateParams.message = "";
-        templateParams.user_phone = "";
-
         this.form.name = "";
         this.form.email = "";
         this.form.message = "";
         this.form.phone = "";
-
-        console.log("SUCCESS!");
       } catch (error) {
         console.error("FAILED...", error);
       }
     },
-
-    // async sendEmail() {
-    //   console.log("Form submitted", this.form);
-    //   try {
-    //     const templateParams = {
-    //       name: this.form.name,
-    //       email: this.form.email,
-    //       message: this.form.message + " | "+this.form.phone
-    //     };
-
-    //     // Usa EmailJS para enviar el correo (asegúrate de configurarlo)
-    //     const result = await emailjs.send(
-    //       "service_nxvebz4",
-    //       "YOUR_TEMPLATE_ID",
-    //       templateParams,
-    //       "YOUR_USER_ID"
-    //     );
-
-    //     if (result.status === 200) {
-    //       this.emailSent = true; // Mostrar confirmación de envío
-    //       this.resetForm(); // Limpiar el formulario
-    //     }
-    //   } catch (error) {
-    //     console.error("Error al enviar el correo:", error);
-    //   }
-    // },
   },
 };
 </script>
 
 <style scoped>
-/* Estilos responsivos */
-@media (max-width: 400px) {
+/* ── md: 960–1279px ── */
+@media (max-width: 1279px) {
   .contact-container {
-    display: flex;
+    margin: 5% 5%;
+    padding: 20px;
+    gap: 15px;
+  }
+}
+
+/* ── sm: 600–959px ── */
+@media (max-width: 959px) {
+  .contact-container {
     flex-direction: column;
-    margin: 100px 0% 150px 0% !important;
-    padding: 10px !important;
+    align-items: center;
+    margin: 5% 3%;
+    padding: 16px;
   }
 
   .contact-info {
-    width: 100% !important;
-  }
-
-  .contact-info-down {
-    display: flex;
-    flex-direction: column;
-    padding: 20% 7% 0px 7%;
+    width: 95%;
   }
 
   .contact-form {
-    width: 100% !important;
+    width: 95%;
+    margin-top: 20px;
+  }
+}
+
+/* ── xs: < 600px ── */
+@media (max-width: 599px) {
+  .contact-container {
+    flex-direction: column;
+    margin: 5% 0;
+    padding: 10px;
+  }
+
+  .contact-info {
+    width: 100%;
+  }
+
+  .contact-info-down {
+    padding: 5% 7% 0 7%;
+  }
+
+  .contact-form {
+    width: 100%;
     padding: 20px;
     border-radius: 8px;
-
   }
 }
 /* Contenedor principal para alinear ambas secciones (izquierda y derecha) */
@@ -261,7 +254,6 @@ export default {
 }
 
 .contact-info-up {
-  /* background-color: red; */
   display: flex;
 }
 
@@ -270,8 +262,6 @@ export default {
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  /* background-color: aqua; */
-  /* margin: 0px 5px 0px 5px; */
   height: 100%;
 
   padding: 20px 10px 10px 0px;
@@ -283,7 +273,6 @@ export default {
 
 .contact-info-up-left p {
   writing-mode: vertical-rl;
-  /* Orientación vertical, de derecha a izquierda */
   transform: rotate(180deg);
 }
 

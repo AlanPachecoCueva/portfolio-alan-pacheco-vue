@@ -34,21 +34,19 @@ export default {
 
         function changeTheme() {
             const newTheme = isDarkTheme.value ? 'light' : 'dark'
-            
+
             isDarkTheme.value = newTheme === 'dark'
             isAnimatingLight.value = newTheme === 'dark'
             isAnimatingDark.value = newTheme === 'light'
 
-            theme.global.name.value = newTheme
+            theme.change(newTheme)
             localStorage.setItem('theme', newTheme)
-
-            console.log("changeTheme", newTheme)
         }
 
         onMounted(() => {
             const savedTheme = localStorage.getItem('theme')
             if (savedTheme) {
-                theme.global.name.value = savedTheme
+                theme.change(savedTheme)
                 isDarkTheme.value = savedTheme === 'dark'
             }
         })

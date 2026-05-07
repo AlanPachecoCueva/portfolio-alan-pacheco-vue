@@ -8,14 +8,14 @@
       >
         <img
           id="home-image-2"
-          :src="require('../assets/color-background.webp')"
+          src="../assets/color-background.webp"
           alt="img home"
         />
 
         <img
           id="home-image"
           class="fade-out-image"
-          :src="require('../assets/Home-Image.webp')"
+          src="../assets/Home-Image.webp"
           alt="img home"
         />
       </div>
@@ -42,7 +42,6 @@
             :style="{ color: getHeroColor() }"
           >
             <Icon class="hero-social-icon" icon="ri:linkedin-fill" />
-            <!-- <div>LinkedIn</div> -->
           </a>
         </li>
         <li class="hero-social-li">
@@ -53,7 +52,6 @@
             :style="{ color: getHeroColor() }"
           >
             <Icon class="hero-social-icon" icon="mingcute:github-fill" />
-            <!-- <div>Facebook</div> -->
           </a>
         </li>
         <li class="hero-social-li">
@@ -64,7 +62,6 @@
             :style="{ color: getHeroColor() }"
           >
             <Icon class="hero-social-icon" icon="mdi:twitter" />
-            <!-- <div>Twitter</div> -->
           </a>
         </li>
       </ul>
@@ -77,14 +74,14 @@
 </template>
 
 <script>
+import { useTheme } from '@/composables/useTheme';
+
 export default {
-  // Aquí van las opciones del componente
-  name: "HomeView", // Nombre del componente
-  props: {
-    // Definición de propiedades que el componente puede recibir
+  name: "HomeView",
+  setup() {
+    return useTheme()
   },
   data() {
-    // Datos reactivos del componente
     return {
       message: "Hello, Vue 3!",
     };
@@ -94,24 +91,19 @@ export default {
       const image = event.target;
       const rect = image.getBoundingClientRect();
 
-      // Calcula el desplazamiento basado en la posición del mouse
       const moveX = (event.clientX - rect.left - rect.width / 2) * -0.02;
       const moveY = (event.clientY - rect.top - rect.height / 2) * -0.02;
 
-      // Aplica el margen para mover la imagen
       image.style.marginLeft = `${moveX}px`;
       image.style.marginTop = `${moveY}px`;
     },
     resetImage(event) {
-      // Resetea la posición cuando el mouse deja la imagen
       const image = event.target;
       image.style.marginLeft = "0px";
       image.style.marginTop = "0px";
     },
   },
-  computed: {
-    // Propiedades computadas
-  },
+  computed: {},
   mounted() {},
 };
 </script>
@@ -151,19 +143,16 @@ export default {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  /* Hace que el contenedor ocupe toda la altura de la ventana */
 }
 
 .fade-out-image {
   width: 100%;
   height: auto;
-  /* Aplica un gradiente de máscara en la parte inferior */
   mask-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 1) 70%,
     rgba(0, 0, 0, 0)
   );
-  /* Para navegadores que no soportan mask-image */
   -webkit-mask-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 1) 97%,
@@ -173,16 +162,38 @@ export default {
 
 .home-content {
   top: 0px;
-  /* left: 35vw; */
   position: absolute;
-  /* Posiciona el contenido de manera relativa */
   text-align: center;
-  /* Centra el texto horizontalmente */
   width: 100%;
   height: 100vh;
 }
 
-@media (max-width: 575px) {
+/* ── sm: 600–959px ── */
+@media (max-width: 959px) {
+  .home-image {
+    width: 55vw !important;
+  }
+
+  .home-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 10%;
+  }
+
+  #slogan-home {
+    font-size: 2em !important;
+    margin-top: 0 !important;
+  }
+
+  .hero-social-container {
+    left: 1% !important;
+  }
+}
+
+/* ── xs: < 600px ── */
+@media (max-width: 599px) {
   #home-image-2 {
     width: 210% !important;
   }
@@ -190,23 +201,28 @@ export default {
   #home-image {
     width: 200% !important;
   }
+
   .home-image {
-    top: 30% !important;
+    width: 80vw !important;
+  }
+
+  .home-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 8%;
   }
 
   #slogan-home {
-    font-size: 1.5em !important;
-    color: rgb(255, 255, 255) !important;
-    font-weight: bold;
-    text-shadow: none !important;
-
-    margin-top: 100% !important;
+    font-size: 1.4em !important;
+    margin-top: 0 !important;
+    padding: 0 16px;
     text-shadow: -2px -1px 4px rgba(0, 0, 0) !important;
-    /* background-color: rgba(235, 230, 230, 0.947); */
-    padding: 0 10px;
-    margin: 0 0 10px 0;
+  }
 
-    border-radius: 10px;
+  .hero-social-container {
+    display: none;
   }
 }
 
@@ -215,7 +231,6 @@ export default {
   bottom: 0px;
   left: 50%;
   transform: translate(-50%, -12%);
-  /* Centra la imagen */
 
   width: 30vw;
   height: 30vw;
@@ -246,11 +261,8 @@ export default {
 #slogan-home {
   font-size: 3em;
   color: white;
-  /* Cambia el color del texto para que sea visible sobre la imagen */
   text-shadow: -2px -1px 4px rgba(0, 0, 0);
-  /* Agrega sombra al texto para mejor legibilidad */
   z-index: 3 !important;
-  /* Asegura que el texto esté sobre la imagen */
   position: relative;
 
   margin-top: 30%;
@@ -258,12 +270,10 @@ export default {
 
 #contact-button {
   z-index: 3 !important;
-  /* Asegura que el texto esté sobre la imagen */
   position: relative;
 
   font-size: 1em;
   color: white;
-  /* Cambia el color del texto para que sea visible sobre la imagen */
   text-shadow: -2px -1px 4px rgba(0, 0, 0);
   border: 2px solid;
   border-color: white;

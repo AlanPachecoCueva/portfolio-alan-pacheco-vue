@@ -43,11 +43,11 @@ import AboutView from "../views/About_View.vue";
 import SkillsView from "../views/Skills_View.vue";
 import ProjectsComponent from "../components/utils/Projects_Component.vue";
 import ContactView from "../views/Contact_View.vue";
-
 import { useProjectStore } from "../plugins/stores/projectsStore.js";
+import { useTheme } from '@/composables/useTheme';
 
 export default {
-  name: "GeneralView", // Nombre del componente
+  name: "GeneralView",
   components: {
     HomeView,
     CardComponent,
@@ -70,6 +70,7 @@ export default {
 
     return {
       projects,
+      ...useTheme(),
     };
   },
 };
@@ -89,25 +90,41 @@ export default {
   height: 110px;
 }
 
-@media (max-width: 575px) {
-  .general-container {
-/*    
-
-    background-color: red; */
+/* ── md: 960–1279px ── */
+@media (max-width: 1279px) {
+  .cardsContainer {
+    margin: 5% 5% 5% 5%;
   }
+}
 
+/* ── sm: 600–959px ── */
+@media (max-width: 959px) {
   .cardsContainer {
     flex-direction: column;
-    margin: 5% 0% 100px 0%;
-
-    justify-content: space-around;
     align-items: center;
-    width: 100% !important;
-    height: 7% !important;
+    margin: 5% 0 60px 0;
+    height: auto;
   }
 
   .card {
-    width: 80%;
+    width: 75%;
+    height: 90px;
+    margin: 0 0 16px 0;
+  }
+}
+
+/* ── xs: < 600px ── */
+@media (max-width: 599px) {
+  .cardsContainer {
+    flex-direction: column;
+    align-items: center;
+    margin: 5% 0 100px 0;
+    width: 100%;
+    height: auto;
+  }
+
+  .card {
+    width: 85%;
     height: 90px;
     margin: 0 0 20px 0;
   }

@@ -3,60 +3,45 @@
     <nav>
       <div id="logo-side">
         <div class="nav-logo">
-          <img
-            class="logo"
-            alt="Vue logo"
-            :src="require('../assets/logo-no-letters.png')"
-          />
+          <img class="logo" alt="Vue logo" src="../assets/logo-no-letters.png" />
         </div>
       </div>
 
+      <!-- Desktop links (≥ 960px) -->
       <ul class="nav-links">
         <div class="nav-sides" id="center-side">
-          <li>
-            <router-link :to="{ name: 'Home', hash: '#home-view' }"
-              ><a>{{ $t("Home_Text") }} </a></router-link
-            >
-          </li>
-          <li>
-            <router-link :to="{ name: 'Home', hash: '#about-view' }"
-              ><a>{{ $t("About_Text") }}</a></router-link
-            >
-          </li>
-          <li>
-            <router-link :to="{ name: 'Home', hash: '#skills-view' }"
-              ><a> {{ $t("Skills_Text") }}</a></router-link
-            >
-          </li>
-          <li>
-            <router-link :to="{ name: 'Home', hash: '#projects-view' }"
-              ><a> {{ $t("Portfolio_Text") }}</a></router-link
-            >
-          </li>
-          <li>
-            <router-link :to="{ name: 'Home', hash: '#contact-view' }"
-              ><a> {{ $t("Contact_Text") }}</a></router-link
-            >
-          </li>
+          <li><router-link :to="{ name: 'Home', hash: '#home-view' }"><a>{{ $t("Home_Text") }}</a></router-link></li>
+          <li><router-link :to="{ name: 'Home', hash: '#about-view' }"><a>{{ $t("About_Text") }}</a></router-link></li>
+          <li><router-link :to="{ name: 'Home', hash: '#skills-view' }"><a>{{ $t("Skills_Text") }}</a></router-link></li>
+          <li><router-link :to="{ name: 'Home', hash: '#projects-view' }"><a>{{ $t("Portfolio_Text") }}</a></router-link></li>
+          <li><router-link :to="{ name: 'Home', hash: '#contact-view' }"><a>{{ $t("Contact_Text") }}</a></router-link></li>
         </div>
         <div class="nav-sides" id="right-side">
-          <!-- <li><a href="#services">EN</a></li> -->
-          <li>
-            <Language_Selector_Component
-              id="languageSelector"
-            ></Language_Selector_Component>
-          </li>
-          <li>
-            <Theme_Selector_Component></Theme_Selector_Component>
-          </li>
-
-          <!-- <li><a href="#contact"> {{ $t('Theme_Text') }}</a></li> -->
-          <!-- <li>
-            <a href="#contact"> {{ $t("More_Text") }}</a>
-          </li> -->
+          <li><Language_Selector_Component id="languageSelector"></Language_Selector_Component></li>
+          <li><Theme_Selector_Component></Theme_Selector_Component></li>
         </div>
       </ul>
+
+      <!-- Mobile controls (< 960px) -->
+      <div class="mobile-controls">
+        <Language_Selector_Component></Language_Selector_Component>
+        <Theme_Selector_Component></Theme_Selector_Component>
+        <button class="hamburger-btn" @click="menuOpen = !menuOpen" :aria-label="menuOpen ? 'Cerrar menú' : 'Abrir menú'">
+          <Icon :icon="menuOpen ? 'mdi:close' : 'mdi:menu'" style="width:26px;height:26px;" />
+        </button>
+      </div>
     </nav>
+
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" v-show="menuOpen">
+      <ul>
+        <li @click="menuOpen = false"><router-link :to="{ name: 'Home', hash: '#home-view' }">{{ $t("Home_Text") }}</router-link></li>
+        <li @click="menuOpen = false"><router-link :to="{ name: 'Home', hash: '#about-view' }">{{ $t("About_Text") }}</router-link></li>
+        <li @click="menuOpen = false"><router-link :to="{ name: 'Home', hash: '#skills-view' }">{{ $t("Skills_Text") }}</router-link></li>
+        <li @click="menuOpen = false"><router-link :to="{ name: 'Home', hash: '#projects-view' }">{{ $t("Portfolio_Text") }}</router-link></li>
+        <li @click="menuOpen = false"><router-link :to="{ name: 'Home', hash: '#contact-view' }">{{ $t("Contact_Text") }}</router-link></li>
+      </ul>
+    </div>
   </header>
 </template>
 
@@ -65,33 +50,15 @@ import Language_Selector_Component from "../components/utils/Language_Selector_C
 import Theme_Selector_Component from "../components/utils/Theme_Selector_Component.vue";
 
 export default {
-  // Aquí van las opciones del componente
-  name: "Nav_Bar", // Nombre del componente
+  name: "Nav_Bar",
   components: {
     Language_Selector_Component,
     Theme_Selector_Component,
   },
-  props: {
-    // Definición de propiedades que el componente puede recibir
-  },
   data() {
-    // Datos reactivos del componente
-    return {};
-  },
-  methods: {
-    scrollTo(sectionId) {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        // Desplazamiento suave
-        element.scrollIntoView({ behavior: "smooth" });
-      }
-    },
-  },
-  computed: {
-    // Propiedades computadas
-  },
-  mounted() {
-    // Hook de ciclo de vida
+    return {
+      menuOpen: false,
+    };
   },
 };
 </script>
@@ -100,43 +67,15 @@ export default {
 header {
   font-weight: bold;
   font-family: "Poppins", sans-serif;
-  padding: 0px !important;
+  padding: 0 !important;
 }
 
-@media (max-width: 400px) {
-  /* Estilos para dispositivos móviles */
-  nav {
-    width: 100vw !important;
-    justify-content: space-around;
-    
-  }
-
-  #logo-side {
-    display: none !important;
-  }
-  
-  .nav-links {
-    width: 100% !important;
-    font-size: 10px;
-
-   
-
-  }
-
-  #center-side {
-    justify-content: space-around;
-    width: 70% !important;
-  }
-
-  #right-side {
-    width: 30% !important;
-  }
-
-}
 a {
   color: inherit;
+  text-decoration: none;
 }
 
+/* ── Base (desktop ≥ 1280px) ── */
 nav {
   display: flex;
   justify-content: space-between;
@@ -167,10 +106,6 @@ nav {
   margin: 0;
 }
 
-.nav-links a {
-  text-decoration: none;
-}
-
 #logo-side {
   width: 33.33%;
   display: flex;
@@ -195,17 +130,98 @@ nav {
 }
 
 #right-side li {
-  padding: 0 0.5rem 0 0.5rem;
+  padding: 0 0.5rem;
 }
 
 #languageSelector {
   padding: 0;
 }
 
-/* @media (max-width: 400px) {
-  header{
-    width: 50%;
-    background-color: yellow;
+/* Mobile controls: ocultos en desktop */
+.mobile-controls {
+  display: none;
+}
+
+/* Mobile hamburger button */
+.hamburger-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mobile dropdown */
+.mobile-menu {
+  background: rgb(var(--v-theme-header));
+  width: 100%;
+  position: fixed;
+  top: 62px;
+  left: 0;
+  right: 0;
+  z-index: 9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-menu li {
+  padding: 14px 24px;
+  border-top: 1px solid rgba(128, 128, 128, 0.15);
+  font-size: 15px;
+}
+
+.mobile-menu a {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+
+.mobile-menu a:hover {
+  color: orange;
+}
+
+/* ── md: 960–1279px — links más compactos ── */
+@media (max-width: 1279px) {
+  .nav-links {
+    width: 73%;
+    font-size: 13px;
   }
-} */
+
+  #logo-side {
+    width: 27%;
+  }
+}
+
+/* ── sm/xs: < 960px — hamburger ── */
+@media (max-width: 959px) {
+  nav {
+    width: 100%;
+    justify-content: space-between;
+    padding: 0 16px;
+    box-sizing: border-box;
+  }
+
+  #logo-side {
+    width: auto;
+    padding-left: 0;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .mobile-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
 </style>

@@ -22,10 +22,6 @@
           <p>{{ relatedtechnology }}</p>
         </div>
       </div>
-
-      <!-- <div>
-        <button>PRESS ME</button>
-      </div> -->
     </div>
 
     <div class="imagesContainer">
@@ -35,15 +31,15 @@
         :key="image.name"
         :style="{
           backgroundColor: getPrimaryColor(),
-          gridColumn: `span ${image.columns}`, // Define cuántas columnas ocupa
-          gridRow: `span ${image.rows}`, // Define cuántas filas ocupa
+          gridColumn: `span ${image.columns}`,
+          gridRow: `span ${image.rows}`,
           width: `${image.layout}% !important`
         }"
       >
         <div class="overlay">
           <img
             class="item-image"
-            :src="require(`@/assets/${image.image}`)"
+            :src="getProjectImage(image.image)"
             alt="img home"
           />
           <div class="item-info">
@@ -58,38 +54,34 @@
 <script>
 import { useRoute } from "vue-router";
 import { useProjectStore } from "../../plugins/stores/projectsStore.js";
+import { useTheme } from '@/composables/useTheme';
+
+const projectImages = import.meta.glob('/src/assets/projects/**', { eager: true, import: 'default' })
 
 export default {
   name: "Project_Component",
-  // created() {
-  //   this.project = JSON.parse(this.$route.query.project);
-  // },
   methods: {
+    getProjectImage(imagePath) {
+      const img = projectImages[`/src/assets/${imagePath}`]
+      return img?.default || img
+    },
     generateAlternativeGradientStyle() {
       return {
         background: `linear-gradient(to right, ${this.getAlternativeButtonColor()} 50%,  #CACACA 50%)`,
         backgroundSize: `200% 100%`,
       };
-
     },
-    getLayoutWidth(layout){
-      console.log("layout: ", layout);
-      if(layout == "vertical"){
-        return { width: `50%`}
-      }else{
-        return { width: `100%`}
-      }
-    }
   },
   setup() {
-    const route = useRoute(); // Obtener el parámetro id de la ruta
-    const projectStore = useProjectStore(); // Instancia del store de Pinia
+    const route = useRoute();
+    const projectStore = useProjectStore();
 
-    const projectId = route.params.id; // Obtener el id desde la ruta
-    const project = projectStore.getProject(projectId); // Llamar al getter con el id
-    console.log("proyecto recibido: ", project);
+    const projectId = route.params.id;
+    const project = projectStore.getProject(projectId);
+
     return {
       project,
+      ...useTheme(),
     };
   },
 };
@@ -126,7 +118,6 @@ export default {
   }
 
   .item {
-    /* width: 45% !important; */
     max-height: 40vh !important;
   }
 }
@@ -149,10 +140,9 @@ export default {
 
   display: grid;
   grid-template-columns: repeat(3, minmax(300px, 1fr));
-  grid-auto-flow: dense; /* Evita huecos en la disposición del grid */
+  grid-auto-flow: dense;
   gap: 20px;
   padding: 20px;
-  /* margin: 5% 5% 5% 5%; */
   grid-auto-flow: dense;
 }
 
@@ -193,9 +183,8 @@ export default {
   border-radius: 12px;
   transition: transform 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: auto; /* Permite que los ítems se ajusten automáticamente */
+  height: auto;
 
-  /* Esta línea permitió que se ajusten los widths automáticamente de las rows */
   grid-row-end: span 2;
 }
 

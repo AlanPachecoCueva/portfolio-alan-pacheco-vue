@@ -32,15 +32,15 @@
       :key="item.id"
       :style="{
         backgroundColor: getPrimaryColor(),
-        gridColumn: `span ${item.columns}`, // Define cuántas columnas ocupa
-        gridRow: `span ${item.rows}`, // Define cuántas filas ocupa
+        gridColumn: `span ${item.columns}`,
+        gridRow: `span ${item.rows}`,
       }"
       @click="goToProject(item)"
     >
       <div class="overlay">
         <img
           class="item-image"
-          :src="require(`@/assets/${item.image}`)"
+          :src="getProjectImage(item.image)"
           alt="img home"
         />
         <div class="item-info">
@@ -53,8 +53,15 @@
 </template>
 
 <script>
+import { useTheme } from '@/composables/useTheme';
+
+const projectImages = import.meta.glob('/src/assets/projects/**', { eager: true, import: 'default' })
+
 export default {
   name: "Projects_Component",
+  setup() {
+    return useTheme()
+  },
   props: {
     items: {
       type: Array,
@@ -62,6 +69,10 @@ export default {
     },
   },
   methods: {
+    getProjectImage(imagePath) {
+      const img = projectImages[`/src/assets/${imagePath}`]
+      return img?.default || img
+    },
     goToProject(project) {
       this.$router.push({ name: "Project", params: { id: project.title } });
     },
@@ -75,16 +86,6 @@ export default {
   width: 3px;
   height: 60px;
 }
-
-/* Primer ítem, el menú */
-/* .menu-item {
-  grid-column: span 2; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  padding: 20px;
-} */
 
 .menu-content {
   text-align: left;
@@ -134,7 +135,7 @@ export default {
 .container {
   display: grid;
   grid-template-columns: repeat(4, minmax(300px, 1fr));
-  grid-auto-flow: dense; /* Evita huecos en la disposición del grid */
+  grid-auto-flow: dense;
   gap: 20px;
   padding: 20px;
   margin: 5% 5% 5% 5%;
@@ -142,15 +143,14 @@ export default {
 }
 
 .menu-item {
-  grid-column: span 2; /* Ocupará dos columnas */
-  height: 300px; /* Mayor altura para diferenciarlo */
+  grid-column: span 2;
+  height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* grid-column: 1 / 3; */
 }
 
 /* Ítems regulares */
@@ -160,9 +160,8 @@ export default {
   border-radius: 12px;
   transition: transform 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: auto; /* Permite que los ítems se ajusten automáticamente */
+  height: auto;
 
-  /* Esta línea permitió que se ajusten los widths automáticamente de las rows */
   grid-row-end: span 2;
 }
 
@@ -219,28 +218,54 @@ export default {
   color: #ddd;
 }
 
-/* Estilos responsivos */
-@media (max-width: 400px) {
+/* ── md: 960–1279px ── */
+@media (max-width: 1279px) {
   .container {
-    display: flex;
-    flex-direction: column;
-
-    width: 100vw !important;
-    height: fit-content !important;
-    margin: 0% 0px !important;
-    padding: 20px;
-  }
-
-  .item {
-    height: auto; /* Permite que los ítems se ajusten automáticamente */
-    max-height: 300px;
-    /* Esta línea permitió que se ajusten los widths automáticamente de las rows */
-    margin: 20px 0px;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
   }
 
   .menu-item {
-    grid-column: span 1;
-    height:fit-content;
+    grid-column: span 3;
+    height: auto;
+  }
+}
+
+/* ── sm: 600–959px ── */
+@media (max-width: 959px) {
+  .container {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+    margin: 5% 2%;
+  }
+
+  .menu-item {
+    grid-column: span 2;
+    height: auto;
+  }
+
+  .menu-description {
+    max-width: 100%;
+  }
+}
+
+/* ── xs: < 600px ── */
+@media (max-width: 599px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 16px;
+    box-sizing: border-box;
+  }
+
+  .item {
+    height: auto;
+    max-height: 300px;
+    margin: 12px 0;
+  }
+
+  .menu-item {
+    height: fit-content;
   }
 
   .menu-title {
@@ -248,7 +273,8 @@ export default {
   }
 
   .menu-description {
-    font-size: 10px;
+    font-size: 12px;
+    max-width: 100%;
   }
 }
 </style>

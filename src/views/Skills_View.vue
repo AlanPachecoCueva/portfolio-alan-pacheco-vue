@@ -52,151 +52,48 @@
 
 <script>
 import GridComponent from "../components/utils/Grid_Component.vue";
+import { useTheme } from '@/composables/useTheme';
+
 export default {
-  // Aquí van las opciones del componente
-  name: "Skills_View", // Nombre del componente
+  name: "Skills_View",
   components: {
     GridComponent,
   },
-  props: {
-    // Definición de propiedades que el componente puede recibir
+  setup() {
+    return useTheme()
   },
   data() {
-    // Datos reactivos del componente
     return {
       message: "Hello, Vue 3!",
       isActive: "skills",
       skills: [
-        {
-          id: 1,
-          name: "JavaScript",
-          icon: "skill-icons:javascript",
-        },
-        {
-          id: 2,
-          name: "TypeScript",
-          icon: "skill-icons:typescript",
-        },
-        {
-          id: 2,
-          name: "Html5",
-          icon: "skill-icons:html",
-        },
-        {
-          id: 3,
-          name: "CSS",
-          icon: "skill-icons:css",
-        },
-        {
-          id: 3,
-          name: "Java",
-          icon: "skill-icons:java-dark",
-        },
-        {
-          id: 5,
-          name: "C",
-          icon: "skill-icons:c",
-        },
-        {
-          id: 5,
-          name: "C++",
-          icon: "skill-icons:cpp",
-        },
-        {
-          id: 5,
-          name: "C#",
-          icon: "skill-icons:cs",
-        },
-        {
-          id: 5,
-          name: ".NET",
-          icon: "skill-icons:dotnet",
-        },
-
-        {
-          id: 5,
-          name: "NodeJS",
-          icon: "skill-icons:nodejs-dark",
-        },
-        {
-          id: 5,
-          name: "Python",
-          icon: "skill-icons:python-light",
-        },
-
-        {
-          id: 5,
-          name: "React",
-          icon: "skill-icons:react-dark",
-        },
-        {
-          id: 5,
-          name: "Unity",
-          icon: "skill-icons:unity-dark",
-        },
-
-        {
-          id: 5,
-          name: "Vue",
-          icon: "skill-icons:vuejs-dark",
-        },
+        { id: 1, name: "JavaScript", icon: "skill-icons:javascript" },
+        { id: 2, name: "TypeScript", icon: "skill-icons:typescript" },
+        { id: 2, name: "Html5", icon: "skill-icons:html" },
+        { id: 3, name: "CSS", icon: "skill-icons:css" },
+        { id: 3, name: "Java", icon: "skill-icons:java-dark" },
+        { id: 5, name: "C", icon: "skill-icons:c" },
+        { id: 5, name: "C++", icon: "skill-icons:cpp" },
+        { id: 5, name: "C#", icon: "skill-icons:cs" },
+        { id: 5, name: ".NET", icon: "skill-icons:dotnet" },
+        { id: 5, name: "NodeJS", icon: "skill-icons:nodejs-dark" },
+        { id: 5, name: "Python", icon: "skill-icons:python-light" },
+        { id: 5, name: "React", icon: "skill-icons:react-dark" },
+        { id: 5, name: "Unity", icon: "skill-icons:unity-dark" },
+        { id: 5, name: "Vue", icon: "skill-icons:vuejs-dark" },
       ],
       tools: [
-        {
-          id: 5,
-          name: "Eclipse",
-          icon: "skill-icons:eclipse-dark",
-        },
-        {
-          id: 5,
-          name: "VS Code",
-          icon: "skill-icons:vscode-dark",
-        },
-        {
-          id: 5,
-          name: "PostgreSQL",
-          icon: "skill-icons:postgresql-light",
-        },
-        {
-          id: 5,
-          name: "Git",
-          icon: "skill-icons:git",
-        },
-        {
-          id: 5,
-          name: "GitHub",
-          icon: "skill-icons:github-dark",
-        },
-        {
-          id: 5,
-          name: "Anaconda",
-          icon: "skill-icons:anaconda-dark",
-        },
-        {
-          id: 5,
-          name: "MySql",
-          icon: "skill-icons:mysql-light",
-        },
-        {
-          id: 5,
-          name: "Figma",
-          icon: "skill-icons:figma-dark",
-        },
-        {
-          id: 5,
-          name: "Illustrator",
-          icon: "skill-icons:illustrator",
-        },
-        {
-          id: 5,
-          name: "Photoshop",
-          icon: "skill-icons:photoshop",
-        },
-        {
-          id: 5,
-          name: "StackOverflow",
-          icon: "skill-icons:stackoverflow-dark",
-        },
+        { id: 5, name: "Eclipse", icon: "skill-icons:eclipse-dark" },
+        { id: 5, name: "VS Code", icon: "skill-icons:vscode-dark" },
+        { id: 5, name: "PostgreSQL", icon: "skill-icons:postgresql-light" },
+        { id: 5, name: "Git", icon: "skill-icons:git" },
+        { id: 5, name: "GitHub", icon: "skill-icons:github-dark" },
+        { id: 5, name: "Anaconda", icon: "skill-icons:anaconda-dark" },
+        { id: 5, name: "MySql", icon: "skill-icons:mysql-light" },
+        { id: 5, name: "Figma", icon: "skill-icons:figma-dark" },
+        { id: 5, name: "Illustrator", icon: "skill-icons:illustrator" },
+        { id: 5, name: "Photoshop", icon: "skill-icons:photoshop" },
+        { id: 5, name: "StackOverflow", icon: "skill-icons:stackoverflow-dark" },
       ],
     };
   },
@@ -210,34 +107,58 @@ export default {
       return this.isActive === "skills" ? "left" : "right";
     },
   },
-  mounted() {
-    // Hook de ciclo de vida
-  },
+  mounted() {},
 };
 </script>
 
 <style scoped>
-@media (max-width: 400px) {
-  .bigContainer_Skills {
-    width: 100% !important;
-    flex-direction: column !important;
-    justify-content: space-evenly !important;
-    align-items: center;
-  }
+/* ── md: 960–1279px ── */
+@media (max-width: 1279px) {
   .leftSide {
-    /* background-color: green; */
-    width: 100% !important;
+    width: 48%;
   }
 
   .rightSide {
-    /* background-color: aquamarine; */
-    width: 95% !important;
-    margin: 20px 0px 50px 0px !important;
+    width: 48%;
+  }
+}
+
+/* ── sm: 600–959px ── */
+@media (max-width: 959px) {
+  .bigContainer_Skills {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .leftSide {
+    width: 85%;
+    margin: 15px 0 0 0;
+  }
+
+  .rightSide {
+    width: 85%;
+    margin: 20px 0 50px 0;
+  }
+}
+
+/* ── xs: < 600px ── */
+@media (max-width: 599px) {
+  .bigContainer_Skills {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .leftSide {
+    width: 100%;
+  }
+
+  .rightSide {
+    width: 95%;
+    margin: 20px 0 50px 0;
   }
 }
 
 .bigContainer_Skills {
-  /* background-color: red; */
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -247,7 +168,6 @@ export default {
 }
 
 .leftSide {
-  /* background-color: green; */
   width: 44%;
 
   display: flex;
@@ -264,8 +184,6 @@ export default {
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  /* background-color: aqua; */
-  /* margin: 0px 5px 0px 5px; */
   height: 100%;
 
   padding: 20px 10px 10px 0px;
@@ -273,7 +191,6 @@ export default {
 
 .leftSide_Left p {
   writing-mode: vertical-rl;
-  /* Orientación vertical, de derecha a izquierda */
   transform: rotate(180deg);
 }
 
@@ -284,7 +201,6 @@ export default {
 }
 
 .leftSide_Up {
-  /* background-color: blue; */
   font-size: larger;
 }
 
@@ -294,7 +210,6 @@ export default {
 }
 
 .leftSide_Up p {
-  /* background-color: blue; */
   font-size: medium;
 }
 
@@ -303,17 +218,14 @@ export default {
 }
 
 .rightSide {
-  /* background-color: aquamarine; */
   width: 44%;
 }
 
 .button {
   border-radius: 20px;
   border: 1px solid rgb(255, 255, 255);
-  /* background-color: rgb(158, 158, 158); */
 }
 
-/* Botones */
 .leftSide_Down {
   display: inline-block;
   border-radius: 20px;
@@ -340,12 +252,8 @@ export default {
   border-radius: 20px;
   transition: color 0.3s ease;
   position: relative;
-  z-index: 1; /* Asegura que los botones estén sobre el slider */
+  z-index: 1;
 }
-
-/* .button.active {
-  color: black;
-} */
 
 .slider {
   position: absolute;
@@ -355,7 +263,7 @@ export default {
   background-color: orange;
   border-radius: 20px;
   transition: transform 0.3s ease;
-  z-index: 0; /* El slider debe estar debajo de los botones */
+  z-index: 0;
 }
 
 .slider.left {

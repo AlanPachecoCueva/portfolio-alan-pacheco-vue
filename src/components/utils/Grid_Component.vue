@@ -12,30 +12,18 @@
 </template>
 
 <script>
+import { useTheme } from '@/composables/useTheme';
+
 export default {
-  // Aquí van las opciones del componente
-  name: "Grid_Component", // Nombre del componente
-  components: {},
+  name: "Grid_Component",
+  setup() {
+    return useTheme()
+  },
   props: {
     items: {
       type: Array,
       required: true,
     },
-  },
-  data() {
-    // Datos reactivos del componente
-    return {
-      message: "Hello, Vue 3!",
-    };
-  },
-  methods: {
-    // Métodos del componente
-  },
-  computed: {
-    // Propiedades computadas
-  },
-  mounted() {
-    // Hook de ciclo de vida
   },
 };
 </script>

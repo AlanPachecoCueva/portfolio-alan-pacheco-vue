@@ -674,16 +674,26 @@ export default {
 </script>
 
 <style scoped>
-@media (max-width: 400px) {
+/* ── md: 960–1279px ── */
+@media (max-width: 1279px) {
   .masonry-container {
-    margin-top: 55px !important;
+    column-count: 3;
   }
+}
 
+/* ── sm: 600–959px ── */
+@media (max-width: 959px) {
   .masonry-container {
-    column-count: 2 !important;
-    column-gap: 0px;
-    margin: 5% 0;
-    font-size: 0;
+    column-count: 2;
+    margin-top: 70px;
+  }
+}
+
+/* ── xs: < 600px ── */
+@media (max-width: 599px) {
+  .masonry-container {
+    column-count: 2;
+    margin-top: 62px;
   }
 }
 

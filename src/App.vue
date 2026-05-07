@@ -10,7 +10,6 @@
       </div>
     </div>
     <!-- Cursor -->
-    <!-- Aquí va el contenido del navbar -->
     <Nav_Bar :style="{ backgroundColor: getHeaderColor() }" :class="navbarClass" class="navbarAll"></Nav_Bar>
 
     <RouterView class="routerContent"></RouterView>
@@ -20,6 +19,7 @@
 <script>
 import { RouterView } from "vue-router";
 import Nav_Bar from "./components/Nav_Bar.vue";
+import { useTheme } from '@/composables/useTheme';
 
 export default {
   name: "App",
@@ -27,6 +27,10 @@ export default {
   components: {
     Nav_Bar,
     RouterView,
+  },
+
+  setup() {
+    return useTheme()
   },
 
   data() {
@@ -46,15 +50,12 @@ export default {
     const outerCircle = this.$refs.outerCircle;
     const innerCircle = this.$refs.innerCircle;
 
-    // Mouse move event listener
     document.addEventListener("mousemove", (e) => {
-      // Ajusta la posición sumando el scroll actual
       this.innerX = e.clientX + window.scrollX;
       this.innerY = e.clientY + window.scrollY;
       innerCircle.style.transform = `translate(${this.innerX - 2}px, ${this.innerY - 2}px)`;
     });
 
-    // Function for the outer circle to follow the inner circle
     const animate = () => {
       this.outerX += (this.innerX - this.outerX) * 0.1;
       this.outerY += (this.innerY - this.outerY) * 0.1;
@@ -62,14 +63,11 @@ export default {
       outerCircle.style.transform = `translate(${this.outerX - 9}px, ${this.outerY - 9
         }px)`;
 
-      // Call animate again on the next frame
       this.requestId = requestAnimationFrame(animate);
     };
 
-    // Start the animation loop
     animate();
 
-    // Listener de mousedown para el click
     document.addEventListener("mousedown", this.handleMouseDown);
   },
 
@@ -89,14 +87,12 @@ export default {
         this.isScrollingDown = currentScrollPosition > this.lastScrollPosition;
       }
 
-      // Actualiza la posición del cursor sumando el nuevo scroll
       const deltaY = currentScrollPosition - this.lastScrollPosition;
       this.innerY += deltaY;
       this.outerY += deltaY;
 
       this.lastScrollPosition = currentScrollPosition;
 
-      // Actualiza el estilo del círculo interior y exterior
       const innerCircle = this.$refs.innerCircle;
       const outerCircle = this.$refs.outerCircle;
       innerCircle.style.transform = `translate(${this.innerX - 2}px, ${this.innerY - 2}px)`;
@@ -118,9 +114,6 @@ export default {
         "navbar-visible": !this.isScrollingDown,
         "navbar-transparent": this.isAtTop,
       };
-    },
-    navbarStyle() {
-      return {};
     },
   },
 };
@@ -163,16 +156,19 @@ export default {
   margin-top: 7%;
 }
 
+@media (max-width: 959px) {
+  .routerContent {
+    margin-top: 62px;
+  }
+}
+
 nav {
   animation: fadeInUp 0.5s ease-out forwards;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 10;
-  /* transition: transform 0.3s ease, background-color 0.3s ease; */
 }
-
-
 
 .navbar-hidden {
   transform: translateY(-100%);
@@ -181,30 +177,23 @@ nav {
 @keyframes fadeOutDown {
   0% {
     transform: translateY(0%);
-    /* Empieza fuera de la pantalla */
     opacity: 0;
-    /* Comienza invisible */
   }
 
   50% {
     transform: translateY(-20%);
-    /* Se mueve hacia abajo parcialmente */
     opacity: 0.5;
-    /* Aumenta la opacidad */
   }
 
   100% {
     transform: translateY(-100%);
-    /* Llega a la posición final */
     opacity: 1;
-    /* Se vuelve completamente visible */
   }
 }
 
 .navbar-visible {
   animation: fadeInUp 0.5s ease-out forwards;
   position: fixed;
-  /* Posición fija para que el navbar se mantenga en la parte superior */
   top: 0;
   width: 100%;
   z-index: 10;
@@ -213,23 +202,17 @@ nav {
 @keyframes fadeInUp {
   0% {
     transform: translateY(-100%);
-    /* Empieza fuera de la pantalla */
     opacity: 0;
-    /* Comienza invisible */
   }
 
   50% {
     transform: translateY(-20%);
-    /* Se mueve hacia abajo parcialmente */
     opacity: 0.5;
-    /* Aumenta la opacidad */
   }
 
   100% {
     transform: translateY(0);
-    /* Llega a la posición final */
     opacity: 1;
-    /* Se vuelve completamente visible */
   }
 }
 

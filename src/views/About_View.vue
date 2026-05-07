@@ -1,7 +1,7 @@
 <template>
   <div class="bigContainerAbout">
     <div class="leftSideAbout">
-      <img :src="require('../assets/About-Image.png')" alt="img about" />
+      <img src="../assets/About-Image.png" alt="img about" />
     </div>
     <div class="rightSideAbout">
       <div class="right-leftContainer">
@@ -19,7 +19,6 @@
               :style="generateAlternativeGradientStyle()" />
           </router-link>
 
-
           <input class="button" type="button" id="rightButton" @click="downloadCV" :value="$t('About_Me_Download_CV')"
             :style="generateGradientStyle()" />
         </div>
@@ -29,33 +28,27 @@
 </template>
 
 <script>
+import { useTheme } from '@/composables/useTheme';
+
 export default {
   name: "About_View",
+  setup() {
+    return useTheme()
+  },
   methods: {
     downloadCV() {
-      // Crea un enlace temporal
       const link = document.createElement("a");
-      //Inglés
       if (this.$i18n.locale == "EN") {
-
-        // Apunta al archivo PDF
         link.href = "/CV-Alan Pacheco-ENG.pdf";
-        // Nombre con el que se descargará
         link.download = "CV-Alan Pacheco-ENG.pdf";
       } else {
-        // Apunta al archivo PDF
         link.href = "/CV-Alan Pacheco-ESP.pdf";
-        // Nombre con el que se descargará
         link.download = "CV-Alan Pacheco-ESP.pdf";
       }
-
-
-      // Simula el clic en el enlace
       link.click();
     },
     generateGradientStyle() {
       return {
-        // background: `linear-gradient(to right, ${this.getBackgroundColor()} 50%, #CACACA 50%)`
         background: `linear-gradient(to right, ${this.getBackgroundColor()} 50%, #CACACA 50%)`,
         backgroundSize: `200% 100%`,
         border: `1px solid ${this.getContrastColor()} !important`
@@ -72,34 +65,63 @@ export default {
 </script>
 
 <style scoped>
-@media (max-width: 400px) {
+/* ── md: 960–1279px ── */
+@media (max-width: 1279px) {
+  .leftSideAbout {
+    width: 45%;
+  }
+
+  .rightSideAbout {
+    width: 48%;
+  }
+}
+
+/* ── sm: 600–959px ── */
+@media (max-width: 959px) {
   .bigContainerAbout {
-    display: flex;
     flex-direction: column;
-    width: 100%;
-
-    justify-content: start !important;
-    align-items: start !important;
-
-    margin: 5% 0px 5% 0px;
+    align-items: center;
+    margin: 5% 0;
   }
 
   .leftSideAbout {
-    width: 100% !important;
-
+    width: 60%;
     display: flex;
     justify-content: center;
   }
 
   .leftSideAbout img {
-    width: 50% !important;
+    width: 70%;
   }
 
   .rightSideAbout {
-    width: 100% !important;
+    width: 85%;
+    margin: 0 0 40px 0;
+  }
+}
 
+/* ── xs: < 600px ── */
+@media (max-width: 599px) {
+  .bigContainerAbout {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 5% 0;
+  }
+
+  .leftSideAbout {
+    width: 100%;
     display: flex;
+    justify-content: center;
+  }
+
+  .leftSideAbout img {
+    width: 50%;
+  }
+
+  .rightSideAbout {
+    width: 100%;
     flex-direction: row;
+    margin: 0;
   }
 
   .right-rightContainer-lower {
@@ -109,21 +131,20 @@ export default {
   #leftButton {
     width: 40% !important;
     font-size: 10px !important;
-    padding: 11px 0px !important;
+    padding: 11px 0 !important;
     font-weight: bold;
   }
 
   #rightButton {
     width: 40% !important;
     font-size: 11px !important;
-    padding: 10px 0px !important;
+    padding: 10px 0 !important;
     font-weight: bold;
   }
 }
 
 #rightButton {
   font-weight: bold;
-  /* border: 1px solid white; */
 }
 
 .bigContainerAbout {
@@ -169,7 +190,6 @@ export default {
 
 .right-leftContainer p {
   writing-mode: vertical-rl;
-  /* Orientación vertical, de derecha a izquierda */
   transform: rotate(180deg);
 }
 

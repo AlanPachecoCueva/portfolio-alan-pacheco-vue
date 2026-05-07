@@ -28,20 +28,34 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
-      return savedPosition; // Si el usuario vuelve a una página, ir a la posición guardada
+      return savedPosition;
     } else if (to.hash) {
       return {
-        el: to.hash, // Desplazarse al id (hash) de la página
-        behavior: "smooth", // Desplazamiento suave
+        el: to.hash,
+        behavior: "smooth",
       };
     } else {
-      return { top: 0 }; // Ir al inicio de la página si no hay hash
+      return { top: 0 };
     }
   },
 });
+
+const BASE_TITLE = 'Portfolio Alan Pacheco'
+router.afterEach((to) => {
+  if (to.name === 'Project' && to.params.id) {
+    document.title = `${to.params.id} | ${BASE_TITLE}`
+  } else {
+    const titles = {
+      Home: `${BASE_TITLE} — Software Engineer`,
+      About: `About | ${BASE_TITLE}`,
+      Gallery: `Gallery | ${BASE_TITLE}`,
+    }
+    document.title = titles[to.name] || BASE_TITLE
+  }
+})
 
 export default router;

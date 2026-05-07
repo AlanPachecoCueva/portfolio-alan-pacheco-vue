@@ -49,6 +49,17 @@ export default {
 </script>
 
 <style scoped>
+/* ── xs: < 600px ── */
+@media (max-width: 599px) {
+  .hero-social-icon {
+    width: 2.5em;
+    height: 2.5em;
+  }
+
+  .card {
+    padding: 10px;
+  }
+}
 
 /* Aquí van los estilos específicos del componente */
 #arrow {
