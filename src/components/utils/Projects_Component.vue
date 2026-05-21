@@ -252,20 +252,54 @@ export default {
   .container {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    margin: 0;
-    padding: 16px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
     box-sizing: border-box;
+  }
+
+  .menu-item {
+    height: fit-content;
+    padding: 16px 0;
+    box-shadow: none;
+  }
+
+  .menu-content {
+    flex-direction: column;
+  }
+
+  .menu-content-left {
+    flex-direction: row;
+    height: auto;
+    width: 100%;
+    padding: 10px 0 8px 0;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .menu-content-left p {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 0.75em;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
+  .single-line {
+    width: 30px;
+    height: 3px;
+    margin-top: 0;
+    margin-left: 8px;
+  }
+
+  .menu-content-right {
+    width: 100%;
   }
 
   .item {
     height: auto;
     max-height: 300px;
     margin: 12px 0;
-  }
-
-  .menu-item {
-    height: fit-content;
   }
 
   .menu-title {

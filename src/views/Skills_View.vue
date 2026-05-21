@@ -112,6 +112,109 @@ export default {
 </script>
 
 <style scoped>
+/* ── Base styles (desktop) ── */
+.bigContainer_Skills {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5% 0px 5% 0px;
+}
+
+.leftSide {
+  width: 44%;
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0px 0px 5px;
+  align-items: center;
+  justify-content: start;
+}
+
+.leftSide_Left {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: 100%;
+  padding: 20px 10px 10px 0px;
+}
+
+.leftSide_Left p {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.single-line {
+  margin-top: 20px;
+  width: 3px;
+  height: 60px;
+}
+
+.leftSide_Up {
+  font-size: larger;
+}
+
+.leftSide_Up h2 {
+  margin: 10px 0px 30px 0px;
+  font-weight: bold;
+}
+
+.leftSide_Up p {
+  font-size: medium;
+}
+
+.leftSide_Down {
+  margin: 35px 0px 10px 0px;
+  display: inline-block;
+  border-radius: 20px;
+  padding: 5px;
+  position: relative;
+}
+
+.rightSide {
+  width: 44%;
+}
+
+.button-container {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: fit-content;
+}
+
+.button {
+  background-color: transparent;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 20px;
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background-color: orange;
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+  z-index: 0;
+}
+
+.slider.left {
+  transform: translateX(0);
+}
+
+.slider.right {
+  transform: translateX(100%);
+}
+
 /* ── md: 960–1279px ── */
 @media (max-width: 1279px) {
   .leftSide {
@@ -149,128 +252,43 @@ export default {
   }
 
   .leftSide {
+    width: 90%;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 10px auto 0 auto;
+  }
+
+  .leftSide_Left {
+    flex-direction: row;
+    height: auto;
+    width: 100%;
+    padding: 10px 0 8px 0;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .leftSide_Left p {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 0.75em;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
+  .single-line {
+    width: 30px;
+    height: 3px;
+    margin-top: 0;
+    margin-left: 8px;
+  }
+
+  .leftSide_Right {
     width: 100%;
   }
 
   .rightSide {
-    width: 95%;
+    width: 90%;
     margin: 20px 0 50px 0;
   }
-}
-
-.bigContainer_Skills {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-
-  margin: 5% 0px 5% 0px;
-}
-
-.leftSide {
-  width: 44%;
-
-  display: flex;
-  flex-direction: row;
-
-  margin: 15px 0px 0px 5px;
-
-  align-items: center;
-  justify-content: start;
-}
-
-.leftSide_Left {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  height: 100%;
-
-  padding: 20px 10px 10px 0px;
-}
-
-.leftSide_Left p {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-}
-
-.single-line {
-  margin-top: 20px;
-  width: 3px;
-  height: 60px;
-}
-
-.leftSide_Up {
-  font-size: larger;
-}
-
-.leftSide_Up h2 {
-  margin: 10px 0px 30px 0px;
-  font-weight: bold;
-}
-
-.leftSide_Up p {
-  font-size: medium;
-}
-
-.leftSide_Down {
-  margin: 35px 0px 10px 0px;
-}
-
-.rightSide {
-  width: 44%;
-}
-
-.button {
-  border-radius: 20px;
-  border: 1px solid rgb(255, 255, 255);
-}
-
-.leftSide_Down {
-  display: inline-block;
-  border-radius: 20px;
-  padding: 5px;
-  position: relative;
-}
-
-.button-container {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  width: fit-content;
-  position: relative;
-}
-
-.button {
-  background-color: transparent;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 20px;
-  transition: color 0.3s ease;
-  position: relative;
-  z-index: 1;
-}
-
-.slider {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50%;
-  background-color: orange;
-  border-radius: 20px;
-  transition: transform 0.3s ease;
-  z-index: 0;
-}
-
-.slider.left {
-  transform: translateX(0);
-}
-
-.slider.right {
-  transform: translateX(100%);
 }
 </style>

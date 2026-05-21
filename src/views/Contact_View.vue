@@ -190,57 +190,7 @@ export default {
 </script>
 
 <style scoped>
-/* ── md: 960–1279px ── */
-@media (max-width: 1279px) {
-  .contact-container {
-    margin: 5% 5%;
-    padding: 20px;
-    gap: 15px;
-  }
-}
-
-/* ── sm: 600–959px ── */
-@media (max-width: 959px) {
-  .contact-container {
-    flex-direction: column;
-    align-items: center;
-    margin: 5% 3%;
-    padding: 16px;
-  }
-
-  .contact-info {
-    width: 95%;
-  }
-
-  .contact-form {
-    width: 95%;
-    margin-top: 20px;
-  }
-}
-
-/* ── xs: < 600px ── */
-@media (max-width: 599px) {
-  .contact-container {
-    flex-direction: column;
-    margin: 5% 0;
-    padding: 10px;
-  }
-
-  .contact-info {
-    width: 100%;
-  }
-
-  .contact-info-down {
-    padding: 5% 7% 0 7%;
-  }
-
-  .contact-form {
-    width: 100%;
-    padding: 20px;
-    border-radius: 8px;
-  }
-}
-/* Contenedor principal para alinear ambas secciones (izquierda y derecha) */
+/* ── Base styles (desktop) ── */
 .contact-container {
   display: flex;
   justify-content: space-between;
@@ -263,7 +213,6 @@ export default {
   justify-content: start;
   align-items: center;
   height: 100%;
-
   padding: 20px 10px 10px 0px;
 }
 
@@ -312,7 +261,6 @@ export default {
   color: orange;
 }
 
-/* Sección del formulario */
 .contact-form {
   width: 45%;
   padding: 20px;
@@ -365,5 +313,90 @@ button:hover {
 
 #sendButton {
   color: white;
+}
+
+/* ── md: 960–1279px ── */
+@media (max-width: 1279px) {
+  .contact-container {
+    margin: 5% 5%;
+    padding: 20px;
+    gap: 15px;
+  }
+}
+
+/* ── sm: 600–959px ── */
+@media (max-width: 959px) {
+  .contact-container {
+    flex-direction: column;
+    align-items: center;
+    margin: 5% 3%;
+    padding: 16px;
+  }
+
+  .contact-info {
+    width: 95%;
+  }
+
+  .contact-form {
+    width: 95%;
+    margin-top: 20px;
+  }
+}
+
+/* ── xs: < 600px ── */
+@media (max-width: 599px) {
+  .contact-container {
+    flex-direction: column;
+    margin: 5% 0;
+    padding: 0 5%;
+  }
+
+  .contact-info {
+    width: 100%;
+  }
+
+  .contact-info-up {
+    flex-direction: column;
+  }
+
+  .contact-info-up-left {
+    flex-direction: row;
+    height: auto;
+    width: 100%;
+    padding: 10px 0 8px 0;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .contact-info-up-left p {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 0.75em;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
+  .single-line {
+    width: 30px;
+    height: 3px;
+    margin-top: 0;
+    margin-left: 8px;
+  }
+
+  .contact-info-up-right {
+    width: 100%;
+  }
+
+  .contact-info-down {
+    padding-top: 5px;
+  }
+
+  .contact-form {
+    width: 100%;
+    padding: 20px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin-top: 20px;
+  }
 }
 </style>

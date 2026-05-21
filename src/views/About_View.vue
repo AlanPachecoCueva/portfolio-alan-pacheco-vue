@@ -65,6 +65,74 @@ export default {
 </script>
 
 <style scoped>
+/* ── Base styles (desktop) ── */
+#rightButton {
+  font-weight: bold;
+}
+
+.bigContainerAbout {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 5% 0px 5% 0px;
+}
+
+.leftSideAbout {
+  width: 40%;
+}
+
+.leftSideAbout img {
+  width: 100%;
+}
+
+.rightSideAbout {
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  margin: 0 0 100px 0;
+}
+
+.right-leftContainer {
+  margin: 15px 5px 5px 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.single-line {
+  margin-top: 20px;
+  width: 3px;
+  height: 20%;
+}
+
+.right-leftContainer p {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+.right-rightContainer {
+  margin: 0px 5px 0px 5px;
+}
+
+.right-rightContainer-upper {
+  margin: 5px 5px 5px 5px;
+}
+
+.right-rightContainer-upper h2 {
+  margin: 10px 0px 10px 0px;
+}
+
+.right-rightContainer-upper p {
+  margin: 30px 0px 30px 0px;
+}
+
+#leftButton {
+  margin-right: 30px;
+  color: white;
+}
+
 /* ── md: 960–1279px ── */
 @media (max-width: 1279px) {
   .leftSideAbout {
@@ -118,14 +186,12 @@ export default {
     width: 90%;
   }
 
-  /* Contenedor derecho apila label + contenido verticalmente */
   .rightSideAbout {
     width: 90%;
     flex-direction: column;
     margin: 10px 0 20px 0;
   }
 
-  /* "ABOUT ME" + línea: pasan de columna vertical a fila horizontal */
   .right-leftContainer {
     flex-direction: row;
     align-items: center;
@@ -133,27 +199,30 @@ export default {
     height: auto;
     padding: 10px 0 8px 0;
     margin: 0 0 4px 0;
+    width: 100%;
   }
 
   .right-leftContainer p {
-    writing-mode: horizontal-tb !important;
-    transform: none !important;
+    writing-mode: horizontal-tb;
+    transform: none;
     font-size: 0.75em;
     font-weight: bold;
     letter-spacing: 2px;
   }
 
-  /* Línea pasa de vertical (3px × 20%) a horizontal (30px × 3px) */
   .single-line {
-    width: 30px !important;
-    height: 3px !important;
-    margin-top: 0 !important;
-    margin-left: 8px !important;
+    width: 30px;
+    height: 3px;
+    margin-top: 0;
+    margin-left: 8px;
   }
 
-  /* Contenido ocupa todo el ancho disponible */
   .right-rightContainer {
     width: 100%;
+    margin: 0;
+  }
+
+  .right-rightContainer-upper {
     margin: 0;
   }
 
@@ -167,90 +236,24 @@ export default {
     gap: 10px;
   }
 
+  .right-rightContainer-lower a {
+    flex: 2;
+    display: flex;
+  }
+
   #leftButton {
-    flex: 1 !important;
-    width: auto !important;
-    font-size: 11px !important;
-    padding: 10px 5px !important;
+    width: 100%;
+    margin-right: 0;
+    font-size: 11px;
+    padding: 10px 5px;
     font-weight: bold;
   }
 
   #rightButton {
-    flex: 1 !important;
-    width: auto !important;
-    font-size: 11px !important;
-    padding: 10px 5px !important;
+    flex: 3;
+    width: auto;
+    font-size: 11px;
+    padding: 10px 5px;
   }
-}
-
-#rightButton {
-  font-weight: bold;
-}
-
-.bigContainerAbout {
-  display: flex;
-
-  width: 100%;
-
-  justify-content: center;
-  align-items: center;
-
-  margin: 5% 0px 5% 0px;
-}
-
-.leftSideAbout {
-  width: 40%;
-}
-
-.leftSideAbout img {
-  width: 100%;
-}
-
-.rightSideAbout {
-  width: 40%;
-
-  display: flex;
-  flex-direction: row;
-  margin: 0 0 100px 0;
-}
-
-.right-leftContainer {
-  margin: 15px 5px 5px 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
-}
-
-.single-line {
-  margin-top: 20px;
-  width: 3px;
-  height: 20%;
-}
-
-.right-leftContainer p {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-}
-
-.right-rightContainer {
-  margin: 0px 5px 0px 5px;
-}
-
-.right-rightContainer-upper {
-  margin: 5px 5px 5px 5px;
-}
-
-.right-rightContainer-upper h2 {
-  margin: 10px 0px 10px 0px;
-}
-
-.right-rightContainer-upper p {
-  margin: 30px 0px 30px 0px;
-}
-
-#leftButton {
-  margin-right: 30px;
-  color: white;
 }
 </style>

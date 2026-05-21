@@ -191,7 +191,7 @@ export default {
 /* ── xs: < 600px ── */
 @media (max-width: 599px) {
   .home-content {
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 8% 5%;
     box-sizing: border-box;
   }
