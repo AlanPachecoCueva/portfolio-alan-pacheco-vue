@@ -15,6 +15,8 @@
           <li><router-link :to="{ name: 'Home', hash: '#skills-view' }"><a>{{ $t("Skills_Text") }}</a></router-link></li>
           <li><router-link :to="{ name: 'Home', hash: '#projects-view' }"><a>{{ $t("Portfolio_Text") }}</a></router-link></li>
           <li><router-link :to="{ name: 'Home', hash: '#contact-view' }"><a>{{ $t("Contact_Text") }}</a></router-link></li>
+          <li><router-link :to="{ name: 'Gallery' }"><a>{{ $t("Gallery_Text") }}</a></router-link></li>
+          <li><router-link :to="{ name: 'Achievements' }"><a>{{ $t("Achievements_Text") }}</a></router-link></li>
         </div>
         <div class="nav-sides" id="right-side">
           <li><Language_Selector_Component id="languageSelector"></Language_Selector_Component></li>
@@ -40,6 +42,8 @@
         <li @click="menuOpen = false"><router-link :to="{ name: 'Home', hash: '#skills-view' }">{{ $t("Skills_Text") }}</router-link></li>
         <li @click="menuOpen = false"><router-link :to="{ name: 'Home', hash: '#projects-view' }">{{ $t("Portfolio_Text") }}</router-link></li>
         <li @click="menuOpen = false"><router-link :to="{ name: 'Home', hash: '#contact-view' }">{{ $t("Contact_Text") }}</router-link></li>
+        <li @click="menuOpen = false"><router-link :to="{ name: 'Gallery' }">{{ $t("Gallery_Text") }}</router-link></li>
+        <li @click="menuOpen = false"><router-link :to="{ name: 'Achievements' }">{{ $t("Achievements_Text") }}</router-link></li>
       </ul>
     </div>
   </header>

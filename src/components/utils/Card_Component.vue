@@ -1,103 +1,101 @@
 <template>
-  <router-link :to="{ name: 'Home', hash: `${url}` }">
-    <div class="card">
-      <div id="card_left_side">
-        <Icon class="hero-social-icon" :icon="getIconName()" />
-      </div>
-      <div id="card_right_side">
-        <h2>{{ title }}</h2>
-        <p>{{ content }}</p>
-      </div>
-      <Icon id="arrow" class="hero-social-icon" icon="ep:arrow-right-bold" />
-    </div>
+  <router-link
+    :to="routeName ? { name: routeName } : { name: 'Home', hash: url }"
+    class="card-link"
+  >
+    <Icon class="card-icon" :icon="icon_name" />
+    <h2 class="card-title">{{ title }}</h2>
+    <Icon class="card-arrow" icon="ep:arrow-right-bold" />
   </router-link>
 </template>
 
 <script>
-import { stringifyQuery } from "vue-router";
-
 export default {
-  name: "CardComponent", // Nombre del componente
-
+  name: 'CardComponent',
   props: {
     url: {
-      type: String, // Tipo de la prop
-      required: true, // Marca la prop como requerida
+      type: String,
+      default: '',
+    },
+    routeName: {
+      type: String,
+      default: '',
     },
     title: {
-      type: String, // Tipo de la prop
-      required: true, // Marca la prop como requerida
+      type: String,
+      required: true,
     },
     content: {
       type: String,
-      required: false,
-      default: "", // Valor por defecto si no se pasa la prop
+      default: '',
     },
     icon_name: {
-      type: stringifyQuery,
+      type: String,
       required: true,
-      default: "token-branded:moon",
+      default: 'token-branded:moon',
     },
   },
-  methods: {
-    getIconName() {
-      let aux = this.icon_name;
-      return aux;
-    },
-  },
-};
+}
 </script>
 
 <style scoped>
-/* ── xs: < 600px ── */
-@media (max-width: 599px) {
-  .hero-social-icon {
-    width: 2.5em;
-    height: 2.5em;
-  }
-
-  .card {
-    padding: 10px;
-  }
-}
-
-/* Aquí van los estilos específicos del componente */
-#arrow {
-  width: 22px;
-}
-
-.card:hover #arrow {
-  color: rgb(113, 111, 111);
-}
-
-.card {
-  /* border: 1px solid #ccc; */
-  padding: 16px;
-
+/* El router-link ES la card — toda el área es clickeable y animada */
+.card-link {
   display: flex;
-
-  justify-content: space-around;
   align-items: center;
-
-  color: inherit;
-  font-size: 16px;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px 24px;
   border-radius: 15px;
-  transition: transform 0.2s ease-in-out; /* Para suavizar la animación */
-  cursor: pointer; /* Cambia el cursor a pointer */
-  box-shadow: 10px black;
+  box-sizing: border-box;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
 
-.card:hover {
-  transform: translateY(-10px); /* Hace que el objeto "salte" */
+.card-link:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
 }
 
-.hero-social-icon {
-  display: inline-block;
+.card-icon {
+  flex-shrink: 0;
   width: 4em;
   height: 4em;
 }
 
-.goToA {
-  text-decoration: none;
+.card-title {
+  font-size: 1em;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.card-arrow {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  opacity: 0.4;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.card-link:hover .card-arrow {
+  opacity: 0.9;
+  transform: translateX(5px);
+}
+
+/* ── xs: < 600px ── */
+@media (max-width: 599px) {
+  .card-link {
+    padding: 14px 18px;
+    gap: 12px;
+  }
+
+  .card-icon {
+    width: 3.2em;
+    height: 3.2em;
+  }
 }
 </style>

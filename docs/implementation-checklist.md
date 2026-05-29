@@ -2,31 +2,31 @@
 
 > Marcar con `[x]` cuando la actividad esté completada.
 > Referencia de arquitectura: `docs/admin-module-architecture.md`
-> Última actualización: 2026-05-21
+> Última actualización: 2026-05-26
 
 ---
 
 ## FASE 1 — Configuración de Firebase
 
-- [ ] **1.1 Crear proyecto en Firebase Console**
+- [x] **1.1 Crear proyecto en Firebase Console**
   Ir a console.firebase.google.com → "Add project" → nombrar el proyecto (ej: `portfolio-alan-pacheco`) → desactivar Google Analytics si no se necesita.
 
-- [ ] **1.2 Activar Firebase Authentication**
+- [x] **1.2 Activar Firebase Authentication**
   En el proyecto de Firebase: Authentication → Get Started → Sign-in method → habilitar "Email/Password".
 
-- [ ] **1.3 Activar Cloud Firestore**
+- [x] **1.3 Activar Cloud Firestore**
   Firestore Database → Create database → elegir modo "Production" (no test) → seleccionar región (us-central1 o la más cercana).
 
-- [ ] **1.4 Activar Firebase Storage**
+- [x] **1.4 Activar Firebase Storage**
   Storage → Get Started → modo Production → misma región que Firestore.
 
-- [ ] **1.5 Obtener credenciales del proyecto**
+- [x] **1.5 Obtener credenciales del proyecto**
   Project Settings → General → "Your apps" → Add app → Web → registrar app → copiar el objeto `firebaseConfig` con todas las claves.
 
-- [ ] **1.6 Crear usuario administrador en Firebase Auth**
+- [x] **1.6 Crear usuario administrador en Firebase Auth**
   Authentication → Users → Add user → ingresar email y contraseña del admin (Alan).
 
-- [ ] **1.7 Agregar variables de entorno al proyecto**
+- [x] **1.7 Agregar variables de entorno al proyecto**
   Agregar al archivo `.env` las 6 variables de Firebase:
   ```
   VITE_FIREBASE_API_KEY=
@@ -42,50 +42,50 @@
 
 ## FASE 2 — Integración de Firebase en el proyecto Vue
 
-- [ ] **2.1 Instalar el SDK de Firebase**
+- [x] **2.1 Instalar el SDK de Firebase**
   ```bash
   npm install firebase
   ```
 
-- [ ] **2.2 Crear `src/firebase/index.js`**
+- [x] **2.2 Crear `src/firebase/index.js`**
   Inicializar Firebase con las variables de entorno. Exportar `app`, `db` (Firestore), `storage` y `auth`.
 
-- [ ] **2.3 Crear `src/firebase/auth.js`**
+- [x] **2.3 Crear `src/firebase/auth.js`**
   Funciones: `login(email, password)`, `logout()`, `onAuthStateChanged(callback)`.
   Incluir `setPersistence(browserLocalPersistence)` para que la sesión persista al recargar.
 
-- [ ] **2.4 Crear `src/firebase/images.js`**
+- [x] **2.4 Crear `src/firebase/images.js`**
   Funciones: `uploadImage(file, metadata)`, `deleteImage(storagePath, imageId)`, `toggleShowInGallery(imageId, value)`, `getAllImages()`, `getGalleryImages()`.
 
-- [ ] **2.5 Crear `src/firebase/albums.js`**
+- [x] **2.5 Crear `src/firebase/albums.js`**
   Funciones: `getAlbums()`, `createAlbum(data)`, `updateAlbum(id, data)`, `deleteAlbum(id)`.
 
-- [ ] **2.6 Crear `src/firebase/projects.js`**
+- [x] **2.6 Crear `src/firebase/projects.js`**
   Funciones: `getPublishedProjects()`, `getAllProjects()`, `getProjectById(id)`, `createProject(data)`, `updateProject(id, data)`, `deleteProject(id)`.
 
-- [ ] **2.7 Crear `src/firebase/achievements.js`**
+- [x] **2.7 Crear `src/firebase/achievements.js`**
   Funciones: `getPublishedAchievements()`, `getAllAchievements()`, `getAchievementById(id)`, `createAchievement(data)`, `updateAchievement(id, data)`, `deleteAchievement(id)`.
 
 ---
 
 ## FASE 3 — Composables (reemplazo de Pinia)
 
-- [ ] **3.1 Crear `src/composables/useAuth.js`**
+- [x] **3.1 Crear `src/composables/useAuth.js`**
   Expone: `user` (ref reactivo), `isAdmin` (computed), `login()`, `logout()`.
   Escucha cambios de sesión con `onAuthStateChanged` al montar.
 
-- [ ] **3.2 Crear `src/composables/useImages.js`**
+- [x] **3.2 Crear `src/composables/useImages.js`**
   Expone: `images` (lista reactiva), `galleryImages` (filtrado por showInGallery), `upload()`, `remove()`, `toggleGallery()`.
   Usa `onSnapshot` de Firestore para actualizaciones en tiempo real.
 
-- [ ] **3.3 Crear `src/composables/useAlbums.js`**
+- [x] **3.3 Crear `src/composables/useAlbums.js`**
   Expone: `albums` (lista reactiva para los dropdowns), `create()`, `update()`, `remove()`.
 
-- [ ] **3.4 Crear `src/composables/useProjects.js`**
+- [x] **3.4 Crear `src/composables/useProjects.js`**
   Expone: `projects` (lista reactiva de proyectos publicados, ordenados según regla de `order`), `allProjects` (todos, para el admin).
   Reemplaza `projectsStore.js` de Pinia.
 
-- [ ] **3.5 Crear `src/composables/useAchievements.js`**
+- [x] **3.5 Crear `src/composables/useAchievements.js`**
   Expone: `achievements` (publicados, ordenados), `allAchievements` (para el admin), `getById(id)`.
 
 ---
@@ -96,20 +96,15 @@
   Crear manualmente (o con script) los álbumes que ya existen en la galería actual:
   "KVMI Rewards", "Infomatrix 2023", "Ingennials", "Graduación UDLA", "Ayudantía de Cátedra", "Robomatrix", "Water's Life", "Eduware", "CowID", "Banco Internacional", "PwC".
 
-- [ ] **4.2 Crear documento `admins/{uid}` en Firestore**
+- [x] **4.2 Crear documento `admins/{uid}` en Firestore**
   Tomar el UID del usuario creado en el paso 1.6 y crear el documento en la colección `admins`.
 
 - [ ] **4.3 Migrar imágenes de galería a Firebase Storage**
   Subir las ~70 fotos de `public/images/` a Storage en la carpeta `images/`.
   Para cada imagen: crear documento en la colección `images` con sus metadatos actuales (`title`, `description`, `date`, `sizeFactor`, `albumId`, `showInGallery: true`).
 
-- [ ] **4.4 Migrar proyectos a Firestore**
-  Para cada uno de los 4 proyectos actuales (Mikhuna, KVMI, Guru, CowID):
-  - Subir imagen thumbnail a Storage
-  - Subir imágenes de detalle a Storage
-  - Crear documento en `projects` con todos los campos del modelo
-  - Agregar `description_es` y `description_en` (los textos están en los diccionarios de i18n)
-  - Asignar `category` a cada proyecto: CowID → "mobile", KVMI → "web", Guru → "web", Mikhuna → "web"
+- [x] **4.4 Migrar proyectos a Firestore**
+  Proyectos creados y publicados desde el admin panel con imágenes en Storage.
 
 - [ ] **4.5 Eliminar archivos estáticos reemplazados**
   Una vez verificado que los datos están correctamente en Firestore:
@@ -122,47 +117,45 @@
 
 ## FASE 5 — Actualización del frontend público
 
-- [ ] **5.1 Actualizar `Gallery_View.vue`**
-  Reemplazar el array hardcodeado de ~70 fotos por `useImages().galleryImages`.
+- [x] **5.1 Actualizar `Gallery_View.vue`**
+  Reemplazado el array hardcodeado de ~70 fotos por `useGalleryImages()`.
   La galería muestra las imágenes donde `showInGallery == true`, con sus metadatos de Firestore.
 
-- [ ] **5.2 Actualizar `Projects_Component.vue`**
-  Reemplazar la lectura del store de Pinia por `useProjects().projects`.
-  Implementar el filtro por `category` en los botones ALL/WEB/IA/MOBILE (actualmente sin funcionalidad).
+- [x] **5.2 Actualizar `Projects_Component.vue`**
+  Reemplazada la lectura del store de Pinia por `usePublishedProjects()`.
+  Filtros ALL/WEB/IA/MOBILE implementados con `activeFilter` + computed `filteredItems`.
 
-- [ ] **5.3 Actualizar `Project_Component.vue` (vista de detalle)**
-  Reemplazar la lectura de localStorage/Pinia por un query a Firestore usando `getProjectById(route.params.id)`.
-  Manejar el caso de proyecto no encontrado (redirigir a home o mostrar 404).
+- [x] **5.3 Actualizar `Project_Component.vue` (vista de detalle)**
+  Reemplazada la lectura de Pinia por `getProject(route.params.id)` desde Firestore.
+  Descripción bilingüe (`description_es` / `description_en`) según idioma activo.
 
-- [ ] **5.4 Actualizar `router.js`**
-  Agregar todas las rutas del módulo admin (`/admin/**`) y la ruta pública `/achievements`.
-  Agregar el navigation guard que valida sesión y pertenencia a la colección `admins`.
+- [x] **5.4 Actualizar `router.js`**
+  Agregadas todas las rutas del módulo admin (`/admin/**`) y la ruta pública `/achievements`.
+  Navigation guard implementado con caché de auth para evitar redirects innecesarios.
 
 ---
 
 ## FASE 6 — Módulo Admin: Autenticación
 
-- [ ] **6.1 Crear `src/views/admin/Admin_Login.vue`**
+- [x] **6.1 Crear `src/views/admin/Admin_Login.vue`**
   Formulario con campos email y password.
   Al hacer login exitoso → redirigir a `/admin/projects`.
-  Mostrar error si las credenciales son incorrectas o el usuario no está en `admins`.
+  Muestra error si las credenciales son incorrectas o el usuario no está en `admins`.
+  Muestra mensaje de sesión expirada si viene del timeout de inactividad.
 
-- [ ] **6.2 Crear layout/shell del admin**
-  Navbar lateral o superior con links a: Proyectos, Logros, Imágenes, Álbumes.
-  Botón de cerrar sesión.
-  Mostrar el email del usuario logueado.
-  Aplicar en todas las vistas `/admin/**` (excepto login).
+- [x] **6.2 Crear layout/shell del admin (`Admin_Nav.vue`)**
+  Navbar superior con links a: Proyectos, Logros, Imágenes, Álbumes.
+  Botón de cerrar sesión. Email del usuario logueado.
+  Timer de inactividad de 3 horas con aviso de 60 segundos antes de cerrar sesión.
 
 ---
 
 ## FASE 7 — Módulo Admin: Gestión de Álbumes
 
-- [ ] **7.1 Crear `src/views/admin/Admin_Albums.vue`**
-  Tabla con lista de álbumes (nombre, orden, fecha de creación, acciones).
-  Botón "Nuevo álbum".
-  Acciones por fila: editar nombre/orden, eliminar (con confirmación).
+- [x] **7.1 Crear `src/views/admin/Admin_Albums.vue`**
+  Lista de álbumes con creación, edición de nombre y eliminación inline.
 
-- [ ] **7.2 Validación al eliminar álbum**
+- [x] **7.2 Validación al eliminar álbum**
   Antes de eliminar un álbum, verificar si hay imágenes que lo referencian.
   Si hay imágenes asociadas, mostrar aviso y no permitir eliminación (o preguntar qué hacer con ellas).
 
@@ -170,117 +163,71 @@
 
 ## FASE 8 — Módulo Admin: Gestión de Imágenes
 
-- [ ] **8.1 Crear `src/components/admin/ImageUploader.vue`**
-  Componente reutilizable de carga de imágenes.
-  Soporte drag & drop y selector de archivo.
-  Permite subir múltiples imágenes a la vez.
-  Al subir cada imagen, muestra formulario para: `title`, `description`, `date`, `album` (dropdown de `useAlbums()`), `sizeFactor`, toggle `showInGallery`.
-  Sube a Firebase Storage y crea documento en Firestore.
+- [x] **8.1 Crear `src/components/admin/Image_Uploader.vue`**
+  Drag & drop y selector de archivo. Múltiples imágenes simultáneas.
+  Formulario por imagen: `title`, `description`, `album`, `sizeFactor`, `showInGallery`.
+  Barras de progreso de subida. Sube a Storage y crea documento en Firestore.
 
-- [ ] **8.2 Crear `src/components/admin/ImagePicker.vue`**
-  Modal/panel con grid de todas las imágenes subidas al sistema.
-  Permite buscar/filtrar por álbum.
-  Al seleccionar una imagen, emite evento con el `imageId` y `url`.
-  Usado en los formularios de proyectos y logros.
+- [x] **8.2 Crear `src/components/admin/Image_Picker.vue`**
+  Modal con grid de todas las imágenes. Filtro por álbum y búsqueda por título.
+  Modo single (un clic → selección) y modo multi (checkboxes, selección múltiple).
 
-- [ ] **8.3 Crear `src/views/admin/Admin_Images.vue`**
-  Grid de todas las imágenes del sistema.
-  Filtro por álbum.
-  Cada imagen muestra: thumbnail, título, álbum, toggle de `showInGallery`, botón eliminar.
-  Botón "Subir imágenes" que abre el `ImageUploader`.
-  Al eliminar: borrar de Storage y de Firestore.
+- [x] **8.3 Crear `src/views/admin/Admin_Images.vue`**
+  Grid de imágenes con filtro y búsqueda. Toggle `showInGallery` por tarjeta.
+  Lightbox al hacer clic en imagen. Modal de edición (título, descripción, álbum, sizeFactor).
+  Botón "Subir imágenes" que abre el uploader.
+
+- [x] **8.4 Crear `src/components/admin/Image_Selector.vue`** *(extra)*
+  Componente combinado (drop zone + "Elegir de biblioteca") para usar en formularios de proyectos y logros.
 
 ---
 
 ## FASE 9 — Módulo Admin: Gestión de Proyectos
 
-- [ ] **9.1 Crear `src/views/admin/Admin_Projects.vue`**
-  Tabla con lista de todos los proyectos (publicados y borradores).
-  Columnas: título, categoría, tecnología, orden, estado (publicado/borrador), acciones.
-  Botón "Nuevo proyecto".
-  Acciones: editar, eliminar (con confirmación), toggle publicado/borrador.
+- [x] **9.1 Crear `src/views/admin/Admin_Projects.vue`**
+  Tabla con todos los proyectos. Toggle publicado/borrador. Editar y eliminar.
 
-- [ ] **9.2 Crear `src/components/admin/ProjectForm.vue`**
-  Formulario completo para crear y editar proyectos. Campos:
-  - `title`
-  - `description_es` (textarea)
-  - `description_en` (textarea)
-  - `date`
-  - `url` (opcional)
-  - `category` (select: web / ai / mobile / other)
-  - `technology` (texto libre)
-  - `relatedTechnologies` (chips/tags editables)
-  - `columns` y `rows` (número para el grid)
-  - `order` (número, opcional)
-  - `published` (toggle)
-  - **Thumbnail**: botón "Elegir imagen existente" (abre `ImagePicker`) o "Subir nueva imagen" (abre `ImageUploader`). Muestra preview.
-  - **Imágenes de detalle**: lista de imágenes seleccionadas con `ImagePicker` o subidas. Cada imagen tiene campos `columns`, `rows`, `layout`. Permite reordenar y eliminar.
+- [x] **9.2 Crear `src/views/admin/Admin_ProjectForm.vue`**
+  Formulario completo: título, descripción ES/EN, fecha, URL, categoría, tecnologías (tags), thumbnail (Image_Selector), imágenes de detalle (Image_Selector multi), grid columns/rows, orden, publicado.
 
-- [ ] **9.3 Lógica de guardado de proyecto**
-  Al guardar, cachear `thumbnailUrl` desde el documento de imagen seleccionado.
-  Cachear `imageUrls` (array de objetos con url, columns, rows, layout) para evitar joins en la vista pública.
+- [x] **9.3 Lógica de guardado de proyecto**
+  Cachea `thumbnailUrl` e `imageUrls` (con columns/rows por imagen) en el documento de Firestore.
 
 ---
 
 ## FASE 10 — Módulo Admin: Gestión de Logros
 
-- [ ] **10.1 Crear `src/views/admin/Admin_Achievements.vue`**
-  Tabla con lista de todos los logros (publicados y borradores).
-  Columnas: título, tipo, emisor, orden, estado, acciones.
-  Botón "Nuevo logro".
-  Acciones: editar, eliminar, toggle publicado/borrador.
+- [x] **10.1 Crear `src/views/admin/Admin_Achievements.vue`**
+  Tabla con todos los logros. Toggle publicado/borrador. Editar y eliminar.
 
-- [ ] **10.2 Crear `src/components/admin/AchievementForm.vue`**
-  Formulario completo para crear y editar logros. Campos:
-  - `title`
-  - `description_es` (textarea)
-  - `description_en` (textarea)
-  - `date`
-  - `type` (select: award / certification / competition / academic / work)
-  - `issuer` (texto libre: "UDLA", "Ingennials", etc.)
-  - `link` (URL opcional al certificado)
-  - `order` (número, opcional)
-  - `published` (toggle)
-  - **Thumbnail**: igual que en proyectos (ImagePicker o ImageUploader)
-  - **Imágenes relacionadas**: lista de imágenes del logro (misma lógica que detalle de proyectos)
+- [x] **10.2 Crear `src/views/admin/Admin_AchievementForm.vue`**
+  Formulario completo: título, descripción ES/EN, fecha, tipo, emisor, link, thumbnail (Image_Selector), imágenes relacionadas (Image_Selector multi), orden, publicado.
 
 ---
 
 ## FASE 11 — Vista pública de Logros
 
-- [ ] **11.1 Crear `src/views/Achievements_View.vue`**
-  Vista pública accesible en `/achievements`.
-  Estructura visual similar a la sección "My Works" (grid de cards).
-  Cada card muestra: imagen, título, tipo, emisor, fecha.
-  Al hacer clic → vista de detalle del logro (similar a `Project_Component.vue`).
-  Soporte bilingüe: mostrar `title`, `description_es` o `description_en` según el idioma activo (`$i18n.locale`).
+- [x] **11.1 Crear `src/views/Achievements_View.vue`**
+  Vista pública en `/achievements` con grid de logros publicados desde Firestore.
 
-- [ ] **11.2 Agregar ruta `/achievements` en `router.js`**
-  ```js
-  { path: '/achievements', name: 'Achievements', component: Achievements_View }
-  ```
-  Actualizar el `afterEach` del router para el `document.title`.
+- [x] **11.2 Agregar ruta `/achievements` en `router.js`**
+  Ruta agregada y document.title actualizado en el afterEach del router.
 
-- [ ] **11.3 Agregar enlace a Achievements en `Nav_Bar.vue`**
+- [x] **11.3 Agregar enlace a Achievements en `Nav_Bar.vue`**
   Agregar "Achievements" (o "Logros" según idioma) en el menú de navegación junto a Gallery.
   Agregar las traducciones correspondientes en los diccionarios de i18n.
+  ⚠️ Pendiente: el Card de Achievements en el home también apunta a `url=""`.
 
 ---
 
 ## FASE 12 — Firebase Security Rules
 
-- [ ] **12.1 Escribir Security Rules de Firestore**
-  Reglas que permiten:
-  - Lectura pública de proyectos publicados (`published == true`)
-  - Lectura pública de imágenes de galería (`showInGallery == true`)
-  - Lectura pública de logros publicados
-  - Lectura pública de álbumes
-  - Escritura solo para admins autenticados (verificando existencia en colección `admins`)
-  - Colección `admins` inaccesible desde el cliente
+- [x] **12.1 Escribir Security Rules de Firestore**
+  Reglas configuradas: lectura pública de colecciones, escritura solo para admins autenticados verificados en colección `admins`.
 
-- [ ] **12.2 Escribir Security Rules de Storage**
-  - Lectura pública de todas las imágenes en `images/`
-  - Escritura (upload/delete) solo para admins autenticados
+- [x] **12.2 Escribir Security Rules de Storage**
+  Lectura pública de `images/`. Escritura solo para autenticados.
+  CORS configurado con `gsutil` para `localhost:5173` y `localhost:4173`.
 
 - [ ] **12.3 Testear las Security Rules**
   Verificar en Firebase Console → Rules Playground:
@@ -293,7 +240,7 @@
 
 ## FASE 13 — Limpieza y verificación final
 
-- [ ] **13.1 Eliminar código de Pinia**
+- [x] **13.1 Eliminar código de Pinia**
   Confirmar que `projectsStore.js` y `projects.js` están eliminados y que ningún componente los importa.
 
 - [ ] **13.2 Eliminar imágenes estáticas migradas**
@@ -305,7 +252,7 @@
 - [ ] **13.4 Verificar soporte bilingüe en vistas públicas**
   Confirmar que al cambiar idioma (ES↔EN), los proyectos y logros muestran el campo correcto (`description_es` o `description_en`).
 
-- [ ] **13.5 Verificar el filtro de categorías en "My Works"**
+- [x] **13.5 Verificar el filtro de categorías en "My Works"**
   Confirmar que los botones ALL / WEB / IA / MOBILE filtran correctamente los proyectos por el campo `category`.
 
 - [ ] **13.6 Test de flujo completo del admin**
@@ -319,5 +266,5 @@
 - [ ] **13.7 Configurar reglas de índices en Firestore**
   Si Firestore lanza errores de "missing index" en las queries compuestas (ej: `published == true` + `order ASC`), crear los índices desde el link que provee el error en consola.
 
-- [ ] **13.8 Revisar y actualizar `CLAUDE.md`**
+- [x] **13.8 Revisar y actualizar `CLAUDE.md`**
   Actualizar la documentación del proyecto para reflejar el nuevo stack (Firebase, composables, rutas admin).

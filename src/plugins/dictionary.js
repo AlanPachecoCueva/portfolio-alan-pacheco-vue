@@ -33,16 +33,21 @@ import {
   all_projects_dicts_es, all_projects_dicts_en
 } from "../plugins/dictionaries/projects-elements-dicts.js";
 
+import {
+  achievements_dic_es, achievements_dic_en
+} from "../plugins/dictionaries/achievements-dicts.js";
+
 export default {
   ES: {
     ...nav_bar_dic_es,
-    ...home_dic_es, 
+    ...home_dic_es,
     ...card_dic_es,
     ...about_me_dic_es,
     ...skills_dic_es,
     ...projects_dic_es,
-    ...Contact_dic_es, 
-    ...all_projects_dicts_es
+    ...Contact_dic_es,
+    ...all_projects_dicts_es,
+    ...achievements_dic_es,
   },
 
   EN: {
@@ -53,6 +58,7 @@ export default {
     ...skills_dic_en,
     ...projects_dic_en,
     ...Contact_dic_en,
-    ...all_projects_dicts_en
+    ...all_projects_dicts_en,
+    ...achievements_dic_en,
   },
 };

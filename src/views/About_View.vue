@@ -1,7 +1,7 @@
 <template>
   <div class="bigContainerAbout">
     <div class="leftSideAbout">
-      <img src="../assets/About-Image.png" alt="img about" />
+      <img src="../assets/About-Image.webp" alt="img about" loading="lazy" />
     </div>
     <div class="rightSideAbout">
       <div class="right-leftContainer">

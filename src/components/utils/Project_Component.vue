@@ -1,5 +1,6 @@
 <template>
-  <div class="bigContainer_Project">
+  <div v-if="loading" style="padding: 60px; text-align: center; color: #888;">Cargando...</div>
+  <div v-else class="bigContainer_Project">
     <div class="infoContainer">
       <div class="flagContainer">
         <div
@@ -9,8 +10,8 @@
         <p>{{ project.technology }}</p>
       </div>
 
-      <h2>{{ project.title }}</h2>
-      <p id="project_description">{{ $t(project.description) }}</p>
+      <h2>{{ $i18n.locale === 'EN' ? (project.title_en || project.title) : project.title }}</h2>
+      <p id="project_description">{{ $i18n.locale === 'EN' ? project.description_en : project.description_es }}</p>
 
       <div class="relatedTecnologies_container">
         <div
@@ -27,24 +28,20 @@
     <div class="imagesContainer">
       <div
         class="item"
-        v-for="image in project.images"
-        :key="image.name"
+        v-for="(image, i) in project.imageUrls"
+        :key="i"
         :style="{
           backgroundColor: getPrimaryColor(),
-          gridColumn: `span ${image.columns}`,
-          gridRow: `span ${image.rows}`,
-          width: `${image.layout}% !important`
+          gridColumn: `span ${image.columns || 1}`,
+          gridRow: `span ${image.rows || 1}`,
         }"
       >
         <div class="overlay">
           <img
             class="item-image"
-            :src="getProjectImage(image.image)"
-            alt="img home"
+            :src="image.url"
+            alt="img"
           />
-          <div class="item-info">
-            <div class="item-title">{{ image.name }}</div>
-          </div>
         </div>
       </div>
     </div>
@@ -52,37 +49,36 @@
 </template>
 
 <script>
+import { ref } from "vue";
 import { useRoute } from "vue-router";
-import { useProjectStore } from "../../plugins/stores/projectsStore.js";
+import { getProject } from "@/firebase/projects.js";
 import { useTheme } from '@/composables/useTheme';
-
-const projectImages = import.meta.glob('/src/assets/projects/**', { eager: true, import: 'default' })
 
 export default {
   name: "Project_Component",
-  methods: {
-    getProjectImage(imagePath) {
-      const img = projectImages[`/src/assets/${imagePath}`]
-      return img?.default || img
-    },
-    generateAlternativeGradientStyle() {
-      return {
-        background: `linear-gradient(to right, ${this.getAlternativeButtonColor()} 50%,  #CACACA 50%)`,
-        backgroundSize: `200% 100%`,
-      };
-    },
-  },
   setup() {
     const route = useRoute();
-    const projectStore = useProjectStore();
+    const project = ref({ imageUrls: [], relatedTechnologies: [] })
+    const loading = ref(true)
 
-    const projectId = route.params.id;
-    const project = projectStore.getProject(projectId);
+    getProject(route.params.id).then((data) => {
+      if (data) project.value = data
+      loading.value = false
+    })
 
     return {
       project,
+      loading,
       ...useTheme(),
     };
+  },
+  methods: {
+    generateAlternativeGradientStyle() {
+      return {
+        background: `linear-gradient(to right, ${this.getAlternativeButtonColor()} 50%, #CACACA 50%)`,
+        backgroundSize: `200% 100%`,
+      };
+    },
   },
 };
 </script>

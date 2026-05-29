@@ -5,7 +5,7 @@
     <div class="cardsContainer">
       <CardComponent
         class="card"
-        url=""
+        route-name="Achievements"
         icon_name="marketeq:reward"
         :title="$t('Card_Achievements')"
         content=""
@@ -21,7 +21,7 @@
       ></CardComponent>
       <CardComponent
         class="card"
-        @click="goToGallery"
+        route-name="Gallery"
         icon_name="marketeq:gallery-collections"
         :title="$t('Card_Galery')"
         content=""
@@ -43,7 +43,7 @@ import AboutView from "../views/About_View.vue";
 import SkillsView from "../views/Skills_View.vue";
 import ProjectsComponent from "../components/utils/Projects_Component.vue";
 import ContactView from "../views/Contact_View.vue";
-import { useProjectStore } from "../plugins/stores/projectsStore.js";
+import { usePublishedProjects } from '@/composables/useProjects.js'
 import { useTheme } from '@/composables/useTheme';
 
 export default {
@@ -56,17 +56,8 @@ export default {
     ProjectsComponent,
     ContactView,
   },
-  data() {
-    return {};
-  },
-  methods: {
-    goToGallery() {
-      this.$router.push({ name: "Gallery" });
-    },
-  },
   setup() {
-    const projectStore = useProjectStore();
-    const projects = projectStore.getAllProjects;
+    const { projects } = usePublishedProjects()
 
     return {
       projects,

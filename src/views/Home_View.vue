@@ -10,6 +10,7 @@
           id="home-image-2"
           src="../assets/color-background.webp"
           alt="img home"
+          fetchpriority="high"
         />
 
         <img
@@ -17,6 +18,7 @@
           class="fade-out-image"
           src="../assets/Home-Image.webp"
           alt="img home"
+          fetchpriority="high"
         />
       </div>
 
