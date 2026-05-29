@@ -131,3 +131,7 @@ dist
 
 .claude
 .claude.md
+
+# Documentación interna / checklists (no son parte del proyecto en producción)
+README.md
+docs/
