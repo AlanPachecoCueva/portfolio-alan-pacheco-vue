@@ -32,6 +32,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    preset: 'static',
     prerender: {
       routes: ['/', '/gallery', '/achievements'],
       ignore: ['/admin'],
