@@ -14,11 +14,11 @@
           <p>{{ $t("About_Me_Paragraph") }}</p>
         </div>
         <div class="right-rightContainer-lower">
-          <router-link :to="{ name: 'Home', hash: '#contact-view' }">
+          <NuxtLink :to="{ name: 'index', hash: '#contact-view' }">
             <button class="button" id="leftButton" :style="generateAlternativeGradientStyle()">
               {{ $t('About_Me_Contact_Me') }}
             </button>
-          </router-link>
+          </NuxtLink>
 
           <button class="button" id="rightButton" @click="downloadCV" :style="generateGradientStyle()">
             {{ $t('About_Me_Download_CV') }}

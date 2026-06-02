@@ -1,0 +1,520 @@
+<!DOCTYPE html><html  lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Achievements | Portfolio Alan Pacheco</title><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"><style id="vuetify-theme-stylesheet">:root {
+      color-scheme: dark;
+    }
+    :root {
+      --v-theme-background: 18,18,18;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 33,33,33;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-bright: 204,191,214;
+      --v-theme-surface-bright-overlay-multiplier: 2;
+      --v-theme-surface-light: 66,66,66;
+      --v-theme-surface-light-overlay-multiplier: 1;
+      --v-theme-surface-variant: 200,200,200;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 0,0,0;
+      --v-theme-primary: 0,0,0;
+      --v-theme-primary-overlay-multiplier: 1;
+      --v-theme-primary-darken-1: 39,124,193;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 255,255,255;
+      --v-theme-secondary-overlay-multiplier: 2;
+      --v-theme-secondary-darken-1: 72,169,166;
+      --v-theme-secondary-darken-1-overlay-multiplier: 2;
+      --v-theme-error: 255,82,82;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 33,150,243;
+      --v-theme-info-overlay-multiplier: 2;
+      --v-theme-success: 76,175,80;
+      --v-theme-success-overlay-multiplier: 2;
+      --v-theme-warning: 255,193,7;
+      --v-theme-warning-overlay-multiplier: 2;
+      --v-theme-header: 84,84,84;
+      --v-theme-header-overlay-multiplier: 1;
+      --v-theme-hero: 223,223,223;
+      --v-theme-hero-overlay-multiplier: 2;
+      --v-theme-text: 255,255,255;
+      --v-theme-text-overlay-multiplier: 2;
+      --v-theme-textAuxiliar: 209,201,201;
+      --v-theme-textAuxiliar-overlay-multiplier: 2;
+      --v-theme-contrast: 255,255,255;
+      --v-theme-contrast-overlay-multiplier: 2;
+      --v-theme-auxiliar: 28,28,28;
+      --v-theme-auxiliar-overlay-multiplier: 1;
+      --v-theme-alternativeButtoncolor: 229,136,24;
+      --v-theme-alternativeButtoncolor-overlay-multiplier: 2;
+      --v-theme-on-background: 255,255,255;
+      --v-theme-on-surface: 255,255,255;
+      --v-theme-on-surface-bright: 0,0,0;
+      --v-theme-on-surface-light: 255,255,255;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 0,0,0;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 0,0,0;
+      --v-theme-on-header: 255,255,255;
+      --v-theme-on-hero: 0,0,0;
+      --v-theme-on-text: 0,0,0;
+      --v-theme-on-textAuxiliar: 0,0,0;
+      --v-theme-on-contrast: 0,0,0;
+      --v-theme-on-auxiliar: 255,255,255;
+      --v-theme-on-alternativeButtoncolor: 255,255,255;
+      --v-border-color: 255, 255, 255;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 1;
+      --v-medium-emphasis-opacity: 0.7;
+      --v-disabled-opacity: 0.5;
+      --v-idle-opacity: 0.1;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.16;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 66, 66, 66;
+      --v-theme-on-kbd: 255, 255, 255;
+      --v-theme-code: 52, 52, 52;
+      --v-theme-on-code: 204, 204, 204;
+    }
+    .v-theme--light {
+      color-scheme: normal;
+      --v-theme-background: 255,255,255;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 255,255,255;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-bright: 255,255,255;
+      --v-theme-surface-bright-overlay-multiplier: 1;
+      --v-theme-surface-light: 238,238,238;
+      --v-theme-surface-light-overlay-multiplier: 1;
+      --v-theme-surface-variant: 66,66,66;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 238,238,238;
+      --v-theme-primary: 231,228,228;
+      --v-theme-primary-overlay-multiplier: 1;
+      --v-theme-primary-darken-1: 31,85,146;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 84,84,84;
+      --v-theme-secondary-overlay-multiplier: 2;
+      --v-theme-secondary-darken-1: 1,135,134;
+      --v-theme-secondary-darken-1-overlay-multiplier: 1;
+      --v-theme-error: 255,82,82;
+      --v-theme-error-overlay-multiplier: 1;
+      --v-theme-info: 33,150,243;
+      --v-theme-info-overlay-multiplier: 1;
+      --v-theme-success: 76,175,80;
+      --v-theme-success-overlay-multiplier: 1;
+      --v-theme-warning: 255,193,7;
+      --v-theme-warning-overlay-multiplier: 1;
+      --v-theme-header: 255,255,255;
+      --v-theme-header-overlay-multiplier: 1;
+      --v-theme-hero: 175,175,175;
+      --v-theme-hero-overlay-multiplier: 1;
+      --v-theme-text: 0,0,0;
+      --v-theme-text-overlay-multiplier: 2;
+      --v-theme-textAuxiliar: 138,136,136;
+      --v-theme-textAuxiliar-overlay-multiplier: 1;
+      --v-theme-contrast: 0,0,0;
+      --v-theme-contrast-overlay-multiplier: 2;
+      --v-theme-auxiliar: 240,238,238;
+      --v-theme-auxiliar-overlay-multiplier: 1;
+      --v-theme-alternativeButtoncolor: 229,136,24;
+      --v-theme-alternativeButtoncolor-overlay-multiplier: 1;
+      --v-theme-on-background: 0,0,0;
+      --v-theme-on-surface: 0,0,0;
+      --v-theme-on-surface-bright: 0,0,0;
+      --v-theme-on-surface-light: 0,0,0;
+      --v-theme-on-primary: 0,0,0;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 255,255,255;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 0,0,0;
+      --v-theme-on-header: 0,0,0;
+      --v-theme-on-hero: 0,0,0;
+      --v-theme-on-text: 255,255,255;
+      --v-theme-on-textAuxiliar: 255,255,255;
+      --v-theme-on-contrast: 255,255,255;
+      --v-theme-on-auxiliar: 0,0,0;
+      --v-theme-on-alternativeButtoncolor: 255,255,255;
+      --v-border-color: 0, 0, 0;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 0.87;
+      --v-medium-emphasis-opacity: 0.6;
+      --v-disabled-opacity: 0.38;
+      --v-idle-opacity: 0.04;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.12;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 238, 238, 238;
+      --v-theme-on-kbd: 0, 0, 0;
+      --v-theme-code: 245, 245, 245;
+      --v-theme-on-code: 0, 0, 0;
+    }
+    .v-theme--dark {
+      color-scheme: dark;
+      --v-theme-background: 18,18,18;
+      --v-theme-background-overlay-multiplier: 1;
+      --v-theme-surface: 33,33,33;
+      --v-theme-surface-overlay-multiplier: 1;
+      --v-theme-surface-bright: 204,191,214;
+      --v-theme-surface-bright-overlay-multiplier: 2;
+      --v-theme-surface-light: 66,66,66;
+      --v-theme-surface-light-overlay-multiplier: 1;
+      --v-theme-surface-variant: 200,200,200;
+      --v-theme-surface-variant-overlay-multiplier: 2;
+      --v-theme-on-surface-variant: 0,0,0;
+      --v-theme-primary: 0,0,0;
+      --v-theme-primary-overlay-multiplier: 1;
+      --v-theme-primary-darken-1: 39,124,193;
+      --v-theme-primary-darken-1-overlay-multiplier: 2;
+      --v-theme-secondary: 255,255,255;
+      --v-theme-secondary-overlay-multiplier: 2;
+      --v-theme-secondary-darken-1: 72,169,166;
+      --v-theme-secondary-darken-1-overlay-multiplier: 2;
+      --v-theme-error: 255,82,82;
+      --v-theme-error-overlay-multiplier: 2;
+      --v-theme-info: 33,150,243;
+      --v-theme-info-overlay-multiplier: 2;
+      --v-theme-success: 76,175,80;
+      --v-theme-success-overlay-multiplier: 2;
+      --v-theme-warning: 255,193,7;
+      --v-theme-warning-overlay-multiplier: 2;
+      --v-theme-header: 84,84,84;
+      --v-theme-header-overlay-multiplier: 1;
+      --v-theme-hero: 223,223,223;
+      --v-theme-hero-overlay-multiplier: 2;
+      --v-theme-text: 255,255,255;
+      --v-theme-text-overlay-multiplier: 2;
+      --v-theme-textAuxiliar: 209,201,201;
+      --v-theme-textAuxiliar-overlay-multiplier: 2;
+      --v-theme-contrast: 255,255,255;
+      --v-theme-contrast-overlay-multiplier: 2;
+      --v-theme-auxiliar: 28,28,28;
+      --v-theme-auxiliar-overlay-multiplier: 1;
+      --v-theme-alternativeButtoncolor: 229,136,24;
+      --v-theme-alternativeButtoncolor-overlay-multiplier: 2;
+      --v-theme-on-background: 255,255,255;
+      --v-theme-on-surface: 255,255,255;
+      --v-theme-on-surface-bright: 0,0,0;
+      --v-theme-on-surface-light: 255,255,255;
+      --v-theme-on-primary: 255,255,255;
+      --v-theme-on-primary-darken-1: 255,255,255;
+      --v-theme-on-secondary: 0,0,0;
+      --v-theme-on-secondary-darken-1: 255,255,255;
+      --v-theme-on-error: 255,255,255;
+      --v-theme-on-info: 255,255,255;
+      --v-theme-on-success: 255,255,255;
+      --v-theme-on-warning: 0,0,0;
+      --v-theme-on-header: 255,255,255;
+      --v-theme-on-hero: 0,0,0;
+      --v-theme-on-text: 0,0,0;
+      --v-theme-on-textAuxiliar: 0,0,0;
+      --v-theme-on-contrast: 0,0,0;
+      --v-theme-on-auxiliar: 255,255,255;
+      --v-theme-on-alternativeButtoncolor: 255,255,255;
+      --v-border-color: 255, 255, 255;
+      --v-border-opacity: 0.12;
+      --v-high-emphasis-opacity: 1;
+      --v-medium-emphasis-opacity: 0.7;
+      --v-disabled-opacity: 0.5;
+      --v-idle-opacity: 0.1;
+      --v-hover-opacity: 0.04;
+      --v-focus-opacity: 0.12;
+      --v-selected-opacity: 0.08;
+      --v-activated-opacity: 0.12;
+      --v-pressed-opacity: 0.16;
+      --v-dragged-opacity: 0.08;
+      --v-theme-kbd: 66, 66, 66;
+      --v-theme-on-kbd: 255, 255, 255;
+      --v-theme-code: 52, 52, 52;
+      --v-theme-on-code: 204, 204, 204;
+    }
+    .bg-background {
+      --v-theme-overlay-multiplier: var(--v-theme-background-overlay-multiplier);
+      background-color: rgb(var(--v-theme-background)) !important;
+      color: rgb(var(--v-theme-on-background)) !important;
+    }
+    .bg-surface {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface)) !important;
+      color: rgb(var(--v-theme-on-surface)) !important;
+    }
+    .bg-surface-bright {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-bright-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface-bright)) !important;
+      color: rgb(var(--v-theme-on-surface-bright)) !important;
+    }
+    .bg-surface-light {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-light-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface-light)) !important;
+      color: rgb(var(--v-theme-on-surface-light)) !important;
+    }
+    .bg-surface-variant {
+      --v-theme-overlay-multiplier: var(--v-theme-surface-variant-overlay-multiplier);
+      background-color: rgb(var(--v-theme-surface-variant)) !important;
+      color: rgb(var(--v-theme-on-surface-variant)) !important;
+    }
+    .bg-primary {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary)) !important;
+      color: rgb(var(--v-theme-on-primary)) !important;
+    }
+    .bg-primary-darken-1 {
+      --v-theme-overlay-multiplier: var(--v-theme-primary-darken-1-overlay-multiplier);
+      background-color: rgb(var(--v-theme-primary-darken-1)) !important;
+      color: rgb(var(--v-theme-on-primary-darken-1)) !important;
+    }
+    .bg-secondary {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary)) !important;
+      color: rgb(var(--v-theme-on-secondary)) !important;
+    }
+    .bg-secondary-darken-1 {
+      --v-theme-overlay-multiplier: var(--v-theme-secondary-darken-1-overlay-multiplier);
+      background-color: rgb(var(--v-theme-secondary-darken-1)) !important;
+      color: rgb(var(--v-theme-on-secondary-darken-1)) !important;
+    }
+    .bg-error {
+      --v-theme-overlay-multiplier: var(--v-theme-error-overlay-multiplier);
+      background-color: rgb(var(--v-theme-error)) !important;
+      color: rgb(var(--v-theme-on-error)) !important;
+    }
+    .bg-info {
+      --v-theme-overlay-multiplier: var(--v-theme-info-overlay-multiplier);
+      background-color: rgb(var(--v-theme-info)) !important;
+      color: rgb(var(--v-theme-on-info)) !important;
+    }
+    .bg-success {
+      --v-theme-overlay-multiplier: var(--v-theme-success-overlay-multiplier);
+      background-color: rgb(var(--v-theme-success)) !important;
+      color: rgb(var(--v-theme-on-success)) !important;
+    }
+    .bg-warning {
+      --v-theme-overlay-multiplier: var(--v-theme-warning-overlay-multiplier);
+      background-color: rgb(var(--v-theme-warning)) !important;
+      color: rgb(var(--v-theme-on-warning)) !important;
+    }
+    .bg-header {
+      --v-theme-overlay-multiplier: var(--v-theme-header-overlay-multiplier);
+      background-color: rgb(var(--v-theme-header)) !important;
+      color: rgb(var(--v-theme-on-header)) !important;
+    }
+    .bg-hero {
+      --v-theme-overlay-multiplier: var(--v-theme-hero-overlay-multiplier);
+      background-color: rgb(var(--v-theme-hero)) !important;
+      color: rgb(var(--v-theme-on-hero)) !important;
+    }
+    .bg-text {
+      --v-theme-overlay-multiplier: var(--v-theme-text-overlay-multiplier);
+      background-color: rgb(var(--v-theme-text)) !important;
+      color: rgb(var(--v-theme-on-text)) !important;
+    }
+    .bg-textAuxiliar {
+      --v-theme-overlay-multiplier: var(--v-theme-textAuxiliar-overlay-multiplier);
+      background-color: rgb(var(--v-theme-textAuxiliar)) !important;
+      color: rgb(var(--v-theme-on-textAuxiliar)) !important;
+    }
+    .bg-contrast {
+      --v-theme-overlay-multiplier: var(--v-theme-contrast-overlay-multiplier);
+      background-color: rgb(var(--v-theme-contrast)) !important;
+      color: rgb(var(--v-theme-on-contrast)) !important;
+    }
+    .bg-auxiliar {
+      --v-theme-overlay-multiplier: var(--v-theme-auxiliar-overlay-multiplier);
+      background-color: rgb(var(--v-theme-auxiliar)) !important;
+      color: rgb(var(--v-theme-on-auxiliar)) !important;
+    }
+    .bg-alternativeButtoncolor {
+      --v-theme-overlay-multiplier: var(--v-theme-alternativeButtoncolor-overlay-multiplier);
+      background-color: rgb(var(--v-theme-alternativeButtoncolor)) !important;
+      color: rgb(var(--v-theme-on-alternativeButtoncolor)) !important;
+    }
+    .text-background {
+      color: rgb(var(--v-theme-background)) !important;
+    }
+    .border-background {
+      --v-border-color: var(--v-theme-background);
+    }
+    .text-surface {
+      color: rgb(var(--v-theme-surface)) !important;
+    }
+    .border-surface {
+      --v-border-color: var(--v-theme-surface);
+    }
+    .text-surface-bright {
+      color: rgb(var(--v-theme-surface-bright)) !important;
+    }
+    .border-surface-bright {
+      --v-border-color: var(--v-theme-surface-bright);
+    }
+    .text-surface-light {
+      color: rgb(var(--v-theme-surface-light)) !important;
+    }
+    .border-surface-light {
+      --v-border-color: var(--v-theme-surface-light);
+    }
+    .text-surface-variant {
+      color: rgb(var(--v-theme-surface-variant)) !important;
+    }
+    .border-surface-variant {
+      --v-border-color: var(--v-theme-surface-variant);
+    }
+    .on-surface-variant {
+      color: rgb(var(--v-theme-on-surface-variant)) !important;
+    }
+    .text-primary {
+      color: rgb(var(--v-theme-primary)) !important;
+    }
+    .border-primary {
+      --v-border-color: var(--v-theme-primary);
+    }
+    .text-primary-darken-1 {
+      color: rgb(var(--v-theme-primary-darken-1)) !important;
+    }
+    .border-primary-darken-1 {
+      --v-border-color: var(--v-theme-primary-darken-1);
+    }
+    .text-secondary {
+      color: rgb(var(--v-theme-secondary)) !important;
+    }
+    .border-secondary {
+      --v-border-color: var(--v-theme-secondary);
+    }
+    .text-secondary-darken-1 {
+      color: rgb(var(--v-theme-secondary-darken-1)) !important;
+    }
+    .border-secondary-darken-1 {
+      --v-border-color: var(--v-theme-secondary-darken-1);
+    }
+    .text-error {
+      color: rgb(var(--v-theme-error)) !important;
+    }
+    .border-error {
+      --v-border-color: var(--v-theme-error);
+    }
+    .text-info {
+      color: rgb(var(--v-theme-info)) !important;
+    }
+    .border-info {
+      --v-border-color: var(--v-theme-info);
+    }
+    .text-success {
+      color: rgb(var(--v-theme-success)) !important;
+    }
+    .border-success {
+      --v-border-color: var(--v-theme-success);
+    }
+    .text-warning {
+      color: rgb(var(--v-theme-warning)) !important;
+    }
+    .border-warning {
+      --v-border-color: var(--v-theme-warning);
+    }
+    .text-header {
+      color: rgb(var(--v-theme-header)) !important;
+    }
+    .border-header {
+      --v-border-color: var(--v-theme-header);
+    }
+    .text-hero {
+      color: rgb(var(--v-theme-hero)) !important;
+    }
+    .border-hero {
+      --v-border-color: var(--v-theme-hero);
+    }
+    .text-text {
+      color: rgb(var(--v-theme-text)) !important;
+    }
+    .border-text {
+      --v-border-color: var(--v-theme-text);
+    }
+    .text-textAuxiliar {
+      color: rgb(var(--v-theme-textAuxiliar)) !important;
+    }
+    .border-textAuxiliar {
+      --v-border-color: var(--v-theme-textAuxiliar);
+    }
+    .text-contrast {
+      color: rgb(var(--v-theme-contrast)) !important;
+    }
+    .border-contrast {
+      --v-border-color: var(--v-theme-contrast);
+    }
+    .text-auxiliar {
+      color: rgb(var(--v-theme-auxiliar)) !important;
+    }
+    .border-auxiliar {
+      --v-border-color: var(--v-theme-auxiliar);
+    }
+    .text-alternativeButtoncolor {
+      color: rgb(var(--v-theme-alternativeButtoncolor)) !important;
+    }
+    .border-alternativeButtoncolor {
+      --v-border-color: var(--v-theme-alternativeButtoncolor);
+    }
+    .on-background {
+      color: rgb(var(--v-theme-on-background)) !important;
+    }
+    .on-surface {
+      color: rgb(var(--v-theme-on-surface)) !important;
+    }
+    .on-surface-bright {
+      color: rgb(var(--v-theme-on-surface-bright)) !important;
+    }
+    .on-surface-light {
+      color: rgb(var(--v-theme-on-surface-light)) !important;
+    }
+    .on-primary {
+      color: rgb(var(--v-theme-on-primary)) !important;
+    }
+    .on-primary-darken-1 {
+      color: rgb(var(--v-theme-on-primary-darken-1)) !important;
+    }
+    .on-secondary {
+      color: rgb(var(--v-theme-on-secondary)) !important;
+    }
+    .on-secondary-darken-1 {
+      color: rgb(var(--v-theme-on-secondary-darken-1)) !important;
+    }
+    .on-error {
+      color: rgb(var(--v-theme-on-error)) !important;
+    }
+    .on-info {
+      color: rgb(var(--v-theme-on-info)) !important;
+    }
+    .on-success {
+      color: rgb(var(--v-theme-on-success)) !important;
+    }
+    .on-warning {
+      color: rgb(var(--v-theme-on-warning)) !important;
+    }
+    .on-header {
+      color: rgb(var(--v-theme-on-header)) !important;
+    }
+    .on-hero {
+      color: rgb(var(--v-theme-on-hero)) !important;
+    }
+    .on-text {
+      color: rgb(var(--v-theme-on-text)) !important;
+    }
+    .on-textAuxiliar {
+      color: rgb(var(--v-theme-on-textAuxiliar)) !important;
+    }
+    .on-contrast {
+      color: rgb(var(--v-theme-on-contrast)) !important;
+    }
+    .on-auxiliar {
+      color: rgb(var(--v-theme-on-auxiliar)) !important;
+    }
+    .on-alternativeButtoncolor {
+      color: rgb(var(--v-theme-on-alternativeButtoncolor)) !important;
+    }
+</style><style>.language-select[data-v-e5116181]{width:85px;font-size:.75rem}@media(max-width:599px){.language-select[data-v-e5116181]{width:65px}}.language-select .v-select__selections[data-v-e5116181]{font-weight:400;text-transform:none}.language-select .v-select__slot[data-v-e5116181]{border-radius:4px}.language-select .v-select__menu[data-v-e5116181]{font-size:.75rem}</style><style>[data-theme=dark][data-v-3d044e4d]{--bg-color:#263238;--text-color:#e0e0e0}.container[data-v-3d044e4d]{display:flex;justify-content:center;align-items:center;width:100%;height:100%}.button-container[data-v-3d044e4d]{width:50px;height:30px}.toggle-button[data-v-3d044e4d]{-moz-appearance:inherit;appearance:inherit;-webkit-appearance:none;outline:none;width:100%;height:100%;background-color:#212121;border-radius:30px;display:flex}.buttonRadius[data-v-3d044e4d]{height:30px;width:30px;border-radius:15px;background-color:#bdbdbd;position:relative;top:-30px;padding:0}.animated[data-v-3d044e4d]{position:relative;left:0}.animatedLight.active[data-v-3d044e4d]{animation:buttonAnimationToLight-3d044e4d 1s ease-out forwards}.animatedDark.active[data-v-3d044e4d]{animation:buttonAnimationToDark-3d044e4d 1s ease-out forwards}@keyframes buttonAnimationToDark-3d044e4d{to{transform:translate(70%);background-color:#212121;transition:.4s}}@keyframes buttonAnimationToLight-3d044e4d{0%{transform:translate(70%);background-color:#212121;transition:.4s}to{transform:translate(0);background-color:#bdbdbd;transition:.4s}}</style><style>header[data-v-a1e2fa5d]{font-weight:700;font-family:Poppins,sans-serif;padding:0!important}a[data-v-a1e2fa5d]{color:inherit;text-decoration:none}nav[data-v-a1e2fa5d]{justify-content:space-between}.nav-logo[data-v-a1e2fa5d],nav[data-v-a1e2fa5d]{display:flex;align-items:center}.nav-logo[data-v-a1e2fa5d]{font-size:1.5rem;font-weight:700}.logo[data-v-a1e2fa5d]{height:60px}.nav-links[data-v-a1e2fa5d]{width:66.66%;list-style:none;display:flex;padding:0;justify-content:space-between;align-items:center}.nav-links li[data-v-a1e2fa5d]{margin:0}#logo-side[data-v-a1e2fa5d]{width:33.33%;display:flex;justify-content:left;padding-left:5%;align-items:center}.nav-sides[data-v-a1e2fa5d]{width:50%;display:flex}#center-side[data-v-a1e2fa5d]{justify-content:space-around}#right-side[data-v-a1e2fa5d]{width:30%;justify-content:center;align-items:center}#right-side li[data-v-a1e2fa5d]{padding:0 .5rem}#languageSelector[data-v-a1e2fa5d]{padding:0}.mobile-controls[data-v-a1e2fa5d]{display:none}.hamburger-btn[data-v-a1e2fa5d]{background:none;border:none;cursor:pointer;color:inherit;padding:4px;display:flex;align-items:center;justify-content:center}.mobile-menu[data-v-a1e2fa5d]{background:rgb(var(--v-theme-header));width:100%;position:fixed;top:62px;left:0;right:0;z-index:9;box-shadow:0 4px 12px #0003}.mobile-menu ul[data-v-a1e2fa5d]{list-style:none;padding:0;margin:0}.mobile-menu li[data-v-a1e2fa5d]{padding:14px 24px;border-top:1px solid hsla(0,0%,50%,.15);font-size:15px}.mobile-menu a[data-v-a1e2fa5d]{color:inherit;text-decoration:none;display:block}.mobile-menu a[data-v-a1e2fa5d]:hover{color:orange}@media(max-width:1279px){.nav-links[data-v-a1e2fa5d]{width:73%;font-size:13px}#logo-side[data-v-a1e2fa5d]{width:27%}}@media(max-width:959px){nav[data-v-a1e2fa5d]{width:100%;justify-content:space-between;padding:0 16px;box-sizing:border-box}#logo-side[data-v-a1e2fa5d]{width:auto;padding-left:0}.nav-links[data-v-a1e2fa5d]{display:none}.mobile-controls[data-v-a1e2fa5d]{display:flex;align-items:center;gap:8px}}</style><style>.button{display:inline-block;padding:10px 20px;font-size:16px;color:#fff;border:none;cursor:pointer;position:relative;overflow:hidden;z-index:1;border-radius:5px;background-size:200% 100%}.button:hover{animation:backgroundShift .7s forwards}@keyframes backgroundShift{0%{background-size:200% 100%;background-position:0 100%}to{background-size:200% 100%;background-position:100% 100%;color:#000;font-weight:700}}.routerContent{margin-top:7%;overflow-x:hidden}@media(max-width:959px){.routerContent{margin-top:62px}}nav{animation:fadeInUp .5s ease-out forwards;position:fixed;top:0;width:100%;z-index:10}.navbar-hidden{transform:translateY(-100%)}.navbar-visible{animation:fadeInUp .5s ease-out forwards;position:fixed;top:0;width:100%;z-index:10}@keyframes fadeInUp{0%{transform:translateY(-100%);opacity:0}50%{transform:translateY(-20%);opacity:.5}to{transform:translateY(0);opacity:1}}.navbar-transparent{background-color:red!important}.circle-cursor{position:absolute;pointer-events:none;z-index:1000}.circle-cursor-outer{width:20px;height:20px;border:2px solid;border-radius:50%;transition:all .1s ease}.circle-cursor-inner{width:6px;height:6px;border-radius:50%;transition:all .1s ease}.grow{animation:growAnimation .3s forwards}@keyframes growAnimation{0%{width:6px;height:6px}50%{width:10px;height:10px}to{width:6px;height:6px}}</style><style>.single-line[data-v-25355560]{margin-top:20px;width:3px;height:60px}.menu-content[data-v-25355560]{text-align:left;display:flex;flex-direction:row}.menu-content-left[data-v-25355560]{display:flex;flex-direction:column;justify-content:start;align-items:center;height:100%;padding:20px 10px 10px 0}.menu-content-left p[data-v-25355560]{writing-mode:vertical-rl;transform:rotate(180deg)}.menu-title[data-v-25355560]{font-size:2em;margin-bottom:10px}.menu-description[data-v-25355560]{font-size:1.1em;max-width:80%}.container[data-v-25355560]{display:grid;grid-template-columns:repeat(4,minmax(300px,1fr));grid-auto-flow:dense;gap:20px;padding:20px;margin:5%}.menu-item[data-v-25355560]{grid-column:span 2;height:300px;display:flex;justify-content:center;align-items:center;padding:20px}.item[data-v-25355560],.menu-item[data-v-25355560]{box-shadow:0 4px 8px #0000001a}.item[data-v-25355560]{position:relative;overflow:hidden;border-radius:12px;transition:transform .3s ease;grid-row-end:span 2;cursor:pointer}.item[data-v-25355560]:hover{transform:translateY(-10px)}.overlay[data-v-25355560]{position:relative;display:flex;justify-content:center;align-items:center}.item-image[data-v-25355560],.overlay[data-v-25355560]{width:100%;height:100%}.item-image[data-v-25355560]{-o-object-fit:cover;object-fit:cover;transition:transform .3s ease}.item:hover .item-image[data-v-25355560]{transform:scale(1.1)}.item-info[data-v-25355560]{position:absolute;bottom:0;left:0;right:0;background:#000000b3;color:#fff;padding:10px;opacity:0;transform:translateY(100%);transition:all .3s ease}.item:hover .item-info[data-v-25355560]{opacity:1;transform:translateY(0)}.item-title[data-v-25355560]{font-size:16px;font-weight:700;margin-bottom:3px}.item-issuer[data-v-25355560]{font-size:13px;color:#ddd}@media(max-width:1279px){.container[data-v-25355560]{grid-template-columns:repeat(3,minmax(200px,1fr))}.menu-item[data-v-25355560]{grid-column:span 3;height:auto}}@media(max-width:959px){.container[data-v-25355560]{grid-template-columns:repeat(2,minmax(200px,1fr));margin:5% 2%}.menu-item[data-v-25355560]{grid-column:span 2;height:auto}.menu-description[data-v-25355560]{max-width:100%}}@media(max-width:599px){.container[data-v-25355560]{display:flex;flex-direction:column;width:90%;margin:0 auto;padding:0;box-sizing:border-box}.menu-item[data-v-25355560]{height:-moz-fit-content;height:fit-content;padding:16px 0;box-shadow:none}.menu-content[data-v-25355560]{flex-direction:column}.menu-content-left[data-v-25355560]{flex-direction:row;height:auto;width:100%;padding:10px 0 8px;align-items:center;justify-content:flex-start}.menu-content-left p[data-v-25355560]{writing-mode:horizontal-tb;transform:none;font-size:.75em;font-weight:700;letter-spacing:2px}.single-line[data-v-25355560]{width:30px;height:3px;margin-top:0;margin-left:8px}.menu-content-right[data-v-25355560]{width:100%}.item[data-v-25355560]{height:260px;margin:12px 0}.menu-title[data-v-25355560]{font-size:1.5em}.menu-description[data-v-25355560]{font-size:12px}}</style><link rel="stylesheet" href="/_nuxt/entry.DYuztoyE.css" crossorigin><link rel="preload" as="fetch" crossorigin="anonymous" href="/achievements/_payload.json?39d9fdbf-bf1c-4f19-ae8b-754d8b7b3de1"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/C3kv3T4P.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/LxQqyBhT.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/DITyNtBg.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/tTYbQCOt.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/Dn4dEkIK.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/BXemd1Rr.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/Cg44SXXU.js"><link rel="modulepreload" as="script" crossorigin href="/_nuxt/ZBPcbqs5.js"><script type="module" src="/_nuxt/C3kv3T4P.js" crossorigin></script><link rel="prefetch" as="image" type="image/png" href="/_nuxt/logo-no-letters.fUro3Ipm.png"><meta name="google-site-verification" content="9AXAGLhC7HPco0ggKSwRYMFdeMJ5Vf5qtcrDCuN9GTQ"><meta name="description" content="Portafolio profesional de Alan Pacheco, Ingeniero de Software en Quito, Ecuador. Proyectos en Vue.js, C#, .NET, JavaScript y más."><meta property="og:title" content="Portfolio Alan Pacheco — Software Engineer"><meta property="og:description" content="Portafolio profesional de Alan Pacheco, Ingeniero de Software en Quito, Ecuador. Proyectos en Vue.js, C#, .NET, JavaScript y más."><meta property="og:url" content="https://thecodesolutions.com/"><meta property="og:type" content="website"><meta property="og:image" content="https://thecodesolutions.com/About-Image.webp"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:locale" content="es_EC"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Portfolio Alan Pacheco — Software Engineer"><meta name="twitter:description" content="Portafolio profesional de Alan Pacheco, Ingeniero de Software en Quito, Ecuador. Proyectos en Vue.js, C#, .NET, JavaScript y más."><meta name="twitter:image" content="https://thecodesolutions.com/About-Image.webp"><link rel="icon" href="/favicon.ico"><link rel="canonical" href="https://thecodesolutions.com/"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Alan Pacheco","alternateName":"Alan Pacheco Cueva","jobTitle":"Software Engineer","url":"https://thecodesolutions.com","image":"https://thecodesolutions.com/About-Image.webp","sameAs":["https://ec.linkedin.com/in/alan-pacheco-cueva-b7b3a9223","https://github.com/AlanPachecoCueva"],"address":{"@type":"PostalAddress","addressLocality":"Quito","addressCountry":"EC"},"knowsAbout":["Vue.js","JavaScript","TypeScript","C#",".NET","Java","Python","Firebase"]}</script></head><body><div id="__nuxt"><div class="v-application v-theme--dark v-layout v-layout--full-height v-locale--is-ltr" style="background-color:#000;color:#ffffff;"><div class="v-application__wrap"><!--[--><div><div class="circle-cursor circle-cursor-outer" style="border-color:#fff;"></div><div class="circle-cursor circle-cursor-inner" style="background-color:#fff;"></div></div><header style="background-color:#545454;" class="navbar-visible navbar-transparent navbarAll" data-v-a1e2fa5d><nav aria-label="Navegación principal" data-v-a1e2fa5d><div id="logo-side" data-v-a1e2fa5d><div class="nav-logo" data-v-a1e2fa5d><img class="logo" alt="Alan Pacheco — Portfolio" src="/_nuxt/logo-no-letters.fUro3Ipm.png" data-v-a1e2fa5d></div></div><ul class="nav-links" data-v-a1e2fa5d><div class="nav-sides" id="center-side" data-v-a1e2fa5d><li data-v-a1e2fa5d><a href="/#home-view" class="" data-v-a1e2fa5d><a data-v-a1e2fa5d>Inicio</a></a></li><li data-v-a1e2fa5d><a href="/#about-view" class="" data-v-a1e2fa5d><a data-v-a1e2fa5d>Acerca De</a></a></li><li data-v-a1e2fa5d><a href="/#skills-view" class="" data-v-a1e2fa5d><a data-v-a1e2fa5d>Habilidades</a></a></li><li data-v-a1e2fa5d><a href="/#projects-view" class="" data-v-a1e2fa5d><a data-v-a1e2fa5d>Portafolio</a></a></li><li data-v-a1e2fa5d><a href="/#contact-view" class="" data-v-a1e2fa5d><a data-v-a1e2fa5d>Contacto</a></a></li><li data-v-a1e2fa5d><a href="/gallery" class="" data-v-a1e2fa5d><a data-v-a1e2fa5d>Galería</a></a></li><li data-v-a1e2fa5d><a aria-current="page" href="/achievements" class="router-link-active router-link-exact-active" data-v-a1e2fa5d><a data-v-a1e2fa5d>Logros</a></a></li></div><div class="nav-sides" id="right-side" data-v-a1e2fa5d><li data-v-a1e2fa5d><div class="v-input v-input--horizontal v-input--center-affix v-input--density-default v-theme--dark v-locale--is-ltr v-input--dirty v-text-field v-select v-select--single v-select--selected language-select" style="" data-v-a1e2fa5d data-v-e5116181><!----><div class="v-input__control"><!--[--><div class="v-field v-field--active v-field--appended v-field--center-affix v-field--dirty v-field--no-label v-field--variant-filled v-theme--dark v-locale--is-ltr" style="" role="combobox"><div class="v-field__overlay"></div><div class="v-field__loader"><div class="v-progress-linear v-theme--dark v-locale--is-ltr" style="top:0;height:0;--v-progress-linear-height:2px;" role="progressbar" aria-hidden="true" aria-valuemin="0" aria-valuemax="100"><!----><div class="v-progress-linear__background" style="opacity:NaN;"></div><div class="v-progress-linear__buffer" style="opacity:NaN;width:0%;"></div><div class="v-progress-linear__indeterminate"><!--[--><div class="v-progress-linear__indeterminate long" style=""></div><div class="v-progress-linear__indeterminate short" style=""></div><!--]--></div><!----></div></div><!----><div class="v-field__field" data-no-activator><!----><!----><!--[--><!--[--><!----><div class="v-field__input" data-no-activator><!--[--><!--[--><select hidden><!--[--><option value="EN" selected></option><option value="ES"></option><!--]--></select><!--[--><!----><!----><!--]--><!--[--><div class="v-select__selection"><span class="v-select__selection-text">EN<!----></span></div><!--]--><!--]--><!--]--><input value="EN" size="1" role="combobox" type="text" aria-labelledby="languageSelector-label" id="languageSelector" inputmode="none" aria-expanded="false" aria-controls="menu-v-0-1"></div><!----><!--]--><!--]--></div><!----><div class="v-field__append-inner"><!--[--><!--[--><!----><i class="mdi-menu-down mdi v-icon notranslate v-theme--dark v-icon--size-default v-select__menu-icon" style="" aria-hidden="true"></i><!----><!--]--><!--]--></div><div class="v-field__outline" style=""><!----><!----></div></div><!--]--></div><!----><!----></div></li><li data-v-a1e2fa5d><div class="container" data-v-a1e2fa5d data-v-3d044e4d><div class="button-container" data-v-3d044e4d><input type="checkbox" class="toggle-button" checked data-v-3d044e4d><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="buttonRadius animatedLight" style="" width="1em" height="1em" viewBox="0 0 16 16" data-v-3d044e4d></svg></div></div></li></div></ul><div class="mobile-controls" data-v-a1e2fa5d><div class="v-input v-input--horizontal v-input--center-affix v-input--density-default v-theme--dark v-locale--is-ltr v-input--dirty v-text-field v-select v-select--single v-select--selected language-select" style="" data-v-a1e2fa5d data-v-e5116181><!----><div class="v-input__control"><!--[--><div class="v-field v-field--active v-field--appended v-field--center-affix v-field--dirty v-field--no-label v-field--variant-filled v-theme--dark v-locale--is-ltr" style="" role="combobox"><div class="v-field__overlay"></div><div class="v-field__loader"><div class="v-progress-linear v-theme--dark v-locale--is-ltr" style="top:0;height:0;--v-progress-linear-height:2px;" role="progressbar" aria-hidden="true" aria-valuemin="0" aria-valuemax="100"><!----><div class="v-progress-linear__background" style="opacity:NaN;"></div><div class="v-progress-linear__buffer" style="opacity:NaN;width:0%;"></div><div class="v-progress-linear__indeterminate"><!--[--><div class="v-progress-linear__indeterminate long" style=""></div><div class="v-progress-linear__indeterminate short" style=""></div><!--]--></div><!----></div></div><!----><div class="v-field__field" data-no-activator><!----><!----><!--[--><!--[--><!----><div class="v-field__input" data-no-activator><!--[--><!--[--><select hidden><!--[--><option value="EN" selected></option><option value="ES"></option><!--]--></select><!--[--><!----><!----><!--]--><!--[--><div class="v-select__selection"><span class="v-select__selection-text">EN<!----></span></div><!--]--><!--]--><!--]--><input value="EN" size="1" role="combobox" type="text" aria-labelledby="input-v-0-9-label" id="input-v-0-9" inputmode="none" aria-expanded="false" aria-controls="menu-v-0-7"></div><!----><!--]--><!--]--></div><!----><div class="v-field__append-inner"><!--[--><!--[--><!----><i class="mdi-menu-down mdi v-icon notranslate v-theme--dark v-icon--size-default v-select__menu-icon" style="" aria-hidden="true"></i><!----><!--]--><!--]--></div><div class="v-field__outline" style=""><!----><!----></div></div><!--]--></div><!----><!----></div><div class="container" data-v-a1e2fa5d data-v-3d044e4d><div class="button-container" data-v-3d044e4d><input type="checkbox" class="toggle-button" checked data-v-3d044e4d><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="buttonRadius animatedLight" style="" width="1em" height="1em" viewBox="0 0 16 16" data-v-3d044e4d></svg></div></div><button class="hamburger-btn" aria-label="Abrir menú" data-v-a1e2fa5d><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" style="width:26px;height:26px;" width="1em" height="1em" viewBox="0 0 16 16" data-v-a1e2fa5d></svg></button></div></nav><div class="mobile-menu" style="display:none;" data-v-a1e2fa5d><ul data-v-a1e2fa5d><li data-v-a1e2fa5d><a href="/#home-view" class="" data-v-a1e2fa5d>Inicio</a></li><li data-v-a1e2fa5d><a href="/#about-view" class="" data-v-a1e2fa5d>Acerca De</a></li><li data-v-a1e2fa5d><a href="/#skills-view" class="" data-v-a1e2fa5d>Habilidades</a></li><li data-v-a1e2fa5d><a href="/#projects-view" class="" data-v-a1e2fa5d>Portafolio</a></li><li data-v-a1e2fa5d><a href="/#contact-view" class="" data-v-a1e2fa5d>Contacto</a></li><li data-v-a1e2fa5d><a href="/gallery" class="" data-v-a1e2fa5d>Galería</a></li><li data-v-a1e2fa5d><a aria-current="page" href="/achievements" class="router-link-active router-link-exact-active" data-v-a1e2fa5d>Logros</a></li></ul></div></header><div class="routerContent"><!--[--><main class="container" data-v-25355560><div class="menu-item" style="color:#ffffff;" data-v-25355560><div class="menu-content" data-v-25355560><div class="menu-content-left" data-v-25355560><p data-v-25355560>MIS LOGROS</p><div class="single-line" style="background-color:#DFDFDF;" data-v-25355560></div></div><div class="menu-content-right" data-v-25355560><p class="menu-title" data-v-25355560>¡Mis Logros y Reconocimientos!</p><p class="menu-description" data-v-25355560>Certificaciones, premios y reconocimientos obtenidos a lo largo de mi trayectoria académica y profesional.</p></div></div></div><!----></main><!--]--></div><!--]--></div></div></div><div id="teleports"></div><script>window.__NUXT__={};window.__NUXT__.config={public:{firebaseApiKey:"AIzaSyCEEw4lJ7nOiqtDJgOk3dOXuM4h0fgyB18",firebaseAuthDomain:"portfolio-alan-pacheco.firebaseapp.com",firebaseProjectId:"portfolio-alan-pacheco",firebaseStorageBucket:"portfolio-alan-pacheco.firebasestorage.app",firebaseMessagingSenderId:"585363252780",firebaseAppId:"1:585363252780:web:27c14a8c4659f45e0ed389",emailjsServiceId:"service_nxvebz4",emailjsTemplateId:"contact_form",emailjsPublicKey:"d1_C1Va1lFFO3oWRV",i18n:{baseUrl:"",defaultLocale:"ES",rootRedirect:"",redirectStatusCode:302,skipSettingLocaleOnNavigate:false,locales:[{code:"ES",language:"es-EC"},{code:"EN",language:"en-US"}],detectBrowserLanguage:{alwaysRedirect:false,cookieCrossOrigin:false,cookieDomain:"",cookieKey:"i18n_redirected",cookieSecure:false,fallbackLocale:"",redirectOn:"root",useCookie:true},experimental:{localeDetector:"",typedPages:true,typedOptionsAndMessages:false,alternateLinkCanonicalQueries:true,devCache:false,cacheLifetime:"",stripMessagesPayload:false,preload:false,strictSeo:false,nitroContextDetection:true,httpCacheDuration:10,compactRoutes:false,prerenderMessages:false},domainLocales:{ES:{domain:""},EN:{domain:""}}}},app:{baseURL:"/",buildId:"39d9fdbf-bf1c-4f19-ae8b-754d8b7b3de1",buildAssetsDir:"/_nuxt/",cdnURL:""}}</script><script type="application/json" data-nuxt-data="nuxt-app" data-ssr="true" id="__NUXT_DATA__" data-src="/achievements/_payload.json?39d9fdbf-bf1c-4f19-ae8b-754d8b7b3de1">[{"state":1,"once":5,"_errors":6,"serverRendered":8,"path":9,"prerenderedAt":10},["Reactive",2],{"$si18n:cached-locale-configs":3,"$si18n:resolved-locale":4},{},"",["Set"],["ShallowReactive",7],{},true,"\u002Fachievements",1780377192241]</script></body></html>

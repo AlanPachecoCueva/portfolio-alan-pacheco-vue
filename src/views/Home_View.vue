@@ -27,11 +27,11 @@
         <br />
         {{ $t("Home_Main_Slogan_P2") }}
       </div>
-      <router-link :to="{ name: 'Home', hash: `#contact-view` }">
+      <NuxtLink :to="{ name: 'index', hash: '#contact-view' }">
         <button id="contact-button" name="button">
           {{ $t("Home_Contact_Button") }}
         </button>
-      </router-link>
+      </NuxtLink>
     </div>
 
     <div class="hero-social-container">

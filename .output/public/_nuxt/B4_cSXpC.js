@@ -1,0 +1,1 @@
+import{_ as t,o,c as n,E as s}from"./C3kv3T4P.js";const c={},r={style:{background:"#111","min-height":"100vh"}};function a(e,_){return o(),n("div",r,[s(e.$slots,"default")])}const i=t(c,[["render",a]]);export{i as default};
