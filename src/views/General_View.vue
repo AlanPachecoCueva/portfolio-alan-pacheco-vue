@@ -1,5 +1,5 @@
 <template>
-  <div class="general-container">
+  <main class="general-container">
     <HomeView id="home-view"></HomeView>
     <br />
     <div class="cardsContainer">
@@ -33,7 +33,7 @@
     <SkillsView id="skills-view"></SkillsView>
     <ProjectsComponent :items="projects" id="projects-view"></ProjectsComponent>
     <ContactView id="contact-view"></ContactView>
-  </div>
+  </main>
 </template>
 
 <script>

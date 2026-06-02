@@ -1,5 +1,5 @@
 <template>
-  <div class="contact-container">
+  <section class="contact-container">
     <!-- Sección izquierda: Información de contacto -->
     <div class="contact-info">
       <div class="contact-info-up">
@@ -55,10 +55,12 @@
         </div>
 
         <div class="social-icons">
-          <a href="#"><i class="fa fa-facebook"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-          <a href="#"><i class="fa fa-linkedin"></i></a>
-          <a href="#"><i class="fa fa-youtube"></i></a>
+          <a href="https://ec.linkedin.com/in/alan-pacheco-cueva-b7b3a9223" target="_blank" :style="{ color: getTextColor() }" aria-label="LinkedIn">
+            <Icon icon="ri:linkedin-fill" />
+          </a>
+          <a href="https://github.com/AlanPachecoCueva" target="_blank" :style="{ color: getTextColor() }" aria-label="GitHub">
+            <Icon icon="mingcute:github-fill" />
+          </a>
         </div>
       </div>
     </div>
@@ -76,8 +78,9 @@
           :placeholder="$t('Contact_Form_Name_Value')"
           @focus="onFocus"
           @blur="onBlur"
-          :style="{ borderColor: getPrimaryColor() }"
+          :style="{ borderColor: errors.name ? '#e74c3c' : getPrimaryColor() }"
         />
+        <span v-if="errors.name" class="field-error">{{ errors.name }}</span>
       </div>
 
       <div class="form-group">
@@ -91,8 +94,9 @@
           :placeholder="$t('Contact_Form_Email_Value')"
           @focus="onFocus"
           @blur="onBlur"
-          :style="{ borderColor: getPrimaryColor() }"
+          :style="{ borderColor: errors.email ? '#e74c3c' : getPrimaryColor() }"
         />
+        <span v-if="errors.email" class="field-error">{{ errors.email }}</span>
       </div>
 
       <div class="form-group">
@@ -120,15 +124,16 @@
           :placeholder="$t('Contact_Form_Message_Value')"
           @focus="onFocus"
           @blur="onBlur"
-          :style="{ borderColor: getPrimaryColor() }"
+          :style="{ borderColor: errors.message ? '#e74c3c' : getPrimaryColor() }"
         ></textarea>
+        <span v-if="errors.message" class="field-error">{{ errors.message }}</span>
       </div>
 
       <button id="sendButton" type="submit" @click="sendEmail">
         {{ $t("Contact_Form_Button_Send") }}
       </button>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -148,16 +153,44 @@ export default {
         phone: "",
         message: "",
       },
+      errors: {
+        name: "",
+        email: "",
+        message: "",
+      },
     };
   },
   methods: {
+    validate() {
+      this.errors = { name: "", email: "", message: "" };
+      let valid = true;
+      if (!this.form.name.trim()) {
+        this.errors.name = this.$t("Contact_Form_Required");
+        valid = false;
+      }
+      if (!this.form.email.trim()) {
+        this.errors.email = this.$t("Contact_Form_Required");
+        valid = false;
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.form.email)) {
+        this.errors.email = this.$t("Contact_Form_Email_Invalid");
+        valid = false;
+      }
+      if (!this.form.message.trim()) {
+        this.errors.message = this.$t("Contact_Form_Required");
+        valid = false;
+      }
+      return valid;
+    },
     onFocus(event) {
       event.target.style.borderColor = "orange";
     },
     onBlur(event) {
-      event.target.style.borderColor = this.getPrimaryColor();
+      const fieldId = event.target.id
+      const hasError = this.errors[fieldId]
+      event.target.style.borderColor = hasError ? '#e74c3c' : this.getPrimaryColor()
     },
     async sendEmail() {
+      if (!this.validate()) return;
       const templateParams = {
         user_name: this.form.name,
         user_email: this.form.email,
@@ -172,17 +205,14 @@ export default {
 
         await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
 
-        this.$swal({
-          text: "Tu mensaje ha sido enviado\n¡Gracias por comunicarte conmigo!\n🙂",
-          icon: "success",
-        });
+        this.$swal({ text: this.$t("Contact_Form_Success"), icon: "success" });
 
         this.form.name = "";
         this.form.email = "";
         this.form.message = "";
         this.form.phone = "";
       } catch (error) {
-        console.error("FAILED...", error);
+        this.$swal({ text: this.$t("Contact_Form_Error"), icon: "error" });
       }
     },
   },
@@ -249,16 +279,24 @@ export default {
 
 .social-icons {
   margin-top: 20px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
 }
 
 .social-icons a {
-  font-size: 20px;
-  margin-right: 15px;
+  display: flex;
   text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.social-icons a svg {
+  width: 28px;
+  height: 28px;
 }
 
 .social-icons a:hover {
-  color: orange;
+  opacity: 0.7;
 }
 
 .contact-form {
@@ -274,6 +312,13 @@ textarea {
 
 .form-group {
   margin-bottom: 15px;
+}
+
+.field-error {
+  display: block;
+  color: #e74c3c;
+  font-size: 0.78rem;
+  margin-top: 4px;
 }
 
 label {

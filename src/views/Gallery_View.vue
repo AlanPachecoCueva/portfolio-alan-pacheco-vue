@@ -1,10 +1,10 @@
 <template>
-  <div class="gallery-grid">
+  <main class="gallery-grid">
     <div
       v-for="img in shuffledImages"
       :key="img.id"
       class="gallery-item"
-      :style="{ gridColumn: 'span ' + (img.sizeFactor || 1) }"
+      :style="{ gridColumn: 'span ' + (img.sizeFactor || 1), backgroundColor: getAuxiliarColor(), borderColor: getContrastColor() }"
       :ref="el => { if (el) gridItems[img.id] = el; else delete gridItems[img.id] }"
     >
       <img
@@ -17,31 +17,39 @@
         <p>{{ img.description }}</p>
       </div>
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
 import { useGalleryImages } from '@/composables/useImages.js'
+import { useTheme } from '@/composables/useTheme'
 
 const ROW_UNIT = 10
+
+function shuffle(arr) {
+  return [...arr]
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value)
+}
 
 export default {
   name: 'Gallery_View',
   setup() {
     const { images } = useGalleryImages()
-    return { images }
+    return { images, ...useTheme() }
   },
   data() {
     return {
       gridItems: {},
+      shuffledImages: [],
     }
   },
-  computed: {
-    shuffledImages() {
-      return [...this.images]
-        .map((value) => ({ value, sort: Math.random() }))
-        .sort((a, b) => a.sort - b.sort)
-        .map(({ value }) => value)
+  watch: {
+    images(newImages) {
+      if (this.shuffledImages.length === 0 && newImages.length > 0) {
+        this.shuffledImages = shuffle(newImages)
+      }
     },
   },
   methods: {
@@ -71,8 +79,8 @@ export default {
 .gallery-item {
   position: relative;
   overflow: hidden;
-  background-color: #111;
-  border: 1px solid #222;
+  border-width: 1px;
+  border-style: solid;
 }
 
 .gallery-item img {

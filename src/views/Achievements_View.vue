@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <main class="container">
     <!-- Header item — igual al menu-item de Projects -->
     <div class="menu-item" :style="{ color: getTextColor() }">
       <div class="menu-content">
@@ -20,8 +20,12 @@
         v-for="item in achievements"
         :key="item.id"
         class="item"
+        role="button"
+        tabindex="0"
+        :aria-label="$i18n.locale === 'EN' ? (item.title_en || item.title) : item.title"
         :style="{ backgroundColor: getPrimaryColor() }"
         @click="goToAchievement(item)"
+        @keydown.enter="goToAchievement(item)"
       >
         <div class="overlay">
           <img
@@ -37,7 +41,7 @@
         </div>
       </div>
     </template>
-  </div>
+  </main>
 </template>
 
 <script>

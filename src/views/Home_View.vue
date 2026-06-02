@@ -9,7 +9,7 @@
         <img
           id="home-image-2"
           src="../assets/color-background.webp"
-          alt="img home"
+          alt="Color background decoration"
           fetchpriority="high"
         />
 
@@ -17,7 +17,7 @@
           id="home-image"
           class="fade-out-image"
           src="../assets/Home-Image.webp"
-          alt="img home"
+          alt="Alan Pacheco"
           fetchpriority="high"
         />
       </div>
@@ -42,6 +42,7 @@
             target="_blank"
             class="hero-social-item"
             :style="{ color: getHeroColor() }"
+            aria-label="LinkedIn"
           >
             <Icon class="hero-social-icon" icon="ri:linkedin-fill" />
           </a>
@@ -52,18 +53,9 @@
             target="_blank"
             class="hero-social-item"
             :style="{ color: getHeroColor() }"
+            aria-label="GitHub"
           >
             <Icon class="hero-social-icon" icon="mingcute:github-fill" />
-          </a>
-        </li>
-        <li class="hero-social-li">
-          <a
-            href="/twitter"
-            target="_blank"
-            class="hero-social-item"
-            :style="{ color: getHeroColor() }"
-          >
-            <Icon class="hero-social-icon" icon="mdi:twitter" />
           </a>
         </li>
       </ul>
@@ -82,11 +74,6 @@ export default {
   name: "HomeView",
   setup() {
     return useTheme()
-  },
-  data() {
-    return {
-      message: "Hello, Vue 3!",
-    };
   },
   methods: {
     parallaxEffect(event) {
@@ -116,7 +103,7 @@ export default {
 .hero-social-container {
   position: absolute;
   left: 2%;
-
+  z-index: 10;
   height: 150px;
   display: flex;
   flex-direction: column;

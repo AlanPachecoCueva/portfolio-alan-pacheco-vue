@@ -17,6 +17,10 @@ const Contact_dic_es = {
   Contact_Form_Phone_Value: "(01) 234-5678",
   Contact_Form_Message_Value: "Esribe un mensaje...",
   Contact_Form_Button_Send: "ENVIAR",
+  Contact_Form_Success: "Tu mensaje ha sido enviado. ¡Gracias por comunicarte conmigo!",
+  Contact_Form_Error: "No se pudo enviar el mensaje. Por favor, intenta de nuevo.",
+  Contact_Form_Required: "Este campo es obligatorio",
+  Contact_Form_Email_Invalid: "Por favor ingresa un email válido",
 };
 
 const Contact_dic_en = {
@@ -38,6 +42,10 @@ const Contact_dic_en = {
   Contact_Form_Phone_Value: "(123) 456-7890",
   Contact_Form_Message_Value: "Write a message...",
   Contact_Form_Button_Send: "SEND",
+  Contact_Form_Success: "Your message has been sent. Thank you for reaching out!",
+  Contact_Form_Error: "Failed to send the message. Please try again.",
+  Contact_Form_Required: "This field is required",
+  Contact_Form_Email_Invalid: "Please enter a valid email address",
 };
 
 export { Contact_dic_es, Contact_dic_en };

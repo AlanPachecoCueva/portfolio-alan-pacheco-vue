@@ -19,7 +19,6 @@ export default {
   methods: {},
   watch: {
     currentLanguage(newValue) {
-      console.log("Language changed to: ", newValue);
       this.$i18n.locale = newValue;
     },
   },

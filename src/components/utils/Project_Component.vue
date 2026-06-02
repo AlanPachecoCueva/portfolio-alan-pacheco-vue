@@ -1,5 +1,6 @@
 <template>
-  <div v-if="loading" style="padding: 60px; text-align: center; color: #888;">Cargando...</div>
+  <main>
+  <div v-if="loading" style="padding: 60px; text-align: center; color: #888;">{{ $t('Project_Loading') }}</div>
   <div v-else class="bigContainer_Project">
     <div class="infoContainer">
       <div class="flagContainer">
@@ -40,12 +41,13 @@
           <img
             class="item-image"
             :src="image.url"
-            alt="img"
+            :alt="project.title || 'Project image'"
           />
         </div>
       </div>
     </div>
   </div>
+  </main>
 </template>
 
 <script>
@@ -62,7 +64,10 @@ export default {
     const loading = ref(true)
 
     getProject(route.params.id).then((data) => {
-      if (data) project.value = data
+      if (data) {
+        project.value = data
+        document.title = `${data.title} | Portfolio Alan Pacheco`
+      }
       loading.value = false
     })
 

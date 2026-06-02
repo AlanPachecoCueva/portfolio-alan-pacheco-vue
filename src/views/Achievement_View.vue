@@ -1,7 +1,7 @@
 <template>
-  <div class="achievement-page">
-    <div v-if="loading" class="state-msg">Cargando...</div>
-    <div v-else-if="error" class="state-msg">Error al cargar el logro.</div>
+  <main class="achievement-page">
+    <div v-if="loading" class="state-msg">{{ $t('Achievement_Loading') }}</div>
+    <div v-else-if="error" class="state-msg">{{ $t('Achievement_Error') }}</div>
     <div v-else class="achievement-grid">
 
       <!-- Panel de info — col 1, span calculado por JS -->
@@ -38,13 +38,13 @@
         <img
           :src="image.url"
           class="grid-img"
-          alt="img"
+          :alt="achievement.title || 'Achievement image'"
           @load="onImageLoad($event, i)"
         />
       </div>
 
     </div>
-  </div>
+  </main>
 </template>
 
 <script>
@@ -66,7 +66,10 @@ export default {
 
     getAchievement(route.params.id)
       .then((data) => {
-        if (data) achievement.value = data
+        if (data) {
+          achievement.value = data
+          document.title = `${data.title} | Portfolio Alan Pacheco`
+        }
         loading.value = false
       })
       .catch(() => {

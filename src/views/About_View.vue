@@ -1,7 +1,7 @@
 <template>
-  <div class="bigContainerAbout">
+  <section class="bigContainerAbout">
     <div class="leftSideAbout">
-      <img src="../assets/About-Image.webp" alt="img about" loading="lazy" />
+      <img src="../assets/About-Image.webp" alt="Alan Pacheco" loading="lazy" />
     </div>
     <div class="rightSideAbout">
       <div class="right-leftContainer">
@@ -15,16 +15,18 @@
         </div>
         <div class="right-rightContainer-lower">
           <router-link :to="{ name: 'Home', hash: '#contact-view' }">
-            <input class="button" id="leftButton" type="button" :value="$t('About_Me_Contact_Me')"
-              :style="generateAlternativeGradientStyle()" />
+            <button class="button" id="leftButton" :style="generateAlternativeGradientStyle()">
+              {{ $t('About_Me_Contact_Me') }}
+            </button>
           </router-link>
 
-          <input class="button" type="button" id="rightButton" @click="downloadCV" :value="$t('About_Me_Download_CV')"
-            :style="generateGradientStyle()" />
+          <button class="button" id="rightButton" @click="downloadCV" :style="generateGradientStyle()">
+            {{ $t('About_Me_Download_CV') }}
+          </button>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

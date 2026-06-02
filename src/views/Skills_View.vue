@@ -1,6 +1,6 @@
 <template>
   <!-- Aquí va el HTML del componente -->
-  <div class="bigContainer_Skills">
+  <section class="bigContainer_Skills">
     <div class="leftSide">
       <div class="leftSide_Left">
         <p>{{ $t("Skills_Flag") }}</p>
@@ -47,7 +47,7 @@
       ></GridComponent>
       <GridComponent :items="tools" v-else></GridComponent>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>

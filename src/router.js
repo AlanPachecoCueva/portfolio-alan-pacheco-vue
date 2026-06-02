@@ -116,7 +116,7 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
-  scrollBehavior(to, from, savedPosition) {
+  scrollBehavior(to, _from, savedPosition) {
     if (savedPosition) {
       return savedPosition;
     } else if (to.hash) {
@@ -160,23 +160,20 @@ router.beforeEach(async (to) => {
 // ── Document title ─────────────────────────────────────────────────────────
 const BASE_TITLE = "Portfolio Alan Pacheco";
 router.afterEach((to) => {
-  if (to.name === "Project" && to.params.id) {
-    document.title = `${to.params.id} | ${BASE_TITLE}`;
-  } else {
-    const titles = {
-      Home: `${BASE_TITLE} — Software Engineer`,
-      About: `About | ${BASE_TITLE}`,
-      Gallery: `Gallery | ${BASE_TITLE}`,
-      Achievements: `Achievements | ${BASE_TITLE}`,
-      Achievement: `Achievement | ${BASE_TITLE}`,
-      AdminLogin: `Admin Login | ${BASE_TITLE}`,
-      AdminProjects: `Admin — Projects | ${BASE_TITLE}`,
-      AdminAchievements: `Admin — Achievements | ${BASE_TITLE}`,
-      AdminImages: `Admin — Images | ${BASE_TITLE}`,
-      AdminAlbums: `Admin — Albums | ${BASE_TITLE}`,
-    };
-    document.title = titles[to.name] || BASE_TITLE;
-  }
+  const titles = {
+    Home:               `${BASE_TITLE} — Software Engineer`,
+    About:              `About | ${BASE_TITLE}`,
+    Gallery:            `Gallery | ${BASE_TITLE}`,
+    Achievements:       `Achievements | ${BASE_TITLE}`,
+    Achievement:        `Achievement | ${BASE_TITLE}`,
+    Project:            `Project | ${BASE_TITLE}`,
+    AdminLogin:         `Admin Login | ${BASE_TITLE}`,
+    AdminProjects:      `Admin — Projects | ${BASE_TITLE}`,
+    AdminAchievements:  `Admin — Achievements | ${BASE_TITLE}`,
+    AdminImages:        `Admin — Images | ${BASE_TITLE}`,
+    AdminAlbums:        `Admin — Albums | ${BASE_TITLE}`,
+  };
+  document.title = titles[to.name] || BASE_TITLE;
 });
 
 export default router;

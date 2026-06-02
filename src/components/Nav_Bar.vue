@@ -1,9 +1,9 @@
 <template>
   <header>
-    <nav>
+    <nav aria-label="Navegación principal">
       <div id="logo-side">
         <div class="nav-logo">
-          <img class="logo" alt="Vue logo" src="../assets/logo-no-letters.png" />
+          <img class="logo" alt="Alan Pacheco — Portfolio" src="../assets/logo-no-letters.png" />
         </div>
       </div>
 
