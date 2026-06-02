@@ -35,7 +35,7 @@ export default defineNuxtConfig({
     preset: 'static',
     prerender: {
       routes: ['/', '/gallery', '/achievements'],
-      ignore: ['/admin'],
+      ignore: ['/admin', '/admin/**'],
     },
   },
 
