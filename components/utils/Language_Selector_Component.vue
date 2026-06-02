@@ -12,14 +12,14 @@ export default {
   name: "Language_Selector_Component",
   data() {
     return {
-      currentLanguage: "EN",
+      currentLanguage: "ES",
       languages: ["EN", "ES"],
     };
   },
   methods: {},
   watch: {
     currentLanguage(newValue) {
-      this.$i18n.locale = newValue;
+      this.$i18n.setLocale(newValue);
     },
   },
 };
