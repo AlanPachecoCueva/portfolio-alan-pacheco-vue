@@ -1,156 +1,200 @@
-# Portfolio Alan Pacheco — Vue 3
+# CLAUDE.md — Portfolio Alan Pacheco
 
-## Descripción
-Portafolio personal de Alan Pacheco, Ing. de Software. SPA con secciones de presentación, sobre mí, habilidades, proyectos, contacto, galería fotográfica y logros. Objetivo: vitrina profesional con soporte bilingüe (ES/EN) y alternancia dark/light.
+Archivo cargado automáticamente por Claude Code en cada sesión. Es una guía de comportamiento operativo, no solo documentación técnica.
 
-## Stack técnico
-- **Framework:** Vue 3 (Options API con composables en `setup()`)
-- **Build Tool:** Vite 5 (`npm run dev` / `npm run build`)
-- **UI:** Vuetify 3 stable (3.12+) + `vite-plugin-vuetify`
-- **Estado:** Composables Vue reactivos (sin Pinia)
-- **Backend:** Firebase (Auth + Firestore + Storage)
-- **Routing:** Vue Router 4 — rutas públicas + rutas admin (`/admin/**`) con navigation guard
-- **i18n:** Vue i18n 9 (ES/EN) — diccionarios en `src/plugins/dictionaries/`
-- **Email:** EmailJS (`@emailjs/browser`) — claves en `.env` (prefijo `VITE_`)
-- **Alertas:** Vue SweetAlert2
-- **Iconos:** Iconify + `@iconify/vue`
-- **Tema:** composable `useTheme()` en `src/composables/useTheme.js`
+## Documentación adicional
 
-## Estructura de carpetas
+| Documento | Cuándo consultar | Qué agregar ahí |
+|---|---|---|
+| [`.claude/memoria-tecnica/Overview_Tecnico.md`](.claude/memoria-tecnica/Overview_Tecnico.md) | Referencia técnica completa del sistema | Cambios de arquitectura, flujos detallados, schemas de Firestore |
+| [`.claude/memoria-tecnica/Errores_Conocidos.md`](.claude/memoria-tecnica/Errores_Conocidos.md) | **Ante cualquier bug nuevo, revisar primero** | Bugs, errores de configuración, gotchas de deploy |
+| [`.claude/memoria-tecnica/Decisiones_Arquitectura.md`](.claude/memoria-tecnica/Decisiones_Arquitectura.md) | Al evaluar cambios de diseño o arquitectura | Decisiones no obvias con alternativas descartadas |
+| [`.claude/memoria-tecnica/Glosario.md`](.claude/memoria-tecnica/Glosario.md) | Ante términos del dominio desconocidos | Términos del proyecto, secciones, acrónimos |
+| [`.claude/memoria-tecnica/Deploy_Historial.md`](.claude/memoria-tecnica/Deploy_Historial.md) | Al subir versiones o ejecutar acciones de distribución | Releases, deploys, cambios en Netlify, fechas clave |
+
+> **Regla permanente:** Ante cualquier bug nuevo, revisar `.claude/memoria-tecnica/Errores_Conocidos.md` antes de empezar el análisis.
+
+---
+
+## Reglas de documentación
+
+1. **Proactividad:** Si el usuario menciona haber completado una acción manual (deploy a Netlify, configuración en Firebase Console, decisión de producto, etc.), proponer actualizar la documentación correspondiente sin esperar que lo pida.
+2. **Deploy:** Cualquier acción de distribución (nuevo deploy, cambio de dominio, configuración de env vars en Netlify) → actualizar `Deploy_Historial.md` inmediatamente.
+3. **Sin duplicación:** Si un gotcha tiene su entrada completa en `Decisiones_Arquitectura.md`, el gotcha en este archivo debe ser solo una referencia breve.
+4. **Fecha de actualización:** Al modificar cualquier archivo de memoria técnica, actualizar el campo `_Última actualización_` al inicio del archivo.
+5. **El usuario se comunica en español.** Responder siempre en español en este proyecto.
+
+---
+
+## Propósito
+
+Portfolio personal de **Alan Pacheco Cueva**, Ingeniero de Software ecuatoriano. Web bilingüe (ES/EN) con modo dark/light que sirve como vitrina profesional para reclutadores, clientes freelance y colaboradores.
+
+**Secciones públicas:** Hero, About + CV descargable, Skills, Portfolio de proyectos, Galería fotográfica, Logros/Certificaciones, Contacto.
+
+**Panel admin privado (`/admin/**`):** CRUD de proyectos, logros, imágenes y álbumes. Protegido por Firebase Auth + colección `admins`.
+
+---
+
+## Stack
+
+| Tecnología | Versión | Notas |
+|---|---|---|
+| Vue | ^3.2.13 | Composition API + Options API mixto |
+| Nuxt | ^4.4.6 | Meta-framework SSG (pre-render estático) |
+| Vuetify | ^3.7.0 | UI Material Design 3, temas light/dark |
+| @nuxtjs/i18n | ^10.4.0 | i18n bilingüe ES/EN — archivos en `i18n/locales/` |
+| Firebase | ^12.13.0 | Auth (email + Google), Firestore, Storage |
+| @emailjs/browser | ^4.4.1 | Formulario de contacto sin backend propio |
+| @iconify/vue | ^4.1.2 | Iconos vectoriales con `<Icon>` |
+| vue-sweetalert2 | ^5.0.11 | Modales de alerta |
+| ESLint | ^8.57.0 | Linting (`eslint-plugin-vue`) |
+
+**Build:** `nuxt generate` (Nitro static preset) → output en `.output/public/`
+**Deploy:** Netlify (SSG + SPA fallback para rutas dinámicas)
+**URL:** https://thecodesolutions.com/
+
+---
+
+## Arquitectura
+
 ```
-src/
-├── assets/                    # Logos y recursos estáticos
+portfolio-alan-pacheco-vue/        ← raíz del proyecto (Nuxt 3, NO src/)
+│
+├── pages/                         ← Rutas file-based (Nuxt auto-router)
+│   ├── index.vue                  ← / (todas las secciones en una página)
+│   ├── gallery.vue                ← /gallery
+│   ├── achievements.vue           ← /achievements
+│   ├── achievement/[id].vue       ← /achievement/:id
+│   ├── project/[id].vue           ← /project/:id
+│   └── admin/
+│       ├── login.vue              ← /admin/login
+│       ├── images.vue             ← /admin/images
+│       ├── albums.vue             ← /admin/albums
+│       ├── projects/index.vue     ← /admin/projects
+│       ├── projects/new.vue       ← /admin/projects/new
+│       ├── projects/[id]/edit.vue ← /admin/projects/:id/edit
+│       ├── achievements/index.vue ← /admin/achievements
+│       ├── achievements/new.vue   ← /admin/achievements/new
+│       └── achievements/[id]/edit.vue
+│
 ├── components/
 │   ├── Nav_Bar.vue
-│   ├── admin/                 # Componentes exclusivos del panel admin
-│   │   ├── Admin_Nav.vue      # Navbar del admin con timer de inactividad
-│   │   ├── Image_Uploader.vue # Drag & drop multi-imagen con progreso
-│   │   ├── Image_Picker.vue   # Modal selector de imágenes (single/multi)
-│   │   └── Image_Selector.vue # Combinado: drop zone + "Elegir de biblioteca"
-│   └── utils/                 # Componentes reutilizables (Card, Grid, Projects, etc.)
-├── composables/
-│   ├── useTheme.js            # Getters de colores del tema actual
-│   ├── useAuth.js             # user, isAdmin, login(), logout()
-│   ├── useImages.js           # images, galleryImages, upload(), remove(), toggleGallery()
-│   ├── useAlbums.js           # albums (reactivo), create(), update(), remove()
-│   ├── useProjects.js         # projects (publicados), allProjects (admin)
-│   └── useAchievements.js     # achievements (publicados), allAchievements (admin)
-├── firebase/
-│   ├── index.js               # Inicialización Firebase (app, db, storage, auth)
-│   ├── auth.js                # login(), logout(), onAuthStateChanged()
-│   ├── images.js              # CRUD imágenes + Storage upload
-│   ├── albums.js              # CRUD álbumes
-│   ├── projects.js            # CRUD proyectos
-│   └── achievements.js        # CRUD logros
+│   ├── admin/                     ← Admin_Nav, Image_Uploader, Image_Picker, Image_Selector
+│   └── utils/                     ← Card, Grid, Language_Selector, Project, Projects, Theme_Selector
+│
+├── composables/                   ← useAuth, useTheme, useImages/useGalleryImages, useAlbums, useProjects/usePublishedProjects, useAchievements/usePublishedAchievements
+├── layouts/
+│   ├── default.vue                ← Layout público (cursor + scroll logic + navbar + contenido)
+│   └── admin.vue                  ← Layout admin (solo <div> base — Admin_Nav va en cada página)
+├── middleware/
+│   └── auth.ts                    ← Guard Nuxt: protege /admin/** (verifica Firebase Auth + colección admins)
+├── utils/
+│   └── firebase/                  ← index.js, auth.js, images.js, albums.js, projects.js, achievements.js
 ├── plugins/
-│   ├── vuetify.js             # Configuración de temas (paleta de colores custom)
-│   ├── themeMixin.js          # DEPRECADO — reemplazado por useTheme composable
-│   ├── dictionary.js          # Punto de entrada i18n (agrega todos los diccionarios)
-│   └── dictionaries/          # Un archivo por sección (home, about, skills, nav-bar, etc.)
-└── views/
-    ├── General_View.vue        # Layout principal (todas las secciones)
-    ├── Home_View.vue           # Hero con parallax
-    ├── About_View.vue          # About + CV download (ES/EN PDF)
-    ├── Skills_View.vue         # Skills y Tools con tabs animados
-    ├── Contact_View.vue        # Formulario EmailJS
-    ├── Gallery_View.vue        # Galería masonry — imágenes de Firestore/Storage
-    ├── Achievements_View.vue   # Vista pública de logros desde Firestore
-    └── admin/
-        ├── Admin_Login.vue
-        ├── Admin_Projects.vue
-        ├── Admin_ProjectForm.vue
-        ├── Admin_Achievements.vue
-        ├── Admin_AchievementForm.vue
-        ├── Admin_Images.vue
-        └── Admin_Albums.vue
+│   ├── vuetify.ts                 ← Configuración de temas (paleta custom light/dark)
+│   ├── iconify.ts
+│   └── sweetalert.client.ts
+├── i18n/
+│   └── locales/
+│       ├── es.json                ← Strings en español
+│       └── en.json                ← Strings en inglés
+├── assets/                        ← Imágenes estáticas, admin.css
+├── public/                        ← favicon, CVs (ES/EN PDF), sitemap.xml, robots.txt
+├── app/
+│   └── router.options.ts
+├── app.vue                        ← Root component (cursor personalizado aquí)
+├── nuxt.config.ts
+└── netlify.toml
 ```
 
-## Rutas
-| Path | Componente | Descripción |
-|------|-----------|-------------|
-| `/` | General_View | Página principal (todas las secciones) |
-| `/gallery` | Gallery_View | Galería fotográfica |
-| `/achievements` | Achievements_View | Vista pública de logros |
-| `/project/:id` | Project_Component | Detalle de proyecto (id = doc ID de Firestore) |
-| `/admin/login` | Admin_Login | Login del panel admin |
-| `/admin/projects` | Admin_Projects | Gestión de proyectos |
-| `/admin/projects/new` | Admin_ProjectForm | Crear proyecto |
-| `/admin/projects/:id/edit` | Admin_ProjectForm | Editar proyecto |
-| `/admin/achievements` | Admin_Achievements | Gestión de logros |
-| `/admin/achievements/new` | Admin_AchievementForm | Crear logro |
-| `/admin/achievements/:id/edit` | Admin_AchievementForm | Editar logro |
-| `/admin/images` | Admin_Images | Gestión de imágenes |
-| `/admin/albums` | Admin_Albums | Gestión de álbumes |
+---
 
-El router tiene un navigation guard en `/admin/**` que verifica si el usuario está en la colección `admins` de Firestore. El `document.title` se actualiza automáticamente en `router.afterEach`.
+## Rutas principales
 
-## Firebase — Colecciones Firestore
-- **`images`**: `{ url, storagePath, title, description, date, album (albumId), sizeFactor, showInGallery, uploadedAt }`
-- **`albums`**: `{ name, description, createdAt }`
-- **`projects`**: `{ title, description_es, description_en, date, url, category, technology, relatedTechnologies[], thumbnailImageId, thumbnailUrl, imageIds[], imageUrls[{url,columns,rows}], gridColumns, gridRows, order, published, createdAt }`
-- **`achievements`**: `{ title, description_es, description_en, date, type, issuer, link, thumbnailImageId, thumbnailUrl, imageIds[], imageUrls[{url}], order, published, createdAt }`
-- **`admins`**: `{ uid }` — colección que define qué usuarios son administradores
+| Path | Página | Requiere auth |
+|---|---|---|
+| `/` | `pages/index.vue` | No |
+| `/gallery` | `pages/gallery.vue` | No |
+| `/achievements` | `pages/achievements.vue` | No |
+| `/achievement/:id` | `pages/achievement/[id].vue` | No |
+| `/project/:id` | `pages/project/[id].vue` | No |
+| `/admin/login` | `pages/admin/login.vue` | No |
+| `/admin/projects` | `pages/admin/projects/index.vue` | Sí |
+| `/admin/projects/new` | `pages/admin/projects/new.vue` | Sí |
+| `/admin/projects/:id/edit` | `pages/admin/projects/[id]/edit.vue` | Sí |
+| `/admin/achievements` | `pages/admin/achievements/index.vue` | Sí |
+| `/admin/achievements/new` | `pages/admin/achievements/new.vue` | Sí |
+| `/admin/achievements/:id/edit` | `pages/admin/achievements/[id]/edit.vue` | Sí |
+| `/admin/images` | `pages/admin/images.vue` | Sí |
+| `/admin/albums` | `pages/admin/albums.vue` | Sí |
 
-## Composable useTheme
-Todos los colores del tema se obtienen vía `useTheme()` de `src/composables/useTheme.js`.
+**Auth guard (`middleware/auth.ts`):** Se ejecuta solo en cliente. Verifica Firebase Auth + que el `uid` exista en colección `admins`. Redirige a `/admin/login` si falla.
 
-```js
-import { useTheme } from '@/composables/useTheme'
+---
 
-export default {
-  setup() {
-    return useTheme()  // expone getPrimaryColor(), getHeroColor(), etc.
-  },
-  methods: {
-    someMethod() {
-      const color = this.getPrimaryColor()  // disponible via this en Options API
-    }
-  }
-}
+## Base de datos (Firestore)
+
+| Colección | Schema |
+|---|---|
+| `images` | `{ url, storagePath, title, description, date, album (albumId), sizeFactor, showInGallery, uploadedAt }` |
+| `albums` | `{ name, description, createdAt }` |
+| `projects` | `{ title, description_es, description_en, date, url, category, technology, relatedTechnologies[], thumbnailImageId, thumbnailUrl, imageIds[], imageUrls[{url,columns,rows}], gridColumns, gridRows, order, published, createdAt }` |
+| `achievements` | `{ title, description_es, description_en, date, type, issuer, link, thumbnailImageId, thumbnailUrl, imageIds[], imageUrls[{url}], order, published, createdAt }` |
+| `admins` | `{ uid }` — define qué usuarios son administradores |
+
+---
+
+## Variables de entorno
+
 ```
-
-**Getters disponibles:** `getPrimaryColor()`, `getSecondaryColor()`, `getHeaderColor()`, `getHeroColor()`, `getContrastColor()`, `getBackgroundColor()`, `getTextColor()`, `getTextAuxiliarColor()`, `getAuxiliarColor()`, `getAlternativeButtonColor()`
-
-## Imágenes
-Todas las imágenes de proyectos, logros y galería están en **Firebase Storage** y sus URLs se cachean en los documentos de Firestore. No se usa `import.meta.glob` para imágenes de proyectos/logros/galería.
-
-Para iconos u otros assets estáticos del template: usar `src="..."` sin binding (Vite los resuelve automáticamente).
-
-## Variables de entorno (.env)
-```
-VITE_EMAILJS_SERVICE_ID=...
-VITE_EMAILJS_TEMPLATE_ID=...
-VITE_EMAILJS_PUBLIC_KEY=...
 VITE_FIREBASE_API_KEY=...
 VITE_FIREBASE_AUTH_DOMAIN=...
 VITE_FIREBASE_PROJECT_ID=...
 VITE_FIREBASE_STORAGE_BUCKET=...
 VITE_FIREBASE_MESSAGING_SENDER_ID=...
 VITE_FIREBASE_APP_ID=...
+VITE_EMAILJS_SERVICE_ID=...
+VITE_EMAILJS_TEMPLATE_ID=...
+VITE_EMAILJS_PUBLIC_KEY=...
 ```
-En código: `import.meta.env.VITE_FIREBASE_API_KEY` (NO `process.env`).
 
-## Convenciones de código
-- **Naming:** PascalCase para componentes y archivos Vue (`Nav_Bar.vue`, `Card_Component.vue`)
-- **Estilos:** CSS con scope en cada componente; variables de color via `useTheme` (no usar colores hardcodeados). El panel admin importa `@/assets/admin.css` para estilos comunes.
-- **i18n:** Cualquier texto visible al usuario en vistas públicas debe ir en los diccionarios de `src/plugins/dictionaries/`
-- **Imágenes estáticas en templates:** usar `src="..."` sin binding (Vite las resuelve automáticamente)
-- **NO usar `require()`** — no es compatible con Vite
+En Nuxt 3: acceso vía `useRuntimeConfig().public.*` (configurar en `nuxt.config.ts` bajo `runtimeConfig.public`). En utils/firebase: `import.meta.env.VITE_*` funciona directamente porque Vite lo resuelve en build time. **No usar `process.env`.**
+
+---
 
 ## Comandos de desarrollo
+
 ```bash
-npm run dev      # Servidor de desarrollo (localhost:5173)
-npm run build    # Build de producción
-npm run preview  # Preview del build de producción
+npm run dev      # Servidor de desarrollo (localhost:3000)
+npm run build    # Genera sitio estático en .output/public/ (nuxt generate)
+npm run preview  # Preview del sitio generado
 npm run lint     # Linting con ESLint
 ```
 
-## Notas importantes
-- **Cursor personalizado:** Implementado directamente en `App.vue` con JS puro (dos divs animados)
-- **Navbar:** Se oculta/muestra via scroll en `App.vue`; estado de transparencia también depende del scroll
-- **Galería:** Las fotos se mezclan aleatoriamente al cargar (`Gallery_View.vue`); datos desde Firestore con `showInGallery: true`
-- **CV:** Existen dos versiones del CV (ES y EN) en `public/`; el botón de descarga en About cambia según el idioma activo
-- **themeMixin.js:** El archivo sigue existiendo pero ya NO se registra globalmente en `main.js`. Usar el composable.
-- **SEO:** Los meta tags estáticos están en el `index.html` raíz. El router actualiza `document.title` por ruta via `router.afterEach`.
-- **Admin session:** Timer de inactividad de 3 horas con aviso 60s antes. Sesión persistente con `browserLocalPersistence`.
-- **Queries Firestore:** Evitar combinar `where` + `orderBy` en la misma query sin crear el índice compuesto correspondiente en Firebase Console. Si aparece error de índice en consola, usar el link del error para crearlo.
+---
+
+## Convenciones de código
+
+- **Naming:** PascalCase para componentes (`Nav_Bar.vue`, `Card_Component.vue`)
+- **Estilos:** CSS scoped en cada componente. Colores siempre vía `useTheme()`, nunca hardcodeados
+- **Admin styles:** Las páginas admin importan `@/assets/admin.css` para estilos comunes
+- **i18n:** Todo texto visible al usuario en páginas públicas debe ir en `i18n/locales/es.json` y `en.json`
+- **Imágenes estáticas en templates:** `src="..."` sin binding (Nuxt/Vite las resuelve en build)
+- **NO usar `require()`** — no compatible con Vite
+- **themeMixin.js:** Archivo legacy que ya NO se registra globalmente. Usar `useTheme()` composable
+
+---
+
+## Gotchas técnicos
+
+1. **`src/views/` no está vacío:** Aunque DA-001 indicaba que `src/` quedó como legacy vacío, en realidad `src/views/` contiene las vistas de secciones del portfolio (Home_View, About_View, Skills_View, Contact_View) que siguen siendo importadas desde `pages/index.vue`. Las vistas admin en `src/views/admin/` sí son legacy y no se usan.
+2. **Hidratación SSG + Firebase Auth:** El middleware `auth.ts` solo se ejecuta en cliente. No usar `useAuth()` en el lado servidor — puede causar hydration mismatch.
+3. **Rutas dinámicas en SSG:** `/project/:id` y `/achievement/:id` no se pre-renderizan (requeriría conocer todos los IDs en build time). Se sirven vía SPA fallback de Netlify (`/* → /index.html`).
+4. **`nuxt generate` vs `nuxt build`:** Este proyecto usa `nuxt generate` (SSG). `nuxt build` generaría un servidor Node.js, que Netlify podría detectar y activar SSR — error conocido (ver Errores_Conocidos.md).
+5. **Índices Firestore:** Evitar `where` + `orderBy` en la misma query sin crear el índice compuesto en Firebase Console. Si aparece error de índice en consola del navegador, el error incluye un link directo para crearlo.
+6. **Admin session timeout:** Timer de inactividad de 3 horas con aviso 60 segundos antes. Implementado en `Admin_Nav.vue`. Sesión persistente con `browserLocalPersistence`.
+7. **Cursor personalizado:** Implementado en `layouts/default.vue` (NO en `app.vue`). `app.vue` es solo `<NuxtLayout><NuxtPage /></NuxtLayout>`. El cursor y la lógica de scroll/hide del navbar están en `DefaultLayout`. No modificar sin revisar el efecto en mobile (cursor no visible en touch).
+8. **Galería aleatoria:** Las imágenes se mezclan aleatoriamente al cargar la página. Es comportamiento intencional — no un bug.
+9. **CVs descargables:** Hay dos versiones (`CV-Alan Pacheco-ESP.pdf` y `CV-Alan Pacheco-ENG.pdf`) en `public/`. El botón en la sección About cambia según `$i18n.locale`.
+10. **`npm run serve` no existe:** El README.md raíz está desactualizado (era de Vue CLI). Usar `npm run dev`.

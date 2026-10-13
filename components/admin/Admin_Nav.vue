@@ -51,9 +51,9 @@ export default {
       this.removeActivityListeners()
       await this.logout()
       if (reason === 'inactivity') {
-        this.$router.push({ name: 'AdminLogin', query: { reason: 'inactivity' } })
+        navigateTo({ path: '/admin/login', query: { reason: 'inactivity' } })
       } else {
-        this.$router.push({ name: 'AdminLogin' })
+        navigateTo('/admin/login')
       }
     },
 
