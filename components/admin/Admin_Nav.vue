@@ -2,7 +2,10 @@
   <nav class="admin-nav">
     <div class="admin-nav-brand">Admin Panel</div>
     <div class="admin-nav-links">
+      <NuxtLink :to="{ name: 'admin-leads' }">Leads</NuxtLink>
+      <NuxtLink :to="{ name: 'admin-services' }">Servicios</NuxtLink>
       <NuxtLink :to="{ name: 'admin-projects' }">Proyectos</NuxtLink>
+      <NuxtLink :to="{ name: 'admin-team' }">Equipo</NuxtLink>
       <NuxtLink :to="{ name: 'admin-achievements' }">Logros</NuxtLink>
       <NuxtLink :to="{ name: 'admin-images' }">Imágenes</NuxtLink>
       <NuxtLink :to="{ name: 'admin-albums' }">Álbumes</NuxtLink>
