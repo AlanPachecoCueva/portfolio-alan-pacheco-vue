@@ -58,6 +58,7 @@ export async function getAchievement(id) {
 export async function createAchievement(data) {
   return addDoc(collection(db, COLLECTION), {
     title: data.title,
+    title_en: data.title_en || '',
     description_es: data.description_es,
     description_en: data.description_en,
     date: data.date || serverTimestamp(),

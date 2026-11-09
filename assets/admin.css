@@ -385,3 +385,13 @@
   color: #eee;
   font-size: 0.85em;
 }
+
+/* ── Casillas múltiples (servicios / equipo de un proyecto) ── */
+.check-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  padding: 10px 12px;
+  background: #1a1a1a;
+  border-radius: 8px;
+}
