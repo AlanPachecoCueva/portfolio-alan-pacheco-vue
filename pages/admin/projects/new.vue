@@ -71,7 +71,7 @@ definePageMeta({ middleware: 'auth', layout: false })
                 <button type="button" @click="removeTech(i)">✕</button>
               </span>
               <input v-model="techInput" placeholder="Agregar tecnología y presionar Enter"
-                @keydown.enter.prevent="addTech" @keydown.comma.prevent="addTech" />
+                @keydown.enter.prevent="addTech" @keydown="(e) => { if (e.key === ',') { e.preventDefault(); addTech() } }" />
             </div>
           </div>
         </section>

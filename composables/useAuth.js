@@ -1,7 +1,6 @@
-import { onUnmounted } from 'vue'
 import { login as firebaseLogin, logout as firebaseLogout, onAuthChanged } from '~/utils/firebase/auth.js'
 
-let _unsubscribe = null
+// Listener global de la sesión: se registra una sola vez y vive toda la app
 let _initialized = false
 
 export function useAuth() {
@@ -10,7 +9,7 @@ export function useAuth() {
 
   if (process.client && !_initialized) {
     _initialized = true
-    _unsubscribe = onAuthChanged((user) => {
+    onAuthChanged((user) => {
       currentUser.value = user
     })
   }

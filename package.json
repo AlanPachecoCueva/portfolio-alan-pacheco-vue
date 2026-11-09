@@ -28,11 +28,52 @@
     "root": true,
     "env": {
       "node": true,
+      "browser": true,
       "es2022": true
     },
     "extends": [
       "plugin:vue/vue3-essential",
       "eslint:recommended"
+    ],
+    "ignorePatterns": [
+      "dist/",
+      ".output/",
+      ".nuxt/",
+      "node_modules/",
+      "src/views/admin/"
+    ],
+    "globals": {
+      "defineNuxtConfig": "readonly",
+      "defineNuxtPlugin": "readonly",
+      "defineNuxtRouteMiddleware": "readonly",
+      "definePageMeta": "readonly",
+      "navigateTo": "readonly",
+      "useState": "readonly",
+      "useHead": "readonly",
+      "useSeoMeta": "readonly",
+      "useRuntimeConfig": "readonly",
+      "useRoute": "readonly",
+      "useRouter": "readonly",
+      "useNuxtApp": "readonly",
+      "useAsyncData": "readonly",
+      "useFetch": "readonly",
+      "useI18n": "readonly",
+      "useLocalePath": "readonly",
+      "useLocaleHead": "readonly",
+      "useCookie": "readonly"
+    },
+    "overrides": [
+      {
+        "files": [
+          "layouts/**/*.vue",
+          "pages/**/*.vue",
+          "app.vue",
+          "error.vue"
+        ],
+        "rules": {
+          "vue/multi-word-component-names": "off"
+        }
+      }
     ],
     "rules": {}
   },

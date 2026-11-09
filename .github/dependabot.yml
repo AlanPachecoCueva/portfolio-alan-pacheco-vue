@@ -1,0 +1,26 @@
+# Dependabot: PRs semanales con actualizaciones. Cada PR pasa por el CI (npm audit + lint + build).
+# Antes de hacer merge, seguir el procedimiento de .claude/memoria-tecnica/Seguridad_Dependencias.md.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    target-branch: feature/thecodesolutions
+    schedule:
+      interval: weekly
+      day: monday
+      timezone: America/Guayaquil
+    open-pull-requests-limit: 5
+    groups:
+      menores-y-parches:
+        update-types: [minor, patch]
+    # Las versiones mayores se evalúan a mano (cambios incompatibles)
+    ignore:
+      - dependency-name: '*'
+        update-types: ['version-update:semver-major']
+
+  - package-ecosystem: github-actions
+    directory: /
+    target-branch: feature/thecodesolutions
+    schedule:
+      interval: monthly
+      timezone: America/Guayaquil
