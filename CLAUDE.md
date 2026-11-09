@@ -11,6 +11,7 @@ Archivo cargado automáticamente por Claude Code en cada sesión. Es una guía d
 | [`.claude/memoria-tecnica/Decisiones_Arquitectura.md`](.claude/memoria-tecnica/Decisiones_Arquitectura.md) | Al evaluar cambios de diseño o arquitectura | Decisiones no obvias con alternativas descartadas |
 | [`.claude/memoria-tecnica/Glosario.md`](.claude/memoria-tecnica/Glosario.md) | Ante términos del dominio desconocidos | Términos del proyecto, secciones, acrónimos |
 | [`.claude/memoria-tecnica/Deploy_Historial.md`](.claude/memoria-tecnica/Deploy_Historial.md) | Al subir versiones o ejecutar acciones de distribución | Releases, deploys, cambios en Netlify, fechas clave |
+| [`.claude/memoria-tecnica/Seguridad_Dependencias.md`](.claude/memoria-tecnica/Seguridad_Dependencias.md) | **Antes de añadir o actualizar cualquier dependencia** | Auditorías `npm audit` (AUD-XXX), procedimiento de verificación, dependencias descartadas |
 
 > **Regla permanente:** Ante cualquier bug nuevo, revisar `.claude/memoria-tecnica/Errores_Conocidos.md` antes de empezar el análisis.
 
@@ -23,6 +24,14 @@ Archivo cargado automáticamente por Claude Code en cada sesión. Es una guía d
 3. **Sin duplicación:** Si un gotcha tiene su entrada completa en `Decisiones_Arquitectura.md`, el gotcha en este archivo debe ser solo una referencia breve.
 4. **Fecha de actualización:** Al modificar cualquier archivo de memoria técnica, actualizar el campo `_Última actualización_` al inicio del archivo.
 5. **El usuario se comunica en español.** Responder siempre en español en este proyecto.
+
+---
+
+## Principios permanentes de desarrollo
+
+1. **Código seguro — dependencias:** Antes de instalar o actualizar cualquier librería, verificar que la versión exacta no tenga vulnerabilidades conocidas (GitHub Advisory / OSV / `npm audit`) siguiendo el procedimiento de `Seguridad_Dependencias.md`, y registrar el resultado ahí. Nunca `npm audit fix --force`. **Apetito de riesgo (DA-008):** se aceptan como máximo vulnerabilidades de severidad baja o media (documentadas); altas y críticas no se aceptan y bloquean merge y deploy (`npm audit --audit-level=high` debe pasar). Preferir no añadir dependencias si se resuelve con código propio o con lo que ya trae Nuxt/Vuetify.
+2. **Código seguro — aplicación:** No usar `v-html` con datos de Firestore sin sanitizar; validar en `firestore.rules`/`storage.rules` (las reglas son la única defensa real); no exponer secretos más allá de la config pública de Firebase/EmailJS.
+3. **SEO desde el código:** Toda página pública nueva o refactorizada debe salir con: `useSeoMeta` (title, description, OG, Twitter) por idioma, canonical, `hreflang`, un solo `<h1>` y jerarquía de headings correcta, `alt` en imágenes, `width`/`height` para evitar CLS, datos estructurados JSON-LD cuando aplique, y estar incluida en el prerender y en el sitemap. Se revisa antes de dar una tarea por terminada.
 
 ---
 
