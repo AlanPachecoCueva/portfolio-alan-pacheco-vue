@@ -1,7 +1,3 @@
-<script setup>
-definePageMeta({ middleware: 'auth', layout: false })
-</script>
-
 <template>
   <div class="admin-page">
     <AdminNav />
@@ -46,6 +42,9 @@ definePageMeta({ middleware: 'auth', layout: false })
 <script>
 import AdminNav from '~/components/admin/Admin_Nav.vue'
 import { useAchievements } from '~/composables/useAchievements.js'
+
+// definePageMeta va en el <script> normal: un <script setup> sobrescribe el setup() de opciones (ERR-013)
+definePageMeta({ middleware: 'auth', layout: false })
 
 export default {
   name: 'Admin_Achievements',

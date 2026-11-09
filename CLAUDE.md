@@ -213,3 +213,5 @@ npm run lint     # Linting con ESLint
 8. **Galería aleatoria:** Las imágenes se mezclan aleatoriamente al cargar la página. Es comportamiento intencional — no un bug.
 9. **CVs descargables:** Hay dos versiones (`CV-Alan Pacheco-ESP.pdf` y `CV-Alan Pacheco-ENG.pdf`) en `public/`. El botón en la sección About cambia según `$i18n.locale`.
 10. **`npm run serve` no existe:** El README.md raíz está desactualizado (era de Vue CLI). Usar `npm run dev`.
+11. **Options API + `<script setup>` no se mezclan:** un `<script setup>` sobrescribe el `setup()` de opciones del mismo SFC. En páginas con Options API, `definePageMeta(...)` va en el `<script>` normal (ver ERR-013).
+12. **Formularios del admin:** clase `.admin-form` y estilos compartidos en `assets/admin.css` (ERR-014). Formularios compartidos entre "nuevo" y "editar" en `components/admin/*_Form.vue`.
