@@ -1,13 +1,15 @@
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
+// Solo los componentes que se usan (layouts/default.vue y Language_Selector_Component.vue).
+// Importar 'vuetify/components' completo metía ~100 componentes en el bundle.
+// Al usar un componente nuevo de Vuetify, agregarlo aquí.
+import { VApp } from 'vuetify/components/VApp'
+import { VSelect } from 'vuetify/components/VSelect'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
-    components,
-    directives,
+    components: { VApp, VSelect },
     theme: {
       defaultTheme: 'dark',
       themes: {

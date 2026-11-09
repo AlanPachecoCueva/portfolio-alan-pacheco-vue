@@ -52,7 +52,7 @@ Portfolio personal de **Alan Pacheco Cueva**, Ingeniero de Software ecuatoriano.
 |---|---|---|
 | Vue | ^3.2.13 | Composition API + Options API mixto |
 | Nuxt | ^4.6.4 | Meta-framework SSG (pre-render estático) |
-| Vuetify | ^3.7.0 | UI Material Design 3, temas light/dark |
+| Vuetify | ^3.7.0 | UI Material Design 3, temas light/dark. `plugins/vuetify.ts` registra solo los componentes usados (`VApp`, `VSelect`); al usar uno nuevo, agregarlo ahí |
 | @nuxtjs/i18n | ^10.6.0 | i18n bilingüe ES/EN — archivos en `i18n/locales/`. Trae su propio `vue-i18n` 11 (no instalarlo como dependencia directa) |
 | Firebase | ^12.19.0 | Auth (email + Google), Firestore, Storage. `overrides` fuerza `@grpc/grpc-js` 1.14.6 (ver AUD-002 en `Seguridad_Dependencias.md`) |
 | @emailjs/browser | ^4.4.1 | Formulario de contacto sin backend propio |
