@@ -1,0 +1,112 @@
+rules_version = '2';
+
+// Reglas de Firestore para thecodesolutions.com
+// Son la ÚNICA defensa real: la config de Firebase es pública (DA-003).
+// Deploy: Firebase Console → Firestore → Reglas (pegar este archivo) y publicar.
+// Antes del primer deploy, comparar con las reglas vigentes en la consola.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn()
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    // Contenido publicable: el público solo ve lo publicado; el admin ve y edita todo.
+    // Las consultas públicas DEBEN incluir where('published', '==', true).
+    function canReadPublishable() {
+      return resource.data.published == true || isAdmin();
+    }
+
+    // Texto opcional acotado (los campos que faltan cuentan como '').
+    function optionalString(data, key, max) {
+      return data.get(key, '') is string && data.get(key, '').size() <= max;
+    }
+
+    // ── Administradores ───────────────────────────────────────────
+    // middleware/auth.ts lee admins/{uid} del usuario autenticado.
+    // Se gestionan solo desde la consola.
+    match /admins/{uid} {
+      allow read: if isSignedIn() && request.auth.uid == uid;
+      allow write: if false;
+    }
+
+    // ── Contenido publicable ──────────────────────────────────────
+    match /projects/{id} {
+      allow read: if canReadPublishable();
+      allow write: if isAdmin();
+    }
+
+    match /achievements/{id} {
+      allow read: if canReadPublishable();
+      allow write: if isAdmin();
+    }
+
+    match /services/{id} {
+      allow read: if canReadPublishable();
+      allow write: if isAdmin();
+    }
+
+    match /team/{id} {
+      allow read: if canReadPublishable();
+      allow write: if isAdmin();
+    }
+
+    // ── Biblioteca de medios ──────────────────────────────────────
+    // La galería pública consulta where('showInGallery', '==', true).
+    match /images/{id} {
+      allow read: if resource.data.showInGallery == true || isAdmin();
+      allow write: if isAdmin();
+    }
+
+    match /albums/{id} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ── Leads (formulario de cotización) ──────────────────────────
+    // Cualquiera puede crear una solicitud válida; solo el admin la ve y gestiona.
+    // utils/firebase/leads.js envía exactamente estas claves.
+    match /leads/{id} {
+      allow create: if
+        request.resource.data.keys().hasOnly([
+          'name', 'company', 'email', 'phone', 'service', 'budget',
+          'timeline', 'message', 'locale', 'status', 'createdAt'
+        ])
+        && request.resource.data.keys().hasAll(['name', 'email', 'message', 'status', 'createdAt'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 120
+        && request.resource.data.email is string
+        && request.resource.data.email.size() <= 254
+        && request.resource.data.email.matches('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
+        && request.resource.data.message is string
+        && request.resource.data.message.size() > 0
+        && request.resource.data.message.size() <= 5000
+        && optionalString(request.resource.data, 'company', 120)
+        && optionalString(request.resource.data, 'phone', 40)
+        && optionalString(request.resource.data, 'service', 80)
+        && optionalString(request.resource.data, 'budget', 80)
+        && optionalString(request.resource.data, 'timeline', 80)
+        && request.resource.data.get('locale', 'es') in ['es', 'en']
+        && request.resource.data.status == 'nuevo'
+        && request.resource.data.createdAt == request.time;
+
+      allow read, delete: if isAdmin();
+
+      // El admin solo cambia el estado del lead (LEAD_STATUSES en leads.js).
+      allow update: if isAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status'])
+        && request.resource.data.status in ['nuevo', 'contactado', 'cotizado', 'ganado', 'perdido'];
+    }
+
+    // Todo lo demás, denegado.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

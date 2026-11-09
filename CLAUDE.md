@@ -93,7 +93,7 @@ portfolio-alan-pacheco-vue/        ← raíz del proyecto (Nuxt 3, NO src/)
 │   ├── admin/                     ← Admin_Nav, Image_Uploader, Image_Picker, Image_Selector
 │   └── utils/                     ← Card, Grid, Language_Selector, Project, Projects, Theme_Selector
 │
-├── composables/                   ← useAuth, useTheme, useImages/useGalleryImages, useAlbums, useProjects/usePublishedProjects, useAchievements/usePublishedAchievements
+├── composables/                   ← useAuth, useTheme, useImages/useGalleryImages, useAlbums, useProjects/usePublishedProjects, useAchievements/usePublishedAchievements, useServices/usePublishedServices, useTeam/usePublishedTeam, useLeads/useCreateLead
 ├── layouts/
 │   ├── default.vue                ← Layout público (cursor + scroll logic + navbar + contenido)
 │   └── admin.vue                  ← Layout admin (solo <div> base — Admin_Nav va en cada página)
@@ -149,9 +149,14 @@ portfolio-alan-pacheco-vue/        ← raíz del proyecto (Nuxt 3, NO src/)
 |---|---|
 | `images` | `{ url, storagePath, title, description, date, album (albumId), sizeFactor, showInGallery, uploadedAt }` |
 | `albums` | `{ name, description, createdAt }` |
-| `projects` | `{ title, description_es, description_en, date, url, category, technology, relatedTechnologies[], thumbnailImageId, thumbnailUrl, imageIds[], imageUrls[{url,columns,rows}], gridColumns, gridRows, order, published, createdAt }` |
-| `achievements` | `{ title, description_es, description_en, date, type, issuer, link, thumbnailImageId, thumbnailUrl, imageIds[], imageUrls[{url}], order, published, createdAt }` |
+| `projects` | `{ title, description_es, description_en, date, url, category, technology, relatedTechnologies[], thumbnailImageId, thumbnailUrl, imageIds[], imageUrls[{url,columns,rows}], gridColumns, gridRows, order, published, createdAt` + TheCodeSolutions (opcionales): `slug, serviceIds[], teamMemberIds[], client, challenge_es/en, solution_es/en, result_es/en, featured }` |
+| `achievements` | `{ title, description_es, description_en, date, type, issuer, link, thumbnailImageId, thumbnailUrl, imageIds[], imageUrls[{url}], order, published, createdAt` + `teamMemberId` (null = logro de la empresa), `slug }` |
+| `services` | `{ slug, title_es, title_en, summary_es, summary_en, body_es, body_en, icon, includes_es[], includes_en[], technologies[], faqs[], order, published, createdAt }` |
+| `team` | `{ slug, name, role_es, role_en, bio_es, bio_en, photoImageId, photoUrl, skills[], links{linkedin,github,web}, cvUrl_es, cvUrl_en, showGallery, order, published, createdAt }` |
+| `leads` | `{ name, company, email, phone, service, budget, timeline, message, locale, status, createdAt }` — creación pública validada; lectura y gestión solo admin. `status`: nuevo · contactado · cotizado · ganado · perdido |
 | `admins` | `{ uid }` — define qué usuarios son administradores |
+
+**Reglas:** versionadas en `firestore.rules` (raíz). El deploy es manual: Firebase Console → Firestore → Reglas. Las consultas públicas a colecciones publicables deben incluir `where('published', '==', true)` o las reglas las rechazan.
 
 ---
 

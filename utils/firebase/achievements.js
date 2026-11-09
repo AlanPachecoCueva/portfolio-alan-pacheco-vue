@@ -68,6 +68,9 @@ export async function createAchievement(data) {
     thumbnailUrl: data.thumbnailUrl || '',
     imageIds: data.imageIds || [],
     imageUrls: data.imageUrls || [],
+    // TheCodeSolutions: miembro del equipo que obtuvo el logro (null = logro de la empresa)
+    teamMemberId: data.teamMemberId || null,
+    slug: data.slug || '',
     published: data.published ?? false,
     order: data.order ?? null,
     createdAt: serverTimestamp(),
