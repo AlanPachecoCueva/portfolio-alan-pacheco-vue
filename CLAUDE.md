@@ -51,10 +51,10 @@ Portfolio personal de **Alan Pacheco Cueva**, Ingeniero de Software ecuatoriano.
 | Tecnología | Versión | Notas |
 |---|---|---|
 | Vue | ^3.2.13 | Composition API + Options API mixto |
-| Nuxt | ^4.4.6 | Meta-framework SSG (pre-render estático) |
+| Nuxt | ^4.6.4 | Meta-framework SSG (pre-render estático) |
 | Vuetify | ^3.7.0 | UI Material Design 3, temas light/dark |
-| @nuxtjs/i18n | ^10.4.0 | i18n bilingüe ES/EN — archivos en `i18n/locales/` |
-| Firebase | ^12.13.0 | Auth (email + Google), Firestore, Storage |
+| @nuxtjs/i18n | ^10.6.0 | i18n bilingüe ES/EN — archivos en `i18n/locales/`. Trae su propio `vue-i18n` 11 (no instalarlo como dependencia directa) |
+| Firebase | ^12.19.0 | Auth (email + Google), Firestore, Storage. `overrides` fuerza `@grpc/grpc-js` 1.14.6 (ver AUD-002 en `Seguridad_Dependencias.md`) |
 | @emailjs/browser | ^4.4.1 | Formulario de contacto sin backend propio |
 | @iconify/vue | ^4.1.2 | Iconos vectoriales con `<Icon>` |
 | vue-sweetalert2 | ^5.0.11 | Modales de alerta |
