@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Certificación | Alan Pacheco Cueva | TheCodeSolutions</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:inherit}
+</style>
+</helmet>
+<div style="background: {{c.bg}}; color: {{c.text}}; font-family: Inter, system-ui, sans-serif; font-size: 16px; line-height: 1.6; min-height: 100vh">
+<dc-import name="Header" paleta="{{paleta}}" modo="{{modoLabel}}" activo="Equipo" on-toggle-mode="{{toggleMode}}" hint-size="100%,77px"></dc-import>
+
+<main style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 88px">
+<nav aria-label="Ruta de navegación" style="font-size: 14px; color: {{c.muted}}"><ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px"><li><a href="Main.dc.html" style="color: {{c.muted}}">Inicio</a></li><li aria-hidden="true">/</li><li><a href="Perfil.dc.html" style="color: {{c.muted}}">Alan Pacheco Cueva</a></li><li aria-hidden="true">/</li><li><a href="Perfil.dc.html" style="color: {{c.muted}}">Certificaciones</a></li><li aria-hidden="true">/</li><li aria-current="page" style="color: {{c.text}}; font-weight: 600">[Nombre de la certificación]</li></ol></nav>
+
+<article style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
+<div style="flex: 999 1 560px; min-width: 0">
+<p style="margin: 0 0 10px; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: {{c.accentText}}">Certificación</p>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(30px, 4vw, 46px); line-height: 1.1; letter-spacing: -0.02em">[Nombre de la certificación]</h1>
+<p style="margin: 20px 0 0; font-size: 18px; color: {{c.muted}}">[Descripción: qué se aprendió o qué reconoce. Campos <code>description_es</code> / <code>description_en</code>.]</p>
+<div role="img" aria-label="Imagen del certificado (pendiente)" style="margin-top: 32px; aspect-ratio: 4 / 3; border-radius: 16px; border: 1px solid {{c.border}}; background: {{c.surface}}; display: grid; place-items: center; font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; color: {{c.muted}}">Imagen del certificado</div>
+</div>
+<aside aria-label="Datos de la certificación" style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<div style="padding: 24px; border-radius: 16px; border: 1px solid {{c.border}}; background: {{c.surface}}">
+<dl style="margin: 0; display: grid; gap: 14px; font-size: 15px">
+<div><dt style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: {{c.muted}}">Emisor</dt><dd style="margin: 2px 0 0">[Emisor]</dd></div>
+<div><dt style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: {{c.muted}}">Fecha</dt><dd style="margin: 2px 0 0">[Fecha]</dd></div>
+<div><dt style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: {{c.muted}}">Obtenida por</dt><dd style="margin: 6px 0 0"><a href="Perfil.dc.html" style="display: inline-flex; align-items: center; gap: 10px; font-weight: 600; text-decoration: none"><img src="/_blob/e5c75ba8fef16bf90da5b807ba588ff7" alt="" width="32" height="32" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover">Alan Pacheco Cueva</a></dd></div>
+</dl>
+<a href="#" title="[Enlace de verificación: campo link]" style="margin-top: 20px; min-height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: {{c.accent}}; color: {{c.onAccent}}; font-weight: 600; text-decoration: none">Verificar certificado</a>
+</div>
+<a href="Perfil.dc.html" style="min-height: 48px; display: inline-flex; align-items: center; font-weight: 600; color: {{c.accentText}}">← Todas las certificaciones</a>
+</aside>
+</article>
+</main>
+
+<dc-import name="Footer" paleta="{{paleta}}" modo="{{modoLabel}}" hint-size="100%,120px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"paleta":{"editor":"enum","options":["A · Naranja","B · Azul","C · Violeta"],"default":"C · Violeta","section":"Marca"},"modo":{"editor":"enum","options":["Claro","Oscuro"],"default":"Claro","section":"Marca"},"$preview":{"width":1440,"height":1500}}'>
+const PALETTES = {
+  A: { light: { bg: '#FFFFFF', surface: '#F6F5F3', text: '#15171C', muted: '#5B606B', border: '#E4E2DE', accent: '#E58818', onAccent: '#1B1206', accentText: '#975400' }, dark: { bg: '#0F1115', surface: '#171A20', text: '#F3F2EF', muted: '#A3A8B3', border: '#2A2E36', accent: '#F29A2E', onAccent: '#1B1206', accentText: '#F5A84A' } },
+  B: { light: { bg: '#FFFFFF', surface: '#F3F6FB', text: '#0B1F3A', muted: '#4E5D73', border: '#DCE3EE', accent: '#2F6FED', onAccent: '#FFFFFF', accentText: '#2459C9' }, dark: { bg: '#0A1424', surface: '#101D31', text: '#EEF3FA', muted: '#9AA9BF', border: '#22324D', accent: '#5B8EF5', onAccent: '#06101F', accentText: '#86AAF8' } },
+  C: { light: { bg: '#FFFFFF', surface: '#F5F4FA', text: '#16141F', muted: '#5A5768', border: '#E3E1EC', accent: '#6D4AFF', onAccent: '#FFFFFF', accentText: '#5B39E8' }, dark: { bg: '#0E0D14', surface: '#17151F', text: '#F2F1F7', muted: '#A6A3B5', border: '#2A2736', accent: '#8F75FF', onAccent: '#0E0D14', accentText: '#AA97FF' } }
+};
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { mode: null }; }
+  renderVals() {
+    const key = String(this.props.paleta ?? 'C · Violeta').charAt(0);
+    const propMode = (this.props.modo ?? 'Claro') === 'Oscuro' ? 'dark' : 'light';
+    const mode = this.state.mode ?? propMode;
+    return {
+      c: (PALETTES[key] || PALETTES.C)[mode],
+      paleta: this.props.paleta ?? 'C · Violeta', modoLabel: mode === 'dark' ? 'Oscuro' : 'Claro',
+      toggleMode: () => this.setState({ mode: mode === 'dark' ? 'light' : 'dark' })
+    };
+  }
+}
+</script>
+</body>
+</html>

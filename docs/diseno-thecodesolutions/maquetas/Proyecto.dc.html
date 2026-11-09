@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>KVMI — Caso de éxito | TheCodeSolutions</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:inherit}
+</style>
+</helmet>
+<div style="background: {{c.bg}}; color: {{c.text}}; font-family: Inter, system-ui, sans-serif; font-size: 16px; line-height: 1.6; min-height: 100vh">
+<dc-import name="Header" paleta="{{paleta}}" modo="{{modoLabel}}" activo="Proyectos" on-toggle-mode="{{toggleMode}}" hint-size="100%,77px"></dc-import>
+
+<main>
+<article>
+<!-- Cabecera del caso -->
+<div style="max-width: 1200px; margin: 0 auto; padding: 32px 24px 0">
+<nav aria-label="Ruta de navegación" style="font-size: 14px; color: {{c.muted}}">
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px">
+<li><a href="Main.dc.html" style="color: {{c.muted}}">Inicio</a></li>
+<li aria-hidden="true">/</li>
+<li><a href="Proyectos.dc.html" style="color: {{c.muted}}">Proyectos</a></li>
+<li aria-hidden="true">/</li>
+<li aria-current="page" style="color: {{c.text}}; font-weight: 600">KVMI</li>
+</ol>
+</nav>
+<div style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 32px; align-items: flex-end; justify-content: space-between">
+<div style="flex: 1 1 560px; min-width: 0">
+<p style="margin: 0 0 12px; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: {{c.accentText}}">Soluciones con IA · Desarrollo web</p>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(36px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.03em">KVMI</h1>
+<p style="margin: 20px 0 0; font-size: 20px; color: {{c.muted}}; max-width: 720px">Plataforma de recompensas para una empresa chocolatera, con inteligencia artificial para crear campañas publicitarias personalizadas: afiches, banners y eslóganes.</p>
+</div>
+<a href="#galeria" title="[URL del proyecto: campo url]" style="min-height: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 0 20px; border-radius: 12px; border: 1px solid {{c.border}}; font-weight: 600; text-decoration: none">Visitar proyecto <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7 M8 7h9v9"></path></svg></a>
+</div>
+</div>
+
+<div style="max-width: 1200px; margin: 40px auto 0; padding: 0 24px">
+<div role="img" aria-label="Imagen principal del proyecto KVMI (pendiente)" style="aspect-ratio: 16 / 7; border-radius: 18px; background: {{c.accentSoft}}; display: grid; place-items: center; font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; color: {{c.accentText}}">KVMI · imagen principal</div>
+</div>
+
+<!-- Contenido + ficha -->
+<div style="max-width: 1200px; margin: 0 auto; padding: 64px 24px; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 40px">
+<section aria-labelledby="reto">
+<h2 id="reto" style="margin: 0 0 12px; font-family: 'Space Grotesk', sans-serif; font-size: 28px">El reto</h2>
+<p style="margin: 0; font-size: 17px; color: {{c.muted}}">[QUÉ PROBLEMA TENÍA EL CLIENTE: 2–3 frases. Campo nuevo <code>challenge_es</code> en el admin.]</p>
+</section>
+<section aria-labelledby="solucion">
+<h2 id="solucion" style="margin: 0 0 12px; font-family: 'Space Grotesk', sans-serif; font-size: 28px">La solución</h2>
+<p style="margin: 0; font-size: 17px; color: {{c.muted}}">Una plataforma de recompensas integrada con inteligencia artificial que genera afiches, banners y eslóganes para campañas, y un sistema para gestionar esas campañas y sus premios.</p>
+</section>
+<section aria-labelledby="resultado">
+<h2 id="resultado" style="margin: 0 0 12px; font-family: 'Space Grotesk', sans-serif; font-size: 28px">El resultado</h2>
+<p style="margin: 0; font-size: 17px; color: {{c.muted}}">[QUÉ CAMBIÓ PARA EL CLIENTE: datos concretos si los hay. Campo nuevo <code>result_es</code>.]</p>
+</section>
+
+<section aria-labelledby="galeria">
+<h2 id="galeria" style="margin: 0 0 16px; font-family: 'Space Grotesk', sans-serif; font-size: 28px">Galería</h2>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 120px; gap: 12px">
+<sc-for list="{{gallery}}" as="g" hint-placeholder-count="6">
+<button type="button" onClick="{{g.open}}" aria-label="Ampliar {{g.label}}" style="grid-column: span {{g.cols}}; grid-row: span {{g.rows}}; border: 1px solid {{c.border}}; border-radius: 12px; background: {{c.surface}}; color: {{c.muted}}; font-size: 14px; font-weight: 600; cursor: zoom-in">{{g.label}}</button>
+</sc-for>
+</div>
+<p style="margin: 10px 0 0; font-size: 13px; color: {{c.muted}}">El mosaico respeta las columnas y filas que ya se configuran en el admin (<code>imageUrls[].columns/rows</code>).</p>
+</section>
+</div>
+
+<aside aria-label="Ficha del proyecto" style="flex: 1 1 300px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+<div style="padding: 24px; border-radius: 16px; border: 1px solid {{c.border}}; background: {{c.surface}}">
+<h2 style="margin: 0 0 16px; font-family: 'Space Grotesk', sans-serif; font-size: 20px">Ficha</h2>
+<dl style="margin: 0; display: grid; gap: 14px; font-size: 15px">
+<div><dt style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: {{c.muted}}">Cliente</dt><dd style="margin: 2px 0 0">[NOMBRE DEL CLIENTE]</dd></div>
+<div><dt style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: {{c.muted}}">Año</dt><dd style="margin: 2px 0 0">2024</dd></div>
+<div><dt style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: {{c.muted}}">Servicios</dt><dd style="margin: 2px 0 0"><a href="Servicio.dc.html">Soluciones con IA</a>, <a href="Servicio.dc.html">Desarrollo web</a></dd></div>
+<div><dt style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: {{c.muted}}">Tecnologías</dt><dd style="margin: 6px 0 0; display: flex; flex-wrap: wrap; gap: 6px"><span style="padding: 4px 10px; border-radius: 999px; border: 1px solid {{c.border}}; font-family: 'JetBrains Mono', monospace; font-size: 13px">[TECNOLOGÍA]</span><span style="padding: 4px 10px; border-radius: 999px; border: 1px solid {{c.border}}; font-family: 'JetBrains Mono', monospace; font-size: 13px">[TECNOLOGÍA]</span></dd></div>
+<div><dt style="font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: {{c.muted}}">Equipo</dt><dd style="margin: 6px 0 0"><a href="Perfil.dc.html" style="display: inline-flex; align-items: center; gap: 10px; font-weight: 600; text-decoration: none"><img src="/_blob/e5c75ba8fef16bf90da5b807ba588ff7" alt="" width="32" height="32" style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover">Alan Pacheco Cueva</a></dd></div>
+</dl>
+</div>
+<div style="padding: 24px; border-radius: 16px; background: {{c.accentSoft}}">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 20px">¿Tienes un proyecto parecido?</h2>
+<p style="margin: 8px 0 16px; font-size: 15px; color: {{c.muted}}">Cuéntanos tu idea y te enviamos una propuesta.</p>
+<a href="Cotizar.dc.html" style="min-height: 48px; display: inline-flex; align-items: center; padding: 0 20px; border-radius: 12px; background: {{c.accent}}; color: {{c.onAccent}}; font-weight: 600; text-decoration: none">Solicitar cotización</a>
+</div>
+</aside>
+</div>
+</article>
+
+<!-- Otros proyectos -->
+<section aria-labelledby="otros" style="background: {{c.surface}}; border-top: 1px solid {{c.border}}">
+<div style="max-width: 1200px; margin: 0 auto; padding: 64px 24px">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 16px">
+<h2 id="otros" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 28px">Otros proyectos</h2>
+<a href="Proyectos.dc.html" style="font-weight: 600; color: {{c.accentText}}">Ver todos →</a>
+</div>
+<div style="margin-top: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px">
+<a href="Proyecto.dc.html" style="display: flex; gap: 20px; align-items: center; padding: 16px; border-radius: 14px; border: 1px solid {{c.border}}; background: {{c.bg}}; text-decoration: none">
+<span role="img" aria-label="Miniatura de Gestión ganadera (pendiente)" style="flex: 0 0 120px; height: 80px; border-radius: 10px; background: {{c.accentSoft}}"></span>
+<span><span style="display: block; font-size: 13px; font-weight: 600; color: {{c.muted}}">MÓVIL · 2023</span><span style="display: block; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">Gestión ganadera</span></span>
+</a>
+<a href="Proyecto.dc.html" style="display: flex; gap: 20px; align-items: center; padding: 16px; border-radius: 14px; border: 1px solid {{c.border}}; background: {{c.bg}}; text-decoration: none">
+<span role="img" aria-label="Miniatura de Mikhuna (pendiente)" style="flex: 0 0 120px; height: 80px; border-radius: 10px; background: {{c.accentSoft}}"></span>
+<span><span style="display: block; font-size: 13px; font-weight: 600; color: {{c.muted}}">WEB · 2022</span><span style="display: block; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">Mikhuna</span></span>
+</a>
+</div>
+</div>
+</section>
+</main>
+
+<dc-import name="Footer" paleta="{{paleta}}" modo="{{modoLabel}}" hint-size="100%,120px"></dc-import>
+
+<!-- Visor de imágenes -->
+<sc-if value="{{lightbox}}" hint-placeholder-val="{{ false }}">
+<div role="dialog" aria-modal="true" aria-label="Visor de imágenes" style="position: fixed; inset: 0; z-index: 100; background: rgba(8,9,12,0.88); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 24px">
+<button type="button" onClick="{{close}}" aria-label="Cerrar visor" style="position: absolute; top: 20px; right: 20px; width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(255,255,255,0.12); color: #FFFFFF; cursor: pointer; display: grid; place-items: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12 M18 6L6 18"></path></svg></button>
+<div role="img" aria-label="{{current.label}} ampliada (pendiente)" style="width: min(1000px, 100%); aspect-ratio: 16 / 10; border-radius: 14px; background: {{c.surface}}; display: grid; place-items: center; font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 600; color: {{c.muted}}">{{current.label}}</div>
+<div style="display: flex; align-items: center; gap: 16px; color: #FFFFFF">
+<button type="button" onClick="{{prev}}" aria-label="Imagen anterior" style="width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(255,255,255,0.12); color: #FFFFFF; cursor: pointer; display: grid; place-items: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg></button>
+<span style="font-size: 15px; min-width: 64px; text-align: center">{{position}}</span>
+<button type="button" onClick="{{next}}" aria-label="Imagen siguiente" style="width: 48px; height: 48px; border-radius: 50%; border: 0; background: rgba(255,255,255,0.12); color: #FFFFFF; cursor: pointer; display: grid; place-items: center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg></button>
+</div>
+</div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"paleta":{"editor":"enum","options":["A · Naranja","B · Azul","C · Violeta"],"default":"C · Violeta","section":"Marca"},"modo":{"editor":"enum","options":["Claro","Oscuro"],"default":"Claro","section":"Marca"},"$preview":{"width":1440,"height":3000}}'>
+const PALETTES = {
+  A: { light: { bg: '#FFFFFF', surface: '#F6F5F3', text: '#15171C', muted: '#5B606B', border: '#E4E2DE', accent: '#E58818', onAccent: '#1B1206', accentText: '#975400', accentSoft: '#FCEBD5' }, dark: { bg: '#0F1115', surface: '#171A20', text: '#F3F2EF', muted: '#A3A8B3', border: '#2A2E36', accent: '#F29A2E', onAccent: '#1B1206', accentText: '#F5A84A', accentSoft: '#2D2214' } },
+  B: { light: { bg: '#FFFFFF', surface: '#F3F6FB', text: '#0B1F3A', muted: '#4E5D73', border: '#DCE3EE', accent: '#2F6FED', onAccent: '#FFFFFF', accentText: '#2459C9', accentSoft: '#E3ECFD' }, dark: { bg: '#0A1424', surface: '#101D31', text: '#EEF3FA', muted: '#9AA9BF', border: '#22324D', accent: '#5B8EF5', onAccent: '#06101F', accentText: '#86AAF8', accentSoft: '#16294A' } },
+  C: { light: { bg: '#FFFFFF', surface: '#F5F4FA', text: '#16141F', muted: '#5A5768', border: '#E3E1EC', accent: '#6D4AFF', onAccent: '#FFFFFF', accentText: '#5B39E8', accentSoft: '#ECE7FF' }, dark: { bg: '#0E0D14', surface: '#17151F', text: '#F2F1F7', muted: '#A6A3B5', border: '#2A2736', accent: '#8F75FF', onAccent: '#0E0D14', accentText: '#AA97FF', accentSoft: '#231D3D' } }
+};
+const GALLERY = [
+  { label: 'Captura 1', cols: 2, rows: 2 }, { label: 'Captura 2', cols: 2, rows: 1 }, { label: 'Captura 3', cols: 1, rows: 1 },
+  { label: 'Captura 4', cols: 1, rows: 1 }, { label: 'Captura 5', cols: 1, rows: 1 }, { label: 'Captura 6', cols: 3, rows: 1 }
+];
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { mode: null, open: -1 }; }
+  renderVals() {
+    const key = String(this.props.paleta ?? 'C · Violeta').charAt(0);
+    const propMode = (this.props.modo ?? 'Claro') === 'Oscuro' ? 'dark' : 'light';
+    const mode = this.state.mode ?? propMode;
+    const n = GALLERY.length, i = this.state.open;
+    return {
+      c: (PALETTES[key] || PALETTES.A)[mode],
+      paleta: this.props.paleta ?? 'C · Violeta',
+      modoLabel: mode === 'dark' ? 'Oscuro' : 'Claro',
+      toggleMode: () => this.setState({ mode: mode === 'dark' ? 'light' : 'dark' }),
+      gallery: GALLERY.map((g, idx) => ({ ...g, open: () => this.setState({ open: idx }) })),
+      lightbox: i >= 0,
+      current: i >= 0 ? GALLERY[i] : GALLERY[0],
+      position: (i + 1) + ' / ' + n,
+      close: () => this.setState({ open: -1 }),
+      prev: () => this.setState({ open: (i - 1 + n) % n }),
+      next: () => this.setState({ open: (i + 1) % n })
+    };
+  }
+}
+</script>
+</body>
+</html>

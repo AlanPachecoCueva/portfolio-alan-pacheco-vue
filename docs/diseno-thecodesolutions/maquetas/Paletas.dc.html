@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>TheCodeSolutions — Propuestas de paleta</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1060px; box-sizing: border-box; padding: 64px; background: #FFFFFF; color: #15171C; font-family: Inter, system-ui, sans-serif; display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 44px; letter-spacing: -0.02em">Paleta — tres direcciones</h1>
+<p style="margin: 0; font-size: 18px; color: #5B606B; max-width: 960px">Cada paleta trae su versión clara y oscura, porque el sitio mantiene el selector de tema. Los contrastes están calculados según WCAG: 4.5:1 es el mínimo para texto normal.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px">
+<sc-for list="{{palettes}}" as="p" hint-placeholder-count="3">
+<section style="display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 24px">{{p.name}}</h2>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #3C4049; min-height: 68px">{{p.idea}}</p>
+<sc-for list="{{p.modes}}" as="m" hint-placeholder-count="2">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<p style="margin: 0; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5B606B">{{m.label}}</p>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{m.swatches}}" as="s" hint-placeholder-count="6">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div style="height: 44px; border-radius: 8px; border: 1px solid #E4E2DE; background: {{s.hex}}"></div>
+<span style="font-size: 12px; font-weight: 600">{{s.role}}</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #5B606B">{{s.hex}}</span>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-for>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px">
+<sc-for list="{{p.modes}}" as="m" hint-placeholder-count="2">
+<div style="border-radius: 12px; padding: 16px; background: {{m.c.bg}}; border: 1px solid {{m.c.border}}; display: flex; flex-direction: column; gap: 10px">
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 700; color: {{m.c.text}}">Software a medida</span>
+<span style="font-size: 13px; color: {{m.c.muted}}">Texto secundario de ejemplo</span>
+<span style="align-self: flex-start; padding: 8px 14px; border-radius: 8px; background: {{m.c.accent}}; color: {{m.c.onAccent}}; font-size: 13px; font-weight: 600">Cotizar</span>
+</div>
+</sc-for>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: #3C4049">
+<sc-for list="{{p.checks}}" as="k" hint-placeholder-count="4">
+<li style="display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid #EEECE8; padding: 4px 0"><span>{{k.label}}</span><span style="font-family: 'JetBrains Mono', monospace; font-weight: 500">{{k.value}}</span></li>
+</sc-for>
+</ul>
+</section>
+</sc-for>
+</div>
+<div style="margin-top: auto; padding: 24px 28px; border-radius: 16px; background: #F6F5F3; display: flex; flex-wrap: wrap; align-items: baseline; gap: 16px 48px">
+<span style="font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #5B606B">Tipografía (común a las tres)</span>
+<span style="font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700">Space Grotesk <span style="font-size: 15px; font-weight: 500; color: #5B606B">títulos</span></span>
+<span style="font-family: Inter, sans-serif; font-size: 22px">Inter <span style="font-size: 15px; color: #5B606B">texto e interfaz</span></span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 20px">JetBrains Mono <span style="font-family: Inter, sans-serif; font-size: 15px; color: #5B606B">código y detalles</span></span>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1060}}'>
+const PALETTES = [
+  { name: 'A · Naranja heredado', idea: 'Mantiene el naranja del sitio actual: continuidad para quien ya te conoce. Cálida y cercana, con un azul petróleo de apoyo.',
+    light: { bg: '#FFFFFF', surface: '#F6F5F3', text: '#15171C', muted: '#5B606B', border: '#E4E2DE', accent: '#E58818', onAccent: '#1B1206', accentText: '#975400', secondary: '#0E5E6F' },
+    dark: { bg: '#0F1115', surface: '#171A20', text: '#F3F2EF', muted: '#A3A8B3', border: '#2A2E36', accent: '#F29A2E', onAccent: '#1B1206', accentText: '#F5A84A', secondary: '#5FB7C6' } },
+  { name: 'B · Azul confianza', idea: 'Azul profundo y azul eléctrico: transmite solidez y seriedad, lo que buscan empresas que contratan sistemas. Es la opción más corporativa.',
+    light: { bg: '#FFFFFF', surface: '#F3F6FB', text: '#0B1F3A', muted: '#4E5D73', border: '#DCE3EE', accent: '#2F6FED', onAccent: '#FFFFFF', accentText: '#2459C9', secondary: '#0B7F63' },
+    dark: { bg: '#0A1424', surface: '#101D31', text: '#EEF3FA', muted: '#9AA9BF', border: '#22324D', accent: '#5B8EF5', onAccent: '#06101F', accentText: '#86AAF8', secondary: '#3CCFA6' } },
+  { name: 'C · Violeta moderno', idea: 'Violeta con turquesa: se asocia a producto digital e IA y destaca frente a la competencia local. Es la más actual y la menos conservadora.',
+    light: { bg: '#FFFFFF', surface: '#F5F4FA', text: '#16141F', muted: '#5A5768', border: '#E3E1EC', accent: '#6D4AFF', onAccent: '#FFFFFF', accentText: '#5B39E8', secondary: '#0B7A7A' },
+    dark: { bg: '#0E0D14', surface: '#17151F', text: '#F2F1F7', muted: '#A6A3B5', border: '#2A2736', accent: '#8F75FF', onAccent: '#0E0D14', accentText: '#AA97FF', secondary: '#3FD0C9' } }
+];
+function lum(hex) {
+  const h = hex.replace('#', '');
+  const ch = [0, 2, 4].map((i) => parseInt(h.substr(i, 2), 16) / 255).map((v) => (v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4)));
+  return 0.2126 * ch[0] + 0.7152 * ch[1] + 0.0722 * ch[2];
+}
+function ratio(a, b) {
+  const x = lum(a), y = lum(b);
+  return ((Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05)).toFixed(1) + ':1';
+}
+function swatches(c) {
+  return [
+    { role: 'Fondo', hex: c.bg }, { role: 'Superficie', hex: c.surface }, { role: 'Texto', hex: c.text },
+    { role: 'Texto secundario', hex: c.muted }, { role: 'Acento', hex: c.accent }, { role: 'Secundario', hex: c.secondary }
+  ];
+}
+class Component extends DCLogic {
+  renderVals() {
+    const palettes = PALETTES.map((p) => ({
+      name: p.name, idea: p.idea,
+      modes: [
+        { label: 'Modo claro', c: p.light, swatches: swatches(p.light) },
+        { label: 'Modo oscuro', c: p.dark, swatches: swatches(p.dark) }
+      ],
+      checks: [
+        { label: 'Texto sobre fondo (claro / oscuro)', value: ratio(p.light.text, p.light.bg) + ' · ' + ratio(p.dark.text, p.dark.bg) },
+        { label: 'Texto secundario sobre superficie', value: ratio(p.light.muted, p.light.surface) + ' · ' + ratio(p.dark.muted, p.dark.surface) },
+        { label: 'Texto del botón sobre acento', value: ratio(p.light.onAccent, p.light.accent) + ' · ' + ratio(p.dark.onAccent, p.dark.accent) },
+        { label: 'Enlaces en color de acento', value: ratio(p.light.accentText, p.light.bg) + ' · ' + ratio(p.dark.accentText, p.dark.bg) }
+      ]
+    }));
+    return { palettes };
+  }
+}
+</script>
+</body>
+</html>

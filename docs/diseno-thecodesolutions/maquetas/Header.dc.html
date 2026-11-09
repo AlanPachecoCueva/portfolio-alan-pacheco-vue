@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Header</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+.tcs-menu{display:none}
+@media (max-width: 900px){.tcs-links,.tcs-desk{display:none !important}.tcs-menu{display:grid !important}}
+</style>
+</helmet>
+<div style="font-family: Inter, system-ui, sans-serif; color: {{c.text}}">
+<header style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; border-bottom: 1px solid {{c.border}}; background: {{c.bg}}; transform: {{navTransform}}; transition: transform 0.25s ease">
+<nav aria-label="Principal" style="max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; gap: 16px 32px">
+<a href="Main.dc.html" aria-label="TheCodeSolutions, inicio" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: {{c.text}}">
+<svg width="36" height="36" viewBox="0 0 64 64" aria-hidden="true"><path d="M24 12 C16 12 18 22 18 26 C18 30 14 32 11 32 C14 32 18 34 18 38 C18 42 16 52 24 52 M40 12 C48 12 46 22 46 26 C46 30 50 32 53 32 C50 32 46 34 46 38 C46 42 48 52 40 52" fill="none" stroke="{{c.text}}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M32 23 L41 32 L32 41 L23 32 Z" fill="{{c.accent}}"></path></svg>
+<span style="display: flex; flex-direction: column; line-height: 1"><span style="font-family: 'Space Grotesk', sans-serif; font-size: 19px; font-weight: 700; letter-spacing: -0.01em">TheCode</span><span style="font-size: 10px; font-weight: 600; letter-spacing: 0.32em; color: {{c.muted}}; margin-top: 3px">SOLUTIONS</span></span>
+</a>
+<ul class="tcs-links" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 24px; font-size: 15px; font-weight: 500">
+<sc-for list="{{links}}" as="l" hint-placeholder-count="5">
+<li><a href="{{l.href}}" aria-current="{{l.current}}" style="color: {{l.color}}; text-decoration: none; padding-bottom: 4px; border-bottom: 2px solid {{l.line}}">{{l.label}}</a></li>
+</sc-for>
+</ul>
+<div style="display: flex; align-items: center; gap: 8px; margin-left: auto">
+<button type="button" class="tcs-desk" aria-label="Cambiar idioma a inglés" style="min-height: 44px; padding: 0 12px; border-radius: 10px; border: 1px solid {{c.border}}; background: transparent; color: {{c.text}}; font-weight: 600; font-size: 14px; cursor: pointer">ES / EN</button>
+<button type="button" onClick="{{toggleMode}}" aria-label="Cambiar tema claro u oscuro" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid {{c.border}}; background: transparent; color: {{c.text}}; cursor: pointer; display: grid; place-items: center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></button>
+<a href="Cotizar.dc.html" class="tcs-desk" style="min-height: 44px; display: inline-flex; align-items: center; padding: 0 18px; border-radius: 10px; background: {{c.accent}}; color: {{c.onAccent}}; font-weight: 600; font-size: 15px; text-decoration: none">Cotizar</a>
+<button type="button" class="tcs-menu" onClick="{{toggleMenu}}" aria-label="Abrir menú" aria-expanded="{{menuExpanded}}" style="width: 44px; height: 44px; border-radius: 10px; border: 1px solid {{c.border}}; background: transparent; color: {{c.text}}; cursor: pointer; place-items: center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16 M4 12h16 M4 17h16"></path></svg></button>
+</div>
+</nav>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
+<div style="border-top: 1px solid {{c.border}}; padding: 8px 24px 20px; display: flex; flex-direction: column; font-size: 17px; font-weight: 500">
+<sc-for list="{{links}}" as="l" hint-placeholder-count="5">
+<a href="{{l.href}}" style="padding: 12px 0; color: {{c.text}}; text-decoration: none">{{l.label}}</a>
+</sc-for>
+<div style="display: flex; gap: 8px; margin-top: 8px">
+<button type="button" aria-label="Cambiar idioma a inglés" style="min-height: 44px; padding: 0 14px; border-radius: 10px; border: 1px solid {{c.border}}; background: transparent; color: {{c.text}}; font-weight: 600; cursor: pointer">ES / EN</button>
+<a href="Cotizar.dc.html" style="flex: 1; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: 10px; background: {{c.accent}}; color: {{c.onAccent}}; font-weight: 600; text-decoration: none">Cotizar</a>
+</div>
+</div>
+</sc-if>
+</header>
+<div aria-hidden="true" style="height: 77px"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"paleta":{"editor":"enum","options":["A · Naranja","B · Azul","C · Violeta"],"default":"C · Violeta"},"modo":{"editor":"enum","options":["Claro","Oscuro"],"default":"Claro"},"activo":{"editor":"enum","options":["","Servicios","Proyectos","Nosotros","Equipo","Contacto"],"default":""},"onToggleMode":{"editor":null},"$preview":{"width":1440,"height":80}}'>
+const PALETTES = {
+  A: { light: { bg: '#FFFFFF', text: '#15171C', muted: '#5B606B', border: '#E4E2DE', accent: '#E58818', onAccent: '#1B1206', accentText: '#975400' }, dark: { bg: '#0F1115', text: '#F3F2EF', muted: '#A3A8B3', border: '#2A2E36', accent: '#F29A2E', onAccent: '#1B1206', accentText: '#F5A84A' } },
+  B: { light: { bg: '#FFFFFF', text: '#0B1F3A', muted: '#4E5D73', border: '#DCE3EE', accent: '#2F6FED', onAccent: '#FFFFFF', accentText: '#2459C9' }, dark: { bg: '#0A1424', text: '#EEF3FA', muted: '#9AA9BF', border: '#22324D', accent: '#5B8EF5', onAccent: '#06101F', accentText: '#86AAF8' } },
+  C: { light: { bg: '#FFFFFF', text: '#16141F', muted: '#5A5768', border: '#E3E1EC', accent: '#6D4AFF', onAccent: '#FFFFFF', accentText: '#5B39E8' }, dark: { bg: '#0E0D14', text: '#F2F1F7', muted: '#A6A3B5', border: '#2A2736', accent: '#8F75FF', onAccent: '#0E0D14', accentText: '#AA97FF' } }
+};
+const LINKS = [
+  { label: 'Servicios', href: 'Servicio.dc.html' },
+  { label: 'Proyectos', href: 'Proyectos.dc.html' },
+  { label: 'Nosotros', href: 'Main.dc.html#proceso' },
+  { label: 'Equipo', href: 'Perfil.dc.html' },
+  { label: 'Contacto', href: 'Cotizar.dc.html' }
+];
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { navHidden: false, menuOpen: false }; this.lastY = 0; }
+  componentDidMount() {
+    this.onScroll = () => {
+      const y = window.scrollY;
+      const hidden = !this.state.menuOpen && y > this.lastY && y > 80;
+      if (hidden !== this.state.navHidden) this.setState({ navHidden: hidden });
+      this.lastY = y;
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+  }
+  componentWillUnmount() { window.removeEventListener('scroll', this.onScroll); }
+  renderVals() {
+    const key = String(this.props.paleta ?? 'C · Violeta').charAt(0);
+    const mode = (this.props.modo ?? 'Claro') === 'Oscuro' ? 'dark' : 'light';
+    const c = (PALETTES[key] || PALETTES.A)[mode];
+    const active = this.props.activo ?? '';
+    const links = LINKS.map((l) => ({ ...l, current: l.label === active ? 'page' : 'false', color: l.label === active ? c.accentText : c.text, line: l.label === active ? c.accent : 'transparent' }));
+    return {
+      c, links,
+      navTransform: this.state.navHidden ? 'translateY(-100%)' : 'translateY(0)',
+      menuOpen: this.state.menuOpen, menuExpanded: this.state.menuOpen ? 'true' : 'false',
+      toggleMenu: () => this.setState({ menuOpen: !this.state.menuOpen, navHidden: false }),
+      toggleMode: () => { if (typeof this.props.onToggleMode === 'function') this.props.onToggleMode(); }
+    };
+  }
+}
+</script>
+</body>
+</html>

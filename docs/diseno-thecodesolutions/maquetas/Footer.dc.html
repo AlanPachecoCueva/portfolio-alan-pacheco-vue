@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Footer</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+</style>
+</helmet>
+<footer style="border-top: 1px solid {{c.border}}; background: {{c.surface}}; font-family: Inter, system-ui, sans-serif">
+<div style="max-width: 1200px; margin: 0 auto; padding: 40px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; font-size: 14px; color: {{c.muted}}">
+<p style="margin: 0"><strong style="color: {{c.text}}; font-family: 'Space Grotesk', sans-serif">TheCodeSolutions</strong> · Quito, Ecuador · © 2026</p>
+<nav aria-label="Pie de página" style="display: flex; flex-wrap: wrap; gap: 20px">
+<a href="Servicio.dc.html" style="color: {{c.muted}}">Servicios</a>
+<a href="Proyectos.dc.html" style="color: {{c.muted}}">Proyectos</a>
+<a href="Perfil.dc.html" style="color: {{c.muted}}">Equipo</a>
+<a href="Cotizar.dc.html" style="color: {{c.muted}}">Contacto</a>
+</nav>
+</div>
+</footer>
+<a href="https://wa.me/593962163336" aria-label="Escribir por WhatsApp" style="position: fixed; right: 24px; bottom: 24px; width: 56px; height: 56px; border-radius: 50%; background: {{c.accent}}; color: {{c.onAccent}}; display: grid; place-items: center; box-shadow: 0 4px 14px rgba(0,0,0,0.18)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5z"></path></svg></a>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"paleta":{"editor":"enum","options":["A · Naranja","B · Azul","C · Violeta"],"default":"C · Violeta"},"modo":{"editor":"enum","options":["Claro","Oscuro"],"default":"Claro"},"$preview":{"width":1440,"height":120}}'>
+const PALETTES = {
+  A: { light: { surface: '#F6F5F3', text: '#15171C', muted: '#5B606B', border: '#E4E2DE', accent: '#E58818', onAccent: '#1B1206' }, dark: { surface: '#171A20', text: '#F3F2EF', muted: '#A3A8B3', border: '#2A2E36', accent: '#F29A2E', onAccent: '#1B1206' } },
+  B: { light: { surface: '#F3F6FB', text: '#0B1F3A', muted: '#4E5D73', border: '#DCE3EE', accent: '#2F6FED', onAccent: '#FFFFFF' }, dark: { surface: '#101D31', text: '#EEF3FA', muted: '#9AA9BF', border: '#22324D', accent: '#5B8EF5', onAccent: '#06101F' } },
+  C: { light: { surface: '#F5F4FA', text: '#16141F', muted: '#5A5768', border: '#E3E1EC', accent: '#6D4AFF', onAccent: '#FFFFFF' }, dark: { surface: '#17151F', text: '#F2F1F7', muted: '#A6A3B5', border: '#2A2736', accent: '#8F75FF', onAccent: '#0E0D14' } }
+};
+class Component extends DCLogic {
+  renderVals() {
+    const key = String(this.props.paleta ?? 'C · Violeta').charAt(0);
+    const mode = (this.props.modo ?? 'Claro') === 'Oscuro' ? 'dark' : 'light';
+    return { c: (PALETTES[key] || PALETTES.A)[mode] };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Proyectos | TheCodeSolutions</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:inherit}
+</style>
+</helmet>
+<div style="background: {{c.bg}}; color: {{c.text}}; font-family: Inter, system-ui, sans-serif; font-size: 16px; line-height: 1.6; min-height: 100vh">
+<dc-import name="Header" paleta="{{paleta}}" modo="{{modoLabel}}" activo="Proyectos" on-toggle-mode="{{toggleMode}}" hint-size="100%,77px"></dc-import>
+
+<main>
+<section aria-labelledby="titulo" style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 0">
+<nav aria-label="Ruta de navegación" style="font-size: 14px; color: {{c.muted}}"><ol style="list-style: none; margin: 0; padding: 0; display: flex; gap: 8px"><li><a href="Main.dc.html" style="color: {{c.muted}}">Inicio</a></li><li aria-hidden="true">/</li><li aria-current="page" style="color: {{c.text}}; font-weight: 600">Proyectos</li></ol></nav>
+<h1 id="titulo" style="margin: 24px 0 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(36px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.03em">Proyectos</h1>
+<p style="margin: 16px 0 0; font-size: 19px; color: {{c.muted}}; max-width: 680px">Casos reales de software que diseñamos y construimos: qué problema había, qué hicimos y qué tecnología usamos.</p>
+<div role="group" aria-label="Filtrar por servicio" style="margin-top: 36px; display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="6">
+<button type="button" onClick="{{f.pick}}" aria-pressed="{{f.pressed}}" style="min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid {{f.border}}; background: {{f.bg}}; color: {{f.fg}}; font-weight: 600; font-size: 14px; cursor: pointer">{{f.label}}</button>
+</sc-for>
+</div>
+<p aria-live="polite" style="margin: 20px 0 0; font-size: 14px; color: {{c.muted}}">{{countText}}</p>
+</section>
+
+<section aria-label="Lista de proyectos" style="max-width: 1200px; margin: 0 auto; padding: 24px 24px 88px">
+<sc-if value="{{hasProjects}}" hint-placeholder-val="{{ true }}">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px">
+<sc-for list="{{projects}}" as="p" hint-placeholder-count="3">
+<article style="border-radius: 16px; overflow: hidden; border: 1px solid {{c.border}}; background: {{c.bg}}; display: flex; flex-direction: column">
+<div role="img" aria-label="Captura del proyecto {{p.title}} (pendiente)" style="aspect-ratio: 16 / 10; background: {{c.accentSoft}}; display: grid; place-items: center; font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; color: {{c.accentText}}">{{p.title}}</div>
+<div style="padding: 24px; display: flex; flex-direction: column; gap: 10px; flex: 1">
+<p style="margin: 0; font-size: 13px; font-weight: 600; color: {{c.muted}}; text-transform: uppercase; letter-spacing: 0.06em">{{p.tag}} · {{p.year}}</p>
+<h2 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 22px">{{p.title}}</h2>
+<p style="margin: 0; font-size: 15px; color: {{c.muted}}">{{p.text}}</p>
+<a href="Proyecto.dc.html" style="margin-top: auto; padding-top: 8px; font-size: 15px; font-weight: 600; color: {{c.accentText}}">Ver caso de {{p.title}} →</a>
+</div>
+</article>
+</sc-for>
+</div>
+</sc-if>
+<sc-if value="{{noProjects}}" hint-placeholder-val="{{ false }}">
+<div style="padding: 48px 24px; border-radius: 16px; border: 1px dashed {{c.border}}; text-align: center">
+<p style="margin: 0; font-size: 17px; font-weight: 600">Todavía no hay proyectos publicados en este servicio.</p>
+<p style="margin: 8px 0 20px; color: {{c.muted}}">Podemos contarte cómo lo abordaríamos en tu caso.</p>
+<a href="Cotizar.dc.html" style="min-height: 48px; display: inline-flex; align-items: center; padding: 0 20px; border-radius: 12px; background: {{c.accent}}; color: {{c.onAccent}}; font-weight: 600; text-decoration: none">Hablemos</a>
+</div>
+</sc-if>
+</section>
+
+<section aria-labelledby="cta" style="background: {{c.surface}}; border-top: 1px solid {{c.border}}">
+<div style="max-width: 1200px; margin: 0 auto; padding: 64px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px">
+<h2 id="cta" style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: 30px; max-width: 640px">¿Quieres que tu proyecto sea el siguiente?</h2>
+<a href="Cotizar.dc.html" style="min-height: 52px; display: inline-flex; align-items: center; padding: 0 26px; border-radius: 12px; background: {{c.accent}}; color: {{c.onAccent}}; font-weight: 600; font-size: 17px; text-decoration: none">Solicitar cotización</a>
+</div>
+</section>
+</main>
+
+<dc-import name="Footer" paleta="{{paleta}}" modo="{{modoLabel}}" hint-size="100%,120px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"paleta":{"editor":"enum","options":["A · Naranja","B · Azul","C · Violeta"],"default":"C · Violeta","section":"Marca"},"modo":{"editor":"enum","options":["Claro","Oscuro"],"default":"Claro","section":"Marca"},"$preview":{"width":1440,"height":2100}}'>
+const PALETTES = {
+  A: { light: { bg: '#FFFFFF', surface: '#F6F5F3', text: '#15171C', muted: '#5B606B', border: '#E4E2DE', accent: '#E58818', onAccent: '#1B1206', accentText: '#975400', accentSoft: '#FCEBD5' }, dark: { bg: '#0F1115', surface: '#171A20', text: '#F3F2EF', muted: '#A3A8B3', border: '#2A2E36', accent: '#F29A2E', onAccent: '#1B1206', accentText: '#F5A84A', accentSoft: '#2D2214' } },
+  B: { light: { bg: '#FFFFFF', surface: '#F3F6FB', text: '#0B1F3A', muted: '#4E5D73', border: '#DCE3EE', accent: '#2F6FED', onAccent: '#FFFFFF', accentText: '#2459C9', accentSoft: '#E3ECFD' }, dark: { bg: '#0A1424', surface: '#101D31', text: '#EEF3FA', muted: '#9AA9BF', border: '#22324D', accent: '#5B8EF5', onAccent: '#06101F', accentText: '#86AAF8', accentSoft: '#16294A' } },
+  C: { light: { bg: '#FFFFFF', surface: '#F5F4FA', text: '#16141F', muted: '#5A5768', border: '#E3E1EC', accent: '#6D4AFF', onAccent: '#FFFFFF', accentText: '#5B39E8', accentSoft: '#ECE7FF' }, dark: { bg: '#0E0D14', surface: '#17151F', text: '#F2F1F7', muted: '#A6A3B5', border: '#2A2736', accent: '#8F75FF', onAccent: '#0E0D14', accentText: '#AA97FF', accentSoft: '#231D3D' } }
+};
+const PROJECTS = [
+  { title: 'KVMI', tag: 'Soluciones con IA · Web', services: ['Soluciones con IA', 'Desarrollo web'], year: '2024', text: 'Plataforma de recompensas para una empresa chocolatera, con IA para crear campañas, afiches y eslóganes.' },
+  { title: 'Gestión ganadera', tag: 'Apps móviles', services: ['Apps móviles'], year: '2023', text: 'App para administrar ganado: seguimiento de enfermedades y control de gastos de alimentación.' },
+  { title: 'Mikhuna', tag: 'Desarrollo web', services: ['Desarrollo web'], year: '2022', text: 'Comunidad para compartir y descubrir recetas, con calificaciones, comentarios y favoritos.' }
+];
+const FILTERS = ['Todos', 'Desarrollo web', 'Apps móviles', 'Soluciones con IA', 'Sistemas a medida', 'Consultoría'];
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { mode: null, filter: 'Todos' }; }
+  renderVals() {
+    const key = String(this.props.paleta ?? 'C · Violeta').charAt(0);
+    const propMode = (this.props.modo ?? 'Claro') === 'Oscuro' ? 'dark' : 'light';
+    const mode = this.state.mode ?? propMode;
+    const c = (PALETTES[key] || PALETTES.A)[mode];
+    const f = this.state.filter;
+    const projects = f === 'Todos' ? PROJECTS : PROJECTS.filter((p) => p.services.includes(f));
+    return {
+      c, paleta: this.props.paleta ?? 'C · Violeta', modoLabel: mode === 'dark' ? 'Oscuro' : 'Claro',
+      toggleMode: () => this.setState({ mode: mode === 'dark' ? 'light' : 'dark' }),
+      filters: FILTERS.map((label) => {
+        const on = label === f;
+        return { label, pressed: on ? 'true' : 'false', bg: on ? c.text : 'transparent', fg: on ? c.bg : c.text, border: on ? c.text : c.border, pick: () => this.setState({ filter: label }) };
+      }),
+      projects, hasProjects: projects.length > 0, noProjects: projects.length === 0,
+      countText: projects.length === 1 ? '1 proyecto' : projects.length + ' proyectos'
+    };
+  }
+}
+</script>
+</body>
+</html>

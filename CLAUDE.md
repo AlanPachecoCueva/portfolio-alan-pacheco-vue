@@ -12,6 +12,7 @@ Archivo cargado automáticamente por Claude Code en cada sesión. Es una guía d
 | [`.claude/memoria-tecnica/Glosario.md`](.claude/memoria-tecnica/Glosario.md) | Ante términos del dominio desconocidos | Términos del proyecto, secciones, acrónimos |
 | [`.claude/memoria-tecnica/Deploy_Historial.md`](.claude/memoria-tecnica/Deploy_Historial.md) | Al subir versiones o ejecutar acciones de distribución | Releases, deploys, cambios en Netlify, fechas clave |
 | [`.claude/memoria-tecnica/Seguridad_Dependencias.md`](.claude/memoria-tecnica/Seguridad_Dependencias.md) | **Antes de añadir o actualizar cualquier dependencia** | Auditorías `npm audit` (AUD-XXX), procedimiento de verificación, dependencias descartadas |
+| [`docs/diseno-thecodesolutions/README.md`](docs/diseno-thecodesolutions/README.md) | **Al construir o refactorizar cualquier pantalla pública** (marca, tokens, componentes, maquetas) | Cambios de marca, nuevas maquetas, contenido pendiente resuelto |
 
 > **Regla permanente:** Ante cualquier bug nuevo, revisar `.claude/memoria-tecnica/Errores_Conocidos.md` antes de empezar el análisis.
 

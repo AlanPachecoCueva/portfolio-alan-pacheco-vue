@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Alan Pacheco Cueva — Fundador | TheCodeSolutions</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:inherit}
+</style>
+</helmet>
+<div style="background: {{c.bg}}; color: {{c.text}}; font-family: Inter, system-ui, sans-serif; font-size: 16px; line-height: 1.6; min-height: 100vh">
+<dc-import name="Header" paleta="{{paleta}}" modo="{{modoLabel}}" activo="Equipo" on-toggle-mode="{{toggleMode}}" hint-size="100%,77px"></dc-import>
+
+<main>
+<article>
+<!-- Cabecera del perfil -->
+<section style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 64px">
+<nav aria-label="Ruta de navegación" style="font-size: 14px; color: {{c.muted}}"><ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px"><li><a href="Main.dc.html" style="color: {{c.muted}}">Inicio</a></li><li aria-hidden="true">/</li><li><a href="Main.dc.html#equipo" style="color: {{c.muted}}">Equipo</a></li><li aria-hidden="true">/</li><li aria-current="page" style="color: {{c.text}}; font-weight: 600">Alan Pacheco Cueva</li></ol></nav>
+<div style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+<img src="/_blob/e5c75ba8fef16bf90da5b807ba588ff7" alt="Retrato de Alan Pacheco Cueva" width="320" height="320" style="flex: 0 0 auto; width: min(320px, 100%); height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 20px">
+<div style="flex: 1 1 480px; min-width: 0">
+<p style="margin: 0 0 8px; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: {{c.accentText}}">Fundador y líder técnico</p>
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(34px, 4.6vw, 52px); line-height: 1.05; letter-spacing: -0.03em">Alan Pacheco Cueva</h1>
+<p style="margin: 20px 0 0; font-size: 18px; color: {{c.muted}}; max-width: 640px">Ingeniero de Software en Quito, Ecuador. Disfruta convertir ideas en aplicaciones limpias e intuitivas. Ha liderado proyectos full stack de principio a fin y ha trabajado con equipos usando reuniones diarias, control de versiones y gestión ágil.</p>
+<div style="margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px">
+<a href="#" title="Archivo: public/CV-Alan Pacheco-ESP.pdf" style="min-height: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 0 20px; border-radius: 12px; background: {{c.accent}}; color: {{c.onAccent}}; font-weight: 600; text-decoration: none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11 M7 10l5 5 5-5 M5 20h14"></path></svg>Descargar CV (ES)</a>
+<a href="#" title="Archivo: public/CV-Alan Pacheco-ENG.pdf" style="min-height: 48px; display: inline-flex; align-items: center; padding: 0 20px; border-radius: 12px; border: 1px solid {{c.border}}; font-weight: 600; text-decoration: none">CV in English</a>
+<a href="https://ec.linkedin.com/in/alan-pacheco-cueva-b7b3a9223" style="min-height: 48px; display: inline-flex; align-items: center; padding: 0 16px; font-weight: 600">LinkedIn</a>
+<a href="https://github.com/AlanPachecoCueva" style="min-height: 48px; display: inline-flex; align-items: center; padding: 0 16px; font-weight: 600">GitHub</a>
+</div>
+<ul aria-label="Tecnologías" style="list-style: none; margin: 28px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{skills}}" as="s" hint-placeholder-count="9">
+<li style="padding: 6px 14px; border-radius: 999px; border: 1px solid {{c.border}}; font-family: 'JetBrains Mono', monospace; font-size: 13px">{{s}}</li>
+</sc-for>
+</ul>
+</div>
+</div>
+</section>
+
+<!-- Pestañas -->
+<section aria-label="Trabajo de Alan" style="background: {{c.surface}}; border-top: 1px solid {{c.border}}">
+<div style="max-width: 1200px; margin: 0 auto; padding: 48px 24px 88px">
+<div role="tablist" aria-label="Secciones del perfil" style="display: flex; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid {{c.border}}">
+<sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+<button type="button" role="tab" aria-selected="{{t.selected}}" onClick="{{t.pick}}" style="min-height: 48px; padding: 0 18px; border: 0; border-bottom: 3px solid {{t.line}}; margin-bottom: -1px; background: transparent; color: {{t.color}}; font: inherit; font-size: 16px; font-weight: 600; cursor: pointer">{{t.label}} <span style="font-weight: 500; color: {{c.muted}}">{{t.count}}</span></button>
+</sc-for>
+</div>
+
+<sc-if value="{{showProjects}}" hint-placeholder-val="{{ true }}">
+<div role="tabpanel" aria-label="Proyectos" style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+<sc-for list="{{projects}}" as="p" hint-placeholder-count="3">
+<a href="Proyecto.dc.html" style="display: flex; flex-direction: column; border-radius: 14px; overflow: hidden; border: 1px solid {{c.border}}; background: {{c.bg}}; text-decoration: none">
+<span role="img" aria-label="Captura de {{p.title}} (pendiente)" style="aspect-ratio: 16 / 9; background: {{c.accentSoft}}; display: grid; place-items: center; font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; color: {{c.accentText}}">{{p.title}}</span>
+<span style="padding: 18px 20px"><span style="display: block; font-size: 13px; font-weight: 600; color: {{c.muted}}">{{p.tag}}</span><span style="display: block; font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600">{{p.title}}</span></span>
+</a>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{showCerts}}" hint-placeholder-val="{{ false }}">
+<div role="tabpanel" aria-label="Certificaciones" style="margin-top: 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px">
+<sc-for list="{{certs}}" as="k" hint-placeholder-count="4">
+<a href="Certificacion.dc.html" style="display: flex; gap: 16px; align-items: center; padding: 18px; border-radius: 14px; border: 1px solid {{c.border}}; background: {{c.bg}}; text-decoration: none">
+<span aria-hidden="true" style="flex: 0 0 56px; height: 56px; border-radius: 12px; background: {{c.accentSoft}}; color: {{c.accentText}}; display: grid; place-items: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12z M8.5 14l-1.5 7 5-3 5 3-1.5-7"></path></svg></span>
+<span><span style="display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: {{c.muted}}">{{k.type}} · {{k.issuer}}</span><span style="display: block; font-size: 17px; font-weight: 600">{{k.title}}</span><span style="display: block; font-size: 13px; color: {{c.muted}}">{{k.date}}</span></span>
+</a>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{showGallery}}" hint-placeholder-val="{{ false }}">
+<div role="tabpanel" aria-label="Galería" style="margin-top: 32px">
+<div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px">
+<span style="padding: 6px 14px; border-radius: 999px; background: {{c.text}}; color: {{c.bg}}; font-size: 13px; font-weight: 600">Todos los álbumes</span>
+<span style="padding: 6px 14px; border-radius: 999px; border: 1px solid {{c.border}}; font-size: 13px; font-weight: 600">[Álbum 1]</span>
+<span style="padding: 6px 14px; border-radius: 999px; border: 1px solid {{c.border}}; font-size: 13px; font-weight: 600">[Álbum 2]</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 140px; gap: 10px">
+<sc-for list="{{photos}}" as="ph" hint-placeholder-count="8">
+<div role="img" aria-label="{{ph.label}} (pendiente)" style="grid-column: span {{ph.cols}}; grid-row: span {{ph.rows}}; border-radius: 12px; background: {{c.bg}}; border: 1px solid {{c.border}}; display: grid; place-items: center; font-size: 13px; color: {{c.muted}}">{{ph.label}}</div>
+</sc-for>
+</div>
+<p style="margin: 12px 0 0; font-size: 13px; color: {{c.muted}}">Fotos de la colección <code>images</code> con <code>showInGallery</code>; se mantiene el orden aleatorio y el tamaño por <code>sizeFactor</code> de la galería actual.</p>
+</div>
+</sc-if>
+</div>
+</section>
+</article>
+</main>
+
+<dc-import name="Footer" paleta="{{paleta}}" modo="{{modoLabel}}" hint-size="100%,120px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"paleta":{"editor":"enum","options":["A · Naranja","B · Azul","C · Violeta"],"default":"C · Violeta","section":"Marca"},"modo":{"editor":"enum","options":["Claro","Oscuro"],"default":"Claro","section":"Marca"},"$preview":{"width":1440,"height":2700}}'>
+const PALETTES = {
+  A: { light: { bg: '#FFFFFF', surface: '#F6F5F3', text: '#15171C', muted: '#5B606B', border: '#E4E2DE', accent: '#E58818', onAccent: '#1B1206', accentText: '#975400', accentSoft: '#FCEBD5' }, dark: { bg: '#0F1115', surface: '#171A20', text: '#F3F2EF', muted: '#A3A8B3', border: '#2A2E36', accent: '#F29A2E', onAccent: '#1B1206', accentText: '#F5A84A', accentSoft: '#2D2214' } },
+  B: { light: { bg: '#FFFFFF', surface: '#F3F6FB', text: '#0B1F3A', muted: '#4E5D73', border: '#DCE3EE', accent: '#2F6FED', onAccent: '#FFFFFF', accentText: '#2459C9', accentSoft: '#E3ECFD' }, dark: { bg: '#0A1424', surface: '#101D31', text: '#EEF3FA', muted: '#9AA9BF', border: '#22324D', accent: '#5B8EF5', onAccent: '#06101F', accentText: '#86AAF8', accentSoft: '#16294A' } },
+  C: { light: { bg: '#FFFFFF', surface: '#F5F4FA', text: '#16141F', muted: '#5A5768', border: '#E3E1EC', accent: '#6D4AFF', onAccent: '#FFFFFF', accentText: '#5B39E8', accentSoft: '#ECE7FF' }, dark: { bg: '#0E0D14', surface: '#17151F', text: '#F2F1F7', muted: '#A6A3B5', border: '#2A2736', accent: '#8F75FF', onAccent: '#0E0D14', accentText: '#AA97FF', accentSoft: '#231D3D' } }
+};
+const SKILLS = ['Vue.js', 'Nuxt', 'JavaScript', 'TypeScript', 'C#', '.NET', 'Java', 'Python', 'Firebase'];
+const PROJECTS = [
+  { title: 'KVMI', tag: 'IA · Web · 2024' },
+  { title: 'Gestión ganadera', tag: 'Móvil · 2023' },
+  { title: 'Mikhuna', tag: 'Web · 2022' }
+];
+const CERTS = [
+  { title: '[Nombre de la certificación]', type: 'Certificación', issuer: '[Emisor]', date: '[Fecha]' },
+  { title: '[Nombre del curso]', type: 'Curso', issuer: '[Emisor]', date: '[Fecha]' },
+  { title: '[Nombre del premio]', type: 'Reconocimiento', issuer: '[Emisor]', date: '[Fecha]' },
+  { title: '[Nombre de la certificación]', type: 'Certificación', issuer: '[Emisor]', date: '[Fecha]' }
+];
+const PHOTOS = [
+  { label: 'Foto 1', cols: 2, rows: 2 }, { label: 'Foto 2', cols: 1, rows: 1 }, { label: 'Foto 3', cols: 1, rows: 2 },
+  { label: 'Foto 4', cols: 1, rows: 1 }, { label: 'Foto 5', cols: 1, rows: 1 }, { label: 'Foto 6', cols: 2, rows: 1 },
+  { label: 'Foto 7', cols: 1, rows: 1 }
+];
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { mode: null, tab: 'Proyectos' }; }
+  renderVals() {
+    const key = String(this.props.paleta ?? 'C · Violeta').charAt(0);
+    const propMode = (this.props.modo ?? 'Claro') === 'Oscuro' ? 'dark' : 'light';
+    const mode = this.state.mode ?? propMode;
+    const c = (PALETTES[key] || PALETTES.C)[mode];
+    const tab = this.state.tab;
+    const counts = { Proyectos: PROJECTS.length, Certificaciones: CERTS.length, 'Galería': PHOTOS.length };
+    return {
+      c, paleta: this.props.paleta ?? 'C · Violeta', modoLabel: mode === 'dark' ? 'Oscuro' : 'Claro',
+      toggleMode: () => this.setState({ mode: mode === 'dark' ? 'light' : 'dark' }),
+      skills: SKILLS, projects: PROJECTS, certs: CERTS, photos: PHOTOS,
+      tabs: ['Proyectos', 'Certificaciones', 'Galería'].map((label) => {
+        const on = label === tab;
+        return { label, count: String(counts[label]), selected: on ? 'true' : 'false', line: on ? c.accent : 'transparent', color: on ? c.text : c.muted, pick: () => this.setState({ tab: label }) };
+      }),
+      showProjects: tab === 'Proyectos', showCerts: tab === 'Certificaciones', showGallery: tab === 'Galería'
+    };
+  }
+}
+</script>
+</body>
+</html>

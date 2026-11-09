@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Solicitar cotización | TheCodeSolutions</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:inherit}
+input,select,textarea{font:inherit}
+</style>
+</helmet>
+<div style="background: {{c.bg}}; color: {{c.text}}; font-family: Inter, system-ui, sans-serif; font-size: 16px; line-height: 1.6; min-height: 100vh">
+<dc-import name="Header" paleta="{{paleta}}" modo="{{modoLabel}}" activo="Contacto" on-toggle-mode="{{toggleMode}}" hint-size="100%,77px"></dc-import>
+
+<main style="max-width: 1200px; margin: 0 auto; padding: 56px 24px 88px">
+<nav aria-label="Ruta de navegación" style="font-size: 14px; color: {{c.muted}}"><ol style="list-style: none; margin: 0; padding: 0; display: flex; gap: 8px"><li><a href="Main.dc.html" style="color: {{c.muted}}">Inicio</a></li><li aria-hidden="true">/</li><li aria-current="page" style="color: {{c.text}}; font-weight: 600">Solicitar cotización</li></ol></nav>
+<div style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+
+<div style="flex: 1 1 340px; min-width: 0">
+<h1 style="margin: 0; font-family: 'Space Grotesk', sans-serif; font-size: clamp(34px, 4.6vw, 52px); line-height: 1.05; letter-spacing: -0.03em">Cuéntanos tu proyecto</h1>
+<p style="margin: 20px 0 0; font-size: 18px; color: {{c.muted}}">Mientras más contexto nos des, más precisa será la propuesta.</p>
+<h2 style="margin: 40px 0 16px; font-family: 'Space Grotesk', sans-serif; font-size: 20px">Qué pasa después</h2>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; gap: 18px">
+<li style="display: flex; gap: 14px"><span style="flex: 0 0 32px; height: 32px; border-radius: 50%; background: {{c.accentSoft}}; color: {{c.accentText}}; display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 500">1</span><span><strong>Revisamos tu solicitud</strong><br><span style="color: {{c.muted}}; font-size: 15px">y te escribimos si necesitamos aclarar algo.</span></span></li>
+<li style="display: flex; gap: 14px"><span style="flex: 0 0 32px; height: 32px; border-radius: 50%; background: {{c.accentSoft}}; color: {{c.accentText}}; display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 500">2</span><span><strong>Agendamos una llamada corta</strong><br><span style="color: {{c.muted}}; font-size: 15px">para entender el objetivo y el alcance.</span></span></li>
+<li style="display: flex; gap: 14px"><span style="flex: 0 0 32px; height: 32px; border-radius: 50%; background: {{c.accentSoft}}; color: {{c.accentText}}; display: grid; place-items: center; font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 500">3</span><span><strong>Te enviamos la propuesta</strong><br><span style="color: {{c.muted}}; font-size: 15px">con alcance, plazos y costo.</span></span></li>
+</ol>
+<div style="margin-top: 40px; padding: 20px; border-radius: 14px; border: 1px solid {{c.border}}">
+<p style="margin: 0; font-size: 15px; font-weight: 600">¿Prefieres escribirnos?</p>
+<p style="margin: 8px 0 0; font-size: 15px"><a href="https://wa.me/593962163336" style="font-weight: 600; color: {{c.accentText}}">WhatsApp +593 96 216 3336</a></p>
+<p style="margin: 4px 0 0; font-size: 15px"><a href="mailto:alan.pacheco.dev@gmail.com" style="font-weight: 600; color: {{c.accentText}}">alan.pacheco.dev@gmail.com</a></p>
+</div>
+</div>
+
+<div style="flex: 1 1 560px; min-width: 0">
+<sc-if value="{{notSent}}" hint-placeholder-val="{{ true }}">
+<form aria-label="Solicitud de cotización" style="padding: 32px; border-radius: 16px; background: {{c.surface}}; border: 1px solid {{c.border}}; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="c-nombre" style="font-size: 14px; font-weight: 600">Nombre</label><input id="c-nombre" type="text" autocomplete="name" required placeholder="Tu nombre" style="min-height: 48px; padding: 0 14px; border-radius: 10px; border: 1px solid {{c.border}}; background: {{c.bg}}; color: {{c.text}}"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="c-empresa" style="font-size: 14px; font-weight: 600">Empresa <span style="font-weight: 400; color: {{c.muted}}">(opcional)</span></label><input id="c-empresa" type="text" autocomplete="organization" placeholder="Nombre de tu empresa" style="min-height: 48px; padding: 0 14px; border-radius: 10px; border: 1px solid {{c.border}}; background: {{c.bg}}; color: {{c.text}}"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="c-correo" style="font-size: 14px; font-weight: 600">Correo</label><input id="c-correo" type="email" autocomplete="email" required placeholder="tu@correo.com" style="min-height: 48px; padding: 0 14px; border-radius: 10px; border: 1px solid {{c.border}}; background: {{c.bg}}; color: {{c.text}}"></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="c-telefono" style="font-size: 14px; font-weight: 600">WhatsApp o teléfono</label><input id="c-telefono" type="tel" autocomplete="tel" placeholder="+593 ..." style="min-height: 48px; padding: 0 14px; border-radius: 10px; border: 1px solid {{c.border}}; background: {{c.bg}}; color: {{c.text}}"></div>
+<fieldset style="grid-column: 1 / -1; margin: 0; padding: 0; border: 0">
+<legend style="font-size: 14px; font-weight: 600; margin-bottom: 8px">Servicio de interés</legend>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<sc-for list="{{services}}" as="s" hint-placeholder-count="6">
+<button type="button" onClick="{{s.pick}}" aria-pressed="{{s.pressed}}" style="min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid {{s.border}}; background: {{s.bg}}; color: {{s.fg}}; font-weight: 600; font-size: 14px; cursor: pointer">{{s.label}}</button>
+</sc-for>
+</div>
+</fieldset>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="c-presupuesto" style="font-size: 14px; font-weight: 600">Presupuesto aproximado</label><select id="c-presupuesto" style="min-height: 48px; padding: 0 12px; border-radius: 10px; border: 1px solid {{c.border}}; background: {{c.bg}}; color: {{c.text}}"><option>[RANGO 1 — por definir]</option><option>[RANGO 2 — por definir]</option><option>[RANGO 3 — por definir]</option><option>Aún no lo sé</option></select></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><label for="c-plazo" style="font-size: 14px; font-weight: 600">Plazo deseado</label><select id="c-plazo" style="min-height: 48px; padding: 0 12px; border-radius: 10px; border: 1px solid {{c.border}}; background: {{c.bg}}; color: {{c.text}}"><option>Lo antes posible</option><option>1 a 3 meses</option><option>3 a 6 meses</option><option>Flexible</option></select></div>
+<div style="display: flex; flex-direction: column; gap: 6px; grid-column: 1 / -1"><label for="c-mensaje" style="font-size: 14px; font-weight: 600">Describe tu proyecto</label><textarea id="c-mensaje" rows="6" required placeholder="¿Qué problema quieres resolver? ¿Para quién es? ¿Tienes referencias?" style="padding: 12px 14px; border-radius: 10px; border: 1px solid {{c.border}}; background: {{c.bg}}; color: {{c.text}}; resize: vertical"></textarea></div>
+<label style="grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: {{c.muted}}"><input type="checkbox" required style="width: 18px; height: 18px; margin-top: 2px">Acepto que TheCodeSolutions use estos datos solo para responder a mi solicitud.</label>
+<div style="grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<button type="button" onClick="{{send}}" style="min-height: 52px; padding: 0 28px; border-radius: 12px; border: 0; background: {{c.accent}}; color: {{c.onAccent}}; font-weight: 600; font-size: 17px; cursor: pointer">Enviar solicitud</button>
+<span style="font-size: 13px; color: {{c.muted}}">Protegido contra spam con reCAPTCHA.</span>
+</div>
+</form>
+</sc-if>
+<sc-if value="{{sent}}" hint-placeholder-val="{{ false }}">
+<div role="status" style="padding: 48px 32px; border-radius: 16px; background: {{c.surface}}; border: 1px solid {{c.border}}; text-align: center">
+<span aria-hidden="true" style="margin: 0 auto; width: 64px; height: 64px; border-radius: 50%; background: {{c.accentSoft}}; color: {{c.accentText}}; display: grid; place-items: center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"></path></svg></span>
+<h2 style="margin: 20px 0 0; font-family: 'Space Grotesk', sans-serif; font-size: 28px">¡Solicitud enviada!</h2>
+<p style="margin: 12px auto 0; max-width: 440px; font-size: 16px; color: {{c.muted}}">Gracias por escribirnos. Revisaremos tu proyecto y te contactaremos por correo o WhatsApp.</p>
+<div style="margin-top: 28px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px">
+<a href="Proyectos.dc.html" style="min-height: 48px; display: inline-flex; align-items: center; padding: 0 20px; border-radius: 12px; border: 1px solid {{c.border}}; font-weight: 600; text-decoration: none">Ver proyectos mientras tanto</a>
+<button type="button" onClick="{{reset}}" style="min-height: 48px; padding: 0 20px; border-radius: 12px; border: 0; background: transparent; color: {{c.accentText}}; font-weight: 600; font-size: 16px; cursor: pointer">Enviar otra solicitud</button>
+</div>
+</div>
+</sc-if>
+</div>
+</div>
+</main>
+
+<dc-import name="Footer" paleta="{{paleta}}" modo="{{modoLabel}}" hint-size="100%,120px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"paleta":{"editor":"enum","options":["A · Naranja","B · Azul","C · Violeta"],"default":"C · Violeta","section":"Marca"},"modo":{"editor":"enum","options":["Claro","Oscuro"],"default":"Claro","section":"Marca"},"$preview":{"width":1440,"height":1700}}'>
+const PALETTES = {
+  A: { light: { bg: '#FFFFFF', surface: '#F6F5F3', text: '#15171C', muted: '#5B606B', border: '#E4E2DE', accent: '#E58818', onAccent: '#1B1206', accentText: '#975400', accentSoft: '#FCEBD5' }, dark: { bg: '#0F1115', surface: '#171A20', text: '#F3F2EF', muted: '#A3A8B3', border: '#2A2E36', accent: '#F29A2E', onAccent: '#1B1206', accentText: '#F5A84A', accentSoft: '#2D2214' } },
+  B: { light: { bg: '#FFFFFF', surface: '#F3F6FB', text: '#0B1F3A', muted: '#4E5D73', border: '#DCE3EE', accent: '#2F6FED', onAccent: '#FFFFFF', accentText: '#2459C9', accentSoft: '#E3ECFD' }, dark: { bg: '#0A1424', surface: '#101D31', text: '#EEF3FA', muted: '#9AA9BF', border: '#22324D', accent: '#5B8EF5', onAccent: '#06101F', accentText: '#86AAF8', accentSoft: '#16294A' } },
+  C: { light: { bg: '#FFFFFF', surface: '#F5F4FA', text: '#16141F', muted: '#5A5768', border: '#E3E1EC', accent: '#6D4AFF', onAccent: '#FFFFFF', accentText: '#5B39E8', accentSoft: '#ECE7FF' }, dark: { bg: '#0E0D14', surface: '#17151F', text: '#F2F1F7', muted: '#A6A3B5', border: '#2A2736', accent: '#8F75FF', onAccent: '#0E0D14', accentText: '#AA97FF', accentSoft: '#231D3D' } }
+};
+const SERVICES = ['Desarrollo web', 'Apps móviles', 'Soluciones con IA', 'Sistemas a medida', 'Consultoría', 'Aún no lo sé'];
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { mode: null, service: 'Desarrollo web', sent: false }; }
+  renderVals() {
+    const key = String(this.props.paleta ?? 'C · Violeta').charAt(0);
+    const propMode = (this.props.modo ?? 'Claro') === 'Oscuro' ? 'dark' : 'light';
+    const mode = this.state.mode ?? propMode;
+    const c = (PALETTES[key] || PALETTES.C)[mode];
+    return {
+      c, paleta: this.props.paleta ?? 'C · Violeta', modoLabel: mode === 'dark' ? 'Oscuro' : 'Claro',
+      toggleMode: () => this.setState({ mode: mode === 'dark' ? 'light' : 'dark' }),
+      services: SERVICES.map((label) => {
+        const on = label === this.state.service;
+        return { label, pressed: on ? 'true' : 'false', bg: on ? c.text : 'transparent', fg: on ? c.bg : c.text, border: on ? c.text : c.border, pick: () => this.setState({ service: label }) };
+      }),
+      sent: this.state.sent, notSent: !this.state.sent,
+      send: () => this.setState({ sent: true }),
+      reset: () => this.setState({ sent: false })
+    };
+  }
+}
+</script>
+</body>
+</html>
