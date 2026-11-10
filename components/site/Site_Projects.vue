@@ -36,7 +36,7 @@
             <p class="project__meta">{{ tags(project) }}<span v-if="year(project)"> · {{ year(project) }}</span></p>
             <h3 class="project__title">{{ text(project, 'title') }}</h3>
             <p class="project__desc">{{ text(project, 'description') }}</p>
-            <NuxtLink :to="$localePath({ name: 'project-id', params: { id: project.id } })" class="tcs-link project__link">
+            <NuxtLink :to="projectLink(project)" class="tcs-link project__link">
               {{ $t('site.projects.view') }} →
             </NuxtLink>
           </div>
@@ -83,6 +83,12 @@ export default {
         .filter(Boolean)
         .map((s) => this.text(s, 'title'))
         .join(' · ')
+    },
+    // URL con slug; los proyectos que aún no tienen slug usan la ruta vieja por id
+    projectLink(project) {
+      return project.slug
+        ? this.$localePath({ name: 'proyectos-slug', params: { slug: project.slug } })
+        : this.$localePath({ name: 'project-id', params: { id: project.id } })
     },
     year(project) {
       const seconds = project.date?.seconds

@@ -57,11 +57,18 @@ export default {
   name: 'ProjectPage',
   setup() {
     const route = useRoute()
+    const nuxtApp = useNuxtApp()
     const project = ref({ imageUrls: [], relatedTechnologies: [] })
     const loading = ref(true)
 
     if (process.client) {
       getProject(route.params.id).then((data) => {
+        // URL vieja por id: si el proyecto ya tiene slug, se redirige a la página nueva
+        if (data?.slug) {
+          const localePath = nuxtApp.$localePath
+          navigateTo(localePath({ name: 'proyectos-slug', params: { slug: data.slug } }), { replace: true })
+          return
+        }
         if (data) {
           project.value = data
           useHead({ title: `${data.title} | Portfolio Alan Pacheco` })

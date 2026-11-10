@@ -198,6 +198,37 @@
       "place": "Quito, Ecuador",
       "nav": "Footer",
       "whatsapp": "Message us on WhatsApp"
+    },
+    "project": {
+      "home": "Home",
+      "projects": "Projects",
+      "visit": "Visit project",
+      "challenge": "The challenge",
+      "solution": "The solution",
+      "result": "The result",
+      "gallery": "Gallery",
+      "enlarge": "Enlarge image {n}",
+      "viewer": "Image viewer",
+      "close": "Close viewer",
+      "prev": "Previous image",
+      "next": "Next image",
+      "imageAlt": "{name}, image {n}",
+      "facts": "Fact sheet",
+      "client": "Client",
+      "year": "Year",
+      "services": "Services",
+      "tech": "Technologies",
+      "team": "Team",
+      "ctaTitle": "Have a similar project?",
+      "ctaText": "Tell us your idea and we will send you a proposal.",
+      "ctaButton": "Request a quote",
+      "others": "Other projects",
+      "all": "See all",
+      "notFound": "We could not find this project.",
+      "back": "Back to projects",
+      "loading": "Loading…",
+      "metaSuffix": "Case study {'|'} TheCodeSolutions",
+      "breadcrumb": "Breadcrumb"
     }
   }
 }
