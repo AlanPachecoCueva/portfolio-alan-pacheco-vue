@@ -229,6 +229,23 @@
       "loading": "Cargando…",
       "metaSuffix": "Caso de éxito {'|'} TheCodeSolutions",
       "breadcrumb": "Ruta de navegación"
+    },
+    "service": {
+      "home": "Inicio",
+      "services": "Servicios",
+      "includes": "Qué incluye",
+      "tech": "Tecnologías",
+      "related": "Proyectos de este servicio",
+      "faq": "Preguntas frecuentes",
+      "others": "Otros servicios",
+      "cta": "Cotizar este servicio",
+      "ctaSecondary": "Ver proyectos",
+      "ctaTitle": "¿Hablamos de tu proyecto?",
+      "ctaText": "Cuéntanos qué necesitas y te enviamos una propuesta sin compromiso.",
+      "notFound": "No encontramos este servicio.",
+      "back": "Volver a servicios",
+      "loading": "Cargando…",
+      "metaSuffix": "Servicio {'|'} TheCodeSolutions"
     }
   }
 }

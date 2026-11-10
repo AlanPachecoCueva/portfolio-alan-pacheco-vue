@@ -229,6 +229,23 @@
       "loading": "Loading…",
       "metaSuffix": "Case study {'|'} TheCodeSolutions",
       "breadcrumb": "Breadcrumb"
+    },
+    "service": {
+      "home": "Home",
+      "services": "Services",
+      "includes": "What's included",
+      "tech": "Technologies",
+      "related": "Projects for this service",
+      "faq": "Frequently asked questions",
+      "others": "Other services",
+      "cta": "Get a quote for this service",
+      "ctaSecondary": "See projects",
+      "ctaTitle": "Shall we talk about your project?",
+      "ctaText": "Tell us what you need and we will send you a no-obligation proposal.",
+      "notFound": "We could not find this service.",
+      "back": "Back to services",
+      "loading": "Loading…",
+      "metaSuffix": "Service {'|'} TheCodeSolutions"
     }
   }
 }
