@@ -14,5 +14,8 @@ export function useTheme() {
     getTextAuxiliarColor: () => theme.current.value.colors.textAuxiliar,
     getAuxiliarColor: () => theme.current.value.colors.auxiliar,
     getAlternativeButtonColor: () => theme.current.value.colors.alternativeButtoncolor,
+    // TheCodeSolutions: token de la paleta C sin el prefijo, p. ej. getBrandColor('accent') → 'tcs-accent'.
+    // También existen como variables CSS: rgb(var(--v-theme-tcs-accent)).
+    getBrandColor: (token) => theme.current.value.colors[`tcs-${token}`],
   }
 }

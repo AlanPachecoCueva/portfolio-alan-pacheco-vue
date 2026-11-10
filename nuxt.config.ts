@@ -68,25 +68,30 @@ export default defineNuxtConfig({
       htmlAttrs: { lang: 'es' },
       charset: 'utf-8',
       viewport: 'width=device-width,initial-scale=1.0',
-      title: 'Portfolio Alan Pacheco',
+      // Valores por defecto: cada página pública define los suyos con useSeoMeta por idioma.
+      title: 'TheCodeSolutions — Software a medida en Quito, Ecuador',
       meta: [
         { name: 'google-site-verification', content: '9AXAGLhC7HPco0ggKSwRYMFdeMJ5Vf5qtcrDCuN9GTQ' },
-        { name: 'description', content: 'Portafolio profesional de Alan Pacheco, Ingeniero de Software en Quito, Ecuador. Proyectos en Vue.js, C#, .NET, JavaScript y más.' },
+        { name: 'description', content: 'TheCodeSolutions desarrolla software a medida en Quito, Ecuador: sitios y apps web, apps móviles, soluciones con IA, sistemas a medida y consultoría.' },
+        { name: 'theme-color', content: '#6D4AFF' },
         // Open Graph
-        { property: 'og:title', content: 'Portfolio Alan Pacheco — Software Engineer' },
-        { property: 'og:description', content: 'Portafolio profesional de Alan Pacheco, Ingeniero de Software en Quito, Ecuador. Proyectos en Vue.js, C#, .NET, JavaScript y más.' },
+        { property: 'og:site_name', content: 'TheCodeSolutions' },
+        { property: 'og:title', content: 'TheCodeSolutions — Software a medida' },
+        { property: 'og:description', content: 'Desarrollo web, apps móviles, soluciones con IA, sistemas a medida y consultoría desde Quito, Ecuador.' },
         { property: 'og:type', content: 'website' },
         { property: 'og:image', content: 'https://thecodesolutions.com/ThecodesolutionsPreview.png' },
         { property: 'og:image:width', content: '2349' },
         { property: 'og:image:height', content: '1355' },
         // Twitter Cards
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'Portfolio Alan Pacheco — Software Engineer' },
-        { name: 'twitter:description', content: 'Portafolio profesional de Alan Pacheco, Ingeniero de Software en Quito, Ecuador. Proyectos en Vue.js, C#, .NET, JavaScript y más.' },
+        { name: 'twitter:title', content: 'TheCodeSolutions — Software a medida' },
+        { name: 'twitter:description', content: 'Desarrollo web, apps móviles, soluciones con IA, sistemas a medida y consultoría desde Quito, Ecuador.' },
         { name: 'twitter:image', content: 'https://thecodesolutions.com/ThecodesolutionsPreview.png' },
       ],
       link: [
-        { rel: 'icon', href: '/favicon.ico' },
+        // Logo 3 "llaves con núcleo" (DA-010); el .ico queda para navegadores sin soporte SVG
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
         {
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap',
@@ -95,24 +100,52 @@ export default defineNuxtConfig({
       script: [
         {
           type: 'application/ld+json',
+          // Empresa + fundador + sitio. Contacto provisional (DA-009) hasta tener correo corporativo.
           innerHTML: JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'Person',
-            name: 'Alan Pacheco',
-            alternateName: 'Alan Pacheco Cueva',
-            jobTitle: 'Software Engineer',
-            url: 'https://thecodesolutions.com',
-            image: 'https://thecodesolutions.com/About-Image.webp',
-            sameAs: [
-              'https://ec.linkedin.com/in/alan-pacheco-cueva-b7b3a9223',
-              'https://github.com/AlanPachecoCueva',
+            '@graph': [
+              {
+                '@type': 'ProfessionalService',
+                '@id': 'https://thecodesolutions.com/#organization',
+                name: 'TheCodeSolutions',
+                url: 'https://thecodesolutions.com',
+                logo: 'https://thecodesolutions.com/logo-tcs.svg',
+                image: 'https://thecodesolutions.com/ThecodesolutionsPreview.png',
+                description: 'Desarrollo de software a medida: web, apps móviles, soluciones con IA, sistemas a medida y consultoría.',
+                email: 'alan.pacheco.dev@gmail.com',
+                telephone: '+593962163336',
+                address: {
+                  '@type': 'PostalAddress',
+                  addressLocality: 'Quito',
+                  addressCountry: 'EC',
+                },
+                areaServed: 'EC',
+                knowsLanguage: ['es', 'en'],
+                founder: { '@id': 'https://thecodesolutions.com/#alan-pacheco' },
+              },
+              {
+                '@type': 'Person',
+                '@id': 'https://thecodesolutions.com/#alan-pacheco',
+                name: 'Alan Pacheco Cueva',
+                alternateName: 'Alan Pacheco',
+                jobTitle: 'Fundador y líder técnico',
+                worksFor: { '@id': 'https://thecodesolutions.com/#organization' },
+                image: 'https://thecodesolutions.com/About-Image.webp',
+                sameAs: [
+                  'https://ec.linkedin.com/in/alan-pacheco-cueva-b7b3a9223',
+                  'https://github.com/AlanPachecoCueva',
+                ],
+                knowsAbout: ['Vue.js', 'JavaScript', 'TypeScript', 'C#', '.NET', 'Java', 'Python', 'Firebase'],
+              },
+              {
+                '@type': 'WebSite',
+                '@id': 'https://thecodesolutions.com/#website',
+                url: 'https://thecodesolutions.com',
+                name: 'TheCodeSolutions',
+                inLanguage: ['es-EC', 'en-US'],
+                publisher: { '@id': 'https://thecodesolutions.com/#organization' },
+              },
             ],
-            address: {
-              '@type': 'PostalAddress',
-              addressLocality: 'Quito',
-              addressCountry: 'EC',
-            },
-            knowsAbout: ['Vue.js', 'JavaScript', 'TypeScript', 'C#', '.NET', 'Java', 'Python', 'Firebase'],
           }),
         },
       ],
