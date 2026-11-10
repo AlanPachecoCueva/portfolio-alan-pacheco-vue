@@ -59,7 +59,7 @@ Portfolio personal de **Alan Pacheco Cueva**, Ingeniero de Software ecuatoriano.
 ## Arquitectura
 
 ```
-portfolio-alan-pacheco-vue/        ← raíz del proyecto (Nuxt 3, NO src/)
+./                                 ← raíz del proyecto (Nuxt 3, NO src/)
 │
 ├── pages/                         ← Rutas file-based (Nuxt auto-router)
 │   ├── index.vue                  ← / (todas las secciones en una página)
