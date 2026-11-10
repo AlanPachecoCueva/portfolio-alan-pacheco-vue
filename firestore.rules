@@ -3,7 +3,8 @@ rules_version = '2';
 // Reglas de Firestore para thecodesolutions.com
 // Son la ÚNICA defensa real: la config de Firebase es pública (DA-003).
 // Deploy: Firebase Console → Firestore → Reglas (pegar este archivo) y publicar.
-// Antes del primer deploy, comparar con las reglas vigentes en la consola.
+// Publicadas en la consola el 2026-11-10. Este archivo es la fuente de verdad:
+// cualquier cambio se hace aquí primero y luego se pega en la consola.
 service cloud.firestore {
   match /databases/{database}/documents {
 
