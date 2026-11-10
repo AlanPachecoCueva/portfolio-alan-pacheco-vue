@@ -159,7 +159,9 @@ export default {
   }
 }
 
-nav {
+/* Limitado al navbar viejo: un selector "nav" global fijaba arriba cualquier <nav> del
+   sitio nuevo (pie de página, selector de idioma) cuando este CSS se cargaba (ERR-018) */
+.navbarAll nav {
   animation: fadeInUp 0.5s ease-out forwards;
   position: fixed;
   top: 0;
