@@ -108,9 +108,9 @@ Un solo `<h1>` por página, jerarquía de títulos, breadcrumbs (`BreadcrumbList
 
 ### Contenido pendiente (marcado con `[CORCHETES]` en las maquetas)
 
-- Rangos de presupuesto del formulario de cotización.
-- Por proyecto: cliente, reto, resultado, tecnologías, URL e imágenes reales.
+- ~~Rangos de presupuesto~~ → definidos en `contenido-inicial.md` (2026-11-10).
+- Por proyecto: reto y solución redactados en `contenido-inicial.md` (proyectos académicos, sin cliente ni resultado inventados). Faltan proyectos de clientes reales, imágenes y URLs.
 - Datos reales de certificaciones (vienen de la colección `achievements`).
-- Plazo típico por tipo de proyecto (FAQ de servicios).
-- Contenido de los otros 4 servicios (solo está maquetado "Desarrollo web").
+- ~~Plazo típico por tipo de proyecto~~ → estimados en `contenido-inicial.md`.
+- ~~Contenido de los 5 servicios~~ → borrador ES/EN en `contenido-inicial.md`, pendiente de revisión de Alan.
 - Optimizar `public/About-Image.webp` (7,2 MB → < 200 KB con `srcset`).
