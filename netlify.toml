@@ -2,8 +2,12 @@
   command = "npx nuxt generate"
   publish = ".output/public"
 
-# SSG: rutas dinámicas no generadas en el prerender
+# SSG: rutas dinámicas no generadas en el prerender (admin, /project/:id, /achievement/:id…).
+# Debe ser /200.html (shell SPA vacío que genera Nuxt), NO /index.html: index.html es la home
+# pre-renderizada y Nuxt la hidrata como home en cualquier URL (ERR-017).
+# Netlify solo aplica esta regla cuando no existe un archivo para la ruta, así que las páginas
+# pre-renderizadas siguen sirviéndose tal cual.
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/200.html"
   status = 200
