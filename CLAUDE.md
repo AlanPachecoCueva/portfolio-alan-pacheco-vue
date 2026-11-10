@@ -21,10 +21,11 @@ Archivo cargado automáticamente por Claude Code en cada sesión. Es una guía d
 ## Reglas de documentación
 
 1. **Proactividad:** Si el usuario menciona haber completado una acción manual (deploy a Netlify, configuración en Firebase Console, decisión de producto, etc.), proponer actualizar la documentación correspondiente sin esperar que lo pida.
-2. **Deploy:** Cualquier acción de distribución (nuevo deploy, cambio de dominio, configuración de env vars en Netlify) → actualizar `Deploy_Historial.md` inmediatamente.
-3. **Sin duplicación:** Si un gotcha tiene su entrada completa en `Decisiones_Arquitectura.md`, el gotcha en este archivo debe ser solo una referencia breve.
-4. **Fecha de actualización:** Al modificar cualquier archivo de memoria técnica, actualizar el campo `_Última actualización_` al inicio del archivo.
-5. **El usuario se comunica en español.** Responder siempre en español en este proyecto.
+2. **Deploys a producción: uno solo, al final de la migración.** Netlify cobra créditos por deploy. No proponer deploys intermedios ni activar Deploy Previews o branch deploys; solo `main` despliega. Excepción: hotfix crítico confirmado por el usuario. Ver "Política de deploys" en `Deploy_Historial.md`.
+3. **Deploy:** Cualquier acción de distribución (nuevo deploy, cambio de dominio, configuración de env vars en Netlify) → actualizar `Deploy_Historial.md` inmediatamente.
+4. **Sin duplicación:** Si un gotcha tiene su entrada completa en `Decisiones_Arquitectura.md`, el gotcha en este archivo debe ser solo una referencia breve.
+5. **Fecha de actualización:** Al modificar cualquier archivo de memoria técnica, actualizar el campo `_Última actualización_` al inicio del archivo.
+6. **El usuario se comunica en español.** Responder siempre en español en este proyecto.
 
 ---
 
