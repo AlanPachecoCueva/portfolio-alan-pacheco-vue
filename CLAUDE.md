@@ -91,12 +91,14 @@ Portfolio personal de **Alan Pacheco Cueva**, Ingeniero de Software ecuatoriano.
 │
 ├── components/
 │   ├── Nav_Bar.vue
-│   ├── admin/                     ← Admin_Nav, Image_Uploader, Image_Picker, Image_Selector
+│   ├── site/                      ← TheCodeSolutions: Site_Header, Site_Footer, Site_Logo, Site_Language, Site_Hero, Site_Services, Site_Process, Site_Projects, Site_Team, Site_Quote
+│   ├── admin/                     ← Admin_Nav, Image_Uploader, Image_Picker, Image_Selector, *_Form, Tags_Input
 │   └── utils/                     ← Card, Grid, Language_Selector, Project, Projects, Theme_Selector
 │
 ├── composables/                   ← useAuth, useTheme, useImages/useGalleryImages, useAlbums, useProjects/usePublishedProjects, useAchievements/usePublishedAchievements, useServices/usePublishedServices, useTeam/usePublishedTeam, useLeads/useCreateLead
 ├── layouts/
-│   ├── default.vue                ← Layout público (cursor + scroll logic + navbar + contenido)
+│   ├── site.vue                   ← Layout de TheCodeSolutions (Site_Header, Site_Footer, fuentes, hreflang). Lo usa la home nueva
+│   ├── default.vue                ← Layout del portafolio viejo (cursor + navbar); galería y logros hasta migrarlas
 │   └── admin.vue                  ← Layout admin (solo <div> base — Admin_Nav va en cada página)
 ├── middleware/
 │   └── auth.ts                    ← Guard Nuxt: protege /admin/** (verifica Firebase Auth + colección admins)
@@ -217,3 +219,4 @@ npm run lint     # Linting con ESLint
 11. **Options API + `<script setup>` no se mezclan:** un `<script setup>` sobrescribe el `setup()` de opciones del mismo SFC. En páginas con Options API, `definePageMeta(...)` va en el `<script>` normal (ver ERR-013).
 12. **Formularios del admin:** clase `.admin-form` y estilos compartidos en `assets/admin.css` (ERR-014). Formularios compartidos entre "nuevo" y "editar" en `components/admin/*_Form.vue`: emiten solo los campos del esquema (nunca `updateDoc` con `...this.form`, ver ERR-015). URLs que se pintan como `href` público se validan (`https://` o `http(s)://`).
 13. **URLs por idioma (DA-011):** español en `/`, inglés en `/en/...`. Códigos de locale en minúsculas (`$i18n.locale === 'en'`). Enlaces públicos siempre con `$localePath(...)` (las rutas se llaman `index___es`/`index___en`). Las páginas del admin llevan `i18n: false` en `definePageMeta`. Una página pública nueva va al prerender y a `public/sitemap.xml` en ambos idiomas.
+14. **Contenido público y SEO:** `usePublicContent()` lee servicios, proyectos y equipo publicados por la API REST de Firestore (`utils/firestore-public.js`) en el prerender, así quedan en el HTML; en el cliente se vuelve a pedir al montar. Las páginas de TheCodeSolutions usan `definePageMeta({ layout: 'site' })`, `useSeoMeta` con textos de `site.*` en i18n y los estilos de `assets/site.css` (tokens `tcs-*`).

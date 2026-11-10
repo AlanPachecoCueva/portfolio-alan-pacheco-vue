@@ -8,28 +8,23 @@
   "Achievements_Text": "Achievements",
   "Theme_Text": "Theme",
   "More_Text": "More",
-
   "Home_Main_Slogan": "Innovative Development with Passion & Creativity",
   "Home_Main_Slogan_P1": "Innovative Development",
   "Home_Main_Slogan_P2": "Passion & Creativity",
   "Home_Contact_Button": "Get In Touch",
-
   "Card_Achievements": "Achievements",
   "Card_Projects": "Projects",
   "Card_Galery": "Gallery",
-
   "About_Me_Flag": "ABOUT ME",
   "About_Me_Title": "Do You Need An Innovative Product? I Can Help You.",
   "About_Me_Paragraph": "Hi! I'm Alan Pacheco, a developer passionate about creating clean web applications with intuitive functionality. I love bringing ideas to life through creative solutions. I'm always eager to learn new skills, tools, and concepts. Along with working on various solo full-stack projects, I've also collaborated with creative teams, which involves daily stand-ups, communication, source control, and project management.",
   "About_Me_Contact_Me": "CONTACT ME",
   "About_Me_Download_CV": "DOWNLOAD CV",
-
   "Skills_Flag": "MY SKILLS",
   "Skills_Title": "What My Programming Skills Included?",
   "Skills_Paragraph": "I develop simple, intuitive and responsive user interface that helps users get things done with less effort and time with those technologies.",
   "Skills_Button": "SKILLS",
   "Skills_Tools_Button": "TOOLS",
-
   "Project_Flag": "MY WORKS",
   "Project_Title": "See My Works!",
   "Project_Paragraph": "I develop the best quality website that serves for the long-term. Well-documented, clean, easy and elegant interface helps any non-technical clients.",
@@ -38,7 +33,6 @@
   "Project_Button_AI": "AI",
   "Project_Button_Mobile": "MOBILE",
   "Project_Loading": "Loading...",
-
   "Contact_Flag": "CONTACT",
   "Contact_Title": "Have You Any Project? Please Drop a Message",
   "Contact_Paragraph": "Get in touch and let me know how I can help. Fill out the form and ill be in touch as soon as possible.",
@@ -61,7 +55,6 @@
   "Contact_Form_Error": "Failed to send the message. Please try again.",
   "Contact_Form_Required": "This field is required",
   "Contact_Form_Email_Invalid": "Please enter a valid email address",
-
   "Achievements_Flag": "MY ACHIEVEMENTS",
   "Achievements_Title": "My Achievements & Awards!",
   "Achievements_Paragraph": "Certifications, awards and recognitions obtained throughout my academic and professional career.",
@@ -69,11 +62,142 @@
   "Achievement_Certificate": "View certificate →",
   "Achievement_Loading": "Loading...",
   "Achievement_Error": "Error loading the achievement.",
-
   "mikhuna_description": "Website for sharing and discovering cooking recipes, where users can rate, comment on, and follow their favorite recipes, creating an interactive culinary community.",
   "mikhuna_date": "March 2022",
   "kvmi_description": "Rewards platform for a chocolate company, integrated with artificial intelligence for the creation of personalized advertising campaigns, allowing the generation of posters, banners, and slogans, and offering a system to manage campaigns and rewards.",
   "kvmi_date": "March 2024",
   "cow_description": "Mobile application for comprehensive livestock management, providing tools for tracking diseases, monitoring feed expenses, and other key aspects of livestock administration.",
-  "cow_date": "January 2023"
+  "cow_date": "January 2023",
+  "site": {
+    "meta": {
+      "title": "TheCodeSolutions — Custom software development in Quito, Ecuador",
+      "description": "We design and build websites, mobile apps, AI solutions and custom software, from the first idea to production. Request a quote."
+    },
+    "nav": {
+      "services": "Services",
+      "projects": "Projects",
+      "about": "About",
+      "team": "Team",
+      "contact": "Contact",
+      "quote": "Get a quote",
+      "menu": "Open menu",
+      "close": "Close menu",
+      "home": "TheCodeSolutions, home",
+      "label": "Main navigation",
+      "language": "Language"
+    },
+    "hero": {
+      "eyebrow": "Custom software · Quito, Ecuador",
+      "title": "We turn your ideas into software that works.",
+      "subtitle": "We design and build web applications, mobile apps and artificial intelligence solutions, from the first idea to production.",
+      "cta": "Request a quote",
+      "secondary": "See projects",
+      "code": {
+        "comment1": "// Tell us what you need",
+        "comment2": "// Next step: let’s talk",
+        "service": "Web development"
+      }
+    },
+    "services": {
+      "eyebrow": "Services",
+      "title": "What we can build with you",
+      "more": "Learn more"
+    },
+    "process": {
+      "eyebrow": "How we work",
+      "title": "A clear process, no surprises",
+      "steps": [
+        {
+          "title": "Discovery",
+          "text": "We understand your business, the problem and what success means to you."
+        },
+        {
+          "title": "Design",
+          "text": "A prototype and technical plan to validate the idea before coding."
+        },
+        {
+          "title": "Development",
+          "text": "Frequent deliveries you can test from the first weeks."
+        },
+        {
+          "title": "Launch and support",
+          "text": "We publish, measure and keep improving with you."
+        }
+      ]
+    },
+    "projects": {
+      "eyebrow": "Case studies",
+      "title": "Projects already up and running",
+      "all": "All",
+      "filter": "Filter projects by service",
+      "view": "View case",
+      "empty": "There are no published projects for this service yet.",
+      "imageAlt": "Screenshot of the {name} project"
+    },
+    "stack": {
+      "title": "Technologies we work with"
+    },
+    "team": {
+      "eyebrow": "Team",
+      "title": "You talk directly to the person building your project",
+      "text": "No middlemen: the person who understands your problem is the same one who designs and codes the solution.",
+      "founderRole": "Founder & Tech Lead",
+      "founderBio": "Software Engineer based in Quito, Ecuador. Leads every project, from architecture to deployment.",
+      "photoAlt": "Portrait of {name}"
+    },
+    "quote": {
+      "eyebrow": "Quote",
+      "title": "Tell us about your project",
+      "text": "Fill out the form and we will reply with a proposal. If you prefer, write to us directly.",
+      "whatsapp": "WhatsApp",
+      "email": "Email",
+      "location": "Location",
+      "locationValue": "Quito, Ecuador",
+      "form": {
+        "label": "Quote request",
+        "name": "Name",
+        "namePlaceholder": "Your name",
+        "company": "Company",
+        "optional": "(optional)",
+        "companyPlaceholder": "Your company name",
+        "email": "Email",
+        "emailPlaceholder": "you{'@'}email.com",
+        "phone": "WhatsApp or phone",
+        "phonePlaceholder": "+1 …",
+        "service": "Service of interest",
+        "serviceUnknown": "Not sure yet",
+        "budget": "Approximate budget",
+        "timeline": "Desired timeline",
+        "message": "Describe your project",
+        "messagePlaceholder": "What problem do you want to solve? Who is it for?",
+        "consent": "I agree that TheCodeSolutions may use this data only to reply to my request.",
+        "submit": "Send request",
+        "sending": "Sending…",
+        "required": "This field is required",
+        "invalidEmail": "Enter a valid email",
+        "consentRequired": "We need your consent to reply",
+        "success": "Request sent! We will contact you soon by email or WhatsApp.",
+        "error": "The request could not be sent. Please try again or message us on WhatsApp."
+      },
+      "budgets": {
+        "lt-500": "Under $500",
+        "500-1000": "$500 to $1,000",
+        "1000-3000": "$1,000 to $3,000",
+        "3000-8000": "$3,000 to $8,000",
+        "gt-8000": "Over $8,000",
+        "unknown": "Not sure yet"
+      },
+      "timelines": {
+        "asap": "As soon as possible",
+        "1-3": "1 to 3 months",
+        "3-6": "3 to 6 months",
+        "flexible": "Flexible"
+      }
+    },
+    "footer": {
+      "place": "Quito, Ecuador",
+      "nav": "Footer",
+      "whatsapp": "Message us on WhatsApp"
+    }
+  }
 }

@@ -1,117 +1,70 @@
 <template>
-  <main class="general-container">
-    <HomeView id="home-view"></HomeView>
-    <br />
-    <div class="cardsContainer">
-      <CardComponent
-        class="card"
-        route-name="achievements"
-        icon_name="marketeq:reward"
-        :title="$t('Card_Achievements')"
-        content=""
-        :style="{ backgroundColor: getAuxiliarColor() }"
-      ></CardComponent>
-      <CardComponent
-        class="card"
-        url="#projects-view"
-        icon_name="icon-park:file-code"
-        :title="$t('Card_Projects')"
-        content=""
-        :style="{ backgroundColor: getAuxiliarColor() }"
-      ></CardComponent>
-      <CardComponent
-        class="card"
-        route-name="gallery"
-        icon_name="marketeq:gallery-collections"
-        :title="$t('Card_Galery')"
-        content=""
-        :style="{ backgroundColor: getAuxiliarColor() }"
-      ></CardComponent>
+  <div>
+    <Site_Hero />
+    <Site_Services :services="content.services" />
+    <Site_Process />
+    <Site_Projects :projects="content.projects" :services="content.services" />
+
+    <section class="tcs-container stack" aria-labelledby="stack-titulo">
+      <h2 id="stack-titulo" class="stack__title">{{ t('site.stack.title') }}</h2>
+      <ul class="stack__list">
+        <li v-for="tech in stack" :key="tech" class="tcs-chip">{{ tech }}</li>
+      </ul>
+    </section>
+
+    <div class="tcs-band">
+      <Site_Team :team="content.team" />
     </div>
-    <br />
-    <AboutView id="about-view"></AboutView>
-    <SkillsView id="skills-view"></SkillsView>
-    <ProjectsComponent :items="projects" id="projects-view"></ProjectsComponent>
-    <ContactView id="contact-view"></ContactView>
-  </main>
+    <Site_Quote :services="content.services" />
+  </div>
 </template>
 
-<script>
-import HomeView from '~/src/views/Home_View.vue'
-import CardComponent from '~/components/utils/Card_Component.vue'
-import AboutView from '~/src/views/About_View.vue'
-import SkillsView from '~/src/views/Skills_View.vue'
-import ProjectsComponent from '~/components/utils/Projects_Component.vue'
-import ContactView from '~/src/views/Contact_View.vue'
-import { usePublishedProjects } from '~/composables/useProjects.js'
-import { useTheme } from '~/composables/useTheme'
+<script setup>
+import Site_Hero from '~/components/site/Site_Hero.vue'
+import Site_Services from '~/components/site/Site_Services.vue'
+import Site_Process from '~/components/site/Site_Process.vue'
+import Site_Projects from '~/components/site/Site_Projects.vue'
+import Site_Team from '~/components/site/Site_Team.vue'
+import Site_Quote from '~/components/site/Site_Quote.vue'
+import { usePublicContent } from '~/composables/usePublicContent.js'
 
-export default {
-  name: 'IndexPage',
-  components: {
-    HomeView,
-    CardComponent,
-    AboutView,
-    SkillsView,
-    ProjectsComponent,
-    ContactView,
-  },
-  setup() {
-    useHead({ title: 'Portfolio Alan Pacheco — Software Engineer' })
-    const { projects } = usePublishedProjects()
-    return {
-      projects,
-      ...useTheme(),
-    }
-  },
-}
+definePageMeta({ layout: 'site' })
+
+const { t } = useI18n()
+const { content } = usePublicContent()
+
+const stack = ['Vue.js', 'Nuxt', 'JavaScript', 'TypeScript', 'C#', '.NET', 'Java', 'Python', 'Firebase']
+
+// SEO por idioma (hreflang y canonical los pone el layout con useLocaleHead)
+useSeoMeta({
+  title: () => t('site.meta.title'),
+  description: () => t('site.meta.description'),
+  ogTitle: () => t('site.meta.title'),
+  ogDescription: () => t('site.meta.description'),
+  twitterTitle: () => t('site.meta.title'),
+  twitterDescription: () => t('site.meta.description'),
+})
 </script>
 
 <style scoped>
-.cardsContainer {
+.stack {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+.stack__title {
+  margin: 0;
+  font-family: var(--tcs-font-display);
+  font-size: 24px;
+  letter-spacing: -0.01em;
+}
+
+.stack__list {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
   display: flex;
-  flex-direction: row;
-  margin: 5% 10% 5% 10%;
-  justify-content: space-between;
-}
-
-.card {
-  width: 30%;
-  height: 110px;
-}
-
-@media (max-width: 1279px) {
-  .cardsContainer {
-    margin: 5% 5% 5% 5%;
-  }
-}
-
-@media (max-width: 959px) {
-  .cardsContainer {
-    flex-direction: column;
-    align-items: center;
-    margin: 5% 0 60px 0;
-    height: auto;
-  }
-  .card {
-    width: 75%;
-    height: 90px;
-    margin: 0 0 16px 0;
-  }
-}
-
-@media (max-width: 599px) {
-  .cardsContainer {
-    flex-direction: column;
-    align-items: center;
-    margin: 5% 0 100px 0;
-    width: 100%;
-    height: auto;
-  }
-  .card {
-    width: 85%;
-    height: 90px;
-    margin: 0 0 20px 0;
-  }
+  flex-wrap: wrap;
+  gap: 10px;
 }
 </style>

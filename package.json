@@ -60,7 +60,8 @@
       "useI18n": "readonly",
       "useLocalePath": "readonly",
       "useLocaleHead": "readonly",
-      "useCookie": "readonly"
+      "useCookie": "readonly",
+      "$fetch": "readonly"
     },
     "overrides": [
       {

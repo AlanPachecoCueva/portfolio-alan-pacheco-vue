@@ -8,28 +8,23 @@
   "Achievements_Text": "Logros",
   "Theme_Text": "Tema",
   "More_Text": "Más",
-
   "Home_Main_Slogan": "Desarrollo Innovador con Pasión & Creatividad",
   "Home_Main_Slogan_P1": "Desarrollo Innovador",
   "Home_Main_Slogan_P2": "Pasión & Creatividad",
   "Home_Contact_Button": "Contactar",
-
   "Card_Achievements": "Logros",
   "Card_Projects": "Proyectos",
   "Card_Galery": "Galería",
-
   "About_Me_Flag": "ACERCA DE MI",
   "About_Me_Title": "¿Necesitas Un Producto Innovador? Yo Te Puedo Ayudar.",
   "About_Me_Paragraph": "Hola, soy Alan Pacheco, un desarrollador apasionado por crear aplicaciones web limpias y con funcionalidades intuitivas. Disfruto convertir ideas en realidad a través de soluciones creativas. Siempre tengo curiosidad por aprender nuevas habilidades, herramientas y conceptos. Además de trabajar en varios proyectos full stack de manera individual, también he colaborado con equipos creativos, lo que implica reuniones diarias, control de versiones y gestión de proyectos.",
   "About_Me_Contact_Me": "CONTACTÁCTAME",
   "About_Me_Download_CV": "DESCARGAR CV",
-
   "Skills_Flag": "MIS HABILIDADES",
   "Skills_Title": "¿Qué Habilidades Tengo?",
   "Skills_Paragraph": "Desarrollo interfaces de usuario simples, intuitivas y responsivas que ayudan a los usuarios a realizar tareas con menos esfuerzo y tiempo utilizando esas tecnologías.",
   "Skills_Button": "HABILIDADES",
   "Skills_Tools_Button": "HERRAMIENTAS",
-
   "Project_Flag": "MIS PROYECTOS",
   "Project_Title": "¡Observa Mis Proyectos!",
   "Project_Paragraph": "Desarrollo sitios web de la mejor calidad que son útiles a largo plazo. Una interfaz bien documentada, limpia, sencilla y elegante ayuda a cualquier cliente sin conocimientos técnicos.",
@@ -38,7 +33,6 @@
   "Project_Button_AI": "IA",
   "Project_Button_Mobile": "MÓVIL",
   "Project_Loading": "Cargando...",
-
   "Contact_Flag": "CONTACTO",
   "Contact_Title": "¿Tienes Alguna Idea? Por Favor, Deja Un Mensaje",
   "Contact_Paragraph": "Contáctate conmigo y hazme saber cómo puedo ayudarte. Llena el formulario y te contactaré lo antes posible.",
@@ -61,7 +55,6 @@
   "Contact_Form_Error": "No se pudo enviar el mensaje. Por favor, intenta de nuevo.",
   "Contact_Form_Required": "Este campo es obligatorio",
   "Contact_Form_Email_Invalid": "Por favor ingresa un email válido",
-
   "Achievements_Flag": "MIS LOGROS",
   "Achievements_Title": "¡Mis Logros y Reconocimientos!",
   "Achievements_Paragraph": "Certificaciones, premios y reconocimientos obtenidos a lo largo de mi trayectoria académica y profesional.",
@@ -69,11 +62,142 @@
   "Achievement_Certificate": "Ver certificado →",
   "Achievement_Loading": "Cargando...",
   "Achievement_Error": "Error al cargar el logro.",
-
   "mikhuna_description": "Sitio web para compartir y descubrir recetas de cocina, donde los usuarios pueden calificar, comentar y seguir sus recetas favoritas, creando una comunidad culinaria interactiva.",
   "mikhuna_date": "Marzo 2022",
   "kvmi_description": "Plataforma de recompensas para una empresa chocolatera, integrada con inteligencia artificial para la creación de campañas publicitarias personalizadas, que permite generar afiches, banners y slogans, y ofrece un sistema para gestionar campañas y premios.",
   "kvmi_date": "Marzo 2024",
   "cow_description": "Aplicación móvil para la gestión completa del ganado, proporcionando herramientas para el seguimiento de enfermedades, control de gastos en alimentación, y otros aspectos clave de la administración del ganado.",
-  "cow_date": "Enero 2023"
+  "cow_date": "Enero 2023",
+  "site": {
+    "meta": {
+      "title": "TheCodeSolutions — Desarrollo de software a medida en Quito, Ecuador",
+      "description": "Diseñamos y desarrollamos sitios web, apps móviles, soluciones con IA y sistemas a medida, desde la idea hasta producción. Solicita una cotización."
+    },
+    "nav": {
+      "services": "Servicios",
+      "projects": "Proyectos",
+      "about": "Nosotros",
+      "team": "Equipo",
+      "contact": "Contacto",
+      "quote": "Cotizar",
+      "menu": "Abrir menú",
+      "close": "Cerrar menú",
+      "home": "TheCodeSolutions, inicio",
+      "label": "Navegación principal",
+      "language": "Idioma"
+    },
+    "hero": {
+      "eyebrow": "Software a medida · Quito, Ecuador",
+      "title": "Convertimos tus ideas en software que funciona.",
+      "subtitle": "Diseñamos y desarrollamos aplicaciones web, apps móviles y soluciones con inteligencia artificial, desde la primera idea hasta producción.",
+      "cta": "Solicitar cotización",
+      "secondary": "Ver proyectos",
+      "code": {
+        "comment1": "// Cuéntanos qué necesitas",
+        "comment2": "// Siguiente paso: hablemos",
+        "service": "Desarrollo web"
+      }
+    },
+    "services": {
+      "eyebrow": "Servicios",
+      "title": "Lo que podemos construir contigo",
+      "more": "Más información"
+    },
+    "process": {
+      "eyebrow": "Cómo trabajamos",
+      "title": "Un proceso claro, sin sorpresas",
+      "steps": [
+        {
+          "title": "Descubrimiento",
+          "text": "Entendemos tu negocio, el problema y qué significa el éxito para ti."
+        },
+        {
+          "title": "Diseño",
+          "text": "Prototipo y plan técnico para validar la idea antes de programar."
+        },
+        {
+          "title": "Desarrollo",
+          "text": "Entregas frecuentes que puedes probar desde las primeras semanas."
+        },
+        {
+          "title": "Lanzamiento y soporte",
+          "text": "Publicamos, medimos y seguimos mejorando contigo."
+        }
+      ]
+    },
+    "projects": {
+      "eyebrow": "Casos de éxito",
+      "title": "Proyectos que ya están funcionando",
+      "all": "Todos",
+      "filter": "Filtrar proyectos por servicio",
+      "view": "Ver caso",
+      "empty": "Todavía no hay proyectos publicados en este servicio.",
+      "imageAlt": "Captura del proyecto {name}"
+    },
+    "stack": {
+      "title": "Tecnologías con las que trabajamos"
+    },
+    "team": {
+      "eyebrow": "Equipo",
+      "title": "Hablas directamente con quien construye tu proyecto",
+      "text": "Sin intermediarios: la persona que entiende tu problema es la misma que diseña y programa la solución.",
+      "founderRole": "Fundador y líder técnico",
+      "founderBio": "Ingeniero de Software en Quito, Ecuador. Lidera cada proyecto, de la arquitectura al despliegue.",
+      "photoAlt": "Retrato de {name}"
+    },
+    "quote": {
+      "eyebrow": "Cotización",
+      "title": "Cuéntanos tu proyecto",
+      "text": "Completa el formulario y te responderemos con una propuesta. Si prefieres, escríbenos directamente.",
+      "whatsapp": "WhatsApp",
+      "email": "Correo",
+      "location": "Ubicación",
+      "locationValue": "Quito, Ecuador",
+      "form": {
+        "label": "Solicitud de cotización",
+        "name": "Nombre",
+        "namePlaceholder": "Tu nombre",
+        "company": "Empresa",
+        "optional": "(opcional)",
+        "companyPlaceholder": "Nombre de tu empresa",
+        "email": "Correo",
+        "emailPlaceholder": "tu{'@'}correo.com",
+        "phone": "WhatsApp o teléfono",
+        "phonePlaceholder": "+593 …",
+        "service": "Servicio de interés",
+        "serviceUnknown": "Aún no lo sé",
+        "budget": "Presupuesto aproximado",
+        "timeline": "Plazo deseado",
+        "message": "Describe tu proyecto",
+        "messagePlaceholder": "¿Qué problema quieres resolver? ¿Para quién es?",
+        "consent": "Acepto que TheCodeSolutions use estos datos solo para responder a mi solicitud.",
+        "submit": "Enviar solicitud",
+        "sending": "Enviando…",
+        "required": "Este campo es obligatorio",
+        "invalidEmail": "Ingresa un correo válido",
+        "consentRequired": "Necesitamos tu autorización para responderte",
+        "success": "¡Solicitud enviada! Te contactaremos pronto por correo o WhatsApp.",
+        "error": "No se pudo enviar la solicitud. Inténtalo de nuevo o escríbenos por WhatsApp."
+      },
+      "budgets": {
+        "lt-500": "Menos de $500",
+        "500-1000": "$500 a $1.000",
+        "1000-3000": "$1.000 a $3.000",
+        "3000-8000": "$3.000 a $8.000",
+        "gt-8000": "Más de $8.000",
+        "unknown": "Aún no lo sé"
+      },
+      "timelines": {
+        "asap": "Lo antes posible",
+        "1-3": "1 a 3 meses",
+        "3-6": "3 a 6 meses",
+        "flexible": "Flexible"
+      }
+    },
+    "footer": {
+      "place": "Quito, Ecuador",
+      "nav": "Pie de página",
+      "whatsapp": "Escribir por WhatsApp"
+    }
+  }
 }

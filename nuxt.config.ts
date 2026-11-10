@@ -18,12 +18,10 @@ export default defineNuxtConfig({
     strategy: 'prefix_except_default',
     baseUrl: 'https://thecodesolutions.com',
     langDir: 'locales/',
-    // Solo redirige en la raíz y recuerda la elección del usuario; los buscadores siempre ven "/" en español.
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'root',
-    },
+    // Sin detección automática: en el sitio estático cambiaba los textos al idioma del navegador
+    // sin cambiar la URL (página en "/" con textos en inglés). Cada URL muestra siempre su idioma
+    // y el visitante cambia con el selector (DA-011).
+    detectBrowserLanguage: false,
   },
 
   runtimeConfig: {
