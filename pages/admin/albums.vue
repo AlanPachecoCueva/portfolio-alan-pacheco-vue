@@ -43,7 +43,7 @@ import { useAlbums } from '~/composables/useAlbums.js'
 import { countImagesByAlbum } from '~/utils/firebase/images.js'
 
 // definePageMeta va en el <script> normal: un <script setup> sobrescribe el setup() de opciones (ERR-013)
-definePageMeta({ middleware: 'auth', layout: false })
+definePageMeta({ middleware: 'auth', layout: false, i18n: false })
 
 export default {
   name: 'Admin_Albums',

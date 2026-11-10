@@ -11,8 +11,8 @@
         <p>{{ project.technology }}</p>
       </div>
 
-      <h2>{{ $i18n.locale === 'EN' ? (project.title_en || project.title) : project.title }}</h2>
-      <p id="project_description">{{ $i18n.locale === 'EN' ? project.description_en : project.description_es }}</p>
+      <h2>{{ $i18n.locale === 'en' ? (project.title_en || project.title) : project.title }}</h2>
+      <p id="project_description">{{ $i18n.locale === 'en' ? project.description_en : project.description_es }}</p>
 
       <div class="relatedTecnologies_container">
         <div

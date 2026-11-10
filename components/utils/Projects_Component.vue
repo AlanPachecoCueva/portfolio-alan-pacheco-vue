@@ -44,7 +44,7 @@
           alt="img home"
         />
         <div class="item-info">
-          <div class="item-title">{{ $i18n.locale === 'EN' ? (item.title_en || item.title) : item.title }}</div>
+          <div class="item-title">{{ $i18n.locale === 'en' ? (item.title_en || item.title) : item.title }}</div>
           <div class="item-date">{{ formatDate(item.date) }}</div>
         </div>
       </div>
@@ -84,7 +84,7 @@ export default {
       return d.getFullYear()
     },
     goToProject(project) {
-      this.$router.push({ name: "project-id", params: { id: project.id } });
+      this.$router.push(this.$localePath({ name: "project-id", params: { id: project.id } }));
     },
   },
 };

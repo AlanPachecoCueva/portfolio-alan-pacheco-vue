@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    :to="routeName ? { name: routeName } : { name: 'index', hash: url }"
+    :to="$localePath(routeName ? { name: routeName } : { name: 'index', hash: url })"
     class="card-link"
   >
     <Icon class="card-icon" :icon="icon_name" />

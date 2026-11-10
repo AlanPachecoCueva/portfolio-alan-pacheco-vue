@@ -7,14 +7,23 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
   ],
 
+  // DA-011: español en "/" y la versión en inglés indexable en "/en/...".
+  // useLocaleHead (layouts/default.vue) genera hreflang, canonical y og:locale por página.
   i18n: {
     locales: [
-      { code: 'ES', language: 'es-EC', file: 'es.json' },
-      { code: 'EN', language: 'en-US', file: 'en.json' },
+      { code: 'es', language: 'es-EC', name: 'Español', file: 'es.json' },
+      { code: 'en', language: 'en-US', name: 'English', file: 'en.json' },
     ],
-    defaultLocale: 'ES',
-    strategy: 'no_prefix',
+    defaultLocale: 'es',
+    strategy: 'prefix_except_default',
+    baseUrl: 'https://thecodesolutions.com',
     langDir: 'locales/',
+    // Solo redirige en la raíz y recuerda la elección del usuario; los buscadores siempre ven "/" en español.
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root',
+    },
   },
 
   runtimeConfig: {
@@ -34,7 +43,7 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'static',
     prerender: {
-      routes: ['/', '/gallery', '/achievements'],
+      routes: ['/', '/gallery', '/achievements', '/en', '/en/gallery', '/en/achievements'],
       ignore: ['/admin', '/admin/**'],
     },
   },
@@ -66,12 +75,10 @@ export default defineNuxtConfig({
         // Open Graph
         { property: 'og:title', content: 'Portfolio Alan Pacheco — Software Engineer' },
         { property: 'og:description', content: 'Portafolio profesional de Alan Pacheco, Ingeniero de Software en Quito, Ecuador. Proyectos en Vue.js, C#, .NET, JavaScript y más.' },
-        { property: 'og:url', content: 'https://thecodesolutions.com/' },
         { property: 'og:type', content: 'website' },
         { property: 'og:image', content: 'https://thecodesolutions.com/ThecodesolutionsPreview.png' },
         { property: 'og:image:width', content: '2349' },
         { property: 'og:image:height', content: '1355' },
-        { property: 'og:locale', content: 'es_EC' },
         // Twitter Cards
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'Portfolio Alan Pacheco — Software Engineer' },
@@ -80,7 +87,6 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', href: '/favicon.ico' },
-        { rel: 'canonical', href: 'https://thecodesolutions.com/' },
         {
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap',

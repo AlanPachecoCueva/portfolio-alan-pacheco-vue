@@ -25,7 +25,7 @@
 import { useAuth } from '~/composables/useAuth.js'
 
 // definePageMeta va en el <script> normal: un <script setup> sobrescribe el setup() de opciones (ERR-013)
-definePageMeta({ layout: false })
+definePageMeta({ layout: false, i18n: false })
 
 export default {
   name: 'Admin_Login',

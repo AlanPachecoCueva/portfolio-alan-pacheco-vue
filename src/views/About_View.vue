@@ -14,7 +14,7 @@
           <p>{{ $t("About_Me_Paragraph") }}</p>
         </div>
         <div class="right-rightContainer-lower">
-          <NuxtLink :to="{ name: 'index', hash: '#contact-view' }">
+          <NuxtLink :to="$localePath({ name: 'index', hash: '#contact-view' })">
             <button class="button" id="leftButton" :style="generateAlternativeGradientStyle()">
               {{ $t('About_Me_Contact_Me') }}
             </button>
@@ -40,7 +40,7 @@ export default {
   methods: {
     downloadCV() {
       const link = document.createElement("a");
-      if (this.$i18n.locale == "EN") {
+      if (this.$i18n.locale === 'en') {
         link.href = "/CV-Alan Pacheco-ENG.pdf";
         link.download = "CV-Alan Pacheco-ENG.pdf";
       } else {

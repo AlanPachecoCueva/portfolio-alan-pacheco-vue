@@ -10,13 +10,13 @@
       <!-- Desktop links (≥ 960px) -->
       <ul class="nav-links">
         <div class="nav-sides" id="center-side">
-          <li><NuxtLink :to="{ name: 'index', hash: '#home-view' }">{{ $t("Home_Text") }}</NuxtLink></li>
-          <li><NuxtLink :to="{ name: 'index', hash: '#about-view' }">{{ $t("About_Text") }}</NuxtLink></li>
-          <li><NuxtLink :to="{ name: 'index', hash: '#skills-view' }">{{ $t("Skills_Text") }}</NuxtLink></li>
-          <li><NuxtLink :to="{ name: 'index', hash: '#projects-view' }">{{ $t("Portfolio_Text") }}</NuxtLink></li>
-          <li><NuxtLink :to="{ name: 'index', hash: '#contact-view' }">{{ $t("Contact_Text") }}</NuxtLink></li>
-          <li><NuxtLink :to="{ name: 'gallery' }">{{ $t("Gallery_Text") }}</NuxtLink></li>
-          <li><NuxtLink :to="{ name: 'achievements' }">{{ $t("Achievements_Text") }}</NuxtLink></li>
+          <li><NuxtLink :to="$localePath({ name: 'index', hash: '#home-view' })">{{ $t("Home_Text") }}</NuxtLink></li>
+          <li><NuxtLink :to="$localePath({ name: 'index', hash: '#about-view' })">{{ $t("About_Text") }}</NuxtLink></li>
+          <li><NuxtLink :to="$localePath({ name: 'index', hash: '#skills-view' })">{{ $t("Skills_Text") }}</NuxtLink></li>
+          <li><NuxtLink :to="$localePath({ name: 'index', hash: '#projects-view' })">{{ $t("Portfolio_Text") }}</NuxtLink></li>
+          <li><NuxtLink :to="$localePath({ name: 'index', hash: '#contact-view' })">{{ $t("Contact_Text") }}</NuxtLink></li>
+          <li><NuxtLink :to="$localePath({ name: 'gallery' })">{{ $t("Gallery_Text") }}</NuxtLink></li>
+          <li><NuxtLink :to="$localePath({ name: 'achievements' })">{{ $t("Achievements_Text") }}</NuxtLink></li>
         </div>
         <div class="nav-sides" id="right-side">
           <li><Language_Selector_Component id="languageSelector"></Language_Selector_Component></li>
@@ -37,13 +37,13 @@
     <!-- Mobile dropdown -->
     <div class="mobile-menu" v-show="menuOpen">
       <ul>
-        <li @click="menuOpen = false"><NuxtLink :to="{ name: 'index', hash: '#home-view' }">{{ $t("Home_Text") }}</NuxtLink></li>
-        <li @click="menuOpen = false"><NuxtLink :to="{ name: 'index', hash: '#about-view' }">{{ $t("About_Text") }}</NuxtLink></li>
-        <li @click="menuOpen = false"><NuxtLink :to="{ name: 'index', hash: '#skills-view' }">{{ $t("Skills_Text") }}</NuxtLink></li>
-        <li @click="menuOpen = false"><NuxtLink :to="{ name: 'index', hash: '#projects-view' }">{{ $t("Portfolio_Text") }}</NuxtLink></li>
-        <li @click="menuOpen = false"><NuxtLink :to="{ name: 'index', hash: '#contact-view' }">{{ $t("Contact_Text") }}</NuxtLink></li>
-        <li @click="menuOpen = false"><NuxtLink :to="{ name: 'gallery' }">{{ $t("Gallery_Text") }}</NuxtLink></li>
-        <li @click="menuOpen = false"><NuxtLink :to="{ name: 'achievements' }">{{ $t("Achievements_Text") }}</NuxtLink></li>
+        <li @click="menuOpen = false"><NuxtLink :to="$localePath({ name: 'index', hash: '#home-view' })">{{ $t("Home_Text") }}</NuxtLink></li>
+        <li @click="menuOpen = false"><NuxtLink :to="$localePath({ name: 'index', hash: '#about-view' })">{{ $t("About_Text") }}</NuxtLink></li>
+        <li @click="menuOpen = false"><NuxtLink :to="$localePath({ name: 'index', hash: '#skills-view' })">{{ $t("Skills_Text") }}</NuxtLink></li>
+        <li @click="menuOpen = false"><NuxtLink :to="$localePath({ name: 'index', hash: '#projects-view' })">{{ $t("Portfolio_Text") }}</NuxtLink></li>
+        <li @click="menuOpen = false"><NuxtLink :to="$localePath({ name: 'index', hash: '#contact-view' })">{{ $t("Contact_Text") }}</NuxtLink></li>
+        <li @click="menuOpen = false"><NuxtLink :to="$localePath({ name: 'gallery' })">{{ $t("Gallery_Text") }}</NuxtLink></li>
+        <li @click="menuOpen = false"><NuxtLink :to="$localePath({ name: 'achievements' })">{{ $t("Achievements_Text") }}</NuxtLink></li>
       </ul>
     </div>
   </header>

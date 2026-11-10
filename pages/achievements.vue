@@ -20,7 +20,7 @@
         class="item"
         role="button"
         tabindex="0"
-        :aria-label="$i18n.locale === 'EN' ? (item.title_en || item.title) : item.title"
+        :aria-label="$i18n.locale === 'en' ? (item.title_en || item.title) : item.title"
         :style="{ backgroundColor: getPrimaryColor() }"
         @click="goToAchievement(item)"
         @keydown.enter="goToAchievement(item)"
@@ -33,7 +33,7 @@
             :alt="item.title"
           />
           <div class="item-info">
-            <div class="item-title">{{ $i18n.locale === 'EN' ? (item.title_en || item.title) : item.title }}</div>
+            <div class="item-title">{{ $i18n.locale === 'en' ? (item.title_en || item.title) : item.title }}</div>
             <div class="item-issuer">{{ item.issuer }}</div>
           </div>
         </div>
@@ -56,7 +56,7 @@ export default {
   },
   methods: {
     goToAchievement(achievement) {
-      this.$router.push({ name: 'achievement-id', params: { id: achievement.id } })
+      this.$router.push(this.$localePath({ name: 'achievement-id', params: { id: achievement.id } }))
     },
   },
 }

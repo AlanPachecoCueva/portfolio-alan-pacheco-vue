@@ -27,7 +27,7 @@
         <br />
         {{ $t("Home_Main_Slogan_P2") }}
       </div>
-      <NuxtLink :to="{ name: 'index', hash: '#contact-view' }">
+      <NuxtLink :to="$localePath({ name: 'index', hash: '#contact-view' })">
         <button id="contact-button" name="button">
           {{ $t("Home_Contact_Button") }}
         </button>

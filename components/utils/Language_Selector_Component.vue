@@ -2,6 +2,9 @@
   <v-select
     v-model="currentLanguage"
     :items="languages"
+    item-title="title"
+    item-value="value"
+    aria-label="Idioma / Language"
     class="language-select"
     hide-details
   ></v-select>
@@ -12,14 +15,21 @@ export default {
   name: "Language_Selector_Component",
   data() {
     return {
-      currentLanguage: "ES",
-      languages: ["EN", "ES"],
+      languages: [
+        { title: "ES", value: "es" },
+        { title: "EN", value: "en" },
+      ],
     };
   },
-  methods: {},
-  watch: {
-    currentLanguage(newValue) {
-      this.$i18n.setLocale(newValue);
+  computed: {
+    // Refleja el idioma de la URL (/ o /en/...). setLocale navega a la ruta del otro idioma.
+    currentLanguage: {
+      get() {
+        return this.$i18n.locale;
+      },
+      set(value) {
+        this.$i18n.setLocale(value);
+      },
     },
   },
 };

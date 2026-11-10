@@ -5,17 +5,17 @@
     <div v-else class="achievement-grid">
 
       <div class="info-panel" ref="infoPanel">
-        <NuxtLink :to="{ name: 'achievements' }" class="back-link">{{ $t('Achievement_Back') }}</NuxtLink>
+        <NuxtLink :to="$localePath({ name: 'achievements' })" class="back-link">{{ $t('Achievement_Back') }}</NuxtLink>
 
         <div class="flag">
           <div class="flag-line" :style="{ backgroundColor: getHeroColor() }"></div>
           <span class="flag-text">{{ achievement.issuer }}</span>
         </div>
 
-        <h2 class="achievement-title">{{ $i18n.locale === 'EN' ? (achievement.title_en || achievement.title) : achievement.title }}</h2>
+        <h2 class="achievement-title">{{ $i18n.locale === 'en' ? (achievement.title_en || achievement.title) : achievement.title }}</h2>
 
         <p class="achievement-description">
-          {{ $i18n.locale === 'EN' ? achievement.description_en : achievement.description_es }}
+          {{ $i18n.locale === 'en' ? achievement.description_en : achievement.description_es }}
         </p>
 
         <a

@@ -29,7 +29,7 @@ import { useAchievements } from '~/composables/useAchievements.js'
 import { useTeam } from '~/composables/useTeam.js'
 
 // definePageMeta va en el <script> normal: un <script setup> sobrescribe el setup() de opciones (ERR-013)
-definePageMeta({ middleware: 'auth', layout: false })
+definePageMeta({ middleware: 'auth', layout: false, i18n: false })
 
 export default {
   name: 'Admin_AchievementEdit',

@@ -23,6 +23,13 @@ export default {
   components: { Nav_Bar },
 
   setup() {
+    // SEO multilenguaje: <html lang>, hreflang (es, en, x-default), canonical y og:locale por página
+    const i18nHead = useLocaleHead({ dir: true, lang: true, seo: true })
+    useHead(() => ({
+      htmlAttrs: { lang: i18nHead.value.htmlAttrs?.lang, dir: i18nHead.value.htmlAttrs?.dir },
+      link: [...(i18nHead.value.link || [])],
+      meta: [...(i18nHead.value.meta || [])],
+    }))
     return useTheme()
   },
 
