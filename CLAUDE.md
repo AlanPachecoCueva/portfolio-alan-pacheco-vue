@@ -95,7 +95,8 @@ Web comercial de **TheCodeSolutions** (antes, portafolio personal de **Alan Pach
 ├── utils/
 │   ├── firebase/                  ← SDK cliente: index, auth, images, albums, projects, achievements, services, team, leads
 │   ├── firestore-public.js        ← Lectura pública por REST (prerender + cliente)
-│   ├── founder.js, site-contact.js, localized.js, service-icons.js, slug.js
+│   ├── founder.js, site-contact.js, localized.js, service-icons.js, slug.js, seo.js
+│   ├── image-compress.js          ← redimensiona/comprime en el navegador antes de subir a Storage (ERR-021)
 ├── plugins/                       ← vuetify.ts (tokens tcs-* paleta C), iconify.ts, sweetalert.client.ts
 ├── i18n/locales/                  ← es.json / en.json (textos del sitio bajo la clave `site`)
 ├── assets/                        ← site.css (estilos de la marca), admin.css
@@ -196,6 +197,6 @@ npm run lint     # Linting con ESLint
 9. **CVs descargables:** `CV-Alan Pacheco-ESP.pdf` y `CV-Alan Pacheco-ENG.pdf` en `public/`. Se enlazan desde el perfil (`cvUrl_es`/`cvUrl_en` del miembro o `utils/founder.js`), con la URL codificada por los espacios.
 10. **`npm run serve` no existe:** El README.md raíz está desactualizado (era de Vue CLI). Usar `npm run dev`.
 11. **Options API + `<script setup>` no se mezclan:** un `<script setup>` sobrescribe el `setup()` de opciones del mismo SFC. En páginas con Options API, `definePageMeta(...)` va en el `<script>` normal (ver ERR-013).
-12. **Formularios del admin:** clase `.admin-form` y estilos compartidos en `assets/admin.css` (ERR-014). Formularios compartidos entre "nuevo" y "editar" en `components/admin/*_Form.vue`: emiten solo los campos del esquema (nunca `updateDoc` con `...this.form`, ver ERR-015). URLs que se pintan como `href` público se validan (`https://` o `http(s)://`).
+12. **Formularios del admin:** clase `.admin-form` y estilos compartidos en `assets/admin.css` (ERR-014). Formularios compartidos entre "nuevo" y "editar" en `components/admin/*_Form.vue`: emiten solo los campos del esquema (nunca `updateDoc` con `...this.form`, ver ERR-015). URLs que se pintan como `href` público se validan (`https://` o `http(s)://`). Las imágenes se suben redimensionadas (máx. 1920 px, JPEG 82 o WebP si tienen transparencia) desde `uploadImage` (ERR-021).
 13. **URLs por idioma (DA-011):** español en `/`, inglés en `/en/...`. Códigos de locale en minúsculas (`$i18n.locale === 'en'`). Enlaces públicos siempre con `$localePath(...)` (las rutas se llaman `index___es`/`index___en`). Las páginas del admin llevan `i18n: false` en `definePageMeta`. Una página pública nueva va al prerender y a `public/sitemap.xml` en ambos idiomas.
 14. **Contenido público y SEO:** `usePublicContent()` lee servicios, proyectos y equipo publicados por la API REST de Firestore (`utils/firestore-public.js`) en el prerender, así quedan en el HTML; en el cliente se vuelve a pedir al montar. Las páginas de TheCodeSolutions usan `definePageMeta({ layout: 'site' })`, `useSeoMeta` con textos de `site.*` en i18n y los estilos de `assets/site.css` (tokens `tcs-*`).

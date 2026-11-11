@@ -19,6 +19,7 @@ import {
   deleteObject,
 } from 'firebase/storage'
 import { db, storage } from './index.js'
+import { compressImage } from '../image-compress.js'
 
 const COLLECTION = 'images'
 
@@ -47,14 +48,20 @@ export async function getImage(id) {
   return { id: snapshot.id, ...snapshot.data() }
 }
 
-export async function uploadImage(file, meta, onProgress) {
+export async function uploadImage(original, meta, onProgress) {
+  // Se sube la versión redimensionada y comprimida (ERR-021): las fotos originales pesaban hasta 7 MB
+  const file = await compressImage(original)
   const imageId = crypto.randomUUID()
-  const ext = file.name.split('.').pop()
+  const ext = original.name.split('.').pop()
   const storagePath = `images/${imageId}_${file.name}`
   const fileRef = storageRef(storage, storagePath)
 
   await new Promise((resolve, reject) => {
-    const task = uploadBytesResumable(fileRef, file)
+    // El nombre lleva un UUID y nunca se reescribe: el navegador puede guardarla en caché un año
+    const task = uploadBytesResumable(fileRef, file, {
+      contentType: file.type,
+      cacheControl: 'public, max-age=31536000, immutable',
+    })
     task.on(
       'state_changed',
       (snap) => {
@@ -72,7 +79,7 @@ export async function uploadImage(file, meta, onProgress) {
   const docRef = await addDoc(collection(db, COLLECTION), {
     url,
     storagePath,
-    title: meta.title || file.name.replace(`.${ext}`, ''),
+    title: meta.title || original.name.replace(`.${ext}`, ''),
     description: meta.description || '',
     date: meta.date || serverTimestamp(),
     album: meta.album || '',
@@ -81,7 +88,7 @@ export async function uploadImage(file, meta, onProgress) {
     uploadedAt: serverTimestamp(),
   })
 
-  return { id: docRef.id, url }
+  return { id: docRef.id, url, originalSize: original.size, size: file.size }
 }
 
 export async function updateImage(id, data) {

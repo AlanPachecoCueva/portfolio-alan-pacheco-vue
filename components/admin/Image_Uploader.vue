@@ -60,7 +60,9 @@
               :style="{ width: item.progress + '%' }"
             ></div>
           </div>
-          <span v-if="item.status === 'done'" class="status-done">✓ Subida</span>
+          <span v-if="item.status === 'done'" class="status-done">
+            ✓ Subida<template v-if="item.savedText"> · {{ item.savedText }}</template>
+          </span>
           <span v-if="item.status === 'error'" class="status-error">✗ Error al subir</span>
         </div>
 
@@ -89,6 +91,8 @@
 <script>
 import { useAlbums } from '@/composables/useAlbums.js'
 import { uploadImage } from '~/utils/firebase/images.js'
+
+const formatSize = (bytes) => (bytes >= 1048576 ? `${(bytes / 1048576).toFixed(1)} MB` : `${Math.round(bytes / 1024)} KB`)
 
 export default {
   name: 'Image_Uploader',
@@ -135,6 +139,7 @@ export default {
           showInGallery: false,
           status: 'pending', // pending | uploading | done | error
           progress: 0,
+          savedText: '',
         })
       })
     },
@@ -153,7 +158,7 @@ export default {
         item.status = 'uploading'
         item.progress = 0
         try {
-          await uploadImage(
+          const result = await uploadImage(
             item.file,
             {
               title: item.title,
@@ -166,6 +171,9 @@ export default {
           )
           item.progress = 100
           item.status = 'done'
+          if (result.size < result.originalSize) {
+            item.savedText = `optimizada de ${formatSize(result.originalSize)} a ${formatSize(result.size)}`
+          }
           this.$emit('uploaded')
         } catch {
           item.status = 'error'
