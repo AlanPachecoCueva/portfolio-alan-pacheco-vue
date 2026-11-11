@@ -2,7 +2,8 @@
   "site": {
     "meta": {
       "title": "TheCodeSolutions — Custom software development in Quito, Ecuador",
-      "description": "We design and build websites, mobile apps, AI solutions and custom software, from the first idea to production. Request a quote."
+      "description": "We design and build websites, mobile apps, AI solutions and custom software, from the first idea to production. Request a quote.",
+      "ogImageAlt": "TheCodeSolutions: custom software for your business. Web, mobile apps, AI, custom systems and consulting."
     },
     "nav": {
       "services": "Services",

@@ -204,7 +204,11 @@ useSeoMeta({
   description: () => metaDescription(member.value?.bio),
   ogTitle: () => member.value?.name,
   ogDescription: () => metaDescription(member.value?.bio),
-  ogImage: () => (member.value ? `https://thecodesolutions.com${member.value.photoUrl}` : undefined),
+  ogImage: () => (member.value?.photoUrl?.startsWith('/')
+    ? { url: `https://thecodesolutions.com${member.value.photoUrl}`, width: 480, height: 480, type: 'image/png', alt: member.value.name }
+    : undefined),
+  twitterImage: () => (member.value?.photoUrl?.startsWith('/') ? `https://thecodesolutions.com${member.value.photoUrl}` : undefined),
+  twitterImageAlt: () => member.value?.name,
   ogType: 'profile',
   robots: () => (member.value ? undefined : 'noindex'),
 })

@@ -163,14 +163,13 @@ const others = computed(() =>
   content.value.projects.filter((p) => p.slug && p.slug !== route.params.slug).slice(0, 3)
 )
 
-// SEO: título, descripción e imagen por proyecto e idioma; noindex si no existe
+// SEO: título y descripción por proyecto e idioma; noindex si no existe. La imagen para compartir
+// es la de marca (layout): las portadas en Storage pesan varios MB y WhatsApp no las muestra (ERR-021)
 useSeoMeta({
   title: () => (project.value ? `${title.value} — ${t('site.project.metaSuffix')}` : t('site.project.notFound')),
   description: () => metaDescription(description.value),
   ogTitle: () => title.value,
   ogDescription: () => metaDescription(description.value),
-  ogImage: () => project.value?.thumbnailUrl,
-  twitterImage: () => project.value?.thumbnailUrl,
   robots: () => (project.value ? undefined : 'noindex'),
 })
 

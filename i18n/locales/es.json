@@ -2,7 +2,8 @@
   "site": {
     "meta": {
       "title": "TheCodeSolutions — Desarrollo de software a medida en Quito, Ecuador",
-      "description": "Diseñamos y desarrollamos sitios web, apps móviles, soluciones con IA y sistemas a medida, desde la idea hasta producción. Solicita una cotización."
+      "description": "Diseñamos y desarrollamos sitios web, apps móviles, soluciones con IA y sistemas a medida, desde la idea hasta producción. Solicita una cotización.",
+      "ogImageAlt": "TheCodeSolutions: software a medida para tu negocio. Web, apps móviles, IA, sistemas a medida y consultoría."
     },
     "nav": {
       "services": "Servicios",

@@ -82,14 +82,17 @@ export default defineNuxtConfig({
         { property: 'og:title', content: 'TheCodeSolutions — Software a medida' },
         { property: 'og:description', content: 'Desarrollo web, apps móviles, soluciones con IA, sistemas a medida y consultoría desde Quito, Ecuador.' },
         { property: 'og:type', content: 'website' },
-        { property: 'og:image', content: 'https://thecodesolutions.com/ThecodesolutionsPreview.png' },
-        { property: 'og:image:width', content: '2349' },
-        { property: 'og:image:height', content: '1355' },
+        // Imagen liviana (~70 KB): WhatsApp en el celular ignora las de más de ~300 KB (ERR-021).
+        // layouts/site.vue la cambia por la versión del idioma de cada página.
+        { property: 'og:image', content: 'https://thecodesolutions.com/og-thecodesolutions-es.jpg' },
+        { property: 'og:image:width', content: '1200' },
+        { property: 'og:image:height', content: '630' },
+        { property: 'og:image:type', content: 'image/jpeg' },
         // Twitter Cards
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'TheCodeSolutions — Software a medida' },
         { name: 'twitter:description', content: 'Desarrollo web, apps móviles, soluciones con IA, sistemas a medida y consultoría desde Quito, Ecuador.' },
-        { name: 'twitter:image', content: 'https://thecodesolutions.com/ThecodesolutionsPreview.png' },
+        { name: 'twitter:image', content: 'https://thecodesolutions.com/og-thecodesolutions-es.jpg' },
       ],
       link: [
         // Logo 3 "llaves con núcleo" (DA-010); el .ico queda para navegadores sin soporte SVG
@@ -109,7 +112,7 @@ export default defineNuxtConfig({
                 name: 'TheCodeSolutions',
                 url: 'https://thecodesolutions.com',
                 logo: 'https://thecodesolutions.com/logo-tcs.svg',
-                image: 'https://thecodesolutions.com/ThecodesolutionsPreview.png',
+                image: 'https://thecodesolutions.com/og-thecodesolutions-es.jpg',
                 description: 'Desarrollo de software a medida: web, apps móviles, soluciones con IA, sistemas a medida y consultoría.',
                 email: 'alan.pacheco.dev@gmail.com',
                 telephone: '+593962163336',
