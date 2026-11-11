@@ -39,8 +39,7 @@
       "dist/",
       ".output/",
       ".nuxt/",
-      "node_modules/",
-      "src/views/admin/"
+      "node_modules/"
     ],
     "globals": {
       "defineNuxtConfig": "readonly",
@@ -61,7 +60,11 @@
       "useLocalePath": "readonly",
       "useLocaleHead": "readonly",
       "useCookie": "readonly",
-      "$fetch": "readonly"
+      "$fetch": "readonly",
+      "clearError": "readonly",
+      "createError": "readonly",
+      "defineEventHandler": "readonly",
+      "setHeader": "readonly"
     },
     "overrides": [
       {

@@ -19,7 +19,10 @@
           class="member__photo"
         />
         <div class="member__body">
-          <h3 class="member__name">{{ member.name }}</h3>
+          <h3 class="member__name">
+            <NuxtLink v-if="member.slug" :to="$localePath({ name: 'equipo-slug', params: { slug: member.slug } })" class="member__link">{{ member.name }}</NuxtLink>
+            <template v-else>{{ member.name }}</template>
+          </h3>
           <p class="member__role">{{ member.role }}</p>
           <p class="member__bio">{{ member.bio }}</p>
           <p v-if="member.links.length" class="member__links">
@@ -33,6 +36,7 @@
 
 <script>
 import { localized } from '~/utils/localized.js'
+import { FOUNDER } from '~/utils/founder.js'
 
 export default {
   name: 'Site_Team',
@@ -45,6 +49,7 @@ export default {
       if (this.team.length) {
         return this.team.map((m) => ({
           id: m.id,
+          slug: m.slug,
           name: m.name,
           role: localized(m, 'role', this.$i18n.locale),
           bio: localized(m, 'bio', this.$i18n.locale),
@@ -58,15 +63,16 @@ export default {
         }))
       }
       return [{
-        id: 'founder',
-        name: 'Alan Pacheco Cueva',
+        id: FOUNDER.id,
+        slug: FOUNDER.slug,
+        name: FOUNDER.name,
         role: this.$t('site.team.founderRole'),
         bio: this.$t('site.team.founderBio'),
-        photoUrl: '/images/alan-pacheco-480.png',
-        photoSrcset: '/images/alan-pacheco-480.png 1x, /images/alan-pacheco-960.png 2x',
+        photoUrl: FOUNDER.photoUrl,
+        photoSrcset: FOUNDER.photoSrcset,
         links: [
-          { href: 'https://ec.linkedin.com/in/alan-pacheco-cueva-b7b3a9223', label: 'LinkedIn' },
-          { href: 'https://github.com/AlanPachecoCueva', label: 'GitHub' },
+          { href: FOUNDER.links.linkedin, label: 'LinkedIn' },
+          { href: FOUNDER.links.github, label: 'GitHub' },
         ],
       }]
     },
@@ -121,6 +127,15 @@ export default {
   margin: 0;
   font-family: var(--tcs-font-display);
   font-size: 22px;
+}
+
+.member__link {
+  color: rgb(var(--v-theme-tcs-text));
+  text-decoration: none;
+}
+
+.member__link:hover {
+  color: rgb(var(--v-theme-tcs-accent-text));
 }
 
 .member__role {

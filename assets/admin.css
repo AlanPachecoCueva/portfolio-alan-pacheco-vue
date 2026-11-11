@@ -137,8 +137,8 @@
 }
 
 /* ── Formularios ──────────────────────────────────────────────────
-   Movido desde src/views/admin (legacy): las páginas de pages/admin usaban
-   estas clases sin tener los estilos tras la migración a Nuxt. */
+   Las páginas de pages/admin usaban estas clases sin estilos tras la migración
+   a Nuxt (ERR-014). */
 .admin-form,
 .project-form,
 .achievement-form {

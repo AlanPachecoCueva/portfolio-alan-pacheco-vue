@@ -2,7 +2,49 @@
   command = "npx nuxt generate"
   publish = ".output/public"
 
-# SSG: rutas dinámicas no generadas en el prerender (admin, /project/:id, /achievement/:id…).
+# ── URLs del portafolio viejo → páginas de TheCodeSolutions (301 permanentes, SEO) ──
+# Van antes del fallback: Netlify aplica la primera regla que coincide.
+# La galería y los logros ahora viven en el perfil del fundador.
+[[redirects]]
+  from = "/gallery"
+  to = "/equipo/alan-pacheco#galeria"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/gallery"
+  to = "/en/equipo/alan-pacheco#galeria"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/achievements"
+  to = "/equipo/alan-pacheco#certificaciones"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/achievements"
+  to = "/en/equipo/alan-pacheco#certificaciones"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/achievement/*"
+  to = "/equipo/alan-pacheco#certificaciones"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/achievement/*"
+  to = "/en/equipo/alan-pacheco#certificaciones"
+  status = 301
+  force = true
+
+# /project/:id se mantiene como página que redirige a /proyectos/:slug (el id no se
+# puede traducir a slug con una regla estática).
+
+# SSG: rutas dinámicas no generadas en el prerender (admin, proyectos nuevos…).
 # Debe ser /200.html (shell SPA vacío que genera Nuxt), NO /index.html: index.html es la home
 # pre-renderizada y Nuxt la hidrata como home en cualquier URL (ERR-017).
 # Netlify solo aplica esta regla cuando no existe un archivo para la ruta, así que las páginas

@@ -40,7 +40,13 @@ export function sortByOrder(items, newestFirst = true) {
 
 // Documentos publicados de una colección. Si falla (sin red, CI con config de relleno),
 // devuelve [] para que el build no se rompa: la página se completa en el cliente.
-export async function fetchPublished(projectId, collectionId) {
+export function fetchPublished(projectId, collectionId) {
+  return fetchWhereTrue(projectId, collectionId, 'published')
+}
+
+// Documentos con un campo booleano en true. El filtro tiene que coincidir con la regla
+// de lectura pública de la colección (published, o showInGallery en images).
+export async function fetchWhereTrue(projectId, collectionId, fieldPath) {
   if (!projectId || projectId.startsWith('ci-')) return []
   const url = `${FIRESTORE_URL}/projects/${projectId}/databases/(default)/documents:runQuery`
   const body = {
@@ -48,7 +54,7 @@ export async function fetchPublished(projectId, collectionId) {
       from: [{ collectionId }],
       where: {
         fieldFilter: {
-          field: { fieldPath: 'published' },
+          field: { fieldPath },
           op: 'EQUAL',
           value: { booleanValue: true },
         },

@@ -9,7 +9,7 @@
         :style="{ gridColumn: `span ${clamp(img.columns)}`, gridRow: `span ${clamp(img.rows)}` }"
       >
         <button type="button" class="gallery__btn" :aria-label="$t('site.project.enlarge', { n: i + 1 })" @click="open(i)">
-          <img :src="img.url" :alt="$t('site.project.imageAlt', { name, n: i + 1 })" loading="lazy" decoding="async" width="600" height="400" />
+          <img :src="img.url" :alt="img.alt || $t('site.project.imageAlt', { name, n: i + 1 })" loading="lazy" decoding="async" width="600" height="400" />
         </button>
       </li>
     </ul>
@@ -29,7 +29,7 @@
         <button ref="closeBtn" type="button" class="viewer__btn viewer__close" :aria-label="$t('site.project.close')" @click="close">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12 M18 6L6 18" /></svg>
         </button>
-        <img :src="images[current].url" :alt="$t('site.project.imageAlt', { name, n: current + 1 })" class="viewer__img" />
+        <img :src="images[current].url" :alt="images[current].alt || $t('site.project.imageAlt', { name, n: current + 1 })" class="viewer__img" />
         <div class="viewer__nav">
           <button type="button" class="viewer__btn" :aria-label="$t('site.project.prev')" @click="prev">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg>

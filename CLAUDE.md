@@ -39,11 +39,11 @@ Archivo cargado automáticamente por Claude Code en cada sesión. Es una guía d
 
 ## Propósito
 
-Portfolio personal de **Alan Pacheco Cueva**, Ingeniero de Software ecuatoriano. Web bilingüe (ES/EN) con modo dark/light que sirve como vitrina profesional para reclutadores, clientes freelance y colaboradores.
+Web comercial de **TheCodeSolutions** (antes, portafolio personal de **Alan Pacheco Cueva**, fundador). Ofrece servicios de software a medida, muestra proyectos como casos de éxito y presenta al equipo. Bilingüe (ES en `/`, EN en `/en/...`) con tema claro/oscuro. Migración en curso en la rama `feature/thecodesolutions`; el portafolio viejo está respaldado en `legacy/portfolio-personal`.
 
-**Secciones públicas:** Hero, About + CV descargable, Skills, Portfolio de proyectos, Galería fotográfica, Logros/Certificaciones, Contacto.
+**Páginas públicas:** home (hero, servicios, proceso, proyectos, tecnologías, equipo, cotización), `/servicios/:slug`, `/proyectos/:slug`, `/equipo/:slug` (perfil con certificaciones y galería).
 
-**Panel admin privado (`/admin/**`):** CRUD de proyectos, logros, imágenes y álbumes. Protegido por Firebase Auth + colección `admins`.
+**Panel admin privado (`/admin/**`):** leads, servicios, proyectos, equipo, logros, imágenes y álbumes. Protegido por Firebase Auth + colección `admins`.
 
 ---
 
@@ -53,10 +53,10 @@ Portfolio personal de **Alan Pacheco Cueva**, Ingeniero de Software ecuatoriano.
 |---|---|---|
 | Vue | ^3.2.13 | Composition API + Options API mixto |
 | Nuxt | ^4.6.4 | Meta-framework SSG (pre-render estático) |
-| Vuetify | ^3.7.0 | UI Material Design 3, temas light/dark. `plugins/vuetify.ts` registra solo los componentes usados (`VApp`, `VSelect`); al usar uno nuevo, agregarlo ahí |
+| Vuetify | ^3.7.0 | UI Material Design 3, temas light/dark. `plugins/vuetify.ts` registra solo los componentes usados (hoy `VApp`); al usar uno nuevo, agregarlo ahí |
 | @nuxtjs/i18n | ^10.6.0 | i18n bilingüe ES/EN — archivos en `i18n/locales/`. Trae su propio `vue-i18n` 11 (no instalarlo como dependencia directa) |
 | Firebase | ^12.19.0 | Auth (email + Google), Firestore, Storage. `overrides` fuerza `@grpc/grpc-js` 1.14.6 (ver AUD-002 en `Seguridad_Dependencias.md`) |
-| @emailjs/browser | ^4.4.1 | Formulario de contacto sin backend propio |
+| @emailjs/browser | ^4.4.1 | Aviso por correo de las cotizaciones (además se guardan en `leads`). Se carga solo al enviar. Ver ERR-019 |
 | @iconify/vue | ^4.1.2 | Iconos vectoriales con `<Icon>` |
 | vue-sweetalert2 | ^5.0.11 | Modales de alerta |
 | ESLint | ^8.57.0 | Linting (`eslint-plugin-vue`) |
@@ -70,55 +70,41 @@ Portfolio personal de **Alan Pacheco Cueva**, Ingeniero de Software ecuatoriano.
 ## Arquitectura
 
 ```
-./                                 ← raíz del proyecto (Nuxt 3, NO src/)
+./                                 ← raíz del proyecto (Nuxt 4)
 │
 ├── pages/                         ← Rutas file-based (Nuxt auto-router)
-│   ├── index.vue                  ← / (todas las secciones en una página)
-│   ├── gallery.vue                ← /gallery
-│   ├── achievements.vue           ← /achievements
-│   ├── achievement/[id].vue       ← /achievement/:id
-│   ├── project/[id].vue           ← /project/:id
-│   └── admin/
-│       ├── login.vue              ← /admin/login
-│       ├── images.vue             ← /admin/images
-│       ├── albums.vue             ← /admin/albums
-│       ├── projects/index.vue     ← /admin/projects
-│       ├── projects/new.vue       ← /admin/projects/new
-│       ├── projects/[id]/edit.vue ← /admin/projects/:id/edit
-│       ├── achievements/index.vue ← /admin/achievements
-│       ├── achievements/new.vue   ← /admin/achievements/new
-│       └── achievements/[id]/edit.vue
+│   ├── index.vue                  ← / y /en (home de TheCodeSolutions, layout site)
+│   ├── servicios/[slug].vue       ← /servicios/:slug (FAQ + JSON-LD Service/FAQPage)
+│   ├── proyectos/[slug].vue       ← /proyectos/:slug (caso de éxito + galería)
+│   ├── equipo/[slug].vue          ← /equipo/:slug (perfil: proyectos, certificaciones, galería)
+│   ├── project/[id].vue           ← URL vieja: solo redirige a /proyectos/:slug
+│   └── admin/                     ← leads, services, projects, team, achievements, images, albums, login (i18n: false)
 │
 ├── components/
-│   ├── Nav_Bar.vue
-│   ├── site/                      ← TheCodeSolutions: Site_Header, Site_Footer, Site_Logo, Site_Language, Site_Hero, Site_Services, Site_Process, Site_Projects, Site_Team, Site_Quote
+│   ├── site/                      ← Site_Header, Site_Footer, Site_Logo, Site_Language, Site_Hero, Site_Services, Site_Process, Site_Projects, Site_Team, Site_Quote, Site_Gallery
 │   ├── admin/                     ← Admin_Nav, Image_Uploader, Image_Picker, Image_Selector, *_Form, Tags_Input
-│   └── utils/                     ← Card, Grid, Language_Selector, Project, Projects, Theme_Selector
+│   └── utils/                     ← Theme_Selector_Component
 │
-├── composables/                   ← useAuth, useTheme, useImages/useGalleryImages, useAlbums, useProjects/usePublishedProjects, useAchievements/usePublishedAchievements, useServices/usePublishedServices, useTeam/usePublishedTeam, useLeads/useCreateLead
+├── composables/                   ← usePublicContent, usePublicProfile (lectura pública para SSG), useAuth, useTheme, useImages, useAlbums, useProjects, useAchievements, useServices, useTeam, useLeads
 ├── layouts/
-│   ├── site.vue                   ← Layout de TheCodeSolutions (Site_Header, Site_Footer, fuentes, hreflang). Lo usa la home nueva
-│   ├── default.vue                ← Layout del portafolio viejo (cursor + navbar); galería y logros hasta migrarlas
+│   ├── site.vue                   ← Layout público (Site_Header, Site_Footer, fuentes, hreflang/canonical)
 │   └── admin.vue                  ← Layout admin (solo <div> base — Admin_Nav va en cada página)
-├── middleware/
-│   └── auth.ts                    ← Guard Nuxt: protege /admin/** (verifica Firebase Auth + colección admins)
+├── error.vue                      ← 404/errores con el layout site (noindex)
+├── middleware/auth.ts             ← Guard Nuxt: protege /admin/** (verifica Firebase Auth + colección admins)
+├── server/routes/sitemap.xml.js   ← Sitemap generado en el build (se pre-renderiza)
 ├── utils/
-│   └── firebase/                  ← index.js, auth.js, images.js, albums.js, projects.js, achievements.js
-├── plugins/
-│   ├── vuetify.ts                 ← Configuración de temas (paleta custom light/dark)
-│   ├── iconify.ts
-│   └── sweetalert.client.ts
-├── i18n/
-│   └── locales/
-│       ├── es.json                ← Strings en español
-│       └── en.json                ← Strings en inglés
-├── assets/                        ← Imágenes estáticas, admin.css
-├── public/                        ← favicon, CVs (ES/EN PDF), sitemap.xml, robots.txt
-├── app/
-│   └── router.options.ts
-├── app.vue                        ← Root component (cursor personalizado aquí)
+│   ├── firebase/                  ← SDK cliente: index, auth, images, albums, projects, achievements, services, team, leads
+│   ├── firestore-public.js        ← Lectura pública por REST (prerender + cliente)
+│   ├── founder.js, site-contact.js, localized.js, service-icons.js, slug.js
+├── plugins/                       ← vuetify.ts (tokens tcs-* paleta C), iconify.ts, sweetalert.client.ts
+├── i18n/locales/                  ← es.json / en.json (textos del sitio bajo la clave `site`)
+├── assets/                        ← site.css (estilos de la marca), admin.css
+├── public/                        ← favicon.svg/.ico, logo-tcs.svg, CVs (ES/EN PDF), images/alan-pacheco-*.png, robots.txt
+├── docs/diseno-thecodesolutions/  ← marca, tokens, maquetas y contenido inicial
+├── scripts/                       ← scripts de datos de un solo uso (los ejecuta el dueño con gcloud)
+├── firestore.rules                ← fuente de verdad de las reglas (deploy manual en la consola)
 ├── nuxt.config.ts
-└── netlify.toml
+└── netlify.toml                   ← redirecciones 301 de URLs viejas + SPA fallback a /200.html
 ```
 
 ---
@@ -127,20 +113,14 @@ Portfolio personal de **Alan Pacheco Cueva**, Ingeniero de Software ecuatoriano.
 
 | Path | Página | Requiere auth |
 |---|---|---|
-| `/` | `pages/index.vue` | No |
-| `/gallery` | `pages/gallery.vue` | No |
-| `/achievements` | `pages/achievements.vue` | No |
-| `/achievement/:id` | `pages/achievement/[id].vue` | No |
-| `/project/:id` | `pages/project/[id].vue` | No |
+| `/`, `/en` | `pages/index.vue` | No |
+| `/servicios/:slug` (+ `/en/...`) | `pages/servicios/[slug].vue` | No |
+| `/proyectos/:slug` (+ `/en/...`) | `pages/proyectos/[slug].vue` | No |
+| `/equipo/:slug` (+ `/en/...`) | `pages/equipo/[slug].vue` | No |
+| `/project/:id` | redirige a `/proyectos/:slug` | No |
+| `/gallery`, `/achievements`, `/achievement/*` | 301 en `netlify.toml` → `/equipo/alan-pacheco#galeria` / `#certificaciones` | No |
 | `/admin/login` | `pages/admin/login.vue` | No |
-| `/admin/projects` | `pages/admin/projects/index.vue` | Sí |
-| `/admin/projects/new` | `pages/admin/projects/new.vue` | Sí |
-| `/admin/projects/:id/edit` | `pages/admin/projects/[id]/edit.vue` | Sí |
-| `/admin/achievements` | `pages/admin/achievements/index.vue` | Sí |
-| `/admin/achievements/new` | `pages/admin/achievements/new.vue` | Sí |
-| `/admin/achievements/:id/edit` | `pages/admin/achievements/[id]/edit.vue` | Sí |
-| `/admin/images` | `pages/admin/images.vue` | Sí |
-| `/admin/albums` | `pages/admin/albums.vue` | Sí |
+| `/admin/leads`, `/admin/services/**`, `/admin/projects/**`, `/admin/team/**`, `/admin/achievements/**`, `/admin/images`, `/admin/albums` | `pages/admin/...` | Sí |
 
 **Auth guard (`middleware/auth.ts`):** Se ejecuta solo en cliente. Verifica Firebase Auth + que el `uid` exista en colección `admins`. Redirige a `/admin/login` si falla.
 
@@ -194,27 +174,26 @@ npm run lint     # Linting con ESLint
 
 ## Convenciones de código
 
-- **Naming:** PascalCase para componentes (`Nav_Bar.vue`, `Card_Component.vue`)
-- **Estilos:** CSS scoped en cada componente. Colores siempre vía `useTheme()`, nunca hardcodeados
+- **Naming:** componentes con guion bajo y mayúsculas (`Site_Header.vue`, `Service_Form.vue`)
+- **Estilos:** CSS scoped en cada componente. Colores del sitio siempre con los tokens `rgb(var(--v-theme-tcs-*))` (o `useTheme().getBrandColor()`), nunca hardcodeados. Estilos compartidos en `assets/site.css`
 - **Admin styles:** Las páginas admin importan `@/assets/admin.css` para estilos comunes
 - **i18n:** Todo texto visible al usuario en páginas públicas debe ir en `i18n/locales/es.json` y `en.json`
 - **Imágenes estáticas en templates:** `src="..."` sin binding (Nuxt/Vite las resuelve en build)
 - **NO usar `require()`** — no compatible con Vite
-- **themeMixin.js:** Archivo legacy que ya NO se registra globalmente. Usar `useTheme()` composable
 
 ---
 
 ## Gotchas técnicos
 
-1. **`src/views/` no está vacío:** Aunque DA-001 indicaba que `src/` quedó como legacy vacío, en realidad `src/views/` contiene las vistas de secciones del portfolio (Home_View, About_View, Skills_View, Contact_View) que siguen siendo importadas desde `pages/index.vue`. Las vistas admin en `src/views/admin/` sí son legacy y no se usan.
+1. **Sin `src/`:** el código legacy del portafolio (`src/views`, `Nav_Bar`, `layouts/default.vue`) se eliminó en la Fase 3. Está en la rama `legacy/portfolio-personal`.
 2. **Hidratación SSG + Firebase Auth:** El middleware `auth.ts` solo se ejecuta en cliente. No usar `useAuth()` en el lado servidor — puede causar hydration mismatch.
-3. **Rutas dinámicas en SSG:** `/project/:id` y `/achievement/:id` no se pre-renderizan (requeriría conocer todos los IDs en build time). Se sirven vía SPA fallback de Netlify (`/* → /index.html`).
+3. **Rutas dinámicas en SSG:** servicios, proyectos y perfiles publicados se pre-renderizan (el crawler sigue los enlaces de la home). Lo publicado después del último build se sirve por el SPA fallback (`/200.html`) y se completa en el cliente.
 4. **`nuxt generate` vs `nuxt build`:** Este proyecto usa `nuxt generate` (SSG). `nuxt build` generaría un servidor Node.js, que Netlify podría detectar y activar SSR — error conocido (ver Errores_Conocidos.md).
 5. **Índices Firestore:** Evitar `where` + `orderBy` en la misma query sin crear el índice compuesto en Firebase Console. Si aparece error de índice en consola del navegador, el error incluye un link directo para crearlo.
 6. **Admin session timeout:** Timer de inactividad de 3 horas con aviso 60 segundos antes. Implementado en `Admin_Nav.vue`. Sesión persistente con `browserLocalPersistence`.
-7. **Cursor personalizado:** Implementado en `layouts/default.vue` (NO en `app.vue`). `app.vue` es solo `<NuxtLayout><NuxtPage /></NuxtLayout>`. El cursor y la lógica de scroll/hide del navbar están en `DefaultLayout`. No modificar sin revisar el efecto en mobile (cursor no visible en touch).
-8. **Galería aleatoria:** Las imágenes se mezclan aleatoriamente al cargar la página. Es comportamiento intencional — no un bug.
-9. **CVs descargables:** Hay dos versiones (`CV-Alan Pacheco-ESP.pdf` y `CV-Alan Pacheco-ENG.pdf`) en `public/`. El botón en la sección About cambia según `$i18n.locale`.
+7. **Sin cursor personalizado:** se fue con `layouts/default.vue`. El header que se oculta al bajar vive en `Site_Header.vue`.
+8. **Galería:** está en el perfil (`/equipo/alan-pacheco#galeria`), ordenada por fecha de subida. Ya no se mezcla al azar: en HTML estático el orden aleatorio causaría desajustes de hidratación.
+9. **CVs descargables:** `CV-Alan Pacheco-ESP.pdf` y `CV-Alan Pacheco-ENG.pdf` en `public/`. Se enlazan desde el perfil (`cvUrl_es`/`cvUrl_en` del miembro o `utils/founder.js`), con la URL codificada por los espacios.
 10. **`npm run serve` no existe:** El README.md raíz está desactualizado (era de Vue CLI). Usar `npm run dev`.
 11. **Options API + `<script setup>` no se mezclan:** un `<script setup>` sobrescribe el `setup()` de opciones del mismo SFC. En páginas con Options API, `definePageMeta(...)` va en el `<script>` normal (ver ERR-013).
 12. **Formularios del admin:** clase `.admin-form` y estilos compartidos en `assets/admin.css` (ERR-014). Formularios compartidos entre "nuevo" y "editar" en `components/admin/*_Form.vue`: emiten solo los campos del esquema (nunca `updateDoc` con `...this.form`, ver ERR-015). URLs que se pintan como `href` público se validan (`https://` o `http(s)://`).

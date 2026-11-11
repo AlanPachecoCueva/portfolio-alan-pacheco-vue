@@ -41,7 +41,8 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'static',
     prerender: {
-      routes: ['/', '/gallery', '/achievements', '/en', '/en/gallery', '/en/achievements'],
+      // El resto de páginas públicas las encuentra el crawler siguiendo los enlaces de la home
+      routes: ['/', '/en', '/sitemap.xml'],
       ignore: ['/admin', '/admin/**'],
     },
   },
@@ -90,10 +91,6 @@ export default defineNuxtConfig({
         // Logo 3 "llaves con núcleo" (DA-010); el .ico queda para navegadores sin soporte SVG
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
         { rel: 'icon', href: '/favicon.ico', sizes: 'any' },
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap',
-        },
       ],
       script: [
         {
@@ -128,7 +125,7 @@ export default defineNuxtConfig({
                 alternateName: 'Alan Pacheco',
                 jobTitle: 'Fundador y líder técnico',
                 worksFor: { '@id': 'https://thecodesolutions.com/#organization' },
-                image: 'https://thecodesolutions.com/About-Image.webp',
+                image: 'https://thecodesolutions.com/images/alan-pacheco-960.png',
                 sameAs: [
                   'https://ec.linkedin.com/in/alan-pacheco-cueva-b7b3a9223',
                   'https://github.com/AlanPachecoCueva',
