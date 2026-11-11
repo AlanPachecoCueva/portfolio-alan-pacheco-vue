@@ -44,6 +44,10 @@ export default defineNuxtConfig({
       // El resto de páginas públicas las encuentra el crawler siguiendo los enlaces de la home
       routes: ['/', '/en', '/sitemap.xml'],
       ignore: ['/admin', '/admin/**'],
+      // Genera /en.html en vez de /en/index.html. Con carpetas, Netlify redirigía (301)
+      // /en → /en/ y el canonical, hreflang y sitemap (sin barra final) apuntaban a una
+      // redirección (ERR-020).
+      autoSubfolderIndex: false,
     },
   },
 
