@@ -116,6 +116,7 @@ import { computed } from 'vue'
 import { usePublicContent } from '~/composables/usePublicContent.js'
 import { localized } from '~/utils/localized.js'
 import { serviceIconPath } from '~/utils/service-icons.js'
+import { metaDescription } from '~/utils/seo.js'
 
 definePageMeta({ layout: 'site' })
 
@@ -148,9 +149,9 @@ const others = computed(() => content.value.services.filter((s) => s.slug && s.s
 
 useSeoMeta({
   title: () => (service.value ? `${title.value} — ${t('site.service.metaSuffix')}` : t('site.service.notFound')),
-  description: () => text('summary'),
+  description: () => metaDescription(text('summary')),
   ogTitle: () => title.value,
-  ogDescription: () => text('summary'),
+  ogDescription: () => metaDescription(text('summary')),
   robots: () => (service.value ? undefined : 'noindex'),
 })
 

@@ -124,6 +124,7 @@ import { computed } from 'vue'
 import Site_Gallery from '~/components/site/Site_Gallery.vue'
 import { usePublicContent } from '~/composables/usePublicContent.js'
 import { localized } from '~/utils/localized.js'
+import { metaDescription } from '~/utils/seo.js'
 
 definePageMeta({ layout: 'site' })
 
@@ -165,9 +166,9 @@ const others = computed(() =>
 // SEO: título, descripción e imagen por proyecto e idioma; noindex si no existe
 useSeoMeta({
   title: () => (project.value ? `${title.value} — ${t('site.project.metaSuffix')}` : t('site.project.notFound')),
-  description: () => description.value,
+  description: () => metaDescription(description.value),
   ogTitle: () => title.value,
-  ogDescription: () => description.value,
+  ogDescription: () => metaDescription(description.value),
   ogImage: () => project.value?.thumbnailUrl,
   twitterImage: () => project.value?.thumbnailUrl,
   robots: () => (project.value ? undefined : 'noindex'),

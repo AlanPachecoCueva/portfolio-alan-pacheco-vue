@@ -112,6 +112,7 @@ import { usePublicContent } from '~/composables/usePublicContent.js'
 import { usePublicProfile } from '~/composables/usePublicProfile.js'
 import { localized } from '~/utils/localized.js'
 import { FOUNDER } from '~/utils/founder.js'
+import { metaDescription } from '~/utils/seo.js'
 
 definePageMeta({ layout: 'site' })
 
@@ -199,10 +200,10 @@ const certType = (type) => (te(`site.profile.types.${type}`) ? t(`site.profile.t
 const yearOf = (a) => (a.date?.seconds ? new Date(a.date.seconds * 1000).getUTCFullYear() : '')
 
 useSeoMeta({
-  title: () => (member.value ? `${member.value.name} — ${member.value.role} | ${t('site.profile.metaSuffix')}` : t('site.profile.notFound')),
-  description: () => member.value?.bio,
+  title: () => (member.value ? `${member.value.name} — ${member.value.role} | TheCodeSolutions` : t('site.profile.notFound')),
+  description: () => metaDescription(member.value?.bio),
   ogTitle: () => member.value?.name,
-  ogDescription: () => member.value?.bio,
+  ogDescription: () => metaDescription(member.value?.bio),
   ogImage: () => (member.value ? `https://thecodesolutions.com${member.value.photoUrl}` : undefined),
   ogType: 'profile',
   robots: () => (member.value ? undefined : 'noindex'),
