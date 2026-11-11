@@ -110,6 +110,8 @@ export default defineNuxtConfig({
                 '@type': 'ProfessionalService',
                 '@id': 'https://thecodesolutions.com/#organization',
                 name: 'TheCodeSolutions',
+                // La gente lo busca con espacios; sin esto Google lo trata como otra palabra
+                alternateName: 'The Code Solutions',
                 url: 'https://thecodesolutions.com',
                 logo: 'https://thecodesolutions.com/logo-tcs.svg',
                 image: 'https://thecodesolutions.com/og-thecodesolutions-es.jpg',
@@ -144,6 +146,7 @@ export default defineNuxtConfig({
                 '@id': 'https://thecodesolutions.com/#website',
                 url: 'https://thecodesolutions.com',
                 name: 'TheCodeSolutions',
+                alternateName: 'The Code Solutions', // nombre del sitio en los resultados de Google
                 inLanguage: ['es-EC', 'en-US'],
                 publisher: { '@id': 'https://thecodesolutions.com/#organization' },
               },

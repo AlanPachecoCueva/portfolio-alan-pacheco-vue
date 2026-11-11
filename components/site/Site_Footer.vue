@@ -3,7 +3,7 @@
     <div class="site-footer__inner">
       <p class="site-footer__brand">
         <Site_Logo :size="28" />
-        <span>{{ $t('site.footer.place') }} · © {{ year }}</span>
+        <span>{{ $t('site.footer.legal', { year }) }}</span>
       </p>
       <nav :aria-label="$t('site.footer.nav')" class="site-footer__nav">
         <NuxtLink :to="$localePath({ name: 'index', hash: '#servicios' })">{{ $t('site.nav.services') }}</NuxtLink>

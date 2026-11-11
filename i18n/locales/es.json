@@ -127,7 +127,7 @@
       }
     },
     "footer": {
-      "place": "Quito, Ecuador",
+      "legal": "© {year} The Code Solutions · Software a medida en Quito, Ecuador",
       "nav": "Pie de página",
       "whatsapp": "Escribir por WhatsApp"
     },
