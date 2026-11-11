@@ -19,7 +19,7 @@
       "language": "Idioma"
     },
     "hero": {
-      "eyebrow": "Software a medida · Quito, Ecuador",
+      "eyebrow": "Desarrollo de software a medida en Quito, Ecuador",
       "title": "Convertimos tus ideas en software que funciona.",
       "subtitle": "Diseñamos y desarrollamos aplicaciones web, apps móviles y soluciones con inteligencia artificial, desde la primera idea hasta producción.",
       "cta": "Solicitar cotización",
@@ -177,7 +177,15 @@
       "notFound": "No encontramos este servicio.",
       "back": "Volver a servicios",
       "loading": "Cargando…",
-      "metaSuffix": "Servicio {'|'} TheCodeSolutions"
+      "seoTitle": "{title} {'|'} TheCodeSolutions",
+      "seoTitleFallback": "{title} en Quito, Ecuador",
+      "seoTitles": {
+        "desarrollo-web": "Desarrollo web en Quito, Ecuador",
+        "apps-moviles": "Desarrollo de apps móviles en Quito, Ecuador",
+        "soluciones-con-ia": "Soluciones con IA para empresas en Ecuador",
+        "sistemas-a-medida": "Sistemas a medida para empresas en Quito",
+        "consultoria": "Consultoría de software en Quito, Ecuador"
+      }
     },
     "profile": {
       "home": "Inicio",

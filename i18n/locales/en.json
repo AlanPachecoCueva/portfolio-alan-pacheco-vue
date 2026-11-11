@@ -19,7 +19,7 @@
       "language": "Language"
     },
     "hero": {
-      "eyebrow": "Custom software · Quito, Ecuador",
+      "eyebrow": "Custom software development in Quito, Ecuador",
       "title": "We turn your ideas into software that works.",
       "subtitle": "We design and build web applications, mobile apps and artificial intelligence solutions, from the first idea to production.",
       "cta": "Request a quote",
@@ -177,7 +177,15 @@
       "notFound": "We could not find this service.",
       "back": "Back to services",
       "loading": "Loading…",
-      "metaSuffix": "Service {'|'} TheCodeSolutions"
+      "seoTitle": "{title} {'|'} TheCodeSolutions",
+      "seoTitleFallback": "{title} in Quito, Ecuador",
+      "seoTitles": {
+        "desarrollo-web": "Web development in Quito, Ecuador",
+        "apps-moviles": "Mobile app development in Quito, Ecuador",
+        "soluciones-con-ia": "AI solutions for businesses in Ecuador",
+        "sistemas-a-medida": "Custom business software in Quito, Ecuador",
+        "consultoria": "Software consulting in Quito, Ecuador"
+      }
     },
     "profile": {
       "home": "Home",

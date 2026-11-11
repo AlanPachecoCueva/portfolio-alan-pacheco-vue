@@ -1,8 +1,11 @@
 <template>
   <section id="inicio" class="hero tcs-container">
     <div class="hero__text">
-      <p class="tcs-eyebrow">{{ $t('site.hero.eyebrow') }}</p>
-      <h1 class="hero__title">{{ $t('site.hero.title') }}</h1>
+      <!-- El antetítulo va dentro del <h1>: "desarrollo de software a medida en Quito" es lo que se busca -->
+      <h1 class="hero__heading">
+        <span class="tcs-eyebrow hero__eyebrow">{{ $t('site.hero.eyebrow') }}</span>
+        <span class="hero__title">{{ $t('site.hero.title') }}</span>
+      </h1>
       <p class="hero__subtitle">{{ $t('site.hero.subtitle') }}</p>
       <div class="hero__actions">
         <NuxtLink :to="$localePath({ name: 'index', hash: '#contacto' })" class="tcs-btn tcs-btn--primary tcs-btn--lg">
@@ -57,7 +60,19 @@ export default {
   min-width: 0;
 }
 
+.hero__heading {
+  margin: 0;
+  font-weight: inherit;
+}
+
+.hero__eyebrow {
+  display: block;
+  font-family: var(--tcs-font-body);
+  line-height: 1.4;
+}
+
 .hero__title {
+  display: block;
   margin: 0;
   font-family: var(--tcs-font-display);
   font-size: clamp(36px, 5vw, 60px);

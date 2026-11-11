@@ -121,7 +121,7 @@ import { metaDescription } from '~/utils/seo.js'
 definePageMeta({ layout: 'site' })
 
 const route = useRoute()
-const { t, locale } = useI18n()
+const { t, te, locale } = useI18n()
 const localePath = useLocalePath()
 const { content, pending } = usePublicContent()
 
@@ -147,10 +147,16 @@ const related = computed(() =>
 )
 const others = computed(() => content.value.services.filter((s) => s.slug && s.slug !== route.params.slug))
 
+// Título con la búsqueda real ("desarrollo web en Quito, Ecuador"): por slug en i18n, o el genérico
+const seoHeading = computed(() => {
+  const key = `site.service.seoTitles.${route.params.slug}`
+  return te(key) ? t(key) : t('site.service.seoTitleFallback', { title: title.value })
+})
+
 useSeoMeta({
-  title: () => (service.value ? `${title.value} — ${t('site.service.metaSuffix')}` : t('site.service.notFound')),
+  title: () => (service.value ? t('site.service.seoTitle', { title: seoHeading.value }) : t('site.service.notFound')),
   description: () => metaDescription(text('summary')),
-  ogTitle: () => title.value,
+  ogTitle: () => seoHeading.value,
   ogDescription: () => metaDescription(text('summary')),
   robots: () => (service.value ? undefined : 'noindex'),
 })
@@ -177,7 +183,10 @@ useHead(() => ({
               description: text('summary'),
               serviceType: title.value,
               provider: { '@id': `${baseUrl}/#organization` },
-              areaServed: 'EC',
+              areaServed: [
+                { '@type': 'City', name: 'Quito' },
+                { '@type': 'Country', name: 'Ecuador' },
+              ],
               inLanguage: locale.value === 'en' ? 'en-US' : 'es-EC',
             },
             ...(faqs.value.length
