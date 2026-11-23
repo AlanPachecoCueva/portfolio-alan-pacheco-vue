@@ -16,9 +16,9 @@
     "firebase": "^12.19.0",
     "nuxt": "^4.6.4",
     "vue": "^3.2.13",
-    "vue-router": "^4.4.2",
+    "vue-router": "^4.6.5",
     "vue-sweetalert2": "^5.0.11",
-    "vuetify": "^3.7.0"
+    "vuetify": "^3.13.8"
   },
   "devDependencies": {
     "eslint": "^8.57.0",
